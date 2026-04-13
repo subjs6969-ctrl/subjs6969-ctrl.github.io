@@ -1,1 +1,197 @@
 # subjs6969-ctrl.github.io
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微光本態｜深深</title>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  background: linear-gradient(180deg, #1a1a1f, #2a2a33);
+  color: #f2f2f2;
+}
+
+section {
+  padding: 80px 20px;
+  max-width: 420px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+.divider {
+  margin: 20px 0;
+  opacity: 0.3;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 24px;
+  border: 1px solid #888;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 首頁 -->
+<section class="hero">
+  <h1>微光本態｜深深</h1>
+
+  <p>
+  非公開開放<br>
+  採理解後進入的方式
+  </p>
+
+  <div class="divider">—</div>
+
+  <p>
+  節奏、感受、狀態<br>
+  比形式更重要
+  </p>
+
+  <div class="divider">—</div>
+
+  <p>
+  保留距離<br>
+  也保留品質
+  </p>
+
+  <a href="#about" class="button">了解內容</a>
+</section>
+
+<!-- 關於 -->
+<section id="about">
+  <h2>關於</h2>
+
+  <p>
+  微光本態｜深深<br><br>
+
+  不刻意塑造風格<br>
+  而是維持一種穩定的狀態<br><br>
+
+  重視互動中的節奏與分寸<br>
+  也在意彼此的感受是否自然<br><br>
+
+  不追求表面的熱鬧<br>
+  更在意整體是否對等<br><br>
+
+  適合願意理解這種方式的人
+  </p>
+</section>
+
+<!-- 互動 -->
+<section>
+  <h2>互動</h2>
+
+  <p>
+  初段<br>
+  短時間接觸<br>
+  以感受與節奏為主
+  </p>
+
+  <div class="divider">—</div>
+
+  <p>
+  延展<br>
+  開始進入狀態<br>
+  互動逐步拉開
+  </p>
+
+  <div class="divider">—</div>
+
+  <p>
+  展開<br>
+  完整投入<br>
+  依當下互動延續
+  </p>
+
+  <div class="divider">—</div>
+
+  <p>
+  每一次安排<br>
+  依狀態與需求調整<br><br>
+
+  非固定內容
+  </p>
+</section>
+
+<!-- 說明 -->
+<section>
+  <h2>說明</h2>
+
+  <p>
+  採事前聯繫安排<br><br>
+
+  若需異動<br>
+  請提前告知<br><br>
+
+  請尊重彼此時間<br>
+  避免影響後續安排<br><br>
+
+  不回應不清楚的需求<br>
+  不接受試探與越界<br><br>
+
+  特殊需求請先說明<br>
+  再確認是否適合安排
+  </p>
+</section>
+
+<!-- 入口 -->
+<section>
+  <h2>入口</h2>
+
+  <p>
+  已理解內容<br>
+  再進入入口
+  </p>
+
+  <div class="divider">—</div>
+
+  <p>
+  僅回應明確需求
+  </p>
+
+  <a href="https://line.me/ti/p/sex69lv" class="button">
+  進入微光入口
+  </a>
+</section>
+
+</body>
+</html>
