@@ -1,259 +1,591 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>微光本態</title>
 
 <style>
+:root {
+  --bg: #0b0b0d;
+  --bg-soft: #121216;
+  --text: #f3f0ea;
+  --muted: rgba(243, 240, 234, 0.68);
+  --line: rgba(243, 240, 234, 0.12);
+  --line-strong: rgba(243, 240, 234, 0.22);
+  --accent: #d8c7a3;
+  --max: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-  background: radial-gradient(circle at top, #2a2a33, #0f0f14);
-  color: #f5f5f7;
-  letter-spacing: 0.5px;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(216, 199, 163, 0.10), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.04), transparent 20%),
+    linear-gradient(180deg, #111114 0%, #0b0b0d 35%, #09090b 100%);
+  color: var(--text);
+  font-family:
+    "PingFang TC",
+    "Noto Serif TC",
+    "Microsoft JhengHei",
+    serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* 背景光暈 */
-body::before {
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.page-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-shell::before {
   content: "";
   position: fixed;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
-  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 22%),
+    linear-gradient(to top, rgba(255,255,255,0.02), transparent 16%);
+  z-index: 0;
 }
 
-/* 區塊 */
-section {
-  padding: 100px 20px;
-  max-width: 520px;
-  margin: auto;
-}
-
-/* 卡片感 */
-.card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 40px 30px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-}
-
-/* 標題 */
-h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  letter-spacing: 3px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 25px;
-  opacity: 0.85;
-}
-
-/* 文字 */
-p {
-  font-size: 15px;
-  line-height: 2;
-  opacity: 0.8;
-}
-
-/* 分隔線（質感版） */
-.divider {
-  height: 1px;
-  width: 40px;
-  margin: 30px auto;
-  background: linear-gradient(to right, transparent, #aaa, transparent);
-  opacity: 0.4;
-}
-
-/* 按鈕 */
-.button {
-  display: inline-block;
-  margin-top: 40px;
-  padding: 14px 30px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-  text-decoration: none;
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
+.container {
+  width: min(calc(100% - 40px), var(--max));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero */
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  padding: 64px 0 48px;
+}
+
+.hero-inner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 64px;
+  align-items: end;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.brand-mark::before {
+  content: "";
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line-strong));
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(42px, 8vw, 88px);
+  line-height: 1.02;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.hero-sub {
+  margin: 28px 0 0;
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 0.08em;
+}
+
+.hero-side {
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
+  align-self: center;
+}
+
+.hero-side p {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: 0.12em;
+}
+
+.hero-actions {
+  margin-top: 42px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  transition: all 0.35s ease;
+}
+
+.button-primary {
+  background: var(--text);
+  color: #111114;
+}
+
+.button-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(243, 240, 234, 0.12);
+}
+
+.button-secondary {
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  background: rgba(255,255,255,0.02);
+}
+
+.button-secondary:hover {
+  border-color: rgba(243, 240, 234, 0.36);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Sections */
+.section {
+  padding: 120px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 56px;
+}
+
+.section-label {
+  color: rgba(243, 240, 234, 0.42);
+  font-size: 12px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  padding-top: 6px;
+}
+
+.section-content h2 {
+  margin: 0 0 24px;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+}
+
+.lead {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 2.05;
+  letter-spacing: 0.06em;
+}
+
+.statement-list {
+  margin-top: 44px;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.statement-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.statement-item .index {
+  color: rgba(243, 240, 234, 0.36);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+}
+
+.statement-item .text {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.95;
+  letter-spacing: 0.06em;
+}
+
+.statement-item .text span {
+  color: var(--muted);
+}
+
+/* Interaction */
+.phase-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.phase-card {
+  padding: 28px 24px 26px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+}
+
+.phase-no {
+  display: block;
+  margin-bottom: 18px;
+  color: rgba(243, 240, 234, 0.34);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+}
+
+.phase-card h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.phase-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.95;
+  letter-spacing: 0.05em;
+}
+
+/* Rules */
+.rule-list {
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.rule-list li {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.95;
+  letter-spacing: 0.05em;
+}
+
+.rule-list li::before {
+  content: "—";
+  color: rgba(216, 199, 163, 0.85);
+}
+
+/* CTA */
+.cta {
+  padding: 140px 0 120px;
+  border-top: 1px solid var(--line);
+}
+
+.cta-box {
+  padding: 56px 32px;
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top, rgba(216, 199, 163, 0.08), transparent 35%),
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
   text-align: center;
 }
 
-.hero .card {
-  background: rgba(255,255,255,0.04);
+.cta-note {
+  margin: 0 0 18px;
+  color: rgba(243, 240, 234, 0.46);
+  font-size: 12px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
 }
 
-/* 小動畫（滑入） */
-section {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s ease forwards;
+.cta h2 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
 }
 
-section:nth-child(1) { animation-delay: 0.2s; }
-section:nth-child(2) { animation-delay: 0.4s; }
-section:nth-child(3) { animation-delay: 0.6s; }
-section:nth-child(4) { animation-delay: 0.8s; }
-section:nth-child(5) { animation-delay: 1s; }
+.cta p {
+  max-width: 560px;
+  margin: 22px auto 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 2;
+  letter-spacing: 0.06em;
+}
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.cta .button-primary {
+  margin-top: 34px;
+  min-width: 220px;
+}
+
+/* Footer */
+.footer {
+  padding: 0 0 40px;
+}
+
+.footer-line {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  color: rgba(243, 240, 234, 0.34);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-inner,
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 72px;
+  }
+
+  .hero-side {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+
+  .phase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(calc(100% - 28px), var(--max));
+  }
+
+  .section,
+  .cta {
+    padding: 88px 0;
+  }
+
+  .statement-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .cta-box {
+    padding: 42px 22px;
+    border-radius: 24px;
+  }
+
+  .button-primary,
+  .button-secondary {
+    width: 100%;
   }
 }
 </style>
 </head>
 
 <body>
+<div class="page-shell">
 
-<!-- 首頁 -->
-<section class="hero">
-  <div class="card">
-    <h1>微光本態｜深深</h1>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <div class="brand-mark">M I C R O &nbsp; G L O W</div>
+            <h1 class="hero-title">微光本態｜深深</h1>
+            <p class="hero-sub">
+              非公開開放。<br>
+              採理解後進入的方式。<br><br>
+              這裡不追求表面的熱鬧，<br>
+              只保留節奏、感受、狀態與品質。
+            </p>
 
-    <p>
-    非公開開放<br>
-    採理解後進入的方式
-    </p>
+            <div class="hero-actions">
+              <a href="#about" class="button-primary">了解內容</a>
+              <a href="#entry" class="button-secondary">直接查看入口</a>
+            </div>
+          </div>
 
-    <div class="divider"></div>
+          <div class="hero-side">
+            <p>節奏，比形式更重要。</p>
+            <p>保留距離，也保留品質。</p>
+            <p>只回應清楚、明確、能被理解的需求。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <p>
-    節奏、感受、狀態<br>
-    比形式更重要
-    </p>
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-label">About</div>
+          <div class="section-content">
+            <h2>不是刻意塑造風格，<br>而是維持一種穩定狀態。</h2>
+            <div class="lead">
+              微光本態｜深深，重視互動中的節奏與分寸，也在意彼此的感受是否自然。
+              不追求表面的熱鬧，更在意整體是否對等。適合願意理解這種方式的人。
+            </div>
 
-    <div class="divider"></div>
+            <div class="statement-list">
+              <div class="statement-item">
+                <div class="index">01</div>
+                <div class="text">不刻意迎合，<span>只維持自然、穩定、可延續的互動品質。</span></div>
+              </div>
+              <div class="statement-item">
+                <div class="index">02</div>
+                <div class="text">重視節奏與分寸，<span>不是冷淡，而是不消耗彼此。</span></div>
+              </div>
+              <div class="statement-item">
+                <div class="index">03</div>
+                <div class="text">保留距離感，<span>是為了讓整體更乾淨、更有質地。</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <p>
-    保留距離<br>
-    也保留品質
-    </p>
+    <!-- Interaction -->
+    <section class="section">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-label">Interaction</div>
+          <div class="section-content">
+            <h2>互動不是一次定型，<br>而是隨狀態逐步展開。</h2>
+            <div class="lead">
+              每一次安排，依當下狀態與需求調整。不是固定內容，
+              也不是制式流程，而是根據互動的自然程度逐步延展。
+            </div>
 
-    <a href="#about" class="button">了解內容</a>
-  </div>
-</section>
+            <div class="phase-grid">
+              <div class="phase-card">
+                <span class="phase-no">PHASE 01</span>
+                <h3>初段</h3>
+                <p>
+                  短時間接觸。<br>
+                  以感受、節奏與基本理解為主。
+                </p>
+              </div>
 
-<!-- 關於 -->
-<section id="about">
-  <div class="card">
-    <h2>關於</h2>
+              <div class="phase-card">
+                <span class="phase-no">PHASE 02</span>
+                <h3>延展</h3>
+                <p>
+                  開始進入狀態。<br>
+                  互動逐步拉開，內容自然增加。
+                </p>
+              </div>
 
-    <p>
-    微光本態｜深深<br><br>
+              <div class="phase-card">
+                <span class="phase-no">PHASE 03</span>
+                <h3>展開</h3>
+                <p>
+                  完整投入。<br>
+                  依當下互動與彼此狀態延續。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    不刻意塑造風格<br>
-    而是維持一種穩定的狀態<br><br>
+    <!-- Rules -->
+    <section class="section">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-label">Guideline</div>
+          <div class="section-content">
+            <h2>說明與邊界，<br>是品質的一部分。</h2>
+            <div class="lead">
+              採事前聯繫安排。若需異動，請提前告知。這不是形式問題，
+              而是對彼此時間與狀態的基本尊重。
+            </div>
 
-    重視互動中的節奏與分寸<br>
-    也在意彼此的感受是否自然<br><br>
+            <ul class="rule-list">
+              <li>請尊重彼此時間，避免影響後續安排。</li>
+              <li>不回應不清楚的需求，不接受試探與越界。</li>
+              <li>特殊需求請先說明，再確認是否適合安排。</li>
+              <li>僅在理解一致、節奏合適的前提下進行後續互動。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    不追求表面的熱鬧<br>
-    更在意整體是否對等<br><br>
+    <!-- Entry -->
+    <section class="cta" id="entry">
+      <div class="container">
+        <div class="cta-box">
+          <p class="cta-note">Entry</p>
+          <h2>已理解內容，再進入入口。</h2>
+          <p>
+            僅回應明確需求。<br>
+            能被理解的表達，才有被回應的必要。
+          </p>
 
-    適合願意理解這種方式的人
-    </p>
-  </div>
-</section>
+          <a
+            href="https://line.me/ti/p/~sex69lv"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-primary"
+          >
+            進入微光入口
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<!-- 互動 -->
-<section>
-  <div class="card">
-    <h2>互動</h2>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-line">MICRO GLOW / QUIET FORM / WITH DISTANCE AND TASTE</div>
+    </div>
+  </footer>
 
-    <p>
-    初段<br>
-    短時間接觸<br>
-    以感受與節奏為主
-    </p>
-
-    <div class="divider"></div>
-
-    <p>
-    延展<br>
-    開始進入狀態<br>
-    互動逐步拉開
-    </p>
-
-    <div class="divider"></div>
-
-    <p>
-    展開<br>
-    完整投入<br>
-    依當下互動延續
-    </p>
-  </div>
-</section>
-
-<!-- 說明 -->
-<section>
-  <div class="card">
-    <h2>說明</h2>
-
-    <p>
-    採事前聯繫安排<br><br>
-
-    若需異動<br>
-    請提前告知<br><br>
-
-    請尊重彼此時間<br>
-    避免影響後續安排<br><br>
-
-    不回應不清楚的需求<br>
-    不接受試探與越界
-    </p>
-  </div>
-</section>
-
-<!-- 入口 -->
-<section>
-  <div class="card">
-    <h2>入口</h2>
-
-    <p>
-    已理解內容<br>
-    再進入入口
-    </p>
-
-    <div class="divider"></div>
-
-    <p>
-    僅回應明確需求
-    </p>
-
-    <a href="https://line.me/ti/p/~sex69lv"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="button">
-       進入微光入口
-    </a>
-  </div>
-</section>
-
+</div>
 </body>
 </html>
