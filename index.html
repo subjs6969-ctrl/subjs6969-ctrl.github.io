@@ -12,187 +12,247 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  background: linear-gradient(180deg, #1a1a1f, #2a2a33);
-  color: #f2f2f2;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  background: radial-gradient(circle at top, #2a2a33, #0f0f14);
+  color: #f5f5f7;
+  letter-spacing: 0.5px;
 }
 
+/* 背景光暈 */
+body::before {
+  content: "";
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+  z-index: -1;
+}
+
+/* 區塊 */
 section {
-  padding: 80px 20px;
-  max-width: 420px;
+  padding: 100px 20px;
+  max-width: 520px;
   margin: auto;
-  text-align: center;
 }
 
+/* 卡片感 */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* 標題 */
 h1 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 h2 {
-  font-size: 18px;
-  margin-bottom: 20px;
-  opacity: 0.8;
-}
-
-p {
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 20px;
+  margin-bottom: 25px;
   opacity: 0.85;
 }
 
-.divider {
-  margin: 20px 0;
-  opacity: 0.3;
+/* 文字 */
+p {
+  font-size: 15px;
+  line-height: 2;
+  opacity: 0.8;
 }
 
+/* 分隔線（質感版） */
+.divider {
+  height: 1px;
+  width: 40px;
+  margin: 30px auto;
+  background: linear-gradient(to right, transparent, #aaa, transparent);
+  opacity: 0.4;
+}
+
+/* 按鈕 */
 .button {
   display: inline-block;
-  margin-top: 30px;
-  padding: 14px 24px;
-  border: 1px solid #888;
-  border-radius: 30px;
+  margin-top: 40px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
   text-decoration: none;
   color: #fff;
+  transition: all 0.3s ease;
 }
 
+.button:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* Hero */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  text-align: center;
+}
+
+.hero .card {
+  background: rgba(255,255,255,0.04);
+}
+
+/* 小動畫（滑入） */
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+section:nth-child(1) { animation-delay: 0.2s; }
+section:nth-child(2) { animation-delay: 0.4s; }
+section:nth-child(3) { animation-delay: 0.6s; }
+section:nth-child(4) { animation-delay: 0.8s; }
+section:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔺 首頁 -->
+<!-- 首頁 -->
 <section class="hero">
-  <h1>微光本態｜深深</h1>
+  <div class="card">
+    <h1>微光本態｜深深</h1>
 
-  <p>
-  非公開開放<br>
-  採理解後進入的方式
-  </p>
+    <p>
+    非公開開放<br>
+    採理解後進入的方式
+    </p>
 
-  <div class="divider">—</div>
+    <div class="divider"></div>
 
-  <p>
-  節奏、感受、狀態<br>
-  比形式更重要
-  </p>
+    <p>
+    節奏、感受、狀態<br>
+    比形式更重要
+    </p>
 
-  <div class="divider">—</div>
+    <div class="divider"></div>
 
-  <p>
-  保留距離<br>
-  也保留品質
-  </p>
+    <p>
+    保留距離<br>
+    也保留品質
+    </p>
 
-  <a href="#about" class="button">了解內容</a>
+    <a href="#about" class="button">了解內容</a>
+  </div>
 </section>
 
-<!-- 🔺 關於 -->
+<!-- 關於 -->
 <section id="about">
-  <h2>關於</h2>
+  <div class="card">
+    <h2>關於</h2>
 
-  <p>
-  微光本態｜深深<br><br>
+    <p>
+    微光本態｜深深<br><br>
 
-  不刻意塑造風格<br>
-  而是維持一種穩定的狀態<br><br>
+    不刻意塑造風格<br>
+    而是維持一種穩定的狀態<br><br>
 
-  重視互動中的節奏與分寸<br>
-  也在意彼此的感受是否自然<br><br>
+    重視互動中的節奏與分寸<br>
+    也在意彼此的感受是否自然<br><br>
 
-  不追求表面的熱鬧<br>
-  更在意整體是否對等<br><br>
+    不追求表面的熱鬧<br>
+    更在意整體是否對等<br><br>
 
-  適合願意理解這種方式的人
-  </p>
+    適合願意理解這種方式的人
+    </p>
+  </div>
 </section>
 
-<!-- 🔺 互動 -->
+<!-- 互動 -->
 <section>
-  <h2>互動</h2>
+  <div class="card">
+    <h2>互動</h2>
 
-  <p>
-  初段<br>
-  短時間接觸<br>
-  以感受與節奏為主
-  </p>
+    <p>
+    初段<br>
+    短時間接觸<br>
+    以感受與節奏為主
+    </p>
 
-  <div class="divider">—</div>
+    <div class="divider"></div>
 
-  <p>
-  延展<br>
-  開始進入狀態<br>
-  互動逐步拉開
-  </p>
+    <p>
+    延展<br>
+    開始進入狀態<br>
+    互動逐步拉開
+    </p>
 
-  <div class="divider">—</div>
+    <div class="divider"></div>
 
-  <p>
-  展開<br>
-  完整投入<br>
-  依當下互動延續
-  </p>
-
-  <div class="divider">—</div>
-
-  <p>
-  每一次安排<br>
-  依狀態與需求調整<br><br>
-
-  非固定內容
-  </p>
+    <p>
+    展開<br>
+    完整投入<br>
+    依當下互動延續
+    </p>
+  </div>
 </section>
 
-<!-- 🔺 說明 -->
+<!-- 說明 -->
 <section>
-  <h2>說明</h2>
+  <div class="card">
+    <h2>說明</h2>
 
-  <p>
-  採事前聯繫安排<br><br>
+    <p>
+    採事前聯繫安排<br><br>
 
-  若需異動<br>
-  請提前告知<br><br>
+    若需異動<br>
+    請提前告知<br><br>
 
-  請尊重彼此時間<br>
-  避免影響後續安排<br><br>
+    請尊重彼此時間<br>
+    避免影響後續安排<br><br>
 
-  不回應不清楚的需求<br>
-  不接受試探與越界<br><br>
-
-  特殊需求請先說明<br>
-  再確認是否適合安排
-  </p>
+    不回應不清楚的需求<br>
+    不接受試探與越界
+    </p>
+  </div>
 </section>
 
-<!-- 🔺 入口 -->
+<!-- 入口 -->
 <section>
-  <h2>入口</h2>
+  <div class="card">
+    <h2>入口</h2>
 
-  <p>
-  已理解內容<br>
-  再進入入口
-  </p>
+    <p>
+    已理解內容<br>
+    再進入入口
+    </p>
 
-  <div class="divider">—</div>
+    <div class="divider"></div>
 
-  <p>
-  僅回應明確需求
-  </p>
+    <p>
+    僅回應明確需求
+    </p>
 
-  <a href="https://line.me/ti/p/~sex69lv" 
-    class="button"
-    target="_blank" 
-    rel="noopener noreferrer">
-  進入微光入口
-  </a>
+    <a href="https://line.me/ti/p/~sex69lv"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="button">
+       進入微光入口
+    </a>
+  </div>
 </section>
 
 </body>
