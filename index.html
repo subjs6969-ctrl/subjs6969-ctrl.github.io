@@ -3,832 +3,433 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>微光本態｜深深</title>
-
+  <title>微光 · 之上</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
-
-    :root {
-      --bg: #f6f1e9;
-      --bg-2: #efe7dc;
-      --ink: #171717;
-      --ink-soft: rgba(23, 23, 23, 0.72);
-      --ink-faint: rgba(23, 23, 23, 0.44);
-      --line: rgba(23, 23, 23, 0.10);
-      --line-strong: rgba(23, 23, 23, 0.18);
-      --accent: #8d6d49;
-      --white: #ffffff;
-      --panel: rgba(255, 255, 255, 0.56);
-      --shadow: 0 24px 60px rgba(23, 23, 23, 0.08);
-      --max: 1240px;
-      --ease: cubic-bezier(.22,1,.36,1);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0)),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(23,23,23,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(23,23,23,0.025) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.28;
-      z-index: 0;
-    }
-
-    .site {
-      position: relative;
-      z-index: 1;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .serif {
-      font-family: "Cormorant Garamond", "Times New Roman", serif;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .eyebrow,
-    .meta,
-    .nav-links a,
-    .footer-line {
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-    }
-
-    /* Nav */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: rgba(246, 241, 233, 0.76);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .brand strong {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      transition: color .25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--ink);
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 16px;
-      border: 1px solid var(--line-strong);
-      color: var(--ink) !important;
-    }
-
-    /* Hero */
-    .hero {
-      min-height: calc(100vh - 74px);
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-      align-items: stretch;
-      padding: 36px 0 72px;
-    }
-
-    .hero-left,
-    .hero-right {
-      min-height: 660px;
-    }
-
-    .hero-copy,
-    .editorial-panel,
-    .info-strip,
-    .panel,
-    .feature,
-    .entry-panel {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-copy {
-      height: 100%;
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 22px;
-    }
-
-    .hero-title {
-      margin: 0;
-      font-size: clamp(52px, 8vw, 112px);
-      line-height: 0.94;
-      max-width: 7em;
-    }
-
-    .hero-title span {
-      display: block;
-      margin-top: 10px;
-      font-size: 0.40em;
-      line-height: 1.1;
-      color: var(--ink-soft);
-      letter-spacing: 0.10em;
-    }
-
-    .hero-desc {
-      margin: 28px 0 0;
-      max-width: 34em;
-      font-size: 16px;
-      line-height: 2;
-      color: var(--ink-soft);
-    }
-
-    .hero-bottom {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 22px;
-      align-items: end;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-    }
-
-    .hero-note {
-      max-width: 24em;
-      color: var(--ink-soft);
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 20px;
-      border: 1px solid var(--line-strong);
-      font-size: 12px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      transition: transform .35s var(--ease), background .25s ease, color .25s ease, border-color .25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
+    :root{
+      --bg:#f5f2ed;
+      --bg-soft:#fbfaf7;
+      --text:#111111;
+      --sub:#6e665e;
+      --line:rgba(17,17,17,.12);
+      --line-strong:rgba(17,17,17,.22);
+      --max:760px;
     }
 
-    .btn-dark {
-      background: var(--ink);
-      color: var(--white);
-      border-color: var(--ink);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Noto Sans TC',sans-serif;
+      line-height:1.9;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
-    .btn-light {
-      background: transparent;
-      color: var(--ink);
+    .site{
+      min-height:100vh;
     }
 
-    .hero-right {
-      display: grid;
-      grid-template-rows: 1fr 170px;
-      gap: 18px;
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(245,242,237,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
     }
 
-    .editorial-panel {
-      position: relative;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
+    .nav-inner,
+    .page,
+    .footer-inner{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
     }
 
-    .editorial-panel::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(23,23,23,0.08);
-      pointer-events: none;
+    .nav-inner{
+      min-height:62px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
 
-    .editorial-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-start;
+    .brand{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--sub);
     }
 
-    .editorial-quote {
-      font-size: clamp(34px, 4vw, 56px);
-      line-height: 1.10;
-      max-width: 7.2em;
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
     }
 
-    .editorial-mark {
-      writing-mode: vertical-rl;
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
+    .nav-links a{
+      color:var(--sub);
+      text-decoration:none;
+      font-size:11px;
+      letter-spacing:.20em;
+      text-transform:uppercase;
     }
 
-    .editorial-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 24px;
+    .page{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:84px 0;
+      border-bottom:1px solid var(--line);
     }
 
-    .mini-box {
-      border-top: 1px solid var(--line);
-      padding-top: 14px;
+    .page-inner{
+      width:100%;
     }
 
-    .mini-box span {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
+    .eyebrow{
+      display:block;
+      margin-bottom:16px;
+      color:var(--sub);
+      font-size:12px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
     }
 
-    .mini-box strong {
-      display: block;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 1.7;
+    h1,h2{
+      margin:0;
+      font-family:'Playfair Display',serif;
+      font-weight:600;
+      letter-spacing:.02em;
+      line-height:1.06;
     }
 
-    .info-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    h1{
+      font-size:clamp(42px, 9vw, 72px);
+      margin-bottom:34px;
     }
 
-    .strip-item {
-      padding: 22px;
-      border-left: 1px solid var(--line);
+    h2{
+      font-size:clamp(30px, 7vw, 52px);
+      margin-bottom:30px;
     }
 
-    .strip-item:first-child {
-      border-left: none;
+    .text{
+      font-size:18px;
+      color:#2c2927;
+      max-width:30em;
     }
 
-    .feature-number {
-      margin-bottom: 10px;
-      font-size: 34px;
-      line-height: 1;
+    .text p{
+      margin:0 0 22px;
     }
 
-    .strip-item p {
-      margin: 0;
-      color: var(--ink-soft);
-      line-height: 1.85;
-      font-size: 14px;
+    .cta-group{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:12px;
+      margin-top:34px;
     }
 
-    /* Sections */
-    .section {
-      padding: 88px 0;
-      border-top: 1px solid var(--line);
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 28px;
+      border:1px solid var(--line-strong);
+      background:transparent;
+      color:var(--text);
+      text-decoration:none;
+      font-size:12px;
+      font-weight:500;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      transition:all .28s ease;
     }
 
-    .section-head {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 26px;
-      margin-bottom: 34px;
+    .cta:hover{
+      transform:translateY(-1px);
     }
 
-    .section-title {
-      margin: 0;
-      font-size: clamp(34px, 4.8vw, 70px);
-      line-height: 1.02;
-      max-width: 10em;
+    .cta-primary{
+      background:#111;
+      color:#fff;
+      border-color:#111;
     }
 
-    .section-desc {
-      margin-top: 18px;
-      max-width: 44em;
-      color: var(--ink-soft);
-      line-height: 1.95;
-      font-size: 16px;
+    .statements{
+      display:grid;
+      gap:18px;
+      margin-top:18px;
     }
 
-    .about-grid,
-    .entry-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+    .statement{
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:#2c2927;
+      font-size:17px;
     }
 
-    .panel,
-    .entry-panel {
-      padding: 28px;
+    .statement:first-child{
+      border-top:none;
+      padding-top:0;
     }
 
-    .panel-quote {
-      font-size: clamp(28px, 3vw, 42px);
-      line-height: 1.08;
-      max-width: 9em;
-      margin: 0 0 20px;
+    .columns{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      width:100%;
     }
 
-    .list {
-      display: grid;
-      gap: 18px;
+    .card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.5);
+      padding:24px;
     }
 
-    .list-row {
-      display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 16px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
+    .card-title{
+      display:block;
+      margin-bottom:12px;
+      color:var(--sub);
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
     }
 
-    .list-row:first-child {
-      border-top: none;
-      padding-top: 0;
+    .card p{
+      margin:0;
+      color:#2c2927;
+      font-size:16px;
     }
 
-    .body-copy,
-    .list-row p,
-    .feature p,
-    .entry-list li {
-      margin: 0;
-      color: var(--ink-soft);
-      line-height: 1.9;
-      font-size: 15px;
+    .schedule{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+      color:#2c2927;
+      font-size:17px;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .form-wrap{
+      margin-top:24px;
+      border:1px solid var(--line-strong);
+      background:#fff;
+      padding:24px;
     }
 
-    .feature {
-      min-height: 220px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform .35s var(--ease), border-color .25s ease;
+    .field{
+      margin-bottom:14px;
     }
 
-    .feature:hover {
-      transform: translateY(-3px);
-      border-color: var(--line-strong);
+    .field label{
+      display:block;
+      margin-bottom:8px;
+      color:var(--sub);
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
     }
 
-    .card-title {
-      margin: 0 0 12px;
-      font-size: 32px;
-      line-height: 1.04;
+    input,select,textarea{
+      width:100%;
+      border:1px solid rgba(17,17,17,.16);
+      background:#fff;
+      color:#111;
+      padding:14px 15px;
+      font:inherit;
+      outline:none;
+      border-radius:0;
     }
 
-    .entry-list {
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 14px;
+    input:focus,select:focus,textarea:focus{
+      border-color:#111;
     }
 
-    .entry-list li {
-      position: relative;
-      padding-left: 18px;
+    .helper{
+      margin-top:12px;
+      color:var(--sub);
+      font-size:13px;
     }
 
-    .entry-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 10px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
+    .unlock{
+      display:none;
+      margin-top:22px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
     }
 
-    .entry-action {
-      margin-top: 28px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .unlock.show{
+      display:block;
     }
 
-    .footer {
-      padding: 0 0 42px;
+    .unlock-note{
+      margin:0 0 14px;
+      color:#2c2927;
+      font-size:16px;
     }
 
-    .footer-line {
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-      text-align: center;
+    .footer{
+      padding:28px 0 42px;
+      background:var(--bg-soft);
     }
-
-    @media (max-width: 980px) {
-      .hero,
-      .section-head,
-      .about-grid,
-      .entry-grid,
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-right {
-        grid-template-rows: auto auto;
-      }
-
-      .hero-bottom {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
-
-      .hero-actions {
-        justify-content: flex-start;
-      }
-
-      .info-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .strip-item {
-        border-left: none;
-        border-top: 1px solid var(--line);
-      }
 
-      .strip-item:first-child {
-        border-top: none;
-      }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      color:var(--sub);
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
     }
-
-    @media (max-width: 640px) {
-      .container {
-        width: min(var(--max), calc(100% - 28px));
-      }
-
-      .nav-inner {
-        min-height: 68px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero,
-      .section {
-        padding-top: 28px;
-        padding-bottom: 72px;
-      }
-
-      .hero-left,
-      .hero-right {
-        min-height: auto;
-      }
-
-      .hero-copy,
-      .editorial-panel,
-      .panel,
-      .feature,
-      .entry-panel {
-        padding: 22px;
-      }
-
-      .editorial-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .list-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
 
-      .btn {
-        width: 100%;
-      }
+    @media (max-width: 720px){
+      .nav-links a:not(:last-child){display:none}
+      .columns{grid-template-columns:1fr}
+      .page{padding:72px 0}
+      .text{font-size:17px}
     }
   </style>
 </head>
 <body>
   <div class="site">
-    <header class="nav">
-      <div class="container nav-inner">
-        <div class="brand">
-          <small class="meta">Micro Glow</small>
-          <strong>微光本態｜深深</strong>
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="brand">Micro Glow</div>
+        <div class="nav-links">
+          <a href="#page-2">探索</a>
+          <a href="#page-3">狀態</a>
+          <a href="#page-4">方式</a>
+          <a href="#page-5">入口</a>
+          <a href="#page-6">規則</a>
         </div>
-
-        <nav class="nav-links">
-          <a href="#about">關於</a>
-          <a href="#interaction">互動</a>
-          <a href="#guideline">說明</a>
-          <a href="#entry" class="nav-cta">入口</a>
-        </nav>
       </div>
-    </header>
+    </nav>
 
-    <main>
-      <section class="container hero">
-        <div class="hero-left">
-          <div class="hero-copy">
-            <div>
-              <span class="eyebrow">Quiet Form / With Distance and Taste</span>
-              <h1 class="hero-title serif">
-                微光本態
-                <span>深深</span>
-              </h1>
-              <p class="hero-desc">
-                非公開開放，採理解後進入的方式。<br>
-                不追求表面的熱鬧，而是保留節奏、感受、狀態與品質。
-              </p>
-            </div>
-
-            <div class="hero-bottom">
-              <div class="hero-note">
-                保留距離，不是拒絕；而是讓整體更乾淨、更自然，也更值得被理解。
-              </div>
-
-              <div class="hero-actions">
-                <a href="#about" class="btn btn-dark">了解內容</a>
-                <a href="#entry" class="btn btn-light">查看入口</a>
-              </div>
-            </div>
-          </div>
+    <section class="page" id="page-1">
+      <div class="page-inner">
+        <span class="eyebrow">微光 · 之上</span>
+        <h1>微光 · 之上</h1>
+        <div class="text">
+          <p>非公開<br>理解後進入</p>
+          <p>微光，是接觸的方式。<br>之上，是現在的狀態。</p>
+          <p>方式沒有改，<br>位置已經不同。</p>
+          <p>維持原本的方式，<br>也維持自己。</p>
+          <p>深深，<br>只會是深深。</p>
         </div>
-
-        <div class="hero-right">
-          <div class="editorial-panel">
-            <div class="editorial-top">
-              <div class="editorial-quote serif">
-                節奏，比形式更重要。
-              </div>
-              <div class="editorial-mark">Editorial Note</div>
-            </div>
-
-            <div class="editorial-grid">
-              <div class="mini-box">
-                <span>State</span>
-                <strong>重視互動中的狀態，而非表面熱度。</strong>
-              </div>
-              <div class="mini-box">
-                <span>Distance</span>
-                <strong>保留分寸，讓感受不被消耗。</strong>
-              </div>
-              <div class="mini-box">
-                <span>Quality</span>
-                <strong>每一次安排，依彼此節奏調整。</strong>
-              </div>
-              <div class="mini-box">
-                <span>Response</span>
-                <strong>只回應清楚、明確、能被理解的需求。</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-strip">
-            <div class="strip-item">
-              <div class="feature-number serif">01</div>
-              <p>理解後進入，而非任意靠近。</p>
-            </div>
-            <div class="strip-item">
-              <div class="feature-number serif">02</div>
-              <p>保持節奏與邊界，讓互動自然延展。</p>
-            </div>
-            <div class="strip-item">
-              <div class="feature-number serif">03</div>
-              <p>品質感來自克制，不來自堆疊。</p>
-            </div>
-          </div>
+        <div class="cta-group">
+          <a href="#page-5" class="cta cta-primary">進入微光</a>
+          <a href="#page-2" class="cta">探索 · 深深</a>
         </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-head" id="about">
-            <div class="meta">About</div>
-            <div>
-              <h2 class="section-title serif">不是刻意塑造風格，而是維持一種穩定狀態。</h2>
-              <p class="section-desc">
-                微光本態｜深深，重視互動中的節奏與分寸，也在意彼此的感受是否自然。
-                不追求表面的熱鬧，更在意整體是否對等。適合願意理解這種方式的人。
-              </p>
-            </div>
-          </div>
-
-          <div class="about-grid">
-            <div class="panel">
-              <p class="panel-quote serif">不刻意迎合，只維持自然、穩定、可延續的互動品質。</p>
-              <p class="body-copy">
-                真正的質感，不是熱鬧堆出來的，而是把不必要的東西收掉之後，還能成立。
-              </p>
-            </div>
-
-            <div class="panel">
-              <div class="list">
-                <div class="list-row">
-                  <div class="meta">01</div>
-                  <p>重視節奏與分寸，不是冷淡，而是不消耗彼此。</p>
-                </div>
-                <div class="list-row">
-                  <div class="meta">02</div>
-                  <p>保留距離感，是為了讓互動更乾淨，也更有質地。</p>
-                </div>
-                <div class="list-row">
-                  <div class="meta">03</div>
-                  <p>不追求制式標準，而在意彼此是否真正理解同一件事。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="interaction">
-        <div class="container">
-          <div class="section-head">
-            <div class="meta">Interaction</div>
-            <div>
-              <h2 class="section-title serif">互動不是一次定型，而是隨狀態逐步展開。</h2>
-              <p class="section-desc">
-                每一次安排，依當下狀態與需求調整。不是固定內容，也不是制式流程，
-                而是根據互動的自然程度逐步延展。
-              </p>
-            </div>
-          </div>
-
-          <div class="feature-grid">
-            <article class="feature">
-              <div>
-                <div class="meta">Phase 01</div>
-                <h3 class="card-title serif">初段</h3>
-                <p>短時間接觸，以感受、節奏與基本理解為主。</p>
-              </div>
-            </article>
-
-            <article class="feature">
-              <div>
-                <div class="meta">Phase 02</div>
-                <h3 class="card-title serif">延展</h3>
-                <p>開始進入狀態，互動逐步拉開，內容自然增加。</p>
-              </div>
-            </article>
-
-            <article class="feature">
-              <div>
-                <div class="meta">Phase 03</div>
-                <h3 class="card-title serif">展開</h3>
-                <p>完整投入，依當下互動與彼此狀態延續。</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="guideline">
-        <div class="container">
-          <div class="section-head">
-            <div class="meta">Guideline</div>
-            <div>
-              <h2 class="section-title serif">說明與邊界，是品質的一部分。</h2>
-              <p class="section-desc">
-                採事前聯繫安排。若需異動，請提前告知。這不是形式問題，
-                而是對彼此時間與狀態的基本尊重。
-              </p>
-            </div>
-          </div>
-
-          <div class="entry-grid">
-            <div class="panel">
-              <p class="panel-quote serif">不回應不清楚的需求，不接受試探與越界。</p>
-              <p class="body-copy">
-                特殊需求請先說明，再確認是否適合安排。能被理解的表達，才有被回應的必要。
-              </p>
-            </div>
-
-            <div class="entry-panel">
-              <div class="meta">Boundary</div>
-              <ul class="entry-list">
-                <li>請尊重彼此時間，避免影響後續安排。</li>
-                <li>若需異動，請提前告知。</li>
-                <li>僅在理解一致、節奏合適的前提下進行後續互動。</li>
-                <li>特殊需求請先說明，再確認是否適合安排。</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="entry">
-        <div class="container">
-          <div class="section-head">
-            <div class="meta">Entry</div>
-            <div>
-              <h2 class="section-title serif">已理解內容，再進入入口。</h2>
-              <p class="section-desc">
-                僅回應明確需求。保持清楚的表達，也是在尊重彼此的節奏。
-              </p>
-            </div>
-          </div>
-
-          <div class="entry-panel">
-            <div class="meta">Micro Glow Entry</div>
-            <ul class="entry-list">
-              <li>非公開開放。</li>
-              <li>採理解後進入的方式。</li>
-              <li>僅回應明確、清楚、可被理解的需求。</li>
-            </ul>
-
-            <div class="entry-action">
-              <a
-                href="https://line.me/ti/p/~sex69lv"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-dark"
-              >
-                進入微光入口
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-line">Micro Glow / Quiet Form / With Distance and Taste</div>
       </div>
-    </footer>
-  </div>
-</body>
-</html>
+    </section>
+
+    <section class="page" id="page-2">
+      <div class="page-inner">
+        <span class="eyebrow">Explore · 深深</span>
+        <h2>探索 · 深深</h2>
+        <div class="text">
+          <p>方式一直都在，<br>只是位置不同。</p>
+          <p>不急著開始，<br>也不隨意安排。</p>
+          <p>會看狀態，<br>也看是否合適。</p>
+          <p>維持距離，<br>讓整體更乾淨。</p>
+          <p>不需要太多說明，<br>理解之後，自然會知道。</p>
+        </div>
+        <div class="cta-group">
+          <a href="#page-5" class="cta cta-primary">進入微光</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-3">
+      <div class="page-inner">
+        <span class="eyebrow">State</span>
+        <h2>節奏與分寸，會先被確認。</h2>
+        <div class="statements">
+          <div class="statement">不急著被理解，也不需要被迎合。</div>
+          <div class="statement">節奏偏慢，分寸清楚，讓互動自然發生。</div>
+          <div class="statement">不做迎合，不提供試探，也不回應模糊需求。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-4">
+      <div class="page-inner">
+        <span class="eyebrow">Method</span>
+        <h2>安排以整體狀態為主，而非單一內容。</h2>
+        <div class="columns">
+          <div class="card">
+            <span class="card-title">Interaction</span>
+            <p>互動不是固定形式，而是隨狀態逐步展開。不制式，也不強求。</p>
+          </div>
+          <div class="card">
+            <span class="card-title">Space</span>
+            <p>空間會選擇隱密、乾淨，且具品質的場域，讓過程維持在穩定狀態中。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-5">
+      <div class="page-inner">
+        <span class="eyebrow">Entry</span>
+        <h2>已理解內容，再進入微光。</h2>
+        <div class="text">
+          <p>目前採預約安排制。</p>
+        </div>
+        <div class="schedule">
+          <div>平日｜晚間為主</div>
+          <div>假日｜彈性安排</div>
+          <div>此為初步確認，不代表直接安排。</div>
+        </div>
+
+        <div class="form-wrap">
+          <div class="field">
+            <label for="date">預計日期</label>
+            <input id="date" type="text" placeholder="例如：4/28 或 5月上旬">
+          </div>
+          <div class="field">
+            <label for="time">大致時間</label>
+            <input id="time" type="text" placeholder="例如：晚上 8 點後">
+          </div>
+          <div class="field">
+            <label for="length">時段長度</label>
+            <select id="length">
+              <option value="">請選擇</option>
+              <option>1–2 小時</option>
+              <option>半日</option>
+              <option>完整安排</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="style">偏好感受</label>
+            <select id="style">
+              <option value="">請選擇</option>
+              <option>安靜</option>
+              <option>自然</option>
+              <option>直接</option>
+              <option>輕鬆</option>
+            </select>
+          </div>
+
+          <button class="cta cta-primary" style="width:100%;justify-content:center;min-height:56px;" onclick="unlockEntry()">確認內容</button>
+          <div class="helper">填寫完成後，才會顯示微光入口。</div>
+
+          <div id="unlock" class="unlock">
+            <p class="unlock-note">
+              加入後請直接傳送：<br><br>
+              日期：＿＿<br>
+              時間：＿＿<br>
+              時段長度：＿＿<br>
+              偏好：＿＿
+            </p>
+            <a href="https://line.me/ti/p/SEX69LV" target="_blank" class="cta cta-primary" style="width:100%;justify-content:center;min-height:56px;">進入微光入口</a>
+        
