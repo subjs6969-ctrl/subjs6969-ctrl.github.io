@@ -1,436 +1,156 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>微光 · 之上</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f5f2ed;
-      --bg-soft:#fbfaf7;
-      --text:#111111;
-      --sub:#6e665e;
-      --line:rgba(17,17,17,.12);
-      --line-strong:rgba(17,17,17,.22);
-      --max:760px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>預約申請｜微光 · 之上</title>
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:'Noto Sans TC',sans-serif;
-      line-height:1.9;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 
-    .site{
-      min-height:100vh;
-    }
+<style>
+body{
+margin:0;
+background:#F5F2ED;
+font-family:'Noto Sans TC',sans-serif;
+color:#111;
+line-height:1.8;
+}
 
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(245,242,237,.88);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
+.wrap{
+max-width:520px;
+margin:0 auto;
+padding:100px 20px;
+}
 
-    .nav-inner,
-    .page,
-    .footer-inner{
-      width:min(var(--max), calc(100% - 32px));
-      margin:0 auto;
-    }
+.title{
+font-size:28px;
+margin-bottom:24px;
+}
 
-    .nav-inner{
-      min-height:62px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
+.text{
+font-size:15px;
+color:#444;
+margin-bottom:40px;
+}
 
-    .brand{
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--sub);
-    }
+.field{
+margin-bottom:24px;
+}
 
-    .nav-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
+label{
+font-size:12px;
+letter-spacing:2px;
+color:#888;
+display:block;
+margin-bottom:8px;
+}
 
-    .nav-links a{
-      color:var(--sub);
-      text-decoration:none;
-      font-size:11px;
-      letter-spacing:.20em;
-      text-transform:uppercase;
-    }
+input, select, textarea{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+background:#fff;
+font-size:14px;
+}
 
-    .page{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      padding:84px 0;
-      border-bottom:1px solid var(--line);
-    }
+button{
+width:100%;
+padding:16px;
+background:#111;
+color:#fff;
+border:none;
+margin-top:20px;
+}
 
-    .page-inner{
-      width:100%;
-    }
-
-    .eyebrow{
-      display:block;
-      margin-bottom:16px;
-      color:var(--sub);
-      font-size:12px;
-      letter-spacing:.24em;
-      text-transform:uppercase;
-    }
-
-    h1,h2{
-      margin:0;
-      font-family:'Playfair Display',serif;
-      font-weight:600;
-      letter-spacing:.02em;
-      line-height:1.06;
-    }
-
-    h1{
-      font-size:clamp(42px, 9vw, 72px);
-      margin-bottom:34px;
-    }
-
-    h2{
-      font-size:clamp(30px, 7vw, 52px);
-      margin-bottom:30px;
-    }
-
-    .text{
-      font-size:18px;
-      color:#2c2927;
-      max-width:30em;
-    }
-
-    .text p{
-      margin:0 0 22px;
-    }
-
-    .cta-group{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      gap:12px;
-      margin-top:34px;
-    }
-
-    .cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:52px;
-      padding:0 28px;
-      border:1px solid var(--line-strong);
-      background:transparent;
-      color:var(--text);
-      text-decoration:none;
-      font-size:12px;
-      font-weight:500;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      transition:all .28s ease;
-    }
-
-    .cta:hover{
-      transform:translateY(-1px);
-    }
-
-    .cta-primary{
-      background:#111;
-      color:#fff;
-      border-color:#111;
-    }
-
-    .statements{
-      display:grid;
-      gap:18px;
-      margin-top:18px;
-    }
-
-    .statement{
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      color:#2c2927;
-      font-size:17px;
-    }
-
-    .statement:first-child{
-      border-top:none;
-      padding-top:0;
-    }
-
-    .columns{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      width:100%;
-    }
-
-    .card{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.5);
-      padding:24px;
-    }
-
-    .card-title{
-      display:block;
-      margin-bottom:12px;
-      color:var(--sub);
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-    }
-
-    .card p{
-      margin:0;
-      color:#2c2927;
-      font-size:16px;
-    }
-
-    .schedule{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
-      color:#2c2927;
-      font-size:17px;
-    }
-
-    .form-wrap{
-      margin-top:24px;
-      border:1px solid var(--line-strong);
-      background:#fff;
-      padding:24px;
-    }
-
-    .field{
-      margin-bottom:14px;
-    }
-
-    .field label{
-      display:block;
-      margin-bottom:8px;
-      color:var(--sub);
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-
-    input,select,textarea{
-      width:100%;
-      border:1px solid rgba(17,17,17,.16);
-      background:#fff;
-      color:#111;
-      padding:14px 15px;
-      font:inherit;
-      outline:none;
-      border-radius:0;
-    }
-
-    input:focus,select:focus,textarea:focus{
-      border-color:#111;
-    }
-
-    .helper{
-      margin-top:12px;
-      color:var(--sub);
-      font-size:13px;
-    }
-
-    .unlock{
-      display:none;
-      margin-top:22px;
-      padding-top:22px;
-      border-top:1px solid var(--line);
-    }
-
-    .unlock.show{
-      display:block;
-    }
-
-    .unlock-note{
-      margin:0 0 14px;
-      color:#2c2927;
-      font-size:16px;
-    }
-
-    .footer{
-      padding:28px 0 42px;
-      background:var(--bg-soft);
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      color:var(--sub);
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-
-    @media (max-width: 720px){
-      .nav-links a:not(:last-child){display:none}
-      .columns{grid-template-columns:1fr}
-      .page{padding:72px 0}
-      .text{font-size:17px}
-    }
-  </style>
+.back{
+margin-top:16px;
+display:block;
+text-align:center;
+padding:14px;
+border:1px solid #111;
+text-decoration:none;
+color:#111;
+}
+</style>
 </head>
+
 <body>
-  <div class="site">
-    <nav class="nav">
-      <div class="nav-inner">
-        <div class="brand">Micro Glow</div>
-        <div class="nav-links">
-          <a href="#page-2">探索</a>
-          <a href="#page-3">狀態</a>
-          <a href="#page-4">方式</a>
-          <a href="#page-5">入口</a>
-          <a href="#page-6">規則</a>
-        </div>
-      </div>
-    </nav>
 
-    <section class="page" id="page-1">
-      <div class="page-inner">
-        <span class="eyebrow">微光 · 之上</span>
-        <h1>微光 · 之上</h1>
-        <div class="text">
-          <p>非公開<br>理解後進入</p>
-          <p>微光，是接觸的方式。<br>之上，是現在的狀態。</p>
-          <p>方式沒有改，<br>位置已經不同。</p>
-          <p>維持原本的方式，<br>也維持自己。</p>
-          <p>深深，<br>只會是深深。</p>
-        </div>
-        <div class="cta-group">
-          <a href="#page-5" class="cta cta-primary">進入微光</a>
-          <a href="#page-2" class="cta">探索 · 深深</a>
-        </div>
-      </div>
-    </section>
+<div class="wrap">
 
-    <section class="page" id="page-2">
-      <div class="page-inner">
-        <span class="eyebrow">Explore · 深深</span>
-        <h2>探索 · 深深</h2>
-        <div class="text">
-          <p>方式一直都在，<br>只是位置不同。</p>
-          <p>不急著開始，<br>也不隨意安排。</p>
-          <p>會看狀態，<br>也看是否合適。</p>
-          <p>維持距離，<br>讓整體更乾淨。</p>
-          <p>不需要太多說明，<br>理解之後，自然會知道。</p>
-        </div>
-        <div class="cta-group">
-          <a href="#page-5" class="cta cta-primary">進入微光</a>
-        </div>
-      </div>
-    </section>
+<div class="title">預約申請</div>
 
-    <section class="page" id="page-3">
-      <div class="page-inner">
-        <span class="eyebrow">State</span>
-        <h2>節奏與分寸，會先被確認。</h2>
-        <div class="statements">
-          <div class="statement">不急著被理解，也不需要被迎合。</div>
-          <div class="statement">節奏偏慢，分寸清楚，讓互動自然發生。</div>
-          <div class="statement">不做迎合，不提供試探，也不回應模糊需求。</div>
-        </div>
-      </div>
-    </section>
+<div class="text">
+請於確認內容後再填寫。<br><br>
+提交後將於 LINE 查看內容，<br>
+並回覆是否適合安排。
+</div>
 
-    <section class="page" id="page-4">
-      <div class="page-inner">
-        <span class="eyebrow">Method</span>
-        <h2>安排以整體狀態為主，而非單一內容。</h2>
-        <div class="columns">
-          <div class="card">
-            <span class="card-title">Interaction</span>
-            <p>互動不是固定形式，而是隨狀態逐步展開。不制式，也不強求。</p>
-          </div>
-          <div class="card">
-            <span class="card-title">Space</span>
-            <p>空間會選擇隱密、乾淨，且具品質的場域，讓過程維持在穩定狀態中。</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="field">
+<label>預計日期</label>
+<input id="date" placeholder="例如：4/28 或 5月上旬">
+</div>
 
-    <section class="page" id="page-5">
-      <div class="page-inner">
-        <span class="eyebrow">Entry</span>
-        <h2>已理解內容，再進入微光。</h2>
-        <div class="text">
-          <p>目前採預約安排制。</p>
-        </div>
-        <div class="schedule">
-          <div>平日｜晚間為主</div>
-          <div>假日｜彈性安排</div>
-          <div>此為初步確認，不代表直接安排。</div>
-        </div>
+<div class="field">
+<label>大致時間</label>
+<input id="time" placeholder="例如：晚上 8 點後">
+</div>
 
-        <div class="form-wrap">
-          <div class="field">
-            <label for="date">預計日期</label>
-            <input id="date" type="text" placeholder="例如：4/28 或 5月上旬">
-          </div>
-          <div class="field">
-            <label for="time">大致時間</label>
-            <input id="time" type="text" placeholder="例如：晚上 8 點後">
-          </div>
-          <div class="field">
-            <label for="length">時段長度</label>
-            <select id="length">
-              <option value="">請選擇</option>
-              <option>100分鐘</option>
-              <option>150分鐘</option>
-              <option>半日</option>
-              <option>完整安排</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="style">偏好屬性</label>
-            <select id="style">
-              <option value="">請選擇</option>
-              <option>主動</option>
-              <option>內向</option>
-              <option>被動</option>
-              <option>另外詢問</option>
-            </select>
-          </div>
+<div class="field">
+<label>安排方式</label>
+<select id="length">
+<option value="">請選擇</option>
+<option>完整安排（12小時）</option>
+<option>完整安排（8小時）</option>
+<option>延展安排</option>
+<option>短時段（90–180分鐘）</option>
+</select>
+</div>
 
-          <button class="cta cta-primary" style="width:100%;justify-content:center;min-height:56px;" onclick="unlockEntry()">確認內容</button>
-          <div class="helper">填寫完成後，才會顯示微光入口。</div>
+<div class="field">
+<label>偏好感受</label>
+<select id="style">
+<option value="">請選擇</option>
+<option>安靜</option>
+<option>自然</option>
+<option>直接</option>
+<option>輕鬆</option>
+</select>
+</div>
 
-          <div id="unlock" class="unlock">
-            <p class="unlock-note">
-              加入後請直接傳送：<br><br>
-              日期：＿＿<br>
-              時間：＿＿<br>
-              時段長度：＿＿<br>
-              偏好：＿＿
-            </p>
-            <a href="https://line.me/ti/p/SEX69LV" target="_blank" class="cta cta-primary" style="width:100%;justify-content:center;min-height:56px;">進入微光入口</a>
-        
+<div class="field">
+<label>簡單說明（選填）</label>
+<textarea id="note" rows="3"></textarea>
+</div>
+
+<button onclick="send()">提交確認</button>
+
+<a href="index.html" class="back">返回微光 · 之上</a>
+
+</div>
+
+<script>
+function send(){
+let d=document.getElementById('date').value.trim();
+let t=document.getElementById('time').value.trim();
+let l=document.getElementById('length').value;
+let s=document.getElementById('style').value;
+let n=document.getElementById('note').value;
+
+if(d!=='' && t!==''){
+let msg=`日期：${d}
+時間：${t}
+安排方式：${l || '未填'}
+偏好：${s || '未填'}
+說明：${n || '未填'}`;
+
+let url=`https://line.me/R/msg/text/?${encodeURIComponent(msg)}`;
+window.location.href=url;
+}else{
+alert('請填寫日期與時間');
+}
+}
+</script>
+
+</body>
+</html>
