@@ -3,154 +3,478 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>預約申請｜微光 · 之上</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<title>微光 · 之上</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --bg:#F5F2ED;
+  --bg2:#FBFAF7;
+  --text:#111111;
+  --sub:#66605A;
+  --line:rgba(17,17,17,.10);
+  --line-strong:rgba(17,17,17,.18);
+  --max:820px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
-margin:0;
-background:#F5F2ED;
-font-family:'Noto Sans TC',sans-serif;
-color:#111;
-line-height:1.8;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans TC',sans-serif;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 
-.wrap{
-max-width:520px;
-margin:0 auto;
-padding:100px 20px;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(17,17,17,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17,17,17,.018) 1px, transparent 1px);
+  background-size:36px 36px;
+  opacity:.28;
+  z-index:0;
 }
 
-.title{
-font-size:28px;
-margin-bottom:24px;
+.site{
+  position:relative;
+  z-index:1;
+}
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(245,242,237,.84);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav-inner,
+.section,
+.footer-inner{
+  width:min(var(--max), calc(100% - 32px));
+  margin:0 auto;
+}
+
+.nav-inner{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand{
+  font-size:12px;
+  letter-spacing:.22em;
+  color:var(--sub);
+  text-transform:uppercase;
+}
+
+.nav-links{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  color:var(--sub);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:100px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.section-inner{
+  width:100%;
+}
+
+.kicker{
+  display:block;
+  margin-bottom:16px;
+  color:var(--sub);
+  font-size:12px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+
+h1, h2{
+  margin:0 0 26px;
+  font-family:'Playfair Display',serif;
+  font-weight:500;
+  letter-spacing:.02em;
+  line-height:1.08;
+}
+
+h1{
+  font-size:clamp(42px, 9vw, 74px);
+}
+
+h2{
+  font-size:clamp(28px, 6vw, 46px);
 }
 
 .text{
-font-size:15px;
-color:#444;
-margin-bottom:40px;
+  max-width:32em;
+  font-size:16px;
+  color:#2F2B28;
 }
 
-.field{
-margin-bottom:24px;
+.text p{
+  margin:0 0 22px;
 }
 
-label{
-font-size:12px;
-letter-spacing:2px;
-color:#888;
-display:block;
-margin-bottom:8px;
+.cta-group{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:12px;
+  margin-top:34px;
 }
 
-input, select, textarea{
-width:100%;
-padding:14px;
-border:1px solid #ddd;
-background:#fff;
-font-size:14px;
+.cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 28px;
+  border:1px solid var(--line-strong);
+  background:transparent;
+  color:var(--text);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  transition:all .28s ease;
 }
 
-button{
-width:100%;
-padding:16px;
-background:#111;
-color:#fff;
-border:none;
-margin-top:20px;
+.cta:hover{
+  transform:translateY(-1px);
 }
 
-.back{
-margin-top:16px;
-display:block;
-text-align:center;
-padding:14px;
-border:1px solid #111;
-text-decoration:none;
-color:#111;
+.cta-primary{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+
+.statements{
+  display:grid;
+  gap:18px;
+  margin-top:12px;
+}
+
+.statement{
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  color:#2F2B28;
+  font-size:16px;
+}
+
+.statement:first-child{
+  border-top:none;
+  padding-top:0;
+}
+
+.pricing{
+  margin-top:30px;
+}
+
+.price-block{
+  margin-bottom:60px;
+}
+
+.price-title{
+  margin-bottom:18px;
+  font-size:18px;
+  letter-spacing:.08em;
+}
+
+.price-item{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:10px;
+  font-size:15px;
+  color:#2D2A28;
+}
+
+.price-desc{
+  margin-top:16px;
+  color:#777;
+  font-size:13px;
+  line-height:1.8;
+}
+
+.divider{
+  height:1px;
+  background:var(--line);
+  margin:44px 0;
+}
+
+.note{
+  margin-top:42px;
+  color:#8B847E;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.flow{
+  display:grid;
+  gap:14px;
+  margin-top:20px;
+}
+
+.flow-step{
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  font-size:16px;
+  color:#2F2B28;
+}
+
+.flow-step:first-child{
+  border-top:none;
+  padding-top:0;
+}
+
+.fade-up{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .9s ease, transform .9s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.hero-glow{
+  position:absolute;
+  top:12%;
+  right:8%;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.72) 0%, rgba(255,255,255,0) 72%);
+  filter:blur(16px);
+  pointer-events:none;
+  opacity:.55;
+  animation:float 8s ease-in-out infinite;
+}
+
+.hero-glow.second{
+  top:auto;
+  right:auto;
+  left:10%;
+  bottom:12%;
+  width:220px;
+  height:220px;
+  opacity:.35;
+  animation-duration:10s;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-16px)}
+}
+
+.footer{
+  background:var(--bg2);
+  padding:28px 0 42px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  color:var(--sub);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+@media (max-width:720px){
+  .nav-links a:not(:last-child){display:none}
+  .section{padding:80px 0}
 }
 </style>
 </head>
-
 <body>
+<div class="site">
 
-<div class="wrap">
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Micro Glow</div>
+      <div class="nav-links">
+        <a href="#explore">探索</a>
+        <a href="#state">狀態</a>
+        <a href="#arrangement">安排</a>
+        <a href="#flow">流程</a>
+        <a href="#entry">入口</a>
+      </div>
+    </div>
+  </nav>
 
-<div class="title">預約申請</div>
+  <section class="section" id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow second"></div>
+    <div class="section-inner fade-up">
+      <span class="kicker">微光 · 之上</span>
+      <h1>微光 · 之上</h1>
+      <div class="text">
+        <p>非公開<br>理解後進入</p>
+        <p>微光 低調場域<br>之上 光向於南</p>
+      </div>
+      <div class="cta-group">
+        <a href="#entry" class="cta cta-primary">進入微光</a>
+        <a href="#explore" class="cta">探索 · 深深</a>
+      </div>
+    </div>
+  </section>
 
-<div class="text">
-請於確認內容後再填寫。<br><br>
-提交後將於 LINE 查看內容，<br>
-並回覆是否適合安排。
-</div>
+  <section class="section" id="explore">
+    <div class="section-inner fade-up">
+      <span class="kicker">Explore · 深深</span>
+      <h2>探索 · 深深</h2>
+      <div class="text">
+        <p>節奏與感受<br>會影響整體狀態</p>
+        <p>不需要刻意推動</p>
+        <p>保留距離<br>也保留品質</p>
+      </div>
+    </div>
+  </section>
 
-<div class="field">
-<label>預計日期</label>
-<input id="date" placeholder="例如：4/28 或 5月上旬">
-</div>
+  <section class="section" id="state">
+    <div class="section-inner fade-up">
+      <span class="kicker">State</span>
+      <h2>微光之下</h2>
+      <div class="text">
+        <p>方式沒有改</p>
+        <p>只是<br>現在的選擇不同</p>
+      </div>
 
-<div class="field">
-<label>大致時間</label>
-<input id="time" placeholder="例如：晚上 8 點後">
-</div>
+      <div class="statements">
+        <div class="statement">不急著被理解，也不需要被迎合。</div>
+        <div class="statement">節奏偏慢，分寸清楚，讓互動自然發生。</div>
+        <div class="statement">不提供模糊詢問，也不回應試探式需求。</div>
+      </div>
+    </div>
+  </section>
 
-<div class="field">
-<label>安排方式</label>
-<select id="length">
-<option value="">請選擇</option>
-<option>完整安排（12小時）</option>
-<option>完整安排（8小時）</option>
-<option>延展安排</option>
-<option>短時段（90–180分鐘）</option>
-</select>
-</div>
+  <section class="section" id="arrangement">
+    <div class="section-inner fade-up">
+      <span class="kicker">Arrangement</span>
+      <h2>安排參考</h2>
+      <div class="text">
+        <p>時間會影響整體感受。</p>
+      </div>
 
-<div class="field">
-<label>偏好感受</label>
-<select id="style">
-<option value="">請選擇</option>
-<option>安靜</option>
-<option>自然</option>
-<option>直接</option>
-<option>輕鬆</option>
-</select>
-</div>
+      <div class="pricing">
+        <div class="price-block">
+          <div class="price-title">完整安排</div>
+          <div class="price-item"><span>約 12 小時</span><span>17888</span></div>
+          <div class="price-item"><span>約 8 小時</span><span>12990</span></div>
+          <div class="price-desc">
+            保留完整時間與節奏<br>
+            適合希望維持整體狀態者
+          </div>
+        </div>
 
-<div class="field">
-<label>簡單說明（選填）</label>
-<textarea id="note" rows="3"></textarea>
-</div>
+        <div class="divider"></div>
 
-<button onclick="send()">提交確認</button>
+        <div class="price-block">
+          <div class="price-title">延展安排</div>
+          <div class="price-desc">
+            依時間與整體狀態調整
+          </div>
+        </div>
 
-<a href="index.html" class="back">返回微光 · 之上</a>
+        <div class="divider"></div>
+
+        <div class="price-block">
+          <div class="price-title">短時段</div>
+          <div class="price-item"><span>80 分鐘</span><span>3880</span></div>
+          <div class="price-item"><span>120 分鐘</span><span>5180</span></div>
+          <div class="price-item"><span>200 分鐘</span><span>6980</span></div>
+          <div class="price-desc">
+            多作為初步確認使用
+          </div>
+        </div>
+
+        <div class="note">
+          空間與基本需求已包含<br>
+          （車位、房費與盥洗用品）
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="flow">
+    <div class="section-inner fade-up">
+      <span class="kicker">Flow</span>
+      <h2>預約流程</h2>
+      <div class="flow">
+        <div class="flow-step">填寫預約單並提交</div>
+        <div class="flow-step">將於 LINE 查看內容，回覆是否適合安排</div>
+        <div class="flow-step">確認後提供完整流程與訂金資訊</div>
+        <div class="flow-step">完成訂金後，預約即成立</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="entry">
+    <div class="section-inner fade-up">
+      <span class="kicker">Entry</span>
+      <h2>微光入口</h2>
+      <div class="text">
+        <p>僅限確定要安排者進入。</p>
+      </div>
+      <div class="cta-group">
+        <a href="booking.html" class="cta cta-primary">填寫預約單</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>微光 · 之上</div>
+      <div>Low Profile / Southern Glow</div>
+    </div>
+  </footer>
 
 </div>
 
 <script>
-function send(){
-let d=document.getElementById('date').value.trim();
-let t=document.getElementById('time').value.trim();
-let l=document.getElementById('length').value;
-let s=document.getElementById('style').value;
-let n=document.getElementById('note').value;
-
-if(d!=='' && t!==''){
-let msg=`日期：${d}
-時間：${t}
-安排方式：${l || '未填'}
-偏好：${s || '未填'}
-說明：${n || '未填'}`;
-
-let url=`https://line.me/R/msg/text/?${encodeURIComponent(msg)}`;
-window.location.href=url;
-}else{
-alert('請填寫日期與時間');
-}
-}
+const els = document.querySelectorAll('.fade-up');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      io.unobserve(entry.target);
+    }
+  });
+},{threshold:.14});
+els.forEach(el=>io.observe(el));
 </script>
-
 </body>
 </html>
