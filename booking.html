@@ -4,6 +4,153 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>預約申請｜微光 · 之上</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&famil
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+background:#F5F2ED;
+font-family:'Noto Sans TC',sans-serif;
+color:#111;
+line-height:1.8;
+}
+
+.wrap{
+max-width:520px;
+margin:0 auto;
+padding:100px 20px;
+}
+
+.title{
+font-size:28px;
+margin-bottom:24px;
+}
+
+.text{
+font-size:15px;
+color:#444;
+margin-bottom:40px;
+}
+
+.field{
+margin-bottom:24px;
+}
+
+label{
+font-size:12px;
+letter-spacing:2px;
+color:#888;
+display:block;
+margin-bottom:8px;
+}
+
+input, select, textarea{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+background:#fff;
+font-size:14px;
+}
+
+button{
+width:100%;
+padding:16px;
+background:#111;
+color:#fff;
+border:none;
+margin-top:20px;
+}
+
+.back{
+margin-top:16px;
+display:block;
+text-align:center;
+padding:14px;
+border:1px solid #111;
+text-decoration:none;
+color:#111;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<div class="title">預約申請</div>
+
+<div class="text">
+請於確認內容後再填寫。<br><br>
+提交後將於 LINE 查看內容，<br>
+並回覆是否適合安排。
+</div>
+
+<div class="field">
+<label>預計日期</label>
+<input id="date" placeholder="例如：4/28 或 5月上旬">
+</div>
+
+<div class="field">
+<label>大致時間</label>
+<input id="time" placeholder="例如：晚上 8 點後">
+</div>
+
+<div class="field">
+<label>安排方式</label>
+<select id="length">
+<option value="">請選擇</option>
+<option>完整安排（12小時）</option>
+<option>完整安排（8小時）</option>
+<option>延展安排</option>
+<option>短時段（90–180分鐘）</option>
+</select>
+</div>
+
+<div class="field">
+<label>偏好感受</label>
+<select id="style">
+<option value="">請選擇</option>
+<option>安靜</option>
+<option>自然</option>
+<option>直接</option>
+<option>輕鬆</option>
+</select>
+</div>
+
+<div class="field">
+<label>簡單說明（選填）</label>
+<textarea id="note" rows="3"></textarea>
+</div>
+
+<button onclick="send()">提交確認</button>
+
+<a href="index.html" class="back">返回微光 · 之上</a>
+
+</div>
+
+<script>
+function send(){
+let d=document.getElementById('date').value.trim();
+let t=document.getElementById('time').value.trim();
+let l=document.getElementById('length').value;
+let s=document.getElementById('style').value;
+let n=document.getElementById('note').value;
+
+if(d!=='' && t!==''){
+let msg=`日期：${d}
+時間：${t}
+安排方式：${l || '未填'}
+偏好：${s || '未填'}
+說明：${n || '未填'}`;
+
+let url=`https://line.me/R/msg/text/?${encodeURIComponent(msg)}`;
+window.location.href=url;
+}else{
+alert('請填寫日期與時間');
+}
+}
+</script>
+
+</body>
+</html>
