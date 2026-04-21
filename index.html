@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>微光 · 之上</title>
+<title>微光 · 本態</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
@@ -177,6 +177,16 @@ h2{
   border-color:#111;
 }
 
+.cta.disabled{
+  background:#ccc !important;
+  border-color:#ccc !important;
+  color:#666 !important;
+  pointer-events:none;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
 .statements{
   display:grid;
   gap:18px;
@@ -254,6 +264,27 @@ h2{
 .flow-step:first-child{
   border-top:none;
   padding-top:0;
+}
+
+.agree-wrap{
+  margin-top:30px;
+}
+
+.agree-label{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14px;
+  color:#2F2B28;
+  cursor:pointer;
+  letter-spacing:.02em;
+}
+
+.agree-label input{
+  margin-top:4px;
+  width:16px;
+  height:16px;
+  flex:0 0 auto;
 }
 
 .fade-up{
@@ -339,11 +370,11 @@ h2{
     <div class="hero-glow"></div>
     <div class="hero-glow second"></div>
     <div class="section-inner fade-up">
-      <span class="kicker">微光 · 之上</span>
-      <h1>微光 · 之上</h1>
+      <span class="kicker">微光 · 本態</span>
+      <h1>微光 · 本態</h1>
       <div class="text">
         <p>非公開<br>理解後進入</p>
-        <p>微光 低調場域<br>之上 光向於南</p>
+        <p>微光 低調場域<br>本態 回到核心</p>
       </div>
       <div class="cta-group">
         <a href="#entry" class="cta cta-primary">進入微光</a>
@@ -391,12 +422,11 @@ h2{
 
       <div class="pricing">
         <div class="price-block">
-          <div class="price-title">完整安排</div>
-          <div class="price-item"><span>約 12 小時</span><span>17888</span></div>
-          <div class="price-item"><span>約 8 小時</span><span>12990</span></div>
+          <div class="price-title">短時段</div>
+          <div class="price-item"><span>100 分鐘</span><span>5000</span></div>
+          <div class="price-item"><span>180 分鐘</span><span>6200</span></div>
           <div class="price-desc">
-            保留完整時間與節奏<br>
-            適合希望維持整體狀態者
+            多作為初步確認使用
           </div>
         </div>
 
@@ -412,12 +442,12 @@ h2{
         <div class="divider"></div>
 
         <div class="price-block">
-          <div class="price-title">短時段</div>
-          <div class="price-item"><span>80 分鐘</span><span>3880</span></div>
-          <div class="price-item"><span>120 分鐘</span><span>5180</span></div>
-          <div class="price-item"><span>200 分鐘</span><span>6980</span></div>
+          <div class="price-title">完整安排</div>
+          <div class="price-item"><span>約 12 小時</span><span>17888</span></div>
+          <div class="price-item"><span>約 8 小時</span><span>12990</span></div>
           <div class="price-desc">
-            多作為初步確認使用
+            保留完整時間與節奏<br>
+            適合希望維持整體狀態者
           </div>
         </div>
 
@@ -439,6 +469,35 @@ h2{
         <div class="flow-step">確認後提供完整流程與訂金資訊</div>
         <div class="flow-step">完成訂金後，預約即成立</div>
       </div>
+
+      <div class="divider"></div>
+
+      <div class="text">
+        <p style="font-weight:500; letter-spacing:.08em;">微光規範</p>
+
+        <p>
+          完全預約制：無固定班表，所有時段皆需透過下方表單送出申請，並以 LINE 最終核對為準。不接受臨時急約。
+        </p>
+
+        <p>
+          訂金制度：初次預約需預付訂金 NT$ 1,500 以保留時段。
+        </p>
+
+        <p>
+          取消與退款：提前一日（24小時前）告知，訂金全額退還。
+        </p>
+
+        <p>
+          違約處理：不接受「當日取消」或「臨時延期」，違者訂金不予退還。逾時未抵達現場，該次預約視同作廢。
+        </p>
+      </div>
+
+      <div class="agree-wrap">
+        <label class="agree-label">
+          <input type="checkbox" id="agreeCheck">
+          <span>我已閱讀並同意以上規範</span>
+        </label>
+      </div>
     </div>
   </section>
 
@@ -450,15 +509,15 @@ h2{
         <p>僅限確定要安排者進入。</p>
       </div>
       <div class="cta-group">
-        <a href="booking.html" class="cta cta-primary">填寫預約單</a>
+        <a href="booking.html" id="bookingBtn" class="cta cta-primary disabled">填寫預約單</a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="footer-inner">
-      <div>微光 · 之上</div>
-      <div>Low Profile / Southern Glow</div>
+      <div>微光 · 本態</div>
+      <div>Micro Glow / Essential State</div>
     </div>
   </footer>
 
@@ -475,6 +534,17 @@ const io = new IntersectionObserver((entries)=>{
   });
 },{threshold:.14});
 els.forEach(el=>io.observe(el));
+
+const checkbox = document.getElementById('agreeCheck');
+const bookingBtn = document.getElementById('bookingBtn');
+
+checkbox.addEventListener('change', function(){
+  if(this.checked){
+    bookingBtn.classList.remove('disabled');
+  }else{
+    bookingBtn.classList.add('disabled');
+  }
+});
 </script>
 </body>
 </html>
