@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>微光 · 之上</title>
+  <title>微光 · 本態</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,6 @@
       --text-dim:rgba(248,246,242,.58);
       --line:rgba(255,255,255,.08);
       --line-strong:rgba(255,255,255,.22);
-      --glow-blue:rgba(40,58,190,.34);
-      --glow-violet:rgba(92,64,210,.20);
       --max:1200px;
     }
 
@@ -164,9 +162,9 @@
     }
 
     h1{
-      font-size:clamp(72px, 13vw, 158px);
+      font-size:clamp(72px, 11vw, 136px);
       font-weight:600;
-      letter-spacing:.20em;
+      letter-spacing:.10em;
       margin-bottom:34px;
     }
 
@@ -379,14 +377,14 @@
 
     #hero{
       min-height:100vh;
-      overflow:hidden;
+      overflow:visible;
     }
 
     #hero .section-inner{
       display:grid;
-      grid-template-columns:minmax(320px, 460px) 1fr;
+      grid-template-columns:360px minmax(520px, 1fr);
       align-items:center;
-      gap:40px;
+      gap:32px;
       min-height:calc(100vh - 58px);
     }
 
@@ -398,24 +396,24 @@
     .hero-right{
       position:relative;
       min-height:460px;
+      min-width:0;
     }
 
     .hero-title-wrap{
       position:relative;
       z-index:3;
+      width:100%;
     }
 
     .hero-title{
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      gap:1.2em;
+      display:block;
       white-space:nowrap;
       color:#fbf8f2;
     }
 
     .hero-title .dot{
+      display:inline-block;
+      margin:0 .32em;
       font-size:.8em;
       line-height:1;
       transform:translateY(-.02em);
@@ -508,13 +506,7 @@
       }
 
       .hero-title{
-        display:block;
         white-space:normal;
-      }
-
-      .hero-title .dot{
-        display:inline-block;
-        margin:0 .2em;
       }
 
       .hero-aura{
@@ -542,7 +534,7 @@
       }
       h1{
         font-size:clamp(56px, 15vw, 88px);
-        letter-spacing:.14em;
+        letter-spacing:.08em;
       }
       .hero-copy p{
         font-size:clamp(18px, 5vw, 24px);
@@ -593,11 +585,7 @@
           <div class="hero-aura-small"></div>
 
           <div class="hero-title-wrap">
-            <h1 class="hero-title">
-              <span>微光</span>
-              <span class="dot">・</span>
-              <span>本態</span>
-            </h1>
+            <h1 class="hero-title">微光<span class="dot">・</span>本態</h1>
           </div>
         </div>
 
@@ -721,8 +709,8 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <div>微光・之上</div>
-        <div>Micro Glow / Beyond</div>
+        <div>微光・本態</div>
+        <div>Micro Glow / Essential State</div>
       </div>
     </footer>
 
