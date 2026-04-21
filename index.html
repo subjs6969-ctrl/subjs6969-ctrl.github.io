@@ -1,218 +1,480 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>微光・之上｜Weiguang Shen</title>
-    <style>
-        :root {
-            --bg-color: #FAF9F6;
-            --text-main: #1A1A1A;
-            --text-light: #5A5A5A;
-            --accent-color: #D4AF37; /* 琥珀金 */
-            --border-color: #E0E0E0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微光 · 之上</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: "Helvetica Neue", Helvetica, "PingFang TC", "Microsoft JhengHei", sans-serif;
-            margin: 0; padding: 0; line-height: 1.6;
-            display: flex; justify-content: center;
-        }
+<style>
+:root{
+  --bg:#F5F2ED;
+  --bg2:#FBFAF7;
+  --text:#111111;
+  --sub:#66605A;
+  --line:rgba(17,17,17,.10);
+  --line-strong:rgba(17,17,17,.18);
+  --max:820px;
+}
 
-        .container { width: 100%; max-width: 600px; padding: 60px 20px; box-sizing: border-box; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-        /* 入站測驗樣式 */
-        #quiz-section { display: block; text-align: center; }
-        .quiz-card { background: #fff; padding: 40px 30px; border: 1px solid var(--border-color); border-radius: 4px; margin-top: 20px; }
-        
-        /* 主網頁樣式 (預設隱藏) */
-        #main-content { display: none; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans TC',sans-serif;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
 
-        .header { text-align: center; margin-bottom: 50px; }
-        .header h1 { font-size: 24px; letter-spacing: 6px; font-weight: 300; margin-bottom: 5px; }
-        .header p { font-size: 12px; letter-spacing: 2px; color: var(--text-light); }
-        
-        .section-title { font-size: 16px; letter-spacing: 2px; border-bottom: 1px solid var(--text-main); padding-bottom: 10px; margin-top: 50px; margin-bottom: 20px; font-weight: 600; }
-        .content-box { font-size: 14px; color: var(--text-light); text-align: justify; margin-bottom: 20px; }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(17,17,17,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17,17,17,.018) 1px, transparent 1px);
+  background-size:36px 36px;
+  opacity:.28;
+  z-index:0;
+}
 
-        .price-list { list-style: none; padding: 0; font-size: 15px; }
-        .price-list li { padding: 12px 0; border-bottom: 1px dashed var(--border-color); display: flex; justify-content: space-between; }
+.site{
+  position:relative;
+  z-index:1;
+}
 
-        .form-group { margin-bottom: 30px; }
-        label { display: block; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
-        input, select, textarea { width: 100%; padding: 14px; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; box-sizing: border-box; font-size: 14px; }
-        
-        .submit-btn { 
-            width: 100%; padding: 18px; background: #1A1A1A; color: #fff; border: none; 
-            letter-spacing: 2px; cursor: pointer; transition: 0.3s; font-size: 16px;
-        }
-        .submit-btn:hover { background: var(--accent-color); }
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(245,242,237,.84);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
 
-        .policy-box { font-size: 12px; background: #F2F2F2; padding: 20px; margin: 30px 0; border-radius: 4px; line-height: 1.8; }
-        .highlight { color: var(--accent-color); font-weight: bold; }
+.nav-inner,
+.section,
+.footer-inner{
+  width:min(var(--max), calc(100% - 32px));
+  margin:0 auto;
+}
 
-        img.cert-img { width: 100%; max-width: 400px; filter: grayscale(100%); border: 1px solid #eee; margin: 15px 0; }
-    </style>
+.nav-inner{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand{
+  font-size:12px;
+  letter-spacing:.22em;
+  color:var(--sub);
+  text-transform:uppercase;
+}
+
+.nav-links{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  color:var(--sub);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:100px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.section-inner{
+  width:100%;
+}
+
+.kicker{
+  display:block;
+  margin-bottom:16px;
+  color:var(--sub);
+  font-size:12px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+
+h1, h2{
+  margin:0 0 26px;
+  font-family:'Playfair Display',serif;
+  font-weight:500;
+  letter-spacing:.02em;
+  line-height:1.08;
+}
+
+h1{
+  font-size:clamp(42px, 9vw, 74px);
+}
+
+h2{
+  font-size:clamp(28px, 6vw, 46px);
+}
+
+.text{
+  max-width:32em;
+  font-size:16px;
+  color:#2F2B28;
+}
+
+.text p{
+  margin:0 0 22px;
+}
+
+.cta-group{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:12px;
+  margin-top:34px;
+}
+
+.cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 28px;
+  border:1px solid var(--line-strong);
+  background:transparent;
+  color:var(--text);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  transition:all .28s ease;
+}
+
+.cta:hover{
+  transform:translateY(-1px);
+}
+
+.cta-primary{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+
+.statements{
+  display:grid;
+  gap:18px;
+  margin-top:12px;
+}
+
+.statement{
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  color:#2F2B28;
+  font-size:16px;
+}
+
+.statement:first-child{
+  border-top:none;
+  padding-top:0;
+}
+
+.pricing{
+  margin-top:30px;
+}
+
+.price-block{
+  margin-bottom:60px;
+}
+
+.price-title{
+  margin-bottom:18px;
+  font-size:18px;
+  letter-spacing:.08em;
+}
+
+.price-item{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:10px;
+  font-size:15px;
+  color:#2D2A28;
+}
+
+.price-desc{
+  margin-top:16px;
+  color:#777;
+  font-size:13px;
+  line-height:1.8;
+}
+
+.divider{
+  height:1px;
+  background:var(--line);
+  margin:44px 0;
+}
+
+.note{
+  margin-top:42px;
+  color:#8B847E;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.flow{
+  display:grid;
+  gap:14px;
+  margin-top:20px;
+}
+
+.flow-step{
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  font-size:16px;
+  color:#2F2B28;
+}
+
+.flow-step:first-child{
+  border-top:none;
+  padding-top:0;
+}
+
+.fade-up{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .9s ease, transform .9s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.hero-glow{
+  position:absolute;
+  top:12%;
+  right:8%;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.72) 0%, rgba(255,255,255,0) 72%);
+  filter:blur(16px);
+  pointer-events:none;
+  opacity:.55;
+  animation:float 8s ease-in-out infinite;
+}
+
+.hero-glow.second{
+  top:auto;
+  right:auto;
+  left:10%;
+  bottom:12%;
+  width:220px;
+  height:220px;
+  opacity:.35;
+  animation-duration:10s;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-16px)}
+}
+
+.footer{
+  background:var(--bg2);
+  padding:28px 0 42px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  color:var(--sub);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+@media (max-width:720px){
+  .nav-links a:not(:last-child){display:none}
+  .section{padding:80px 0}
+}
+</style>
 </head>
 <body>
+<div class="site">
 
-    <div class="container">
-        <div id="quiz-section">
-            <div class="header"><h1>微光・之上</h1></div>
-            <div class="quiz-card">
-                <p style="margin-bottom: 30px; font-size: 15px; color: var(--text-light);">【執行規範確認】<br>是否理解並接受所有服務技術均建立在「安全性行為（全程防護）」之基礎上？</p>
-                <button class="submit-btn" onclick="checkAnswer(true)" style="margin-bottom:15px;">是，完全理解並遵守</button>
-                <button class="submit-btn" onclick="checkAnswer(false)" style="background:#ccc; color:#666;">否，欲討論其他可能</button>
-            </div>
-        </div>
-
-        <div id="main-content">
-            <header class="header">
-                <h1>微光・之上</h1>
-                <p>WEIGUANG SHEN</p>
-            </header>
-
-            <section>
-                <div class="section-title">執行邏輯</div>
-                <div class="content-box">
-                    拒絕盲目迎合，不採取討好式互動。所有的服務技術，皆嚴格建立在純粹的供需關係與秩序之上。運作模式具備獨立性，無需與他人進行比較。提交預約申請即代表對服務規則的完整認同與遵循。在精準的時序中，僅提供最專業的技術落實，並維持直白、高效且具備邊界感的溝通品質。
-                </div>
-            </section>
-
-            <section>
-                <div class="section-title">環境說明</div>
-                <div class="content-box">
-                    地點鎖定「歐遊國際連鎖精品旅館 - 高雄館」。確保隱私、穩定質感與靜謐氛圍。報價已包含全額房費與專屬車位，抵達即開啟體驗。
-                </div>
-            </section>
-
-            <section>
-                <div class="section-title">安全認證與激勵</div>
-                <div class="content-box" style="text-align: center;">
-                    <img src="hpv-card.jpg" alt="HPV疫苗紀錄" class="cert-img">
-                    <p style="font-size: 12px;">本人已完成全三劑 HPV 疫苗接種，將風險控手視為職業底線。<br>
-                    <span class="highlight">【健康獎勵】現場出示本人 HPV 疫苗卡，時序費用享 9 折優惠。</span></p>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-title">時序報價</div>
-                <ul class="price-list">
-                    <li><span>深度時序 12 Hours</span> <span>NT$ 17,888</span></li>
-                    <li><span>標準時序 8 Hours</span> <span>NT$ 12,990</span></li>
-                    <li><span>精確時序 200 Minutes</span> <span>NT$ 6,980</span></li>
-                    <li><span>基礎時序 120 Minutes</span> <span>NT$ 5,180</span></li>
-                    <li><span>短程時序 80 Minutes</span> <span>NT$ 3,880</span></li>
-                </ul>
-                <p style="font-size: 12px; color: var(--text-light); margin-top: 10px;">* 以上均含房費。單次加時 80min / NT$ 2,500（限乙次）。</p>
-            </section>
-
-            <section>
-                <div class="section-title">預約申請序列</div>
-                <form id="bookingForm">
-                    <input type="hidden" id="ip_address" name="ip_address">
-                    <input type="hidden" id="order_id" name="order_id">
-
-                    <div class="form-group">
-                        <label>服務時序選取</label>
-                        <select name="length" required>
-                            <option value="" disabled selected>請選擇...</option>
-                            <option value="12H">12 Hours ($17,888)</option>
-                            <option value="8H">8 Hours ($12,990)</option>
-                            <option value="200m">200 Minutes ($6,980)</option>
-                            <option value="120m">120 Minutes ($5,180)</option>
-                            <option value="80m">80 Minutes ($3,880)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>期待日期</label>
-                        <input type="date" name="date" id="dateField" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>預約區間</label>
-                        <select name="time" required>
-                            <option value="早場 (10:00 - 17:00)">早場 (10:00 - 17:00)</option>
-                            <option value="晚場 (23:00 - 02:00)">晚場 (23:00 - 02:00)</option>
-                            <option value="其他彈性時段核對">其他時段 (需進一步核對)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>生理數據與標註 (數據/數據/年份...)</label>
-                        <textarea name="note" required placeholder="請依照 數據/數據/年份 格式填寫，如有 HPV 疫苗卡請標註。"></textarea>
-                    </div>
-
-                    <div class="policy-box">
-                        <strong>預約效力規範：</strong><br>
-                        1. 初次預約需付訂金 <span class="highlight">NT$1,500</span>。<br>
-                        2. 前一日 (24H前) 告知可退款。不接受當日取消或延期。<br>
-                        3. 逾時未抵達，預約自動作廢。不接受臨時變更。
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="submitBtn">確認規範並送出申請</button>
-                </form>
-                <div id="statusMsg" style="text-align:center; margin-top:20px; font-size:14px; color: var(--accent-color);"></div>
-            </section>
-        </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Micro Glow</div>
+      <div class="nav-links">
+        <a href="#explore">探索</a>
+        <a href="#state">狀態</a>
+        <a href="#arrangement">安排</a>
+        <a href="#flow">流程</a>
+        <a href="#entry">入口</a>
+      </div>
     </div>
+  </nav>
 
-    <script>
-        // 1. 自動抓取 IP (存證防禦)
-        fetch('https://api.ipify.org?format=json')
-            .then(res => res.json())
-            .then(data => document.getElementById('ip_address').value = data.ip)
-            .catch(() => document.getElementById('ip_address').value = "Unknown");
+  <section class="section" id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow second"></div>
+    <div class="section-inner fade-up">
+      <span class="kicker">微光 · 之上</span>
+      <h1>微光 · 之上</h1>
+      <div class="text">
+        <p>非公開<br>理解後進入</p>
+        <p>微光 低調場域<br>之上 光向於南</p>
+      </div>
+      <div class="cta-group">
+        <a href="#entry" class="cta cta-primary">進入微光</a>
+        <a href="#explore" class="cta">探索 · 深深</a>
+      </div>
+    </div>
+  </section>
 
-        // 2. 分流邏輯
-        function checkAnswer(isAccepted) {
-            if (isAccepted) {
-                document.getElementById('quiz-section').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                // 生成隨機代碼
-                document.getElementById('order_id').value = 'WS-' + Math.floor(1000 + Math.random() * 9000);
-                window.scrollTo(0,0);
-            } else {
-                alert('感謝您的了解，本服務不符合您的需求。');
-                window.location.href = "https://www.google.com";
-            }
-        }
+  <section class="section" id="explore">
+    <div class="section-inner fade-up">
+      <span class="kicker">Explore · 深深</span>
+      <h2>探索 · 深深</h2>
+      <div class="text">
+        <p>節奏與感受<br>會影響整體狀態</p>
+        <p>不需要刻意推動</p>
+        <p>保留距離<br>也保留品質</p>
+      </div>
+    </div>
+  </section>
 
-        // 3. 設定日期最小值
-        document.getElementById('dateField').setAttribute('min', new Date().toISOString().split('T')[0]);
+  <section class="section" id="state">
+    <div class="section-inner fade-up">
+      <span class="kicker">State</span>
+      <h2>微光之下</h2>
+      <div class="text">
+        <p>方式沒有改</p>
+        <p>只是<br>現在的選擇不同</p>
+      </div>
 
-        // 4. 表單提交與跳轉
-        const GAS_URL = '您的_GOOGLE_APPS_SCRIPT_URL'; // 請朋友替換此處
-        const LINE_URL = '您的_LINE_OA_連結'; // 請朋友替換此處
-        const form = document.getElementById('bookingForm');
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerText = '序列同步中...';
+      <div class="statements">
+        <div class="statement">不急著被理解，也不需要被迎合。</div>
+        <div class="statement">節奏偏慢，分寸清楚，讓互動自然發生。</div>
+        <div class="statement">不提供模糊詢問，也不回應試探式需求。</div>
+      </div>
+    </div>
+  </section>
 
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+  <section class="section" id="arrangement">
+    <div class="section-inner fade-up">
+      <span class="kicker">Arrangement</span>
+      <h2>安排參考</h2>
+      <div class="text">
+        <p>時間會影響整體感受。</p>
+      </div>
 
-            // 傳送資料至 Google Sheet
-            fetch(GAS_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(data)
-            }).then(() => {
-                const orderId = document.getElementById('order_id').value;
-                document.getElementById('statusMsg').innerHTML = `申請已記錄。<br>預約代碼：<strong>${orderId}</strong><br>正引導至 LINE 完成對齊...`;
-                setTimeout(() => {
-                    window.location.href = LINE_URL;
-                }, 2500);
-            }).catch(() => {
-                alert('系統繁忙，請截圖本頁面並直接聯繫 LINE。');
-            });
-        });
-    </script>
+      <div class="pricing">
+        <div class="price-block">
+          <div class="price-title">完整安排</div>
+          <div class="price-item"><span>約 12 小時</span><span>17888</span></div>
+          <div class="price-item"><span>約 8 小時</span><span>12990</span></div>
+          <div class="price-desc">
+            保留完整時間與節奏<br>
+            適合希望維持整體狀態者
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="price-block">
+          <div class="price-title">延展安排</div>
+          <div class="price-desc">
+            依時間與整體狀態調整
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="price-block">
+          <div class="price-title">短時段</div>
+          <div class="price-item"><span>80 分鐘</span><span>3880</span></div>
+          <div class="price-item"><span>120 分鐘</span><span>5180</span></div>
+          <div class="price-item"><span>200 分鐘</span><span>6980</span></div>
+          <div class="price-desc">
+            多作為初步確認使用
+          </div>
+        </div>
+
+        <div class="note">
+          空間與基本需求已包含<br>
+          （車位、房費與盥洗用品）
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="flow">
+    <div class="section-inner fade-up">
+      <span class="kicker">Flow</span>
+      <h2>預約流程</h2>
+      <div class="flow">
+        <div class="flow-step">填寫預約單並提交</div>
+        <div class="flow-step">將於 LINE 查看內容，回覆是否適合安排</div>
+        <div class="flow-step">確認後提供完整流程與訂金資訊</div>
+        <div class="flow-step">完成訂金後，預約即成立</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="entry">
+    <div class="section-inner fade-up">
+      <span class="kicker">Entry</span>
+      <h2>微光入口</h2>
+      <div class="text">
+        <p>僅限確定要安排者進入。</p>
+      </div>
+      <div class="cta-group">
+        <a href="booking.html" class="cta cta-primary">填寫預約單</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>微光 · 之上</div>
+      <div>Low Profile / Southern Glow</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const els = document.querySelectorAll('.fade-up');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      io.unobserve(entry.target);
+    }
+  });
+},{threshold:.14});
+els.forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
