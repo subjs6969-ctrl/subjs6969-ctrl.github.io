@@ -3,106 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>微光｜深深</title>
+<title>微光・之上｜微光・深深</title>
 
 <style>
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Noto Serif TC", "Helvetica Neue", sans-serif;
-  background: linear-gradient(180deg, #07090d, #101217);
-  color: #e8ded2;
-  letter-spacing: 1px;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#05070b;
+  color:#eadfd2;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Serif TC","Noto Sans TC","Helvetica Neue",sans-serif;
+  letter-spacing:.08em;
+  line-height:2;
 }
-
-section {
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 72px 22px;
-  text-align: center;
+section{
+  max-width:680px;
+  margin:0 auto;
+  padding:88px 24px;
+  text-align:center;
 }
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   background:
-    linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.85)),
-    url("hero.jpg") center/cover no-repeat;
+    radial-gradient(circle at 78% 30%,rgba(210,220,255,.12),transparent 28%),
+    radial-gradient(circle at 18% 15%,rgba(255,255,255,.06),transparent 24%),
+    linear-gradient(180deg,#05070b,#080d14 55%,#05070b);
 }
-
-h1 {
-  font-size: 38px;
-  font-weight: 300;
-  letter-spacing: 12px;
-  margin: 0 0 28px;
+h1{
+  font-size:34px;
+  font-weight:300;
+  letter-spacing:.22em;
+  line-height:1.8;
+  margin-bottom:34px;
 }
-
-h2 {
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 5px;
-  margin-bottom: 28px;
+h2{
+  font-size:20px;
+  font-weight:300;
+  letter-spacing:.22em;
+  margin-bottom:36px;
 }
-
-p, li {
-  font-size: 15px;
-  line-height: 2;
-  color: rgba(232,222,210,.82);
+h3{
+  font-size:17px;
+  font-weight:300;
+  letter-spacing:.16em;
+  margin-bottom:16px;
 }
-
-.divider {
-  width: 80px;
-  height: 1px;
-  background: rgba(232,222,210,.35);
-  margin: 36px auto;
+p{
+  font-size:15px;
+  color:rgba(234,223,210,.84);
+  margin-bottom:22px;
 }
-
-.button {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 30px;
-  border: 1px solid rgba(232,222,210,.45);
-  border-radius: 999px;
-  color: #e8ded2;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 3px;
+.card{
+  border:1px solid rgba(234,223,210,.18);
+  border-radius:24px;
+  padding:28px 20px;
+  margin:20px 0;
+  background:rgba(255,255,255,.025);
 }
-
-.card {
-  border: 1px solid rgba(232,222,210,.18);
-  border-radius: 22px;
-  padding: 26px 22px;
-  margin: 18px 0;
-  background: rgba(255,255,255,.025);
+.button{
+  display:inline-block;
+  margin-top:28px;
+  padding:13px 28px;
+  border:1px solid rgba(234,223,210,.38);
+  border-radius:999px;
+  color:#eadfd2;
+  text-decoration:none;
+  font-size:14px;
+  letter-spacing:.18em;
 }
-
-.small {
-  font-size: 13px;
-  opacity: .68;
+.small{
+  font-size:13px;
+  opacity:.65;
 }
-
-details {
-  border-top: 1px solid rgba(232,222,210,.18);
-  padding: 20px 0;
-  text-align: left;
-}
-
-summary {
-  font-size: 16px;
-  letter-spacing: 3px;
-  cursor: pointer;
-}
-
-footer {
-  padding: 60px 20px;
-  text-align: center;
-  font-size: 12px;
-  color: rgba(232,222,210,.45);
+footer{
+  text-align:center;
+  padding:70px 20px;
+  font-size:12px;
+  color:rgba(234,223,210,.45);
+  letter-spacing:.28em;
 }
 </style>
 </head>
@@ -110,175 +91,122 @@ footer {
 <body>
 
 <section class="hero">
-  <h1>微光｜深深</h1>
-  <p>
-    在剛好的距離裡<br>
-    慢慢展開
-  </p>
-  <a class="button" href="#about">開始了解</a>
+  <h1>微光・之上<br>微光・深深</h1>
+  <p>邀您與深深<br>共啟無極限旅程</p>
+  <a class="button" href="#flow">預約方式</a>
 </section>
 
-<section id="about">
-  <h2>關於</h2>
-  <p>
-    微光不炙熱<br>
-    溫度不刺眼
-  </p>
-  <p>
-    不急著靠近<br>
-    也不刻意迎合
-  </p>
-  <p>
-    保留距離<br>
-    也保留靠近的可能
-  </p>
-  <p>
-    懂的人<br>
-    自然會留下
-  </p>
+<section>
+  <h2>本態・深深</h2>
+  <p>不追求過度熱烈<br>也不刻意保持距離</p>
+  <p>真實互動<br>自然節奏</p>
+  <p>微光溫度<br>體驗感受</p>
+  <p>不是快速消費<br>更不是制式流程</p>
+  <p>靠近<br>剛好就好</p>
+  <p>選擇<br>值得 不將就</p>
 </section>
 
-<section id="experience">
-  <h2>體驗</h2>
-  <p>
-    不是制式流程<br>
-    也不是把時間填滿
-  </p>
-  <p>
-    狀態對了<br>
-    節奏才會順
-  </p>
-  <p>
-    初次建議從短時段開始<br>
-    熟悉之後再延伸安排
-  </p>
-</section>
-
-<section id="time">
-  <h2>深深時序</h2>
+<section>
+  <h2>旅程時序</h2>
 
   <div class="card">
-    <p>110 分鐘｜5000</p>
-    <p class="small">剛好進入狀態</p>
+    <h3>壹｜微光・初見</h3>
+    <p>120分鐘｜5000</p>
+    <p>體驗距離之下的舒服與節奏</p>
   </div>
 
   <div class="card">
-    <p>200 分鐘｜6200</p>
-    <p class="small">慢慢展開</p>
+    <h3>貳｜微光・微炙</h3>
+    <p>180分鐘｜6200</p>
+    <p>留一點時間<br>慢慢感受溫度</p>
   </div>
 
   <div class="card">
-    <p>延續｜1200 / H</p>
-    <p class="small">順著狀態延伸</p>
+    <h3>叄｜微光・留白</h3>
+    <p>8H｜12990</p>
+    <p>情緒、溫度、感受<br>慢慢展開</p>
   </div>
 
   <div class="card">
-    <p>長時段｜另計</p>
-    <p class="small">確認後安排</p>
-  </div>
-
-  <p class="small">價格不含房間費用</p>
-</section>
-
-<section id="service">
-  <h2>服務說明</h2>
-
-  <details open>
-    <summary>基本內容</summary>
-    <p>
-      基本互動、清潔整理、放鬆陪伴、親密節奏安排。<br>
-      實際內容依狀態與方案確認。
-    </p>
-  </details>
-
-  <details>
-    <summary>專業項目</summary>
-    <p>
-      部分項目需提前確認。<br>
-      可配合內容、加價項目與限制，會於預約確認單內完整列出。
-    </p>
-  </details>
-
-  <details>
-    <summary>不接受內容</summary>
-    <p>
-      不接受失禮、粗暴、臨時超出共識、議價、無法溝通與不尊重界線的狀態。
-    </p>
-  </details>
-</section>
-
-<section id="safety">
-  <h2>基本安心</h2>
-  <p>
-    九價疫苗完成<br>
-    紀錄可確認<br>
-    證件可對應
-  </p>
-  <p>
-    安心不是加分<br>
-    是開始之前的前提
-  </p>
-</section>
-
-<section id="process">
-  <h2>預約流程</h2>
-
-  <div class="card">
-    <p>1｜閱讀內容</p>
-  </div>
-
-  <div class="card">
-    <p>2｜填寫預約確認單</p>
-  </div>
-
-  <div class="card">
-    <p>3｜送出後加入 LINE 官方帳號</p>
-  </div>
-
-  <div class="card">
-    <p>4｜依系統完成確認流程</p>
-  </div>
-
-  <div class="card">
-    <p>5｜最後確認後才成立</p>
+    <h3>肆｜微光・之上</h3>
+    <p>12H｜17880</p>
+    <p>客製專屬節奏<br>共啟與您的旅程</p>
   </div>
 </section>
 
-<section id="notice">
-  <h2>共識</h2>
-  <p>
-    不議價<br>
-    不失禮<br>
-    不越界
-  </p>
-  <p>
-    時間確認後再預約<br>
-    臨時變動請提前告知
-  </p>
-  <p>
-    未完成流程<br>
-    不保留時段
-  </p>
+<section>
+  <h2>微光互動</h2>
+  <p>互動依照彼此節奏與感受調整。</p>
+  <p>保留舒服距離，<br>也保留真實溫度。</p>
+
+  <div class="card">
+    <h3>基本體驗</h3>
+    <p>▸ 沐浴整理<br>
+    ▸ 情慾按摩<br>
+    ▸ 無套吹含互動<br>
+    ▸ 私密挑逗</p>
+  </div>
+
+  <div class="card">
+    <h3>職人體驗｜加價</h3>
+    <p>▸ 深喉體驗<br>
+    ▸ 毒龍互動<br>
+    ▸ 冰火感受<br>
+    ▸ 玩具互動<br>
+    ▸ 微SM互動</p>
+    <p class="small">依內容與需求提前確認。</p>
+  </div>
+
+  <div class="card">
+    <h3>隱藏安排</h3>
+    <p>▸ 雙人互動<br>
+    ▸ 多人活動<br>
+    ▸ 特殊內容</p>
+    <p class="small">採私下確認方式。</p>
+  </div>
+
+  <div class="card">
+    <h3>微光原則</h3>
+    <p>態度、尊重、禮貌<br>是彼此最基本的狀態。</p>
+    <p>若現場互動不適合，<br>將直接終止服務，並不予退費。</p>
+  </div>
 </section>
 
-<section id="reserve">
-  <h2>進入確認</h2>
-  <p>
-    如果已經理解<br>
-    再往下走
-  </p>
+<section>
+  <h2>微光須知</h2>
+  <p>預約採確認制。</p>
+  <p>填寫表單後，<br>需加入 LINE 官方帳號完成最後確認。</p>
+  <p>未完成確認流程，<br>不保留時段。</p>
+  <p>時間確認後再安排預約。</p>
+  <p>臨時取消、失約或無故消失，<br>將不列入後續安排參考。</p>
+  <p>深深保留互動節奏與現場狀態調整權利。</p>
+  <p>若現場狀況不適合，<br>將直接終止服務，並不予退費。</p>
+</section>
 
-  <a class="button" href="預約表單連結放這裡">填寫預約確認</a>
+<section>
+  <h2>微光安心</h2>
+  <p>凡預約出示九價疫苗接種證明<br>（可驗證為本人）</p>
+  <p>《可加價升級專屬福利》</p>
+  <p>1｜已完成三劑接種者<br>2｜有接種紀錄未滿三劑者</p>
+  <p>這不只是安心。<br><br>也是彼此更進一步的默契。</p>
+</section>
 
-  <p class="small">
-    填單不等於成立<br>
-    完成確認才算
-  </p>
+<section id="flow">
+  <h2>微光流程</h2>
+  <div class="card"><p>1｜閱讀網站內容</p></div>
+  <div class="card"><p>2｜選擇旅程時序</p></div>
+  <div class="card"><p>3｜填寫預約確認單</p></div>
+  <div class="card"><p>4｜加入 LINE 官方帳號</p></div>
+  <div class="card"><p>5｜完成最後確認後成立預約</p></div>
+
+  <p>預約採確認制。<br><br>填單不代表預約成立。</p>
+
+  <a class="button" href="你的表單連結放這裡">進入確認</a>
 </section>
 
 <footer>
   PRIVATE ACCESS ONLY<br>
-  WEIGUANGSHENSHEN
+  WEIGUANG・SHENSHEN
 </footer>
 
 </body>
