@@ -1,751 +1,217 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>微光 · 本態</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --text:#f8f6f2;
-      --text-soft:rgba(248,246,242,.84);
-      --text-dim:rgba(248,246,242,.56);
-      --line:rgba(255,255,255,.08);
-      --line-strong:rgba(255,255,255,.18);
-      --max:1180px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-
-    body{
-      margin:0;
-      color:var(--text);
-      font-family:'Noto Serif TC', serif;
-      line-height:1.85;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-      overflow-x:hidden;
-      background:
-        radial-gradient(circle at 62% 24%, rgba(42,58,210,.18) 0%, rgba(42,58,210,.10) 10%, rgba(42,58,210,0) 30%),
-        radial-gradient(circle at 28% 86%, rgba(56,72,220,.12) 0%, rgba(56,72,220,0) 20%),
-        linear-gradient(180deg, #000000 0%, #010204 22%, #01040b 52%, #010204 100%);
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      background:
-        linear-gradient(rgba(255,255,255,.010) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.008) 1px, transparent 1px);
-      background-size:42px 42px;
-      opacity:.14;
-    }
-
-    .site{
-      position:relative;
-      z-index:1;
-    }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:30;
-      background:rgba(1,2,6,.68);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(255,255,255,.05);
-    }
-
-    .nav-inner,
-    .section,
-    .footer-inner{
-      width:min(var(--max), calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    .nav-inner{
-      min-height:60px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-
-    .brand{
-      font-size:12px;
-      font-weight:600;
-      letter-spacing:.30em;
-      color:rgba(248,246,242,.96);
-      text-transform:uppercase;
-      white-space:nowrap;
-      text-shadow:0 0 8px rgba(255,255,255,.04);
-    }
-
-    .nav-links{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .nav-links a{
-      color:rgba(248,246,242,.9);
-      text-decoration:none;
-      font-family:'Noto Sans TC', sans-serif;
-      font-size:12px;
-      font-weight:500;
-      letter-spacing:.12em;
-    }
-
-    .section{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      padding:88px 0;
-      border-bottom:1px solid rgba(255,255,255,.04);
-      position:relative;
-    }
-
-    .section-inner{
-      width:100%;
-      position:relative;
-    }
-
-    .kicker{
-      display:block;
-      margin-bottom:18px;
-      color:rgba(248,246,242,.92);
-      font-size:13px;
-      font-weight:600;
-      letter-spacing:.30em;
-      text-transform:uppercase;
-      text-shadow:0 0 8px rgba(255,255,255,.04);
-    }
-
-    h1,h2{
-      margin:0 0 22px;
-      color:var(--text);
-      line-height:1.08;
-      text-shadow:
-        0 0 1px rgba(255,255,255,.18),
-        0 0 14px rgba(255,255,255,.03);
-    }
-
-    h1{
-      font-size:clamp(52px, 17vw, 136px);
-      font-weight:600;
-      letter-spacing:.06em;
-    }
-
-    h2{
-      font-size:clamp(30px, 7vw, 54px);
-      font-weight:600;
-      letter-spacing:.08em;
-    }
-
-    .text{
-      max-width:34em;
-      font-size:16px;
-      color:var(--text-soft);
-    }
-
-    .text p{
-      margin:0 0 18px;
-    }
-
-    .cta-group{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      gap:12px;
-      margin-top:28px;
-    }
-
-    .cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 24px;
-      border:1px solid rgba(255,255,255,.18);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-      color:#fbf8f3;
-      text-decoration:none;
-      font-family:'Noto Sans TC', sans-serif;
-      font-size:12px;
-      font-weight:500;
-      letter-spacing:.24em;
-      transition:all .28s ease;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.015),
-        0 8px 24px rgba(0,0,0,.18);
-    }
-
-    .cta:hover{
-      transform:translateY(-1px);
-      border-color:rgba(255,255,255,.28);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.02),
-        0 12px 28px rgba(0,0,0,.26),
-        0 0 18px rgba(72,88,255,.08);
-    }
-
-    .cta.disabled{
-      background:rgba(255,255,255,.08) !important;
-      border-color:rgba(255,255,255,.08) !important;
-      color:rgba(255,255,255,.36) !important;
-      pointer-events:none;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-
-    .price-desc,
-    .note,
-    .agree-label,
-    .footer-inner,
-    .nav-links a,
-    .cta{
-      font-family:'Noto Sans TC', sans-serif;
-    }
-
-    .statements,
-    .flow{
-      display:grid;
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .statement,
-    .flow-step{
-      padding-top:14px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color:rgba(248,246,242,.9);
-      font-size:16px;
-    }
-
-    .statement:first-child,
-    .flow-step:first-child{
-      border-top:none;
-      padding-top:0;
-    }
-
-    .pricing{
-      margin-top:26px;
-    }
-
-    .price-block{
-      margin-bottom:48px;
-    }
-
-    .price-title{
-      margin-bottom:16px;
-      font-size:18px;
-      letter-spacing:.10em;
-      color:#f4efe4;
-      font-weight:600;
-    }
-
-    .price-item{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:10px;
-      font-size:15px;
-      color:rgba(248,246,242,.90);
-    }
-
-    .price-desc{
-      margin-top:14px;
-      color:rgba(248,246,242,.58);
-      font-size:13px;
-      line-height:1.8;
-      letter-spacing:.04em;
-    }
-
-    .divider{
-      height:1px;
-      background:rgba(255,255,255,.08);
-      margin:36px 0;
-    }
-
-    .note{
-      margin-top:34px;
-      color:rgba(248,246,242,.46);
-      font-size:12px;
-      line-height:1.8;
-      letter-spacing:.06em;
-    }
-
-    .agree-wrap{
-      margin-top:28px;
-    }
-
-    .agree-label{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      font-size:14px;
-      color:rgba(248,246,242,.88);
-      cursor:pointer;
-      letter-spacing:.02em;
-    }
-
-    .agree-label input{
-      margin-top:4px;
-      width:16px;
-      height:16px;
-      flex:0 0 auto;
-      accent-color:#d8d2c8;
-    }
-
-    .fade-up{
-      opacity:0;
-      transform:translateY(18px);
-      transition:opacity .8s ease, transform .8s ease;
-    }
-
-    .fade-up.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    /* Hero: mobile-first */
-    #hero{
-      min-height:100svh;
-      overflow:hidden;
-      padding-top:56px;
-      padding-bottom:56px;
-    }
-
-    #hero .section-inner{
-      min-height:calc(100svh - 60px - 112px);
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:30px;
-    }
-
-    .hero-top{
-      position:relative;
-      z-index:3;
-      order:1;
-    }
-
-    .hero-title-wrap{
-      position:relative;
-      z-index:3;
-      order:2;
-      margin-top:4px;
-      margin-bottom:6px;
-    }
-
-    .hero-title{
-      display:block;
-      white-space:normal;
-      word-break:keep-all;
-      color:#fbf8f2;
-      line-height:1.02;
-    }
-
-    .hero-title .dot{
-      display:inline-block;
-      margin:0 .18em;
-      font-size:.72em;
-      transform:translateY(-.10em);
-      text-shadow:
-        0 0 1px rgba(255,255,255,.35),
-        0 0 16px rgba(255,255,255,.06);
-    }
-
-    .hero-copy{
-      position:relative;
-      z-index:3;
-      order:3;
-      max-width:15em;
-    }
-
-    .hero-copy p{
-      font-size:clamp(18px, 5vw, 28px);
-      line-height:1.85;
-      font-weight:600;
-      letter-spacing:.01em;
-      color:rgba(248,246,242,.97);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.03),
-        0 0 16px rgba(255,255,255,.03),
-        0 10px 24px rgba(0,0,0,.36);
-      margin:0 0 14px;
-    }
-
-    .hero-copy p.compact{
-      line-height:1.7;
-    }
-
-    .hero-actions{
-      order:4;
-      position:relative;
-      z-index:3;
-      margin-top:4px;
-    }
-
-    .hero-aura{
-      position:absolute;
-      right:-18%;
-      bottom:4%;
-      width:72vw;
-      max-width:420px;
-      aspect-ratio:1 / 1;
-      border-radius:50%;
-      background:
-        radial-gradient(circle,
-          rgba(78,96,255,.22) 0%,
-          rgba(56,74,216,.14) 18%,
-          rgba(34,46,138,.08) 34%,
-          rgba(0,0,0,0) 68%);
-      filter:blur(16px);
-      opacity:.95;
-      pointer-events:none;
-      z-index:1;
-    }
-
-    .hero-aura::before{
-      content:"";
-      position:absolute;
-      inset:18% 18%;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,.045), rgba(255,255,255,0) 62%);
-      filter:blur(10px);
-      opacity:.65;
-    }
-
-    .hero-aura-small{
-      position:absolute;
-      left:-6%;
-      bottom:2%;
-      width:42vw;
-      max-width:220px;
-      aspect-ratio:1 / 1;
-      border-radius:50%;
-      background:
-        radial-gradient(circle,
-          rgba(56,72,220,.12) 0%,
-          rgba(56,72,220,.07) 30%,
-          rgba(56,72,220,0) 68%);
-      filter:blur(14px);
-      opacity:.8;
-      pointer-events:none;
-      z-index:1;
-    }
-
-    .footer{
-      background:rgba(255,255,255,.015);
-      padding:24px 0 36px;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      color:rgba(248,246,242,.56);
-      font-size:12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-
-    /* tablet / desktop */
-    @media (min-width: 900px){
-      .nav-inner,
-      .section,
-      .footer-inner{
-        width:min(var(--max), calc(100% - 48px));
-      }
-
-      #hero{
-        padding-top:84px;
-        padding-bottom:84px;
-      }
-
-      #hero .section-inner{
-        min-height:calc(100vh - 60px - 168px);
-        display:grid;
-        grid-template-columns:360px minmax(520px, 1fr);
-        align-items:center;
-        gap:32px;
-      }
-
-      .hero-top{
-        order:unset;
-      }
-
-      .hero-title-wrap{
-        order:unset;
-        margin:0;
-      }
-
-      .hero-copy{
-        order:unset;
-        max-width:18em;
-      }
-
-      .hero-actions{
-        order:unset;
-      }
-
-      .hero-title{
-        white-space:nowrap;
-      }
-
-      .hero-title .dot{
-        margin:0 .32em;
-        font-size:.8em;
-        transform:translateY(-.02em);
-      }
-
-      .hero-aura{
-        right:auto;
-        left:40%;
-        bottom:auto;
-        top:50%;
-        width:520px;
-        height:520px;
-        transform:translate(-50%,-50%);
-        max-width:none;
-        aspect-ratio:auto;
-      }
-
-      .hero-aura-small{
-        left:8%;
-        bottom:6%;
-        width:250px;
-        height:250px;
-        max-width:none;
-        aspect-ratio:auto;
-      }
-    }
-
-    @media (max-width: 720px){
-      .nav-links a:not(:last-child){display:none}
-      .brand{font-size:11px}
-      .nav-inner{min-height:58px}
-      .section{padding:72px 0}
-      .kicker{
-        font-size:12px;
-        letter-spacing:.24em;
-      }
-      h1{
-        font-size:clamp(50px, 16vw, 76px);
-        letter-spacing:.04em;
-      }
-      .hero-copy{
-        max-width:12em;
-      }
-      .hero-copy p{
-        font-size:clamp(17px, 5vw, 22px);
-      }
-      .cta{
-        min-height:52px;
-        padding:0 22px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微光・之上｜微光・深深</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#05070b;
+  color:#eadfd2;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Serif TC","Noto Sans TC","Helvetica Neue",sans-serif;
+  letter-spacing:.08em;
+  line-height:2;
+}
+section{
+  max-width:680px;
+  margin:0 auto;
+  padding:88px 24px;
+  text-align:center;
+}
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at 78% 30%,rgba(210,220,255,.12),transparent 28%),
+    radial-gradient(circle at 18% 15%,rgba(255,255,255,.06),transparent 24%),
+    linear-gradient(180deg,#05070b,#080d14 55%,#05070b);
+}
+h1{
+  font-size:34px;
+  font-weight:300;
+  letter-spacing:.22em;
+  line-height:1.8;
+  margin-bottom:34px;
+}
+h2{
+  font-size:20px;
+  font-weight:300;
+  letter-spacing:.22em;
+  margin-bottom:36px;
+}
+h3{
+  font-size:17px;
+  font-weight:300;
+  letter-spacing:.16em;
+  margin-bottom:16px;
+}
+p{
+  font-size:15px;
+  color:rgba(234,223,210,.84);
+  margin-bottom:22px;
+}
+.card{
+  border:1px solid rgba(234,223,210,.18);
+  border-radius:24px;
+  padding:28px 20px;
+  margin:20px 0;
+  background:rgba(255,255,255,.025);
+}
+.button{
+  display:inline-block;
+  margin-top:28px;
+  padding:13px 28px;
+  border:1px solid rgba(234,223,210,.38);
+  border-radius:999px;
+  color:#eadfd2;
+  text-decoration:none;
+  font-size:14px;
+  letter-spacing:.18em;
+}
+.small{
+  font-size:13px;
+  opacity:.65;
+}
+footer{
+  text-align:center;
+  padding:70px 20px;
+  font-size:12px;
+  color:rgba(234,223,210,.45);
+  letter-spacing:.28em;
+}
+</style>
 </head>
+
 <body>
-  <div class="site">
 
-    <nav class="nav">
-      <div class="nav-inner">
-        <div class="brand">MICRO GLOW</div>
-        <div class="nav-links">
-          <a href="#explore">探索</a>
-          <a href="#state">狀態</a>
-          <a href="#arrangement">安排</a>
-          <a href="#flow">流程</a>
-          <a href="#entry">入口</a>
-        </div>
-      </div>
-    </nav>
+<section class="hero">
+  <h1>微光・之上<br>微光・深深</h1>
+  <p>邀您與深深<br>共啟無極限旅程</p>
+  <a class="button" href="#flow">預約方式</a>
+</section>
 
-    <section class="section" id="hero">
-      <div class="section-inner fade-up">
-        <div class="hero-aura"></div>
-        <div class="hero-aura-small"></div>
+<section>
+  <h2>本態・深深</h2>
+  <p>不追求過度熱烈<br>也不刻意保持距離</p>
+  <p>真實互動<br>自然節奏</p>
+  <p>微光溫度<br>體驗感受</p>
+  <p>不是快速消費<br>更不是制式流程</p>
+  <p>靠近<br>剛好就好</p>
+  <p>選擇<br>值得 不將就</p>
+</section>
 
-        <div class="hero-top">
-          <span class="kicker">MICRO GLOW</span>
-        </div>
+<section>
+  <h2>旅程時序</h2>
 
-        <div class="hero-title-wrap">
-          <h1 class="hero-title">微光<span class="dot">・</span>之上</h1>
-        </div>
-
-        <div class="hero-copy text">
-          <p>微光 本態</p>
-          <p class="compact">非公開<br>理解後進入</p>
-          <p class="compact">微光低調領域<br>深深回到核心</p>
-        </div>
-
-        <div class="hero-actions">
-          <div class="cta-group">
-            <a href="#entry" class="cta">進入入口</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="explore">
-      <div class="section-inner fade-up">
-        <span class="kicker">Explore</span>
-        <h2>探索・深深</h2>
-        <div class="text">
-          <p>節奏與感受<br>會影響整體狀態</p>
-          <p>不需要刻意推動</p>
-          <p>保留距離<br>也保留品質</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="state">
-      <div class="section-inner fade-up">
-        <span class="kicker">State</span>
-        <h2>微光場域</h2>
-        <div class="text">
-          <p>方式沒有改</p>
-          <p>只是<br>現在的選擇不同</p>
-        </div>
-
-        <div class="statements">
-          <div class="statement">不急著被理解，也不需要被迎合。</div>
-          <div class="statement">節奏偏慢，分寸清楚，讓互動自然發生。</div>
-          <div class="statement">不提供模糊詢問，也不回應試探式需求。</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="arrangement">
-      <div class="section-inner fade-up">
-        <span class="kicker">Arrangement</span>
-        <h2>微光時序</h2>
-        <div class="text">
-          <p>時間會影響整體感受。</p>
-        </div>
-
-        <div class="pricing">
-          <div class="price-block">
-            <div class="price-title">短時段</div>
-            <div class="price-item"><span>100 分鐘</span><span>5000</span></div>
-            <div class="price-item"><span>180 分鐘</span><span>6200</span></div>
-            <div class="price-desc">多作為初步確認使用</div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="price-block">
-            <div class="price-title">延展安排</div>
-            <div class="price-desc">依時間與整體狀態調整</div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="price-block">
-            <div class="price-title">完整安排</div>
-            <div class="price-item"><span>約 12 小時</span><span>17888</span></div>
-            <div class="price-item"><span>約 8 小時</span><span>12990</span></div>
-            <div class="price-desc">
-              保留完整時間與節奏<br>
-              適合希望維持整體狀態者
-            </div>
-          </div>
-
-          <div class="note">
-            空間與基本需求已包含<br>
-            （車位、房費與盥洗用品）
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="flow">
-      <div class="section-inner fade-up">
-        <span class="kicker">Flow</span>
-        <h2>預約流程</h2>
-        <div class="flow">
-          <div class="flow-step">填寫預約單並提交</div>
-          <div class="flow-step">將於 LINE 查看內容，回覆是否適合安排</div>
-          <div class="flow-step">確認後提供完整流程與訂金資訊</div>
-          <div class="flow-step">完成訂金後，預約即成立</div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="text">
-          <p style="font-weight:600; letter-spacing:.08em;">微光規範</p>
-          <p>完全預約制：無固定班表，所有時段皆需透過下方表單送出申請，並以 LINE 最終核對為準。不接受臨時急約。</p>
-          <p>訂金制度：初次預約需預付訂金 NT$ 1,500 以保留時段。</p>
-          <p>取消與退款：提前一日（24小時前）告知，訂金全額退還。</p>
-          <p>違約處理：不接受當日取消或臨時延期，違者訂金不予退還。逾時未抵達現場，該次預約視同作廢。</p>
-        </div>
-
-        <div class="agree-wrap">
-          <label class="agree-label">
-            <input type="checkbox" id="agreeCheck">
-            <span>我已閱讀並同意以上規範</span>
-          </label>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="entry">
-      <div class="section-inner fade-up">
-        <span class="kicker">Entry</span>
-        <h2>微光入口</h2>
-        <div class="text">
-          <p>僅限確定要安排者進入。</p>
-        </div>
-        <div class="cta-group">
-          <a href="booking.html" id="bookingBtn" class="cta disabled">填寫預約單</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        <div>微光・本態</div>
-        <div>Micro Glow / Essential State</div>
-      </div>
-    </footer>
-
+  <div class="card">
+    <h3>壹｜微光・初見</h3>
+    <p>120分鐘｜5000</p>
+    <p>體驗距離之下的舒服與節奏</p>
   </div>
 
-  <script>
-    const els = document.querySelectorAll('.fade-up');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-          io.unobserve(entry.target);
-        }
-      });
-    },{threshold:.14});
-    els.forEach(el=>io.observe(el));
+  <div class="card">
+    <h3>貳｜微光・微炙</h3>
+    <p>180分鐘｜6200</p>
+    <p>留一點時間<br>慢慢感受溫度</p>
+  </div>
 
-    const checkbox = document.getElementById('agreeCheck');
-    const bookingBtn = document.getElementById('bookingBtn');
+  <div class="card">
+    <h3>叄｜微光・留白</h3>
+    <p>8H｜12990</p>
+    <p>情緒、溫度、感受<br>慢慢展開</p>
+  </div>
 
-    checkbox.addEventListener('change', function(){
-      if(this.checked){
-        bookingBtn.classList.remove('disabled');
-      }else{
-        bookingBtn.classList.add('disabled');
-      }
-    });
-  </script>
+  <div class="card">
+    <h3>肆｜微光・之上</h3>
+    <p>12H｜17880</p>
+    <p>客製專屬節奏<br>共啟與您的旅程</p>
+  </div>
+</section>
+
+<section>
+  <h2>微光互動</h2>
+  <p>互動依照彼此節奏與感受調整。</p>
+  <p>保留舒服距離，<br>也保留真實溫度。</p>
+
+  <div class="card">
+    <h3>基本體驗</h3>
+    <p>▸ 沐浴整理<br>
+    ▸ 情慾按摩<br>
+    ▸ 無套吹含互動<br>
+    ▸ 私密挑逗</p>
+  </div>
+
+  <div class="card">
+    <h3>職人體驗｜加價</h3>
+    <p>▸ 深喉體驗<br>
+    ▸ 毒龍互動<br>
+    ▸ 冰火感受<br>
+    ▸ 玩具互動<br>
+    ▸ 微SM互動</p>
+    <p class="small">依內容與需求提前確認。</p>
+  </div>
+
+  <div class="card">
+    <h3>隱藏安排</h3>
+    <p>▸ 雙人互動<br>
+    ▸ 多人活動<br>
+    ▸ 特殊內容</p>
+    <p class="small">採私下確認方式。</p>
+  </div>
+
+  <div class="card">
+    <h3>微光原則</h3>
+    <p>態度、尊重、禮貌<br>是彼此最基本的狀態。</p>
+    <p>若現場互動不適合，<br>將直接終止服務，並不予退費。</p>
+  </div>
+</section>
+
+<section>
+  <h2>微光須知</h2>
+  <p>預約採確認制。</p>
+  <p>填寫表單後，<br>需加入 LINE 官方帳號完成最後確認。</p>
+  <p>未完成確認流程，<br>不保留時段。</p>
+  <p>時間確認後再安排預約。</p>
+  <p>臨時取消、失約或無故消失，<br>將不列入後續安排參考。</p>
+  <p>深深保留互動節奏與現場狀態調整權利。</p>
+  <p>若現場狀況不適合，<br>將直接終止服務，並不予退費。</p>
+</section>
+
+<section>
+  <h2>微光安心</h2>
+  <p>凡預約出示九價疫苗接種證明<br>（可驗證為本人）</p>
+  <p>《可加價升級專屬福利》</p>
+  <p>1｜已完成三劑接種者<br>2｜有接種紀錄未滿三劑者</p>
+  <p>這不只是安心。<br><br>也是彼此更進一步的默契。</p>
+</section>
+
+<section id="flow">
+  <h2>微光流程</h2>
+  <div class="card"><p>1｜閱讀網站內容</p></div>
+  <div class="card"><p>2｜選擇旅程時序</p></div>
+  <div class="card"><p>3｜填寫預約確認單</p></div>
+  <div class="card"><p>4｜加入 LINE 官方帳號</p></div>
+  <div class="card"><p>5｜完成最後確認後成立預約</p></div>
+
+  <p>預約採確認制。<br><br>填單不代表預約成立。</p>
+
+  <a class="button" href="你的表單連結放這裡">進入確認</a>
+</section>
+
+<footer>
+  PRIVATE ACCESS ONLY<br>
+  WEIGUANG・SHENSHEN
+</footer>
+
 </body>
 </html>
+  
+  
+      
+    
