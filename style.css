@@ -1,0 +1,336 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0d0e10;
+  --bg-soft: #15171b;
+  --text: #f3efe9;
+  --muted: #b7afa6;
+  --line: rgba(255,255,255,0.12);
+  --gold: #8f6b4a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  overflow-x: hidden;
+}
+
+/* Header */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 24px;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: rgba(13,14,16,0.55);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(13,14,16,0.55), rgba(13,14,16,0.92)),
+    url("IMG_9661.jpeg") center center / cover no-repeat;
+  opacity: 0.5;
+  filter: grayscale(20%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  margin-bottom: 28px;
+}
+
+h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(38px, 9vw, 72px);
+  line-height: 1.5;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  font-size: 17px;
+  line-height: 2;
+  color: var(--muted);
+}
+
+.hero-buttons {
+  margin-top: 54px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons a {
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  transition: all .35s ease;
+}
+
+.hero-buttons a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Sections */
+
+.section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 24px;
+}
+
+.section.soft {
+  background: var(--bg-soft);
+}
+
+.inner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.inner.narrow {
+  max-width: 620px;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(28px, 7vw, 46px);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  margin-bottom: 72px;
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 26px;
+  letter-spacing: 0.12em;
+}
+
+p {
+  font-size: 17px;
+  line-height: 2.25;
+  margin-bottom: 34px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  margin: 64px auto;
+}
+
+/* Journey */
+
+.journey-label {
+  text-align: center;
+  color: var(--gold);
+  letter-spacing: 0.24em;
+  font-size: 14px;
+  margin: 80px 0 36px;
+}
+
+.cards {
+  display: grid;
+  gap: 28px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 48px 30px;
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+}
+
+.price {
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  margin-bottom: 30px;
+}
+
+/* Guide */
+
+.guide-box {
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 46px 28px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  line-height: 2.2;
+  font-size: 17px;
+}
+
+/* Booking */
+
+.clean-list {
+  margin-bottom: 36px;
+}
+
+.booking-form {
+  white-space: pre-wrap;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px;
+  background: rgba(255,255,255,0.02);
+  line-height: 2;
+  font-size: 15px;
+  overflow-x: auto;
+}
+
+.copy-btn {
+  margin-top: 36px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: all .35s ease;
+}
+
+.copy-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Footer */
+
+footer {
+  padding: 90px 24px;
+  text-align: center;
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+}
+
+/* Animation */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1.4s ease,
+              transform 1.4s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 {
+  transition-delay: .3s;
+}
+
+.delay-2 {
+  transition-delay: .6s;
+}
+
+.delay-3 {
+  transition-delay: .9s;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .section {
+    padding: 100px 24px;
+    min-height: auto;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    margin-bottom: 54px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 2.15;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons a {
+    width: 220px;
+  }
+
+  .card,
+  .guide-box {
+    padding: 40px 24px;
+  }
+}
