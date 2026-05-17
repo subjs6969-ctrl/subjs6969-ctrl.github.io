@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>微光 · 之上</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#040404;
+  color:#ece5dc;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+  overflow-x:hidden;
+  line-height:2.2; /* 稍微拉開行距，讓呼吸感更流暢 */
+  letter-spacing:.08em;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.05), transparent 25%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.04), transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.03), transparent 30%);
+  animation:floatLight 18s ease-in-out infinite alternate;
+  z-index:-2;
+}
+@keyframes floatLight{
+  0%{transform:translateY(0) scale(1)}
+  100%{transform:translateY(-40px) scale(1.08)}
+}
+section{padding:120px 28px;position:relative}
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.95));
+}
+.container{max-width:760px;margin:auto}
+.brand{font-size:42px;letter-spacing:.3em;margin-bottom:24px;animation:fadeUp 1.8s ease}
+.subbrand{color:#b9a997;margin-bottom:60px;font-size:16px;letter-spacing:.2em;animation:fadeUp 2.2s ease}
+.slogan{font-size:28px;margin-bottom:60px;color:#ece5dc;font-weight:300;animation:fadeUp 2.4s ease}
+.textblock{font-size:20px;margin-bottom:58px;color:#bdae9e;animation:fadeUp 2.6s ease}
+.buttons{margin-top:50px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{
+  border:1px solid rgba(255,255,255,.12);
+  color:#ece5dc;
+  text-decoration:none;
+  padding:15px 36px;
+  border-radius:999px;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.02);
+  transition:.4s ease;
+  letter-spacing: .15em;
+}
+.btn:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+.line{font-size:22px;margin:80px 0;color:#ddd5ca}
+.small-title{font-size:14px;color:#a69889;letter-spacing:.2em;margin-bottom:36px;text-transform:uppercase}
+.card{
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:24px;
+  padding:48px 36px;
+  margin:32px 0;
+  backdrop-filter:blur(12px);
+  transition:.4s ease;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.04)}
+.card h3{font-size:26px;margin-bottom:16px;font-weight:300;letter-spacing:.1em}
+.price{color:#d7c6b6;margin-bottom:24px;font-size:20px;font-weight:300}
+.worldview{margin-top:100px;padding-top:80px;border-top:1px solid rgba(255,255,255,.06)}
+.glass{
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.06);
+  backdrop-filter:blur(10px);
+  border-radius:28px;
+  padding:48px 36px;
+  margin:40px 0;
+}
+.glass h3{font-size:22px;margin-bottom:20px;font-weight:300;color:#d7c6b6;letter-spacing:.1em}
+.footer{text-align:center;color:#777;padding-bottom:120px}
+ul{padding-left:20px;margin:24px 0;color:#c9beaf}
+li{margin-bottom:8px}
+
+/* === 富有溫度的多媒體排版 === */
+.video-container {
+  margin: 40px 0 90px 0;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+  animation: fadeUp 2.8s ease;
+  background: #000;
+}
+.video-container video {
+  width: 100%;
+  display: block;
+  opacity: 0.88; /* 柔和處理，不刺眼 */
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 70px 0;
+}
+.photo-gallery div {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.06);
+  aspect-ratio: 3 / 4;
+  background: #090909;
+}
+.photo-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.8;
+  transition: .7s cubic-bezier(0.15, 0.85, 0.35, 1);
+}
+.photo-gallery img:hover {
+  opacity: 0.95;
+  transform: scale(1.05);
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero" id="top">
+<div class="container">
+<div class="brand">值得深藏的姐｜深深</div>
+<div class="subbrand">微光・之上｜蘇純</div>
+<div class="slogan">值得，不將就。</div>
+<div class="textblock">
+很多事情<br>
+感覺對了<br>
+自然就有了
+</div>
+<div class="buttons">
+<a class="btn" href="#about">探索蘇純</a>
+<a class="btn" href="https://lin.ee/U3f5HcK">進入微光</a>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+
+<div class="video-container">
+  <video src="./V1.mp4" autoplay loop muted playsinline preload="auto"></video>
+</div>
+
+<div class="line">
+像朋友一樣相處。<br><br>
+自然<br>
+才是最舒服的關係。
+</div>
+
+<div class="line">
+人來，心來。<br>
+人走，心走。<br><br>
+界線要有。<br>
+這很重要。
+</div>
+
+<div class="line">
+態度很重要。<br><br>
+互相舒服<br>
+很多事情自然就有了。
+</div>
+
+<div class="photo-gallery">
+  <div><img src="./1.jpg" alt="微光" loading="lazy" width="300" height="400"></div>
+  <div><img src="./2.jpg" alt="蘇純" loading="lazy" width="300" height="400"></div>
+</div>
+
+<div class="line">
+過程很重要。<br><br>
+不只有時間、方案對。<br><br>
+聊天。<br>相處的感覺。<br><br>
+都很重要。
+</div>
+
+<div class="line">
+《相幹》本來就是需求。<br><br>
+多一點情緒跟溫度<br>
+整體感受會差很多。
+</div>
+
+<div class="line">
+有需求可以直接講。<br><br>
+做得到的<br>
+自然會配合。
+</div>
+
+<div class="photo-gallery">
+  <div><img src="./3.jpg" alt="微光" loading="lazy" width="300" height="400"></div>
+  <div><img src="./4.jpg" alt="蘇純" loading="lazy" width="300" height="400"></div>
+</div>
+
+<div class="line">
+不迎合。<br>
+但很真。
+</div>
+
+<div class="line">
+感覺很重要。<br><br>
+見面後<br>
+覺得落差太大<br><br>
+直接說沒關係。<br><br>
+勉強相幹<br>
+彼此都不舒服。
+</div> <!-- 修正：補上漏掉的 </div> -->
+
+</div> <!-- 修正：補上 container 的 </div> -->
+</section> <!-- 修正：將原本誤置的閉合標籤移至此處，正確結束 about 區塊 -->
+
+<section>
+<div class="container">
+<div class="small-title">微光時序</div>
+
+<div class="card">
+<h3>壹｜初見</h3>
+<div class="price">2H｜5000</div>
+<p>適合想體驗的你。</p>
+</div>
+
+<div class="card">
+<h3>貳｜微炙</h3>
+<div class="price">3H｜6200</div>
+<p>
+多一點時間。<br>
+感覺對了<br>
+很多事情自然就有了。
+</p>
+</div>
+
+<div class="card">
+<h3>參｜放鬆</h3>
+<div class="price">基本 8H｜13000</div>
+<p>
+放鬆、洩壓。<br>
+幹自己想幹的事。<br><br> <!-- 修正：原本拼錯的 br><br> -->
+視情況可加時。
+</p>
+</div>
+
+<div class="card">
+<h3>肆｜封包</h3>
+<div class="price">16～18H｜20000</div>
+<p>
+開房到退房。<br><br>
+專屬、客製。<br>
+共啟微光旅程。
+</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="small-title">微光須知</div>
+
+<div class="line">
+沒有固定班表。<br><br>
+直接留下<br>
+想約的日期、時間、方案。<br><br>
+再做最後確認。
+</div>
+
+<div class="line">
+地點｜<br><br>
+歐遊國際連鎖精品旅館（高雄館）<br><br>
+網站看到的價格<br>
+皆已包含房費。
+</div>
+
+<div class="line">
+LINE 只做最後確認。<br><br>
+想了解的<br>
+網站裡有完整資訊。
+</div>
+
+<div class="line">
+初次預約需支付訂金。<br><br>
+請確認好預約時間<br>
+再進行預約。
+</div>
+
+<div class="line">
+匯款資訊<br>
+於 LINE 官方帳號確認後提供。
+</div>
+
+<div class="line">
+前一晚或當天取消<br>
+訂金不退。
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="small-title">蘇純的小提醒</div>
+
+<div class="line">
+過程很重要。<br><br>
+不只有時間、方案對。<br><br>
+聊天的感覺。<br>
+相處的感覺。<br><br>
+也會被在意。
+</div>
+
+<div class="line">
+見面後<br><br>
+落差太大。<br><br>
+直接說沒關係。
+</div>
+
+<div class="line">
+勉強相幹<br>
+彼此都不舒服。
+</div>
+
+<div class="line">
+不接受議價及殺價。<br><br>
+只看價錢的<br>
+可以直接略過。
+</div>
+
+<div class="line">
+有抽煙習慣。<br><br>
+不喜歡煙味<br>
+請提前告知。
+</div>
+
+<div class="line">
+很多事情<br><br>
+互相舒服了<br>
+自然就有了。
+</div>
+
+<div class="buttons">
+<a class="btn" href="https://lin.ee/U3f5HcK">進入微光</a>
+<a class="btn" href="#top">返回首頁</a>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="small-title">微光感受</div>
+
+<div class="glass">
+<h3>淺層靠近</h3>
+<ul>
+<li>清潔</li>
+<li>69</li>
+<li>情慾按摩</li>
+<li>清槍</li>
+<li>無套吹／吸／含／舔</li>
+</ul>
+
+<h3>氣氛</h3>
+<ul>
+<li>素股</li>
+<li>絲襪</li>
+<li>換裝</li>
+</ul>
+
+<h3>深層互動（加價）</h3>
+<ul>
+<li>深喉</li>
+<li>毒龍</li>
+<li>玩具</li>
+<li>情趣用品</li>
+<li>喉射</li>
+<li>口爆</li>
+<li>吞精</li>
+</ul>
+
+<h3>其他</h3>
+<p>
+如果本身比較敏感<br>
+建議使用一般保險套。<br><br>
+不敏感者<br>
+有提供相模保險套。<br><br>
+基本提供 2 個。<br><br>
+第三個以上<br>
+需另外購買。
+</p>
+<br>
+<p>
+符合條件與衛生標準者<br>
+可討論加價無套。
+</p>
+</div>
+</div>
+</section>
+
+<section class="footer">
+<div class="small-title">微光・之上｜無限旅程</div>
+
+<div class="line">
+不是每段旅程<br>
+都只有一種樣子。
+</div>
+
+<div class="line">
+有些內容<br>
+不適合放在首頁。
+</div>
+
+<div class="line">
+多人互動<br>
+雙人旅程<br>
+客製安排
+</div>
+
+<div class="line">
+依照感覺開啟。
+</div>
+
+<div class="line">
+不是每段旅程<br>
+都會進入微光・之上。
+</div>
+
+<div class="line">
+很多事情<br>
+比起衝動。<br><br>
+更需要信任與默契。
+</div>
+
+<p style="letter-spacing: 0.3em; font-size: 12px; color: #555;">PRIVATE ACCESS ONLY</p>
+</section>
+
+</body>
+</html>
