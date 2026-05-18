@@ -35,35 +35,38 @@ body{
   serif;
 }
 
-/* 第一頁｜首頁 Hero */
+/* HERO */
 
 .hero{
   position:relative;
   min-height:100svh;
+  overflow:hidden;
+
   display:flex;
   align-items:flex-end;
-  padding:0 7vw 11vh;
-  overflow:hidden;
+
+  padding:0 8vw 10vh;
+
   background:#050505;
 }
 
 .hero-image{
   position:absolute;
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
   object-position:74% center;
 
   filter:
-  brightness(.72)
-  contrast(.94)
-  saturate(.88);
-
-  transform:scale(1);
+  brightness(.68)
+  contrast(.92)
+  saturate(.84);
 
   animation:
-  heroBreath 12s ease-in-out infinite alternate;
+  heroFloat 18s ease-in-out infinite alternate;
 }
 
 .hero::after{
@@ -74,7 +77,7 @@ body{
   background:
   linear-gradient(
     to top,
-    rgba(0,0,0,.82) 0%,
+    rgba(0,0,0,.88) 0%,
     rgba(0,0,0,.42) 48%,
     rgba(0,0,0,.18) 100%
   );
@@ -85,11 +88,9 @@ body{
 .hero-content{
   position:relative;
   z-index:2;
+
   width:100%;
   max-width:420px;
-
-  animation:
-  contentBreath 12s ease-in-out infinite alternate;
 }
 
 .brand,
@@ -98,54 +99,66 @@ body{
 .timeline,
 .scroll{
   opacity:0;
+
   filter:blur(12px);
-  transform:scale(.985);
 
   animation:
-  fadeInDeep 4.8s ease forwards;
+  fadeIn 5s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
 .brand{
-  margin-bottom:42px;
+  margin-bottom:44px;
+
   font-size:15px;
   line-height:2.2;
   letter-spacing:.28em;
+
   color:rgba(236,227,215,.72);
-  animation-delay:1.8s;
+
+  animation-delay:1.5s;
 }
 
 .slogan{
-  max-width:260px;
-  margin-bottom:42px;
-  font-size:30px;
+  margin-bottom:46px;
+
+  font-size:31px;
   line-height:1.72;
   letter-spacing:.08em;
   font-weight:200;
-  color:rgba(236,227,215,.84);
-  animation-delay:4.2s;
+
+  color:rgba(236,227,215,.86);
+
+  animation-delay:3.8s;
 }
 
 .sub{
   font-size:14px;
   line-height:2;
   letter-spacing:.14em;
-  color:rgba(236,227,215,.56);
-  animation-delay:7s;
+
+  color:rgba(236,227,215,.58);
+
+  animation-delay:6.2s;
 }
 
 .timeline{
-  margin-top:58px;
+  margin-top:60px;
+
   font-size:13px;
   line-height:2.2;
   letter-spacing:.18em;
-  color:rgba(236,227,215,.48);
-  animation-delay:8.8s;
+
+  color:rgba(236,227,215,.46);
+
+  animation-delay:8s;
 }
 
 .timeline span{
   display:block;
-  margin-top:12px;
-  font-size:15px;
+
+  margin-top:14px;
+
+  font-size:16px;
   letter-spacing:.08em;
 
   font-family:
@@ -157,43 +170,52 @@ body{
 }
 
 .scroll{
-  margin-top:72px;
+  margin-top:70px;
+
   font-size:18px;
-  color:rgba(236,227,215,.32);
+
+  color:rgba(236,227,215,.3);
 
   animation:
-  fadeInDeep 4.8s ease forwards 10.5s,
-  arrowBreath 3.4s ease-in-out infinite 13s;
+  fadeIn 5s ease forwards 10s,
+  arrowFloat 3.5s ease-in-out infinite 12s;
 }
 
-/* 第二頁｜微炙蘇純 */
+/* 第二頁 */
 
 .about{
   position:relative;
   min-height:100svh;
+
   overflow:hidden;
+
   background:#050505;
 }
 
 .about-image{
   position:absolute;
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
   object-position:center center;
 
   filter:
-  brightness(.62)
-  contrast(.92)
-  saturate(.84);
+  brightness(.42)
+  contrast(.9)
+  saturate(.72);
 
   opacity:0;
-  transform:scale(1.04);
+
+  transform:
+  scale(1.08)
+  translateY(18px);
 
   animation:
-  aboutImageIn 5.2s ease forwards,
-  aboutBreath 12s ease-in-out 5.2s infinite alternate;
+  aboutImageIn 6s ease forwards,
+  aboutFloat 18s ease-in-out infinite alternate;
 }
 
 .about::after{
@@ -204,9 +226,9 @@ body{
   background:
   linear-gradient(
     to top,
-    rgba(0,0,0,.88) 0%,
-    rgba(0,0,0,.55) 45%,
-    rgba(0,0,0,.32) 100%
+    rgba(0,0,0,.9) 0%,
+    rgba(0,0,0,.56) 48%,
+    rgba(0,0,0,.3) 100%
   );
 
   z-index:1;
@@ -222,19 +244,19 @@ body{
   flex-direction:column;
   justify-content:flex-end;
 
-  padding:0 8vw 12vh;
+  padding:0 11vw 16vh;
 
-  max-width:440px;
+  max-width:420px;
 }
 
 .about-tag,
 .about-line{
   opacity:0;
+
   filter:blur(14px);
-  transform:scale(.975);
 
   animation:
-  fadeInDeep 5.2s cubic-bezier(.22,.61,.36,1) forwards;
+  fadeIn 5.4s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
 .about-tag{
@@ -244,20 +266,23 @@ body{
   line-height:2;
   letter-spacing:.32em;
 
-  color:rgba(236,227,215,.46);
+  color:rgba(236,227,215,.42);
 
   animation-delay:2s;
 }
 
 .about-line{
-  margin-bottom:42px;
+  margin-bottom:58px;
 
-  font-size:23px;
-  line-height:1.95;
-  letter-spacing:.08em;
+  font-size:18px;
+  line-height:2.4;
+  letter-spacing:.14em;
   font-weight:200;
 
-  color:rgba(236,227,215,.78);
+  color:rgba(236,227,215,.52);
+
+  text-shadow:
+  0 0 18px rgba(255,255,255,.06);
 }
 
 .about-line.one{
@@ -279,50 +304,89 @@ body{
 
 /* 動畫 */
 
-@keyframes fadeInDeep{
+@keyframes fadeIn{
 
   from{
     opacity:0;
     filter:blur(14px);
-    transform:scale(.975);
   }
 
   to{
     opacity:1;
     filter:blur(0);
-    transform:scale(1);
   }
 
 }
 
-@keyframes heroBreath{
+@keyframes heroFloat{
+
+  0%{
+    transform:
+    scale(1)
+    translateY(0px);
+  }
+
+  100%{
+    transform:
+    scale(1.04)
+    translateY(-8px);
+  }
+
+}
+
+@keyframes aboutImageIn{
 
   from{
-    transform:scale(1);
+    opacity:0;
+
+    filter:
+    brightness(.25)
+    contrast(.88)
+    saturate(.55)
+    blur(6px);
   }
 
   to{
-    transform:scale(1.04);
+    opacity:1;
+
+    filter:
+    brightness(.42)
+    contrast(.9)
+    saturate(.72)
+    blur(0);
   }
 
 }
 
-@keyframes contentBreath{
+@keyframes aboutFloat{
 
-  from{
-    transform:scale(1);
+  0%{
+    transform:
+    scale(1.08)
+    translateY(18px)
+    translateX(0px);
   }
 
-  to{
-    transform:scale(1.018);
+  50%{
+    transform:
+    scale(1.12)
+    translateY(0px)
+    translateX(-6px);
+  }
+
+  100%{
+    transform:
+    scale(1.1)
+    translateY(-12px)
+    translateX(4px);
   }
 
 }
 
-@keyframes arrowBreath{
+@keyframes arrowFloat{
 
   0%,100%{
-    opacity:.24;
+    opacity:.28;
     transform:translateY(0);
   }
 
@@ -333,36 +397,17 @@ body{
 
 }
 
-@keyframes aboutImageIn{
+/* 手機 */
 
-  from{
-    opacity:0;
-    filter:
-    brightness(.35)
-    contrast(.9)
-    saturate(.75)
-    blur(5px);
+@media(max-width:768px){
+
+  .slogan{
+    font-size:28px;
   }
 
-  to{
-    opacity:1;
-    filter:
-    brightness(.62)
-    contrast(.92)
-    saturate(.84)
-    blur(0);
-  }
-
-}
-
-@keyframes aboutBreath{
-
-  from{
-    transform:scale(1.04);
-  }
-
-  to{
-    transform:scale(1.075);
+  .about-line{
+    font-size:17px;
+    line-height:2.35;
   }
 
 }
@@ -372,15 +417,14 @@ body{
 
 <body>
 
-<!-- 第一頁｜首頁 -->
+<!-- 第一頁 -->
 
-<section class="hero" id="top">
+<section class="hero">
 
   <img
     class="hero-image"
     src="./hero.jpg"
-    alt="蘇純"
-  >
+    alt="蘇純">
 
   <div class="hero-content">
 
@@ -414,15 +458,14 @@ body{
 
 </section>
 
-<!-- 第二頁｜微炙蘇純 -->
+<!-- 第二頁 -->
 
-<section class="about" id="suchun">
+<section class="about">
 
   <img
     class="about-image"
     src="./kept-01.jpg"
-    alt="微炙蘇純"
-  >
+    alt="微炙蘇純">
 
   <div class="about-content">
 
