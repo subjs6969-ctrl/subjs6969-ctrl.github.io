@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>微光・之上｜蘇純</title>
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+/* --- 極致深夜：純粹的黑與微弱的脈動 --- */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;background-color:#050505;}
+
+body{
+  background:#050505;
+  background-image: radial-gradient(circle at 50% 50%, #121212 0%, #030303 100%);
+  background-size: 150% 150%;
+  animation: bgBreath 18s ease-in-out infinite alternate;
+  color:#dccdbd; 
+  overflow-x:hidden;
+  font-family:"Noto Serif TC","PingFang TC","STHeitiTC-Light",serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 背景的深淺呼吸 */
+@keyframes bgBreath {
+  0% { background-position: 0% 50%; opacity: 0.9; }
+  100% { background-position: 100% 50%; opacity: 1; }
+}
+
+/* --- 窒息式留白：強迫放慢腳步 --- */
+.section {
+  position:relative;
+  width:100%;
+  padding: 28vh 10vw; /* 留白比上一版加大將近一倍 */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.container {
+  width:100%;
+  max-width:340px;
+  margin:0 auto;
+}
+
+/* --- 真正的呼吸感文字：如吐氣般從模糊到清晰，完全不滑動 --- */
+.line {
+  opacity: 0;
+  filter: blur(18px); /* 極深的模糊起點 */
+  transform: scale(0.98); /* 微微收縮 */
+  /* 將動畫時間拉長到 3.5 秒，極度緩慢 */
+  transition: opacity 3.5s ease-in-out, filter 3.5s ease-in-out, transform 3.5s ease-in-out;
+}
+
+.active .line {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1); /* 舒展 */
+}
+
+/* 句子之間的停頓拉得更長，營造深夜慢慢說話的節奏 */
+.active .delay-1 { transition-delay: 1.2s; }
+.active .delay-2 { transition-delay: 3.0s; }
+.active .delay-3 { transition-delay: 4.8s; }
+.active .delay-4 { transition-delay: 6.6s; }
+
+.text-box { margin-bottom: 12vh; }
+
+p {
+  font-size:14px;
+  line-height:2.8; 
+  letter-spacing:0.18em;
+  color:rgba(220,205,189,0.65);
+  margin-bottom:32px;
+  font-weight:300;
+}
+
+.real-talk {
+  color:rgba(255,255,255,0.85);
+  font-size:13.5px;
+  letter-spacing:0.16em;
+}
+
+/* --- 永不靜止的畫面：照片與影片持續呼吸 --- */
+.img-box, .video-box {
+  width: 85%; 
+  margin: 0 auto 10vh;
+  position: relative;
+  overflow: hidden; /* 確保圖片放大時不會超出框線 */
+}
+
+.img-box img, .video-box video {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* 加上無止盡的呼吸縮放動畫，週期長達 24 秒 */
+  animation: elementBreath 24s ease-in-out infinite alternate;
+}
+
+/* 專屬照片的生命力：微微放大、亮度微調 */
+@keyframes elementBreath {
+  0% { transform: scale(1); filter: brightness(0.65) contrast(0.9); }
+  100% { transform: scale(1.06); filter: brightness(0.85) contrast(0.95); }
+}
+
+.video-box { width: 100%; padding: 0 2vw; }
+
+.section-label {
+  font-size:10.5px;
+  letter-spacing:0.3em;
+  color:rgba(220,205,189,0.3);
+  margin-bottom:36px;
+  border-bottom:1px solid rgba(220,205,189,0.08);
+  padding-bottom:10px;
+  display:inline-block;
+}
+
+/* --- 安靜的邀請按鈕 --- */
+.btn-group { display:flex; flex-direction:column; gap:16px; margin-top:40px; }
+.btn {
+  display:block;
+  width:100%;
+  padding:18px 0;
+  border:1px solid rgba(220,205,189,0.12); 
+  color:rgba(220,205,189,0.4);
+  text-decoration:none;
+  font-size:11.5px;
+  letter-spacing:0.3em;
+  text-align:center;
+  transition:all 1s ease;
+  background:transparent;
+}
+.btn:active, .btn:hover {
+  border-color:rgba(220,205,189,0.4);
+  color:#fff;
+}
+
+/* --- 首頁 Hero --- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 10vw 15vh;overflow:hidden;}
+.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% center;filter:brightness(0.55) contrast(0.95) saturate(0.8);animation:heroBreath 28s ease-in-out infinite alternate;}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,0.98) 0%,rgba(5,5,5,0.5) 45%,rgba(5,5,5,0.15) 100%);z-index:1;}
+.hero-content{position:relative;z-index:2;width:100%;max-width:340px;}
+
+@keyframes heroBreath{from{transform:scale(1);}to{transform:scale(1.05);}}
+</style>
+</head>
+<body>
+
+<section class="hero active">
+  <img class="hero-image" src="./hero.jpg" onerror="this.src='./hero.jpeg'" alt="蘇純">
+  <div class="hero-content">
+    <div class="line" style="margin-bottom:40px;font-size:12.5px;line-height:2.6;letter-spacing:0.3em;color:rgba(220,205,189,0.5);">
+      《微光・之上》<br>蘇純｜無限旅程
+    </div>
+    <div class="line delay-1" style="margin-bottom:40px;font-size:18px;letter-spacing:0.16em;font-weight:200;color:rgba(255,255,255,0.8);">
+      值得，所以不將就。
+    </div>
+    <div class="line delay-2" style="font-size:11.5px;letter-spacing:0.22em;color:rgba(220,205,189,0.35);">
+      感謝深深，蘇純上線。
+    </div>
+    <div class="btn-group line delay-3" style="margin-top: 8vh;">
+      <a href="#s9-booking" class="btn">預約蘇純</a>
+      <a href="#s6-journey" class="btn">微光旅程</a>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s2-story">
+  <div class="container">
+    <div class="img-box line" style="width: 100%;">
+      <img src="./kept-01.jpg" alt="微光故事"> 
+    </div>
+    <div class="text-box">
+      <p class="line delay-1">曾經以為，<br>這圈子很簡單。</p>
+      <p class="line delay-2 real-talk">後來才明白，<br>深的從來不是圈子，<br>而是人性。</p>
+      <p class="line delay-3" style="margin-top: 6vh;">感謝曾經的深深，<br>才有現在的蘇純。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s3-real">
+  <div class="container">
+    <div class="img-box line">
+      <img src="./kept-02.jpg" alt="蘇純生活感">
+    </div>
+    <div class="text-box">
+      <p class="line delay-1">自己的世界，<br>照自己的方式生活。</p>
+      <p class="line delay-2 real-talk" style="margin-top: 8vh;">不迎合。<br>但很真。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s4-close">
+  <div class="container">
+    <div class="img-box line">
+      <img src="./kept-03.jpg" alt="真誠靠近">
+    </div>
+    <div class="img-box line" style="width: 75%; margin-left: 0;">
+      <img src="./kept-04.jpg" alt="反差微笑">
+    </div>
+    <div class="text-box" style="margin-top: 8vh;">
+      <div class="line section-label">PROFILE</div>
+      <p class="line delay-1">153 / 40 / 32B / 45+<br>骨感偏瘦、敏感型。</p>
+      <p class="line delay-2">沒有固定 SOP 流程，<br>不刻意迎合，<br>也不虛假奉陪。</p>
+      <p class="line delay-3">感覺是雙向的，<br>相處也是。</p>
+      <p class="line delay-4 real-talk" style="margin-top: 6vh;">適合的人，<br>自然會懂。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s5-space">
+  <div class="container">
+    <div class="text-box">
+      <p class="line delay-1">感受、信任跟尊重，<br>一直都很重要。</p>
+      <p class="line delay-2">雙向自然互動，<br>相處舒服，<br>彼此才會開心。</p>
+    </div>
+    <div class="text-box" style="margin-top:14vh;">
+      <p class="line delay-1" style="font-size:11.5px; color:rgba(220,205,189,0.25);">《相幹》</p>
+      <p class="line delay-2">要的是舒服、享受過程。<br>滿足身體，也滿足心理。</p>
+      <p class="line delay-3 real-talk" style="margin-top: 6vh;">比起說什麼，<br>做什麼、給什麼，<br>才是旅程的重點。</p>
+    </div>
+    <div class="text-box" style="margin-top:14vh;">
+      <p class="line delay-1 real-talk">無限旅程，<br>只留給重視微光旅程的人。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s5-video-work">
+  <div class="container">
+    <div class="line section-label">WORK / SPACE</div>
+    <div class="video-box line delay-1">
+      <video src="./V1.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="text-box" style="margin-top: 6vh;">
+      <p class="line delay-2 real-talk">
+        微光場域的流動光影。<br>
+        這裡的空氣慢下來，<br>
+        只留下真實的對話與呼吸。
+      </p>
+      <p class="line delay-3" style="font-size: 12.5px; color:rgba(220,205,189,0.3);">
+        ( 現場畫面不定期更換，記錄轉瞬即逝的默契 )
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s6-journey">
+  <div class="container">
+    <div class="text-box">
+      <div class="line section-label">JOURNEY</div>
+      <p class="line delay-1">壹｜微光・初見</p>
+      <p class="line delay-2">貳｜微光・稍炙</p>
+      <p class="line delay-3">參｜微光・微醺</p>
+      <p class="line delay-4 real-talk" style="margin-top: 6vh;">肆｜微光・之上</p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s7-guide">
+  <div class="container">
+    <div class="text-box">
+      <div class="line section-label">GUIDE</div>
+      <p class="line delay-1">基本互動</p>
+      <p class="line delay-2">進階旅程</p>
+      <p class="line delay-3" style="font-size:11.5px;color:rgba(220,205,189,0.2);">( 細節不過度展開，保留想像與空間 )</p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s8-rules">
+  <div class="container">
+    <div class="text-box">
+      <div class="line section-label">RULES</div>
+      <p class="line delay-1">不喜歡臨時亂改、放鳥。</p>
+      <p class="line delay-2 real-talk">Line 文字沒有溫度，<br>只針對重要內容回覆。</p>
+      <p class="line delay-3" style="margin-top: 6vh;">感覺跟尊重是互相的。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-reveal" id="s9-booking" style="padding-bottom: 25vh;">
+  <div class="container">
+    <div class="text-box">
+      <div class="line section-label">RESERVATION</div>
+      <p class="line delay-1" style="font-size:13px; color:rgba(220,205,189,0.5); line-height:3; letter-spacing:0.14em;">
+        稱呼：<br>時段：<br>方案：<br>想說的話：
+      </p>
+    </div>
+    <div class="btn-group line delay-2">
+      <a href="#" class="btn btn-copy">複製預約單</a>
+      <a href="https://line.me/ti/p/你的LINEID" target="_blank" class="btn">加入 LINE</a>
+    </div>
+    
+    <div class="text-box" style="margin-top: 28vh; text-align: center;">
+      <p class="line delay-3" style="font-size:11.5px; line-height:2.6; color:rgba(220,205,189,0.2);">
+        不是每段旅程，都會進入微光・之上。<br><br>
+        有些事情，比起衝動，<br>更需要信任與默契。
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const reveals = document.querySelectorAll(".scroll-reveal");
+  // 讓區塊進入畫面深一點才觸發，增加期待感
+  const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -15% 0px" };
+
+  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("active");
+      observer.unobserve(entry.target);
+    });
+  }, revealOptions);
+
+  reveals.forEach(reveal => { revealOnScroll.observe(reveal); });
+
+  const copyBtn = document.querySelector('.btn-copy');
+  if(copyBtn) {
+    copyBtn.addEventListener('click', function(e) {
+      e.preventDefault(); 
+      const bookingTemplate = `【微光旅程｜預約單】\n稱呼：\n時段：\n方案：\n想說的話：`;
+      navigator.clipboard.writeText(bookingTemplate).then(() => {
+        const originalText = this.innerText;
+        this.innerText = '已複製，期待相見'; 
+        this.style.color = '#fff';
+        setTimeout(() => {
+          this.innerText = originalText;
+          this.style.color = '';
+        }, 3000);
+      }).catch(err => {
+        this.innerText = '請手動選取複製';
+      });
+    });
+  }
+});
+</script>
+</body>
+</html>
