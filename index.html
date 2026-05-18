@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微光・之上｜蘇純</title>
+
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#050505;
+  color:#ece3d7;
+  overflow-x:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Serif TC",serif;
+}
+
+/* 首頁 Hero｜手機版優先 */
+.hero{
+  min-height:100svh;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:0 7vw 19vh;
+  overflow:hidden;
+  background:#050505;
+}
+
+/* 首頁照片 */
+.hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  /* 人像往右下方沉 */
+  object-position:74% 86%;
+
+  filter:
+    brightness(.58)
+    contrast(.88)
+    saturate(.82);
+
+  transform:scale(1);
+  animation:heroBreath 6s ease-in-out infinite alternate;
+}
+
+/* 暗層 */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.86) 0%,
+      rgba(0,0,0,.56) 46%,
+      rgba(0,0,0,.30) 100%
+    );
+  z-index:1;
+}
+
+/* 文字區 */
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:420px;
+
+  transform:scale(1);
+  animation:contentBreath 6s ease-in-out infinite alternate;
+}
+
+/* 所有文字從黑裡浮出來 */
+.brand,
+.slogan,
+.sub,
+.scroll{
+  opacity:0;
+  filter:blur(12px);
+  transform:scale(.985);
+  animation:fadeInDeep 2.6s ease forwards;
+}
+
+.brand{
+  font-size:15px;
+  line-height:2.15;
+  letter-spacing:.28em;
+  color:rgba(236,227,215,.78);
+  margin-bottom:42px;
+  animation-delay:1.8s;
+}
+
+.slogan{
+  max-width:240px;
+  font-size:26px;
+  line-height:1.5;
+  letter-spacing:.08em;
+  font-weight:200;
+  color:rgba(236,227,215,.78);
+  margin-bottom:34px;
+  animation-delay:3.4s;
+}
+
+.sub{
+  font-size:14px;
+  line-height:2;
+  letter-spacing:.14em;
+  color:rgba(236,227,215,.62);
+  animation-delay:5s;
+}
+
+.scroll{
+  margin-top:60px;
+  font-size:18px;
+  color:rgba(236,227,215,.34);
+  animation:
+    fadeInDeep 2.6s ease forwards 6.8s,
+    arrowBreath 3.2s ease-in-out infinite 9s;
+}
+
+/* 文字浮出 */
+@keyframes fadeInDeep{
+  from{
+    opacity:0;
+    filter:blur(12px);
+    transform:scale(.985);
+  }
+
+  to{
+    opacity:1;
+    filter:blur(0);
+    transform:scale(1);
+  }
+}
+
+/* 照片呼吸 */
+@keyframes heroBreath{
+  from{
+    transform:scale(1);
+  }
+
+  to{
+    transform:scale(1.035);
+  }
+}
+
+/* 文字區一起呼吸 */
+@keyframes contentBreath{
+  from{
+    transform:scale(1);
+  }
+
+  to{
+    transform:scale(1.018);
+  }
+}
+
+/* 箭頭呼吸 */
+@keyframes arrowBreath{
+  0%,100%{
+    opacity:.28;
+    transform:translateY(0);
+  }
+
+  50%{
+    opacity:.68;
+    transform:translateY(8px);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero" id="top">
+  <img class="hero-image" src="./hero.jpeg" alt="蘇純">
+
+  <div class="hero-content">
+    <div class="brand">
+      《微光・之上》<br>
+      蘇純｜無限旅程
+    </div>
+
+    <div class="slogan">
+      值得，所以不將就。
+    </div>
+
+    <div class="sub">
+      感謝深深，蘇純上線。
+    </div>
+
+    <div class="scroll">
+      ↓
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
