@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+<meta charset="UTF-8">
+<!-- 確保手機版不會被縮放，並適應瀏海屏 (viewport-fit=cover) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>微光・之上｜蘇純</title>
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<style>
+/* =========================================
+   全站基礎設定 (Mobile First)
+========================================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  /* 防止手機滑動時產生橡皮筋回彈的白邊 */
+  background-color: #050505; 
+}
+
+body{
+  background:#050505;
+  color:#ece3d7;
+  overflow-x:hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Serif TC", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   排版與節奏控制 (為手機螢幕量身打造)
+========================================= */
+.section {
+  position: relative;
+  width: 100%;
+  /* 上下 12vh 保持距離感，左右 8vw 讓文字不貼邊 */
+  padding: 12vh 8vw; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  /* 限制最大寬度，確保在平版或大尺寸手機上文字不會過長 */
+  max-width: 400px; 
+  margin: 0 auto;
+}
+
+/* 捲動浮現動畫 */
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   手機版文字樣式
+========================================= */
+.text-box {
+  margin-bottom: 48px;
+}
+
+p {
+  font-size: 15px; /* 手機閱讀最舒服的大小 */
+  line-height: 2.2; /* 稍微收緊一點點，避免畫面過散 */
+  letter-spacing: 0.12em;
+  color: rgba(236,227,215, 0.8);
+  margin-bottom: 24px;
+}
+
+.highlight {
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: rgba(236,227,215, 0.4);
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(236,227,215, 0.15);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+/* =========================================
+   手機版照片與按鈕 UI
+========================================= */
+.img-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4; /* 最適合手機直式螢幕的人像比例 */
+  background: #111;
+  border: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.2);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  margin-bottom: 40px;
+}
+
+.btn-group {
+  display: flex;
+  /* 手機版改為上下排列，方便單手拇指點擊 */
+  flex-direction: column; 
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px 0;
+  border: 1px solid rgba(236,227,215, 0.3);
+  color: rgba(236,227,215, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-align: center;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+.btn:active {
+  background: rgba(236,227,215, 0.1);
+  transform: scale(0.98);
+}
+
+/* =========================================
+   【區塊 1】首頁 Hero (優化底部距離)
+========================================= */
+.hero{ position:relative; min-height:100svh; display:flex; align-items:flex-end; padding:0 8vw 12vh; overflow:hidden; background:#050505; }
+.hero-image{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:74% center; filter:brightness(.72) contrast(.94) saturate(.88); animation:heroBreath 12s ease-in-out infinite alternate; }
+.hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.42) 48%, rgba(0,0,0,.18) 100%); z-index:1; }
+.hero-content{ position:relative; z-index:2; width:100%; max-width:400px; animation:contentBreath 12s ease-in-out infinite alternate; }
+.hero-brand, .hero-slogan, .hero-sub, .hero-timeline, .hero-scroll{ opacity:0; filter:blur(12px); transform:scale(.985); animation:fadeInDeep 4.8s ease forwards; }
+.hero-brand{ margin-bottom:36px; font-size:14px; line-height:2.2; letter-spacing:.25em; color:rgba(236,227,215,.72); animation-delay:1.8s; }
+.hero-slogan{ margin-bottom:36px; font-size:28px; line-height:1.6; letter-spacing:.08em; font-weight:200; color:rgba(236,227,215,.9); animation-delay:4.2s; }
+.hero-sub{ font-size:13px; line-height:2; letter-spacing:.14em; color:rgba(236,227,215,.6); animation-delay:7s; }
+.hero-timeline{ margin-top:48px; font-size:12px; line-height:2.2; letter-spacing:.18em; color:rgba(236,227,215,.48); animation-delay:8.8s; }
+.hero-timeline span{ display:block; margin-top:8px; font-size:14px; letter-spacing:.08em; font-family:"Cormorant Garamond", "Times New Roman", serif; color:rgba(236,227,215,.72); }
+.hero-scroll{ margin-top:64px; font-size:18px; color:rgba(236,227,215,.32); animation:fadeInDeep 4.8s ease forwards 10.5s, arrowBreath 3.4s ease-in-out infinite 13s; }
+
+@keyframes fadeInDeep{ from{opacity:0; filter:blur(12px); transform:scale(.985);} to{opacity:1; filter:blur(0); transform:scale(1);} }
+@keyframes heroBreath{ from{transform:scale(1);} to{transform:scale(1.04);} }
+@keyframes contentBreath{ from{transform:scale(1);} to{transform:scale(1.018);} }
+@keyframes arrowBreath{ 0%,100%{opacity:.24; transform:translateY(0);} 50%{opacity:.72; transform:translateY(8px);} }
+
+/* 特殊區塊排版調整 */
+#s4-space { min-height: 85svh; text-align: center; } /* 場域：置中且拉長高度 */
+#s9-footer { min-height: 40svh; text-align: center; justify-content: center; padding-bottom: 8vh;}
+</style>
+</head>
+
+<body>
+
+<!-- 【1｜首頁 Hero】 -->
+<section class="hero">
+  <img class="hero-image" src="./hero.jpg" alt="蘇純">
+  <div class="hero-content">
+    <div class="hero-brand">《微光・之上》<br>蘇純｜無限旅程</div>
+    <div class="hero-slogan">值得，<br>所以不將就。</div>
+    <div class="hero-sub">感謝深深，蘇純上線。</div>
+    <div class="hero-timeline">2019.深深｜2026.蘇純<span>It’s all my life</span></div>
+    <div class="hero-scroll">↓</div>
+  </div>
+</section>
+
+<!-- 【2｜微炙蘇純】 -->
+<section class="section" id="s2-about">
+  <div class="container reveal">
+    <div class="img-placeholder">[生活感 / 真人感照片]</div>
+    <div class="text-box">
+      <p>曾經以為，<br>這圈子很簡單。</p>
+      <p>後來才明白，<br>深的從來不是圈子，<br>而是人性。</p>
+      <p>感謝曾經的深深，<br>才有現在的蘇純。</p>
+      <p class="highlight">自己的世界，<br>照自己的方式生活。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 【3｜關於蘇純】 -->
+<section class="section" id="s3-profile">
+  <div class="container reveal">
+    <div class="text-box">
+      <div class="section-label">PROFILE</div>
+      <p>153 / 40 / 32B / 45+<br>骨感偏瘦、敏感型。</p>
+      <p>沒有固定 SOP 流程，<br>不刻意迎合，<br>也不虛假奉陪。</p>
+      <p>感覺是雙向的，<br>相處也是。</p>
+      <p class="highlight">適合的人，<br>自然會懂。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 【4｜微光場域】 -->
+<section class="section" id="s4-space">
+  <div class="container reveal">
+    <div class="text-box">
+      <p>感受、信任跟尊重，<br>一直都很重要。</p>
+      <p>雙向自然互動，<br>相處舒服，<br>彼此才會開心。</p>
+    </div>
+    
+    <div class="text-box" style="margin-top: 64px;">
+      <div class="section-label">《相幹》</div>
+      <p>要的是舒服、享受過程。<br>滿足身體，也滿足心理。</p>
+      <p>比起說什麼，<br>做什麼、給什麼，<br>才是旅程的重點。</p>
+    </div>
+
+    <div class="text-box" style="margin-top: 64px;">
+      <p class="highlight">無限旅程，<br>只留給重視微光旅程的人。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 【5｜微光旅程】 -->
+<section class="section" id="s5-journey">
+  <div class="container reveal">
+    <!-- 這裡的情緒照片改為 4:5 比例，在手機上非常有份量 -->
+    <div class="img-placeholder" style="aspect-ratio: 4/5;">[情緒感染力照片]</div>
+    <div class="text-box">
+      <div class="section-label">JOURNEY</div>
+      <p>壹｜微光・初見</p>
+      <p>貳｜微光・稍炙</p>
+      <p>參｜微光・微醺</p>
+      <p>肆｜微光・之上</p>
+    </div>
+  </div>
+</section>
+
+<!-- 【6｜旅程導覽】 -->
+<section class="section" id="s6-guide">
+  <div class="container reveal">
+    <div class="text-box">
+      <div class="section-label">GUIDE</div>
+      <p>基本互動</p>
+      <p>進階旅程</p>
+      <p style="font-size: 12px; color: rgba(236,227,215,0.3);">(細節不過度展開，保留想像與空間)</p>
+    </div>
+  </div>
+</section>
+
+<!-- 【7｜預約注意事項】 -->
+<section class="section" id="s7-rules">
+  <div class="container reveal">
+    <div class="text-box">
+      <div class="section-label">RULES</div>
+      <p>不喜歡臨時亂改、放鳥。</p>
+      <p>Line 文字沒有溫度，<br>只針對重要內容回覆。</p>
+      <p class="highlight">感覺跟尊重是互相的。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 【8｜預約單】 -->
+<section class="section" id="s8-booking">
+  <div class="container reveal">
+    <div class="text-box">
+      <div class="section-label">RESERVATION</div>
+      <p style="font-size: 13px; color: rgba(236,227,215,0.5);">[ 表單細節佔位區 ]</p>
+    </div>
+    <div class="btn-group">
+      <a href="#" class="btn">複製預約單</a>
+      <a href="#" class="btn">加入 LINE</a>
+    </div>
+  </div>
+</section>
+
+<!-- 【9｜頁尾】 -->
+<section class="section" id="s9-footer">
+  <div class="container reveal">
+    <div class="text-box">
+      <p style="font-size: 13px; line-height: 2; color: rgba(236,227,215, 0.4);">
+        不是每段旅程，<br>都會進入微光・之上。
+      </p>
+      <p style="font-size: 13px; line-height: 2; color: rgba(236,227,215, 0.4);">
+        有些事情，<br>比起衝動，更需要信任與默契。
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const reveals = document.querySelectorAll(".reveal");
+    
+    // 針對手機滑動習慣微調觸發時機
+    const revealOptions = {
+      threshold: 0.1, 
+      rootMargin: "0px 0px -15% 0px" 
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target);
+      });
+    }, revealOptions);
+
+    reveals.forEach(reveal => {
+      revealOnScroll.observe(reveal);
+    });
+  });
+</script>
+
+</body>
+</html>
