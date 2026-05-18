@@ -26,38 +26,28 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Serif TC",serif;
 }
 
-/* 首頁 Hero｜手機版優先 */
 .hero{
   min-height:100svh;
   position:relative;
   display:flex;
   align-items:flex-end;
-  padding:0 7vw 19vh;
+  padding:0 7vw 11vh;
   overflow:hidden;
   background:#050505;
 }
 
-/* 首頁照片 */
 .hero-image{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-
-  /* 人像往右下方沉 */
   object-position:74% 86%;
-
-  filter:
-    brightness(.58)
-    contrast(.88)
-    saturate(.82);
-
+  filter:brightness(.58) contrast(.88) saturate(.82);
   transform:scale(1);
   animation:heroBreath 6s ease-in-out infinite alternate;
 }
 
-/* 暗層 */
 .hero::after{
   content:"";
   position:absolute;
@@ -65,25 +55,22 @@ body{
   background:
     linear-gradient(
       to top,
-      rgba(0,0,0,.86) 0%,
-      rgba(0,0,0,.56) 46%,
-      rgba(0,0,0,.30) 100%
+      rgba(0,0,0,.74) 0%,
+      rgba(0,0,0,.48) 46%,
+      rgba(0,0,0,.26) 100%
     );
   z-index:1;
 }
 
-/* 文字區 */
 .hero-content{
   position:relative;
   z-index:2;
   width:100%;
   max-width:420px;
-
   transform:scale(1);
   animation:contentBreath 6s ease-in-out infinite alternate;
 }
 
-/* 所有文字從黑裡浮出來 */
 .brand,
 .slogan,
 .sub,
@@ -104,9 +91,9 @@ body{
 }
 
 .slogan{
-  max-width:240px;
+  max-width:260px;
   font-size:26px;
-  line-height:1.5;
+  line-height:1.55;
   letter-spacing:.08em;
   font-weight:200;
   color:rgba(236,227,215,.78);
@@ -131,7 +118,6 @@ body{
     arrowBreath 3.2s ease-in-out infinite 9s;
 }
 
-/* 文字浮出 */
 @keyframes fadeInDeep{
   from{
     opacity:0;
@@ -146,7 +132,6 @@ body{
   }
 }
 
-/* 照片呼吸 */
 @keyframes heroBreath{
   from{
     transform:scale(1);
@@ -157,7 +142,6 @@ body{
   }
 }
 
-/* 文字區一起呼吸 */
 @keyframes contentBreath{
   from{
     transform:scale(1);
@@ -168,7 +152,6 @@ body{
   }
 }
 
-/* 箭頭呼吸 */
 @keyframes arrowBreath{
   0%,100%{
     opacity:.28;
@@ -195,7 +178,8 @@ body{
     </div>
 
     <div class="slogan">
-      值得，所以不將就。
+      值得，<br>
+      所以不將就。
     </div>
 
     <div class="sub">
