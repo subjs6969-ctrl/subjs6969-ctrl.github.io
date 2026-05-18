@@ -1,258 +1,369 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>微光・之上｜蘇純</title>
 
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    background:#05070b;
-    color:#f4efe8;
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Noto Serif TC",
-    "PingFang TC",
-    sans-serif;
-    overflow-x:hidden;
+  background:#050505;
+  color:#ece3d7;
+  overflow-x:hidden;
+
+  font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "PingFang TC",
+  "Noto Serif TC",
+  serif;
 }
 
-/* 第一頁 */
+/* 第一頁｜首頁 Hero */
 
 .hero{
-    position:relative;
-    width:100%;
-    height:100vh;
-    overflow:hidden;
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  padding:0 7vw 11vh;
+  overflow:hidden;
+  background:#050505;
 }
 
-.hero img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:brightness(.42);
+.hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:74% center;
+
+  filter:
+  brightness(.72)
+  contrast(.94)
+  saturate(.88);
+
+  transform:scale(1);
+
+  animation:
+  heroBreath 12s ease-in-out infinite alternate;
 }
 
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.2),
-    rgba(0,0,0,.58)
-    );
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    to top,
+    rgba(0,0,0,.82) 0%,
+    rgba(0,0,0,.42) 48%,
+    rgba(0,0,0,.18) 100%
+  );
+
+  z-index:1;
 }
 
 .hero-content{
-    position:absolute;
-    left:8%;
-    top:20%;
-    z-index:2;
-    width:84%;
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:420px;
+
+  animation:
+  contentBreath 12s ease-in-out infinite alternate;
 }
 
-.hero-top{
-    font-size:18px;
-    letter-spacing:8px;
-    color:rgba(255,255,255,.7);
-    margin-bottom:26px;
-    font-weight:200;
+.brand,
+.slogan,
+.sub,
+.timeline,
+.scroll{
+  opacity:0;
+  filter:blur(12px);
+  transform:scale(.985);
+
+  animation:
+  fadeInDeep 4.8s ease forwards;
 }
 
-.hero-name{
-    font-size:22px;
-    letter-spacing:6px;
-    color:rgba(255,255,255,.78);
-    margin-bottom:70px;
-    font-weight:300;
+.brand{
+  margin-bottom:42px;
+  font-size:15px;
+  line-height:2.2;
+  letter-spacing:.28em;
+  color:rgba(236,227,215,.72);
+  animation-delay:1.8s;
 }
 
-.hero-title{
-    font-size:62px;
-    line-height:1.55;
-    letter-spacing:5px;
-    font-weight:200;
-    color:#f5efe8;
-    margin-bottom:70px;
+.slogan{
+  max-width:260px;
+  margin-bottom:42px;
+  font-size:30px;
+  line-height:1.72;
+  letter-spacing:.08em;
+  font-weight:200;
+  color:rgba(236,227,215,.84);
+  animation-delay:4.2s;
 }
 
-.hero-sub{
-    font-size:18px;
-    line-height:2.2;
-    letter-spacing:3px;
-    color:rgba(255,255,255,.62);
-    font-weight:300;
+.sub{
+  font-size:14px;
+  line-height:2;
+  letter-spacing:.14em;
+  color:rgba(236,227,215,.56);
+  animation-delay:7s;
 }
 
 .timeline{
-    margin-top:70px;
-    color:rgba(255,255,255,.42);
-    letter-spacing:4px;
-    font-size:15px;
-    font-weight:300;
+  margin-top:58px;
+  font-size:13px;
+  line-height:2.2;
+  letter-spacing:.18em;
+  color:rgba(236,227,215,.48);
+  animation-delay:8.8s;
 }
 
 .timeline span{
-    display:block;
-    margin-top:22px;
-    font-size:17px;
-    letter-spacing:3px;
-    color:rgba(255,255,255,.56);
-    font-style:italic;
+  display:block;
+  margin-top:12px;
+  font-size:15px;
+  letter-spacing:.08em;
+
+  font-family:
+  "Cormorant Garamond",
+  "Times New Roman",
+  serif;
+
+  color:rgba(236,227,215,.72);
 }
 
 .scroll{
-    position:absolute;
-    bottom:35px;
-    left:50%;
-    transform:translateX(-50%);
-    color:rgba(255,255,255,.4);
-    font-size:28px;
-    z-index:2;
-    animation:float 2s infinite;
+  margin-top:72px;
+  font-size:18px;
+  color:rgba(236,227,215,.32);
+
+  animation:
+  fadeInDeep 4.8s ease forwards 10.5s,
+  arrowBreath 3.4s ease-in-out infinite 13s;
 }
 
-@keyframes float{
-    0%{transform:translate(-50%,0);}
-    50%{transform:translate(-50%,8px);}
-    100%{transform:translate(-50%,0);}
+/* 第二頁｜微炙蘇純 */
+
+.about{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  background:#050505;
 }
 
-/* 第二頁 */
+.about-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
 
-.about-section{
-    width:100%;
-    background:#060606;
-    padding:120px 24px;
+  filter:
+  brightness(.62)
+  contrast(.92)
+  saturate(.84);
+
+  opacity:0;
+  transform:scale(1.04);
+
+  animation:
+  aboutImageIn 5.2s ease forwards,
+  aboutBreath 12s ease-in-out 5.2s infinite alternate;
 }
 
-.about-wrap{
-    width:100%;
-    max-width:760px;
-    margin:auto;
+.about::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    to top,
+    rgba(0,0,0,.88) 0%,
+    rgba(0,0,0,.55) 45%,
+    rgba(0,0,0,.32) 100%
+  );
+
+  z-index:1;
 }
 
-.about-mini{
-    font-size:13px;
-    letter-spacing:4px;
-    color:rgba(255,255,255,.42);
-    margin-bottom:40px;
+.about-content{
+  position:relative;
+  z-index:2;
+
+  min-height:100svh;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  padding:0 8vw 12vh;
+
+  max-width:440px;
 }
 
-.about-main-image{
-    width:100%;
-    margin-bottom:55px;
+.about-tag,
+.about-line{
+  opacity:0;
+  filter:blur(14px);
+  transform:scale(.975);
+
+  animation:
+  fadeInDeep 5.2s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
-.about-main-image img{
-    width:100%;
-    display:block;
-    border-radius:2px;
+.about-tag{
+  margin-bottom:58px;
+
+  font-size:14px;
+  line-height:2;
+  letter-spacing:.32em;
+
+  color:rgba(236,227,215,.46);
+
+  animation-delay:2s;
 }
 
-.about-title{
-    font-size:40px;
-    line-height:1.8;
-    letter-spacing:4px;
-    font-weight:200;
-    margin-bottom:45px;
-    color:#f5efe8;
+.about-line{
+  margin-bottom:42px;
+
+  font-size:23px;
+  line-height:1.95;
+  letter-spacing:.08em;
+  font-weight:200;
+
+  color:rgba(236,227,215,.78);
 }
 
-.about-text{
-    font-size:17px;
-    line-height:2.5;
-    letter-spacing:2px;
-    color:rgba(255,255,255,.72);
-    font-weight:300;
-    margin-bottom:80px;
+.about-line.one{
+  animation-delay:4s;
 }
 
-.about-gallery{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
+.about-line.two{
+  animation-delay:6.5s;
 }
 
-.gallery-item{
-    overflow:hidden;
-    background:#111;
+.about-line.three{
+  animation-delay:9s;
 }
 
-.gallery-item img{
-    width:100%;
-    display:block;
-    transition:1.2s;
+.about-line.four{
+  margin-bottom:0;
+  animation-delay:11.5s;
 }
 
-.gallery-item img:hover{
-    transform:scale(1.03);
-    opacity:.92;
+/* 動畫 */
+
+@keyframes fadeInDeep{
+
+  from{
+    opacity:0;
+    filter:blur(14px);
+    transform:scale(.975);
+  }
+
+  to{
+    opacity:1;
+    filter:blur(0);
+    transform:scale(1);
+  }
+
 }
 
-/* 手機 */
+@keyframes heroBreath{
 
-@media(max-width:768px){
+  from{
+    transform:scale(1);
+  }
 
-.hero-content{
-    top:18%;
+  to{
+    transform:scale(1.04);
+  }
+
 }
 
-.hero-top{
-    font-size:16px;
-    letter-spacing:6px;
+@keyframes contentBreath{
+
+  from{
+    transform:scale(1);
+  }
+
+  to{
+    transform:scale(1.018);
+  }
+
 }
 
-.hero-name{
-    font-size:18px;
-    margin-bottom:55px;
+@keyframes arrowBreath{
+
+  0%,100%{
+    opacity:.24;
+    transform:translateY(0);
+  }
+
+  50%{
+    opacity:.72;
+    transform:translateY(8px);
+  }
+
 }
 
-.hero-title{
-    font-size:34px;
-    line-height:1.8;
-    margin-bottom:55px;
+@keyframes aboutImageIn{
+
+  from{
+    opacity:0;
+    filter:
+    brightness(.35)
+    contrast(.9)
+    saturate(.75)
+    blur(5px);
+  }
+
+  to{
+    opacity:1;
+    filter:
+    brightness(.62)
+    contrast(.92)
+    saturate(.84)
+    blur(0);
+  }
+
 }
 
-.hero-sub{
-    font-size:15px;
-    line-height:2.1;
-}
+@keyframes aboutBreath{
 
-.timeline{
-    margin-top:55px;
-    font-size:13px;
-}
+  from{
+    transform:scale(1.04);
+  }
 
-.timeline span{
-    font-size:15px;
-}
-
-.about-section{
-    padding:95px 22px;
-}
-
-.about-title{
-    font-size:31px;
-}
-
-.about-text{
-    font-size:15px;
-    line-height:2.3;
-}
+  to{
+    transform:scale(1.075);
+  }
 
 }
 
@@ -261,101 +372,88 @@ body{
 
 <body>
 
-<!-- 第一頁 -->
+<!-- 第一頁｜首頁 -->
 
-<section class="hero">
+<section class="hero" id="top">
 
-    <img src="hero.jpg" alt="蘇純">
+  <img
+    class="hero-image"
+    src="./hero.jpg"
+    alt="蘇純"
+  >
 
-    <div class="hero-overlay"></div>
+  <div class="hero-content">
 
-    <div class="hero-content">
+    <div class="brand">
+      《微光・之上》<br>
+      蘇純｜無限旅程
+    </div>
 
-        <div class="hero-top">
-            《微光・之上》
-        </div>
+    <div class="slogan">
+      值得，<br>
+      所以不將就。
+    </div>
 
-        <div class="hero-name">
-            蘇純｜無限旅程
-        </div>
+    <div class="sub">
+      感謝深深，蘇純上線。
+    </div>
 
-        <div class="hero-title">
-            值得，<br>
-            所以不將就。
-        </div>
+    <div class="timeline">
+      2019.深深｜2026.蘇純
 
-        <div class="hero-sub">
-            感謝深深，蘇純上線。
-        </div>
-
-        <div class="timeline">
-            2019.深深｜2026.蘇純
-            <span>It’s all my life</span>
-        </div>
-
+      <span>
+        It’s all my life
+      </span>
     </div>
 
     <div class="scroll">
-        ↓
+      ↓
     </div>
+
+  </div>
 
 </section>
 
-<!-- 第二頁 -->
+<!-- 第二頁｜微炙蘇純 -->
 
-<section class="about-section">
+<section class="about" id="suchun">
 
-    <div class="about-wrap">
+  <img
+    class="about-image"
+    src="./kept-01.jpg"
+    alt="微炙蘇純"
+  >
 
-        <div class="about-mini">
-            微炙蘇純
-        </div>
+  <div class="about-content">
 
-        <div class="about-main-image">
-            <img src="kept-01.jpg" alt="蘇純">
-        </div>
-
-        <div class="about-title">
-            曾經以為，<br>
-            這圈子很簡單。
-        </div>
-
-        <div class="about-text">
-            後來才明白，<br>
-            深的從來不是圈子，<br>
-            而是人性。<br><br>
-
-            感謝曾經的深深，<br>
-            才有現在的蘇純。<br><br>
-
-            自己的世界，<br>
-            照自己的方式生活。
-        </div>
-
-        <div class="about-gallery">
-
-            <div class="gallery-item">
-                <img src="kept-01.jpg" alt="">
-            </div>
-
-            <div class="gallery-item">
-                <img src="kept-02.jpg" alt="">
-            </div>
-
-            <div class="gallery-item">
-                <img src="kept-03.jpg" alt="">
-            </div>
-
-            <div class="gallery-item">
-                <img src="kept-04.jpg" alt="">
-            </div>
-
-        </div>
-
+    <div class="about-tag">
+      微炙蘇純
     </div>
+
+    <div class="about-line one">
+      曾經以為，<br>
+      這圈子很簡單。
+    </div>
+
+    <div class="about-line two">
+      後來才明白，<br>
+      深的從來不是圈子，<br>
+      而是人性。
+    </div>
+
+    <div class="about-line three">
+      感謝曾經的深深，<br>
+      才有現在的蘇純。
+    </div>
+
+    <div class="about-line four">
+      自己的世界，<br>
+      照自己的方式生活。
+    </div>
+
+  </div>
 
 </section>
 
 </body>
 </html>
-
