@@ -1,0 +1,287 @@
+下面整份覆蓋 index.html。圖片檔名請先確認：
+
+hero.jpg
+kept-01.jpg
+kept-02.jpg
+kept-03.jpg
+kept-04.jpg
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微光・之上｜蘇純</title>
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#050505;
+  color:#ece3d7;
+  overflow-x:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Serif TC",serif;
+}
+.section{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  background:#050505;
+}
+.full-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  filter:brightness(.58) contrast(.92) saturate(.82) blur(4px);
+  transform:scale(1.04);
+  animation:photoIn 6s ease forwards, photoBreath 18s ease-in-out 6s infinite alternate;
+}
+.dark-layer{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.48),rgba(0,0,0,.18));
+  z-index:1;
+}
+.content{
+  position:relative;
+  z-index:2;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:0 8vw 12vh;
+  max-width:440px;
+}
+.soft-text{
+  opacity:0;
+  filter:blur(14px);
+  animation:fadeIn 5s cubic-bezier(.22,.61,.36,1) forwards;
+}
+.kicker{
+  font-size:14px;
+  line-height:2.2;
+  letter-spacing:.28em;
+  color:rgba(236,227,215,.48);
+  margin-bottom:52px;
+}
+.title{
+  font-size:30px;
+  line-height:1.72;
+  letter-spacing:.08em;
+  font-weight:200;
+  color:rgba(236,227,215,.84);
+  margin-bottom:46px;
+}
+.text{
+  font-size:17px;
+  line-height:2.45;
+  letter-spacing:.12em;
+  font-weight:200;
+  color:rgba(236,227,215,.58);
+  margin-bottom:54px;
+}
+.text:last-child{margin-bottom:0}
+.spacer{
+  min-height:70svh;
+  background:#050505;
+  display:flex;
+  align-items:center;
+  padding:0 9vw;
+}
+.spacer p{
+  font-size:19px;
+  line-height:2.6;
+  letter-spacing:.12em;
+  color:rgba(236,227,215,.56);
+  font-weight:200;
+  opacity:0;
+  filter:blur(14px);
+  animation:fadeIn 5s ease forwards;
+}
+.card-section{
+  background:#050505;
+  padding:16vh 8vw;
+}
+.card{
+  border:1px solid rgba(236,227,215,.12);
+  padding:42px 28px;
+  margin-bottom:32px;
+  background:rgba(255,255,255,.015);
+}
+.card h3{
+  font-size:21px;
+  line-height:1.8;
+  letter-spacing:.1em;
+  font-weight:200;
+  color:rgba(236,227,215,.82);
+  margin-bottom:18px;
+}
+.card .price{
+  font-size:16px;
+  letter-spacing:.12em;
+  color:rgba(236,227,215,.5);
+  margin-bottom:24px;
+}
+.card p{
+  font-size:15px;
+  line-height:2.2;
+  letter-spacing:.08em;
+  color:rgba(236,227,215,.56);
+}
+.gallery-img{
+  width:100%;
+  display:block;
+  margin:18vh 0;
+  filter:brightness(.78) contrast(.94) saturate(.86);
+}
+.footer{
+  min-height:100svh;
+  background:#050505;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 9vw;
+}
+.footer p{
+  font-size:17px;
+  line-height:2.6;
+  letter-spacing:.12em;
+  color:rgba(236,227,215,.55);
+  margin-bottom:54px;
+}
+.btn{
+  display:inline-block;
+  color:rgba(236,227,215,.7);
+  text-decoration:none;
+  border:1px solid rgba(236,227,215,.18);
+  padding:15px 28px;
+  border-radius:999px;
+  font-size:14px;
+  letter-spacing:.18em;
+}
+@keyframes fadeIn{
+  from{opacity:0;filter:blur(14px)}
+  to{opacity:1;filter:blur(0)}
+}
+@keyframes photoIn{
+  from{opacity:0;filter:brightness(.3) blur(6px)}
+  to{opacity:1;filter:brightness(.58) contrast(.92) saturate(.82) blur(0)}
+}
+@keyframes photoBreath{
+  from{transform:scale(1.04) translateY(8px)}
+  to{transform:scale(1.08) translateY(-8px)}
+}
+.delay1{animation-delay:1.8s}
+.delay2{animation-delay:4.2s}
+.delay3{animation-delay:6.8s}
+.delay4{animation-delay:9.2s}
+@media(max-width:768px){
+  .title{font-size:28px}
+  .text{font-size:16px}
+}
+</style>
+</head>
+<body>
+<section class="section">
+  <img class="full-img" src="./hero.jpg" alt="蘇純">
+  <div class="dark-layer"></div>
+  <div class="content">
+    <div class="kicker soft-text delay1">《微光・之上》<br>蘇純｜無限旅程</div>
+    <div class="title soft-text delay2">值得，<br>所以不將就。</div>
+    <div class="text soft-text delay3">感謝深深，蘇純上線。</div>
+    <div class="text soft-text delay4">2019.深深｜2026.蘇純<br>It’s all my life</div>
+  </div>
+</section>
+<section class="section">
+  <img class="full-img" src="./kept-01.jpg" alt="微炙蘇純">
+  <div class="dark-layer"></div>
+  <div class="content">
+    <div class="kicker soft-text delay1">微炙蘇純</div>
+    <div class="text soft-text delay2">曾經以為，<br>這圈子很簡單。</div>
+    <div class="text soft-text delay3">後來才明白，<br>深的從來不是圈子，<br>而是人性。</div>
+    <div class="text soft-text delay4">感謝曾經的深深，<br>才有現在的蘇純。</div>
+  </div>
+</section>
+<section class="spacer">
+  <p>自己的世界，<br>照自己的方式生活。</p>
+</section>
+<section class="spacer">
+  <p>不迎合。<br>不虛假。<br>但很真。</p>
+</section>
+<section class="section">
+  <img class="full-img" src="./kept-02.jpg" alt="蘇純">
+  <div class="dark-layer"></div>
+  <div class="content">
+    <div class="kicker soft-text delay1">關於蘇純</div>
+    <div class="text soft-text delay2">153 / 40 / 32B / 45+</div>
+    <div class="text soft-text delay3">骨感偏瘦、敏感型。</div>
+    <div class="text soft-text delay4">沒有固定 SOP 流程，<br>不刻意迎合，<br>也不虛假奉陪。</div>
+  </div>
+</section>
+<section class="spacer">
+  <p>感覺是雙向的，<br>相處也是。<br><br>適合的人，<br>自然會懂。</p>
+</section>
+<section class="spacer">
+  <p>感受、信任跟尊重，<br>一直都很重要。</p>
+</section>
+<section class="spacer">
+  <p>圈裡遊走，<br>界線要有。</p>
+</section>
+<section class="spacer">
+  <p>人來，心來。<br>人走，心走。</p>
+</section>
+<section class="card-section">
+  <div class="kicker">微光旅程</div>
+  <div class="card">
+    <h3>壹｜微光・初見</h3>
+    <div class="price">2H｜5000</div>
+    <p>舒服認識彼此的開始。</p>
+  </div>
+  <div class="card">
+    <h3>貳｜微光・稍炙</h3>
+    <div class="price">3H｜6200</div>
+    <p>感覺對了，<br>很多事自然就有了。</p>
+  </div>
+  <div class="card">
+    <h3>參｜微光・微醺</h3>
+    <div class="price">9H｜13888</div>
+    <p>放鬆、洩壓，<br>享受自在舒服的過程。</p>
+  </div>
+  <div class="card">
+    <h3>肆｜微光・之上</h3>
+    <div class="price">14H｜19999</div>
+    <p>客製專屬旅程，<br>享受更完整的微光體驗。</p>
+  </div>
+</section>
+<img class="gallery-img" src="./kept-03.jpg" alt="蘇純">
+<section class="spacer">
+  <p>《相幹》<br><br>要的是舒服、享受過程。<br><br>滿足身體，<br>也滿足心理。</p>
+</section>
+<section class="spacer">
+  <p>比起說什麼，<br><br>做什麼、給什麼，<br><br>才是旅程的重點。</p>
+</section>
+<img class="gallery-img" src="./kept-04.jpg" alt="蘇純">
+<section class="card-section">
+  <div class="kicker">旅程導覽</div>
+  <div class="card">
+    <h3>基本互動</h3>
+    <p>共浴｜情慾式放鬆｜無套吹<br>69 式｜清槍｜深喉</p>
+  </div>
+  <div class="card">
+    <h3>進階旅程</h3>
+    <p>部分深度互動與私藏旅程，<br>確認預約後另提供內容。</p>
+  </div>
+</section>
+<section class="footer">
+  <p>預約請先提供：<br><br>日期、時間、方案、Line 暱稱。</p>
+  <p>無固定班表，<br>請盡量提供兩個方便時段。</p>
+  <p>Line 文字沒有溫度，<br>只針對重要內容回覆。</p>
+  <p>感覺跟尊重是互相的，<br>自然相處，旅程才會舒服。</p>
+  <a class="btn" href="https://lin.ee/U3f5HcK">加入 LINE</a>
+</section>
+</body>
+</html>
