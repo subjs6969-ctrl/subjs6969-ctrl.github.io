@@ -294,3 +294,164 @@ body{
 
 </body>
 </html>
+<!-- 第二頁｜微炙蘇純 -->
+<section class="about-section">
+
+  <div class="about-wrap">
+
+    <!-- 左上小標 -->
+    <div class="about-mini">
+      微炙蘇純
+    </div>
+
+    <!-- 主照片 -->
+    <div class="about-main-image">
+      <img src="kept-01.jepg" alt="蘇純">
+    </div>
+
+    <!-- 文字區 -->
+    <div class="about-content">
+
+      <div class="about-title">
+        曾經以為，<br>
+        這圈子很簡單。
+      </div>
+
+      <div class="about-text">
+        後來才明白，<br>
+        深的從來不是圈子，<br>
+        而是人性。<br><br>
+
+        感謝曾經的深深，<br>
+        才有現在的蘇純。<br><br>
+
+        自己的世界，<br>
+        照自己的方式生活。
+      </div>
+
+    </div>
+
+    <!-- 四張生活照 -->
+    <div class="about-gallery">
+
+      <div class="gallery-item">
+        <img src="kept-01.jepg" alt="">
+      </div>
+
+      <div class="gallery-item">
+        <img src="kept-02.jpg" alt="">
+      </div>
+
+      <div class="gallery-item">
+        <img src="kept-03.jpg" alt="">
+      </div>
+
+      <div class="gallery-item">
+        <img src="kept-04.jpg" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+.about-section{
+    width:100%;
+    background:#060606;
+    padding:120px 24px;
+    color:#f3eee8;
+}
+
+.about-wrap{
+    width:100%;
+    max-width:760px;
+    margin:auto;
+}
+
+.about-mini{
+    font-size:13px;
+    letter-spacing:4px;
+    color:rgba(255,255,255,.45);
+    margin-bottom:40px;
+}
+
+.about-main-image{
+    width:100%;
+    margin-bottom:50px;
+}
+
+.about-main-image img{
+    width:100%;
+    display:block;
+    border-radius:2px;
+}
+
+.about-content{
+    margin-bottom:80px;
+}
+
+.about-title{
+    font-size:40px;
+    line-height:1.7;
+    font-weight:200;
+    letter-spacing:3px;
+    margin-bottom:45px;
+    color:#f5efe8;
+}
+
+.about-text{
+    font-size:17px;
+    line-height:2.4;
+    letter-spacing:2px;
+    color:rgba(255,255,255,.72);
+    font-weight:300;
+}
+
+.about-gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    background:#111;
+}
+
+.gallery-item img{
+    width:100%;
+    display:block;
+    transition:1.2s;
+}
+
+.gallery-item img:hover{
+    transform:scale(1.03);
+    opacity:.92;
+}
+
+@media(max-width:768px){
+
+    .about-section{
+        padding:90px 22px;
+    }
+
+    .about-title{
+        font-size:32px;
+        line-height:1.8;
+    }
+
+    .about-text{
+        font-size:15px;
+        line-height:2.3;
+    }
+
+    .about-gallery{
+        gap:10px;
+    }
+
+}
+
+</style>
