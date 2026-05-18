@@ -31,7 +31,7 @@ body{
   position:relative;
   display:flex;
   align-items:flex-end;
-  padding:0 7vw 11vh;
+  padding:0 7vw 12vh;
   overflow:hidden;
   background:#050505;
 }
@@ -42,9 +42,16 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:74% 86%;
-  filter:brightness(.58) contrast(.88) saturate(.82);
-  transform:scale(1);
+
+  /* 新 Hero 圖：人物往右、微放大 */
+  object-position:82% 76%;
+
+  filter:
+    brightness(.64)
+    contrast(.9)
+    saturate(.84);
+
+  transform:scale(1.06);
   animation:heroBreath 6s ease-in-out infinite alternate;
 }
 
@@ -55,9 +62,9 @@ body{
   background:
     linear-gradient(
       to top,
-      rgba(0,0,0,.74) 0%,
-      rgba(0,0,0,.48) 46%,
-      rgba(0,0,0,.26) 100%
+      rgba(0,0,0,.78) 0%,
+      rgba(0,0,0,.50) 45%,
+      rgba(0,0,0,.22) 100%
     );
   z-index:1;
 }
@@ -67,7 +74,6 @@ body{
   z-index:2;
   width:100%;
   max-width:420px;
-  transform:scale(1);
   animation:contentBreath 6s ease-in-out infinite alternate;
 }
 
@@ -76,56 +82,60 @@ body{
 .sub,
 .scroll{
   opacity:0;
-  filter:blur(12px);
-  transform:scale(.985);
-  animation:fadeInDeep 2.6s ease forwards;
+  filter:blur(16px);
+  transform:scale(.97);
+  animation:fadeInDeep 5.2s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
 .brand{
   font-size:15px;
-  line-height:2.15;
+  line-height:2.12;
   letter-spacing:.28em;
-  color:rgba(236,227,215,.78);
-  margin-bottom:42px;
-  animation-delay:1.8s;
+  color:rgba(236,227,215,.72);
+  margin-bottom:44px;
+  animation-delay:2s;
 }
 
 .slogan{
-  max-width:260px;
-  font-size:26px;
-  line-height:1.55;
-  letter-spacing:.08em;
+  max-width:300px;
+  font-size:28px;
+  line-height:1.52;
+  letter-spacing:.12em;
   font-weight:200;
-  color:rgba(236,227,215,.78);
-  margin-bottom:34px;
-  animation-delay:3.4s;
+  color:rgba(236,227,215,.72);
+  margin-bottom:38px;
+  animation-delay:4.2s;
 }
 
 .sub{
   font-size:14px;
   line-height:2;
   letter-spacing:.14em;
-  color:rgba(236,227,215,.62);
-  animation-delay:5s;
+  color:rgba(236,227,215,.58);
+  animation-delay:6.4s;
 }
 
 .scroll{
-  margin-top:60px;
+  margin-top:66px;
   font-size:18px;
-  color:rgba(236,227,215,.34);
+  color:rgba(236,227,215,.28);
   animation:
-    fadeInDeep 2.6s ease forwards 6.8s,
-    arrowBreath 3.2s ease-in-out infinite 9s;
+    fadeInDeep 5.2s cubic-bezier(.22,.61,.36,1) forwards 8.6s,
+    arrowBreath 3.2s ease-in-out infinite 12s;
 }
 
 @keyframes fadeInDeep{
-  from{
+  0%{
     opacity:0;
-    filter:blur(12px);
-    transform:scale(.985);
+    filter:blur(18px);
+    transform:scale(.965);
   }
 
-  to{
+  55%{
+    opacity:.22;
+  }
+
+  100%{
     opacity:1;
     filter:blur(0);
     transform:scale(1);
@@ -134,11 +144,11 @@ body{
 
 @keyframes heroBreath{
   from{
-    transform:scale(1);
+    transform:scale(1.06);
   }
 
   to{
-    transform:scale(1.035);
+    transform:scale(1.095);
   }
 }
 
@@ -148,19 +158,19 @@ body{
   }
 
   to{
-    transform:scale(1.018);
+    transform:scale(1.012);
   }
 }
 
 @keyframes arrowBreath{
   0%,100%{
-    opacity:.28;
+    opacity:.24;
     transform:translateY(0);
   }
 
   50%{
-    opacity:.68;
-    transform:translateY(8px);
+    opacity:.58;
+    transform:translateY(7px);
   }
 }
 </style>
@@ -169,7 +179,7 @@ body{
 <body>
 
 <section class="hero" id="top">
-  <img class="hero-image" src="./hero.jpeg" alt="蘇純">
+  <img class="hero-image" src="./hero.jpg" alt="蘇純">
 
   <div class="hero-content">
     <div class="brand">
@@ -178,8 +188,8 @@ body{
     </div>
 
     <div class="slogan">
-      值得，<br>
-      所以不將就。
+      值得，所以<br>
+      不將就。
     </div>
 
     <div class="sub">
@@ -194,4 +204,3 @@ body{
 
 </body>
 </html>
-
