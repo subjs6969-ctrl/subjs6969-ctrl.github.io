@@ -1,315 +1,89 @@
 
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0A0A0A">
-<meta name="description" content="微光・之上｜蘇純｜無限旅程">
-<meta property="og:title" content="微光・之上｜蘇純">
-<meta property="og:description" content="值得，所以不將就。">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="zh_TW">
-<title>微光・之上｜蘇純</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
-<style>
-:root{--black:#0A0A0A;--panel:#1C1C1E;--cream:#F4EBE1;--text:#E5E5EA;--muted:#AEAEB2;--deep:#636366;--line:rgba(244,235,225,.14);--red:#FF453A;--linegreen:#06C755}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth;background:var(--black)}
-body{background:var(--black);color:var(--muted);font-family:'Noto Sans TC',sans-serif;font-weight:300;line-height:1.9;letter-spacing:.05em;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 14%,rgba(244,235,225,.08),transparent 34%),linear-gradient(to bottom,rgba(10,10,10,.12),rgba(10,10,10,.92))}
-h1,h2,h3,.serif{font-family:'Noto Serif TC',serif;font-weight:200;color:var(--cream);letter-spacing:.16em}
-h1{font-size:clamp(2.1rem,8vw,3.3rem);line-height:1.35}
-h2{font-size:1.42rem;margin-bottom:28px}
-h3{font-size:1.08rem}
-p{margin-bottom:18px}
-a,button,input,textarea,select{font:inherit}
-button{border:0}
-.scene-bg{position:fixed;inset:0;z-index:-3;background:var(--black);overflow:hidden}
-.scene-bg img{width:100%;height:100%;object-fit:cover;opacity:.28;filter:blur(18px) saturate(.86) contrast(.9);transform:scale(1.08);transition:opacity 3s ease,filter 4s ease,transform 5.5s ease}
-.scene-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.035),transparent 34%,rgba(255,255,255,.02) 70%,transparent),rgba(10,10,10,.42);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-body.clear .scene-bg img{opacity:.42;filter:blur(4px) saturate(.96) contrast(.96);transform:scale(1.018)}
-body.soft .scene-bg img{opacity:.34;filter:blur(12px) saturate(.88) contrast(.9);transform:scale(1.055)}
-body.dark .scene-bg img{opacity:.08;filter:blur(24px) saturate(.76) contrast(.78);transform:scale(1.1)}
-.hero-video{position:fixed;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:0;filter:blur(12px) saturate(.88) contrast(.88);transform:scale(1.06);transition:opacity 2.6s ease,filter 3.2s ease,transform 4s ease;pointer-events:none}
-body.hero-active .hero-video{opacity:.34;filter:blur(5px) saturate(.92) contrast(.92);transform:scale(1.025)}
-.page{position:relative;z-index:1}
-section{min-height:100svh;padding:58px 24px;display:flex;align-items:center;position:relative}
-.inner{width:100%;max-width:560px;margin:0 auto}
-.center{text-align:center}.light{color:var(--cream)}.muted{color:var(--muted)}.deep{color:var(--deep)}.red{color:var(--red)}.small{font-size:.84rem}.spacer{height:36px}
-.reveal{opacity:0;transform:translateY(32px);filter:blur(14px);transition:opacity 1.9s ease,transform 2.2s ease,filter 2.4s ease}
-.reveal.in{opacity:1;transform:translateY(0);filter:blur(0)}
-.float-photo{width:78%;max-width:340px;margin:38px 0 0 auto;border-radius:2px;overflow:hidden;background:rgba(244,235,225,.06);border:1px solid rgba(244,235,225,.08);box-shadow:0 18px 48px rgba(0,0,0,.28)}
-.float-photo img{display:block;width:100%;height:auto;opacity:.82;filter:blur(.6px) saturate(.92) contrast(.95)}
-#hero .inner{min-height:calc(100svh - 116px);display:flex;flex-direction:column;justify-content:space-between}
-.hero-sub{margin-top:10px;color:var(--muted);letter-spacing:.18em}
-.hero-quote{margin:0 0 28px;color:var(--cream)}
-.hero-nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.hero-nav a{color:var(--cream);text-decoration:none;border:1px solid rgba(244,235,225,.22);background:rgba(10,10,10,.42);border-radius:999px;padding:8px 14px;font-size:.82rem}
-.footer-note{color:var(--deep);font-size:.75rem;letter-spacing:.12em}
-.specs{color:var(--cream);letter-spacing:.22em;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:28px}
-.breath{background:rgba(28,28,30,.32)}.breath p{margin-bottom:30px}.no-photo{background:rgba(10,10,10,.72)}
-.journey-intro{margin-bottom:30px}
-.flip-list{display:grid;gap:26px;margin-top:30px}
-.flip-card{position:relative;height:310px;perspective:1200px}
-.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1.25s ease}
-.flip-card.in .flip-inner{transform:rotateY(180deg)}
-.flip-face{position:absolute;inset:0;overflow:hidden;border-radius:4px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(244,235,225,.12);background:rgba(28,28,30,.72)}
-.flip-front img{width:100%;height:100%;object-fit:cover;opacity:.82;filter:blur(1px) saturate(.9) contrast(.92);transform:scale(1.02)}
-.flip-front:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,rgba(10,10,10,.82)),rgba(10,10,10,.12)}
-.flip-index{position:absolute;left:18px;bottom:16px;z-index:1;font-family:'Noto Serif TC',serif;color:var(--cream);font-size:1.05rem;letter-spacing:.12em}
-.flip-back{transform:rotateY(180deg);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 50% 12%,rgba(244,235,225,.08),transparent 42%),rgba(18,18,19,.96)}
-.flip-title{font-family:'Noto Serif TC',serif;color:var(--cream);font-size:1.22rem;letter-spacing:.12em;margin-bottom:16px}
-.flip-time{color:var(--cream);font-size:.92rem;margin-bottom:18px;letter-spacing:.12em}
-.flip-desc{color:var(--muted);font-size:.95rem}
-.fragment-stream{display:grid;gap:44px;margin-top:32px}
-.fragment{display:grid;gap:14px}
-.fragment.media-small{width:82%}
-.fragment img,.fragment video{width:100%;display:block;border-radius:3px;border:1px solid rgba(244,235,225,.08);background:rgba(244,235,225,.05);box-shadow:0 18px 44px rgba(0,0,0,.26)}
-.fragment video{max-height:480px;object-fit:cover;opacity:.86;filter:saturate(.9) contrast(.94)}
-.caption{color:var(--deep);font-size:.82rem;letter-spacing:.12em;padding-left:4px}
-.notice{border-left:1px solid rgba(244,235,225,.18);padding-left:18px}.notice p{margin-bottom:24px}
-.form-group{margin-bottom:18px}
-label{display:block;color:var(--cream);font-size:.84rem;margin-bottom:8px}
-input,textarea,select{width:100%;background:rgba(28,28,30,.86);border:1px solid rgba(244,235,225,.16);color:var(--text);border-radius:10px;padding:13px 12px;outline:none}
-input:focus,textarea:focus,select:focus{border-color:rgba(244,235,225,.42);box-shadow:0 0 0 3px rgba(244,235,225,.06)}
-select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 12px) 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:36px}
-.final-warning{border-top:1px solid var(--line);margin-top:28px;padding-top:20px;text-align:center;font-size:.94rem;color:var(--red);line-height:1.7}
-.actions{display:grid;gap:12px;margin-top:24px}
-.btn{width:100%;display:block;text-align:center;text-decoration:none;cursor:pointer;border-radius:12px;padding:15px;letter-spacing:.12em;font-family:'Noto Serif TC',serif;font-size:.98rem}
-.btn-copy{background:linear-gradient(135deg,rgba(28,28,30,.92),rgba(10,10,10,.92));color:var(--cream);border:1px solid rgba(244,235,225,.34)}
-.btn-line{background:var(--linegreen);color:#fff;border:1px solid var(--linegreen)}
-.ending{min-height:64svh;padding-top:80px;padding-bottom:80px}.ending p{margin-bottom:24px}
-.popup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;z-index:999;background:rgba(0,0,0,.86);opacity:0;pointer-events:none;transition:opacity .35s ease}
-.popup.active{opacity:1;pointer-events:auto}
-.popup-box{width:100%;max-width:360px;background:var(--panel);border:1px solid rgba(244,235,225,.72);border-radius:18px;padding:28px 22px;text-align:center;box-shadow:0 0 36px rgba(244,235,225,.08)}
-.copy-box{display:none;width:100%;min-height:140px;margin-top:18px;background:var(--black);color:var(--text);border:1px solid rgba(244,235,225,.14);border-radius:10px;padding:12px;font-size:.82rem;line-height:1.6}
-.copy-box.show{display:block}
-.close{margin-top:16px;background:transparent;color:var(--muted);cursor:pointer;font-size:.82rem}
-@media(min-width:768px){section{padding:72px 24px}.actions{grid-template-columns:1fr 1fr}.flip-list{grid-template-columns:repeat(2,minmax(0,1fr))}.fragment.media-small{width:62%}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none;filter:none}.flip-card .flip-inner{transform:rotateY(180deg)}}
-</style>
-</head>
-<body class="soft">
-<div class="scene-bg"><img id="sceneImage" src="hero.jpg" alt=""></div>
-<video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="hero.jpg"><source src="hero-video.mp4" type="video/mp4"></video>
+《微光・之上》
+蘇純｜無限旅程
+值得，所以不將就。
+微炙蘇純
+微光旅程
+預約
+感謝深深，蘇純上線。
+【微炙蘇純】
+曾經以為， 這圈子很簡單。
+後來才明白， 深的從來不是圈子， 而是人性。
+感謝曾經的深深， 才有現在的蘇純。
 
-<main class="page">
-<section id="hero" data-img="hero.jpg" data-mode="clear" data-hero="true">
-  <div class="inner center">
-    <div class="reveal"><h1>《微光・之上》</h1><div class="hero-sub">蘇純｜無限旅程</div></div>
-    <div class="reveal"><p class="hero-quote serif">值得，所以不將就。</p><nav class="hero-nav"><a href="#micro">微炙蘇純</a><a href="#journey">微光旅程</a><a href="#booking">預約</a></nav></div>
-    <div class="footer-note reveal">感謝深深，蘇純上線。</div>
-  </div>
-</section>
+自己的世界， 照自己的方式生活。
+【關於蘇純】
+153 / 40 / 32B / 45+
+骨感偏瘦、敏感型。
+沒有固定 SOP 流程， 不刻意迎合， 也不虛假奉陪。
+感覺是雙向的， 相處也是。
+適合的人， 自然會懂。
+【微光場域】
+感受、信任跟尊重， 一直都很重要。
+雙向自然互動， 相處舒服， 彼此才會開心。
+《相幹》
+要的是舒服、享受過程。
+滿足身體， 也滿足心理。
+比起說什麼，
+做什麼、給什麼，
+才是旅程的重點。
 
-<section id="micro" data-img="life.jpg" data-mode="clear">
-  <div class="inner reveal">
-    <h2>【微炙蘇純】</h2>
-    <p>曾經以為，<br>這圈子很簡單。</p>
-    <p>後來才明白，<br>深的從來不是圈子，<br>而是人性。</p>
-    <p>感謝曾經的深深，<br>才有現在的蘇純。</p>
-    <div class="float-photo"><img src="life.jpg" alt="蘇純生活感照片" loading="lazy"></div>
-    <div class="spacer"></div>
-    <p class="light">自己的世界，<br>照自己的方式生活。</p>
-  </div>
-</section>
+無限旅程，
+只留給重視微光旅程的人。
+【微光旅程】
+不是制式選項， 而是依照感覺慢慢進入。
+壹｜微光・初見
+壹｜微光・初見
+2H
+舒服認識彼此的開始。
+貳｜微光・稍炙
+貳｜微光・稍炙
+3H
+感覺對了，很多事自然就有了。
+參｜微光・微醺
+參｜微光・微醺
+9H
+放鬆、洩壓，享受自在舒服的過程。
+肆｜微光・之上
+肆｜微光・之上
+14H
+客製專屬旅程，享受更完整的微光體驗。
+【微光片段】
+有些片段， 不用說得太滿。
+有時候，只是想安靜一下。
 
-<section id="about" data-img="life.jpg" data-mode="soft">
-  <div class="inner reveal">
-    <h2>【關於蘇純】</h2>
-    <div class="specs">153 / 40 / 32B / 45+</div>
-    <p>骨感偏瘦、敏感型。</p>
-    <p>沒有固定 SOP 流程，<br>不刻意迎合，<br>也不虛假奉陪。</p>
-    <p>感覺是雙向的，<br>相處也是。</p>
-    <p class="light">適合的人，<br>自然會懂。</p>
-  </div>
-</section>
+人的存在感，比展示更重要。
+光線、空間、距離。
 
-<section id="field" class="breath" data-img="" data-mode="dark">
-  <div class="inner center reveal">
-    <h2>【微光場域】</h2>
-    <p class="light">感受、信任跟尊重，<br>一直都很重要。</p>
-    <p>雙向自然互動，<br>相處舒服，<br>彼此才會開心。</p>
-  </div>
-</section>
-
-<section id="intimacy" class="no-photo" data-img="" data-mode="dark">
-  <div class="inner reveal">
-    <h2>《相幹》</h2>
-    <p>要的是舒服、享受過程。</p>
-    <p>滿足身體，<br>也滿足心理。</p>
-    <p class="deep">比起說什麼，</p>
-    <p class="light">做什麼、給什麼，</p>
-    <p>才是旅程的重點。</p>
-    <div class="spacer"></div>
-    <p class="light">無限旅程，</p>
-    <p>只留給重視微光旅程的人。</p>
-  </div>
-</section>
-
-<section id="journey" data-img="journey.jpg" data-mode="clear">
-  <div class="inner reveal">
-    <h2>【微光旅程】</h2>
-    <p class="journey-intro">不是制式選項，<br>而是依照感覺慢慢進入。</p>
-    <div class="flip-list">
-      <article class="flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="room01.jpg" alt="微光初見場域"><div class="flip-index">壹｜微光・初見</div></div><div class="flip-face flip-back"><div class="flip-title">壹｜微光・初見</div><div class="flip-time">2H</div><div class="flip-desc">舒服認識彼此的開始。</div></div></div></article>
-      <article class="flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="room01.jpg" alt="微光稍炙場域"><div class="flip-index">貳｜微光・稍炙</div></div><div class="flip-face flip-back"><div class="flip-title">貳｜微光・稍炙</div><div class="flip-time">3H</div><div class="flip-desc">感覺對了，很多事自然就有了。</div></div></div></article>
-      <article class="flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="room01.jpg" alt="微光微醺場域"><div class="flip-index">參｜微光・微醺</div></div><div class="flip-face flip-back"><div class="flip-title">參｜微光・微醺</div><div class="flip-time">9H</div><div class="flip-desc">放鬆、洩壓，享受自在舒服的過程。</div></div></div></article>
-      <article class="flip-card"><div class="flip-inner"><div class="flip-face flip-front"><img src="room01.jpg" alt="微光之上場域"><div class="flip-index">肆｜微光・之上</div></div><div class="flip-face flip-back"><div class="flip-title">肆｜微光・之上</div><div class="flip-time">14H</div><div class="flip-desc">客製專屬旅程，享受更完整的微光體驗。</div></div></div></article>
-    </div>
-  </div>
-</section>
-
-<section id="fragments" data-img="fragment01.jpg" data-mode="soft">
-  <div class="inner reveal">
-    <h2>【微光片段】</h2>
-    <p>有些片段，<br>不用說得太滿。</p>
-    <div class="fragment-stream">
-      <div class="fragment media-small"><img src="fragment01.jpg" alt="微光片段照片"><div class="caption">有時候，只是想安靜一下。</div></div>
-      <div class="fragment"><video autoplay muted loop playsinline preload="metadata" poster="life.jpg"><source src="mood01.mp4" type="video/mp4"></video><div class="caption">人的存在感，比展示更重要。</div></div>
-      <div class="fragment"><video autoplay muted loop playsinline preload="metadata" poster="room01.jpg"><source src="room-tour01.mp4" type="video/mp4"></video><div class="caption">被好好安排過的場域，才適合慢下來。</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="notice" data-img="" data-mode="dark">
-  <div class="inner reveal">
-    <h2>【預約注意事項】</h2>
-    <div class="notice">
-      <p class="red">不喜歡臨時亂改、放鳥。</p>
-      <p>Line 文字沒有溫度，<br>只針對重要內容回覆。</p>
-      <p>有特殊需求、個人癖好，<br>可以提前提出。</p>
-      <p class="light">感覺跟尊重是互相的。</p>
-    </div>
-  </div>
-</section>
-
-<section id="booking" data-img="hero.jpg" data-mode="soft">
-  <div class="inner reveal">
-    <h2>【預約單】</h2>
-    <p class="muted small" style="margin-top:-10px;margin-bottom:24px;">請在網頁上直接填寫以下誠意核對資料：</p>
-    <div class="form-group"><label for="f1">1｜LINE 稱號</label><input type="text" id="f1" autocomplete="nickname" placeholder="請輸入您的 LINE 暱稱"></div>
-    <div class="form-group"><label for="f2">2｜預約日期與時段（請提供兩個方便時段）</label><textarea id="f2" rows="3" placeholder="例：5/20 14:00 或 5/21 16:00"></textarea></div>
-    <div class="form-group"><label for="f3">3｜選擇方案</label><select id="f3"><option value="">-- 請選擇方案 --</option><option value="壹｜微光・初見 (2H)">壹｜微光・初見 (2H)</option><option value="貳｜微光・稍炙 (3H)">貳｜微光・稍炙 (3H)</option><option value="參｜微光・微醺 (9H)">參｜微光・微醺 (9H)</option><option value="肆｜微光・之上 (14H)">肆｜微光・之上 (14H)</option></select></div>
-    <div class="form-group"><label for="f4">4｜是否有進階旅程需求</label><select id="f4"><option value="無特別需求">無</option><option value="有進階旅程需求（確認預約後另供內容）">有（確認預約後另提供內容）</option></select></div>
-    <div class="form-group"><label for="f5">5｜特殊需求（可提前提出）</label><input type="text" id="f5" placeholder="無則填寫無" value="無"></div>
-    <div class="form-group"><label for="f6">6｜菸味接受度</label><select id="f6"><option value="不介意（我知道蘇純抽菸）">不介意（蘇純是老煙槍）</option><option value="有抽菸">我有抽菸</option><option value="介意（請提前告知）">介意（請提前告知）</option></select></div>
-    <div class="form-group"><label for="f7">7｜初次核對（請附上來源首頁截圖）</label><select id="f7"><option value="已截圖，加入 LINE 後立刻附上">我已做好首頁截圖，加入後會立刻傳送</option></select></div>
-    <div class="form-group"><label for="f8">8Lock｜訂金確認</label><select id="f8"><option value="已了解，2 小時內完成匯款方能保留">我已了解 2 小時內需完成匯款方能保留時段</option></select></div>
-    <div class="final-warning">「點擊下方按鈕，代表您已完全確認以上預約內容，<br>若您只是試探，請在此止步。」</div>
-    <div class="actions"><button class="btn btn-copy" type="button" onclick="copyBooking()">［複製預約單］</button><a class="btn btn-line" href="https://lin.ee/9BRabF1" target="_blank" rel="noopener noreferrer">［加入 LINE］</a></div>
-    <div class="ending center"><p class="light">不是每段旅程，<br>都會進入微光・之上。</p><p>有些事情，<br>比起衝動，<br>更需要信任與默契。</p></div>
-  </div>
-</section>
-</main>
-
-<div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-  <div class="popup-box">
-    <h3 id="popupTitle">已複製預約單</h3>
-    <p id="popupText" class="muted small">請加入 LINE 後直接貼上傳送。</p>
-    <textarea id="fallbackText" class="copy-box" readonly></textarea>
-    <a class="btn btn-line" href="https://lin.ee/9BRabF1" target="_blank" rel="noopener noreferrer">［加入 LINE］</a>
-    <button class="close" type="button" onclick="closePopup()">關閉</button>
-  </div>
-</div>
-
-<script>
-const sceneImage=document.getElementById('sceneImage');
-const heroVideo=document.getElementById('heroVideo');
-
-function setScene(section){
-  const img=section.dataset.img||'';
-  const mode=section.dataset.mode||'soft';
-  const heroActive=section.dataset.hero==='true';
-  document.body.classList.remove('clear','soft','dark','hero-active');
-  document.body.classList.add(mode);
-  if(heroActive){document.body.classList.add('hero-active');heroVideo.play().catch(()=>{});}
-  else{heroVideo.pause();}
-  if(img){
-    if(sceneImage.getAttribute('src')!==img) sceneImage.setAttribute('src',img);
-    sceneImage.style.opacity='';
-  }else{
-    sceneImage.style.opacity='0';
-  }
-}
-
-function setupSceneObserver(){
-  const sections=document.querySelectorAll('section');
-  const observer=new IntersectionObserver((entries)=>{
-    const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-    if(visible) setScene(visible.target);
-  },{threshold:[.34,.52,.68]});
-  sections.forEach(s=>observer.observe(s));
-}
-
-function setupRevealObserver(){
-  const items=document.querySelectorAll('.reveal,.flip-card');
-  const observer=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('in');});
-  },{threshold:.22,rootMargin:'0px 0px -12% 0px'});
-  items.forEach(item=>observer.observe(item));
-}
-
-function buildBookingText(){
-  const f1=document.getElementById('f1').value.trim();
-  const f2=document.getElementById('f2').value.trim();
-  const f3=document.getElementById('f3').value;
-  const f4=document.getElementById('f4').value;
-  const f5=document.getElementById('f5').value.trim()||'無';
-  const f6=document.getElementById('f6').value;
-  const f7=document.getElementById('f7').value;
-  const f8=document.getElementById('f8').value;
-  if(!f1||!f2||!f3) return null;
-  return `1｜LINE 稱號：${f1}
-
-2｜預約日期、時段：
-${f2}
-
-3｜選擇方案：${f3}
-
-4｜是否有進階旅程需求：${f4}
-
-5｜特殊需求：${f5}
-
-6｜菸味接受度：${f6}
-
-7｜初次核對：${f7}
-
-8｜訂金確認：${f8}`;
-}
-
-async function copyText(text){
-  if(navigator.clipboard&&window.isSecureContext){
-    try{await navigator.clipboard.writeText(text);return true;}catch(e){}
-  }
-  const ta=document.createElement('textarea');
-  ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';ta.style.top='-9999px';
-  document.body.appendChild(ta);ta.focus();ta.select();
-  let copied=false;
-  try{copied=document.execCommand('copy');}catch(e){copied=false;}
-  document.body.removeChild(ta);
-  return copied;
-}
-
-async function copyBooking(){
-  const text=buildBookingText();
-  if(!text){alert('請完整填寫 LINE 稱號、時段與方案，展現您的預約誠意。');return;}
-  const copied=await copyText(text);
-  const popup=document.getElementById('popup');
-  const popupText=document.getElementById('popupText');
-  const fallbackText=document.getElementById('fallbackText');
-  fallbackText.value=text;
-  if(copied){popupText.innerHTML='預約單內容已成功複製。<br>請加入 LINE 後直接貼上傳送。';fallbackText.classList.remove('show');}
-  else{popupText.innerHTML='您的裝置可能限制自動複製。<br>請手動複製下方預約單，再加入 LINE 貼上傳送。';fallbackText.classList.add('show');setTimeout(()=>{fallbackText.focus();fallbackText.select();},120);}
-  popup.classList.add('active');
-}
-
-function closePopup(){document.getElementById('popup').classList.remove('active');}
-document.addEventListener('DOMContentLoaded',()=>{setupSceneObserver();setupRevealObserver();});
-document.getElementById('popup').addEventListener('click',(e)=>{if(e.target.id==='popup') closePopup();});
-</script>
-</body>
-</html>
+被好好安排過的場域，才適合慢下來。
+【預約注意事項】
+不喜歡臨時亂改、放鳥。
+Line 文字沒有溫度， 只針對重要內容回覆。
+有特殊需求、個人癖好， 可以提前提出。
+感覺跟尊重是互相的。
+【預約單】
+請在網頁上直接填寫以下誠意核對資料：
+1｜LINE 稱號
+2｜預約日期與時段（請提供兩個方便時段）
+3｜選擇方案
+-- 請選擇方案 --壹｜微光・初見 (2H)貳｜微光・稍炙 (3H)參｜微光・微醺 (9H)肆｜微光・之上 (14H)
+4｜是否有進階旅程需求
+無有（確認預約後另提供內容）
+5｜特殊需求（可提前提出）
+無
+6｜菸味接受度
+不介意（蘇純是老煙槍）我有抽菸介意（請提前告知）
+7｜初次核對（請附上來源首頁截圖）
+我已做好首頁截圖，加入後會立刻傳送
+8Lock｜訂金確認
+我已了解 2 小時內需完成匯款方能保留時段
+「點擊下方按鈕，代表您已完全確認以上預約內容，
+若您只是試探，請在此止步。」
+［複製預約單］
+［加入 LINE］
+不是每段旅程， 都會進入微光・之上。
+有些事情， 比起衝動， 更需要信任與默契。
+已複製預約單
+請加入 LINE 後直接貼上傳送。
+［加入 LINE］
+關閉
