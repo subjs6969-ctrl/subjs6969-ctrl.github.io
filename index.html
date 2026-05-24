@@ -1,440 +1,181 @@
-
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>微光・之上</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微光・之上</title>
+    <style>
+        /* 基礎樣式重設 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            overflow-x: hidden;
+        }
 
-html{
-  scroll-behavior:smooth;
-}
+        /* 滿版視覺區塊 */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-body{
-  background:#050505;
-  color:#f4efe8;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
-  overflow-x:hidden;
-  line-height:1.9;
-}
+        /* 剪影背景照片：預設 scale(1)，隨著滾動由遠變近（放大） */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('hero.jpg') center/cover no-repeat;
+            transform: scale(1);
+            transition: transform 0.1s ease-out;
+            z-index: 1;
+            filter: brightness(0.65); /* 稍微壓暗以突顯文字質感 */
+        }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 50% 38%,rgba(255,255,255,.075),transparent 34%),
-    radial-gradient(circle at 20% 20%,rgba(173,124,60,.13),transparent 28%),
-    linear-gradient(180deg,#030303,#080706 55%,#030303);
-  z-index:-2;
-  animation:bgBreath 9s ease-in-out infinite alternate;
-}
+        /* 內容文字容器 */
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.42);
-  z-index:-1;
-}
+        /* 主副標題 */
+        .title {
+            font-size: 2.6rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
 
-@keyframes bgBreath{
-  from{transform:scale(1);filter:blur(0)}
-  to{transform:scale(1.08);filter:blur(10px)}
-}
+        .subtitle {
+            font-size: 1.1rem;
+            color: #ccc;
+            letter-spacing: 5px;
+            margin-bottom: 5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
 
-section{
-  padding:88px 28px;
-}
+        /* 逐行慢慢浮出來的文字樣式 */
+        .fade-line {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin: 1.8rem 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding-top:90px;
-  padding-bottom:120px;
-}
+        /* 當加入 visible 類別時滑入並浮現 */
+        .fade-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.kicker{
-  font-size:12px;
-  letter-spacing:4px;
-  color:#b69a70;
-  margin-bottom:24px;
-}
+        /* 往下捲動提示標籤 */
+        .scroll-hint {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #777;
+            animation: pulse 2.5s infinite;
+        }
 
-.hero-title{
-  font-size:39px;
-  font-weight:200;
-  letter-spacing:4px;
-  line-height:1.55;
-  margin-bottom:26px;
-  color:#fff7ec;
-  text-shadow:0 0 28px rgba(255,255,255,.14);
-  animation:titleMove 5s ease-in-out infinite alternate;
-}
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, 0); }
+            50% { opacity: 0.9; transform: translate(-50%, -5px); }
+        }
 
-@keyframes titleMove{
-  from{transform:translateY(0);opacity:.88}
-  to{transform:translateY(-9px);opacity:1}
-}
-
-.hero-sub{
-  font-size:16px;
-  letter-spacing:4px;
-  color:#bdb3a6;
-  margin-bottom:86px;
-}
-
-.hero-quote{
-  font-size:24px;
-  line-height:2;
-  font-weight:300;
-  margin-bottom:54px;
-}
-
-.nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.nav a{
-  display:inline-block;
-  color:#f4efe8 !important;
-  text-decoration:none !important;
-  font-size:15px;
-  letter-spacing:2px;
-  padding:14px 23px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.04);
-  box-shadow:0 0 32px rgba(255,255,255,.035);
-}
-
-.block{
-  opacity:0;
-  transform:translateY(42px);
-  filter:blur(10px);
-  transition:1.2s ease;
-}
-
-.block.show{
-  opacity:1;
-  transform:translateY(0);
-  filter:blur(0);
-}
-
-.title{
-  font-size:28px;
-  font-weight:300;
-  letter-spacing:3px;
-  margin-bottom:34px;
-  color:#fff6ea;
-}
-
-.text{
-  font-size:20px;
-  line-height:2.15;
-  letter-spacing:.5px;
-  color:#ded6cc;
-}
-
-.text p{
-  margin-bottom:24px;
-}
-
-.card{
-  padding:30px 24px;
-  border-radius:28px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 22px 60px rgba(0,0,0,.42);
-}
-
-.photo{
-  margin-top:46px;
-  border-radius:30px;
-  overflow:hidden;
-  box-shadow:0 26px 80px rgba(0,0,0,.55);
-}
-
-.photo img{
-  width:100%;
-  display:block;
-  filter:brightness(.82) contrast(1.08) saturate(.9);
-  animation:photoBreath 7s ease-in-out infinite alternate;
-}
-
-@keyframes photoBreath{
-  from{transform:scale(1.02)}
-  to{transform:scale(1.07)}
-}
-
-.journey-wrap{
-  margin-top:44px;
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-}
-
-.journey-card{
-  padding:28px 24px;
-  border-radius:28px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 20px 58px rgba(0,0,0,.4);
-}
-
-.num{
-  font-size:13px;
-  letter-spacing:5px;
-  color:#b89c72;
-  margin-bottom:10px;
-}
-
-.journey-card h3{
-  font-size:27px;
-  font-weight:300;
-  letter-spacing:2px;
-  margin-bottom:12px;
-}
-
-.hour{
-  font-size:15px;
-  letter-spacing:3px;
-  color:#aaa094;
-  margin-bottom:16px;
-}
-
-.journey-card p{
-  font-size:19px;
-  line-height:2;
-  color:#ddd5cc;
-}
-
-.gallery{
-  margin-top:44px;
-  display:flex;
-  flex-direction:column;
-  gap:26px;
-}
-
-.gallery img{
-  width:100%;
-  display:block;
-  border-radius:28px;
-  box-shadow:0 24px 70px rgba(0,0,0,.55);
-  filter:brightness(.82) contrast(1.07) saturate(.9);
-}
-
-.line-btn{
-  display:inline-block;
-  margin-top:36px;
-  padding:17px 30px;
-  border-radius:999px;
-  background:#18d760;
-  color:#041006 !important;
-  text-decoration:none !important;
-  font-size:18px;
-  font-weight:600;
-  letter-spacing:2px;
-  box-shadow:0 0 36px rgba(24,215,96,.25);
-}
-
-footer{
-  padding:100px 28px 120px;
-  text-align:center;
-  color:#9b9083;
-  font-size:18px;
-  line-height:2.25;
-}
-
-@media(min-width:768px){
-  section{
-    padding:120px 12vw;
-  }
-
-  .hero-title{
-    font-size:64px;
-  }
-
-  .hero-quote{
-    font-size:32px;
-  }
-
-  .text{
-    font-size:23px;
-  }
-
-  .journey-wrap{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-  }
-}
-</style>
+        /* 為了產生捲動空間，延伸下方網頁長度 */
+        .spacer {
+            height: 120vh;
+            background: linear-gradient(to bottom, #000 0%, #0a0a0a 50%, #111 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #444;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+    </style>
 </head>
-
 <body>
 
-<section class="hero block">
-  <div class="kicker">SU CHUN・PRIVATE JOURNEY</div>
+    <section class="hero-section">
+        <div class="background-image" id="bgImg"></div>
 
-  <h1 class="hero-title">《微光・之上》</h1>
+        <div class="content">
+            <h1 class="title">《微光・之上》</h1>
+            <p class="subtitle">蘇純 ｜ 無限旅程</p>
 
-  <div class="hero-sub">蘇純 ｜ 無限旅程</div>
+            <p class="fade-line">值得，</p>
+            <p class="fade-line">所以不將就。</p>
+        </div>
 
-  <div class="hero-quote">
-    值得，<br>
-    所以不將就。
-  </div>
+        <div class="scroll-hint">↓ 往上滑動網頁（向下捲動）</div>
+    </section>
 
-  <div class="nav">
-    <a href="#about">微炙蘇純</a>
-    <a href="#journey">微光旅程</a>
-    <a href="#booking">預約</a>
-  </div>
-</section>
-
-<section id="about" class="block">
-  <div class="title">【微炙蘇純】</div>
-
-  <div class="text card">
-    <p>曾經以為，這圈子很簡單。</p>
-    <p>後來才明白，深的從來不是圈子，而是人性。</p>
-    <p>感謝曾經的深深，才有現在的蘇純。</p>
-    <p>自己的世界，照自己的方式生活。</p>
-  </div>
-
-  <div class="photo">
-    <img src="hero.jpg" alt="">
-  </div>
-</section>
-
-<section class="block">
-  <div class="title">【關於蘇純】</div>
-
-  <div class="text">
-    <p>153 / 40 / 32B / 45+</p>
-    <p>骨感偏瘦、敏感型。</p>
-    <p>沒有固定 SOP 流程，不刻意迎合，也不虛假奉陪。</p>
-    <p>感覺是雙向的，相處也是。</p>
-  </div>
-</section>
-
-<section class="block">
-  <div class="title">【微光場域】</div>
-
-  <div class="text card">
-    <p>感受、信任跟尊重，一直都很重要。</p>
-    <p>雙向自然互動，相處舒服，彼此才會開心。</p>
-  </div>
-
-  <div class="photo">
-    <img src="room01.jpg" alt="">
-  </div>
-</section>
-
-<section id="journey" class="block">
-  <div class="title">【微光旅程】</div>
-
-  <div class="text">
-    <p>不是制式選項，而是依照感覺慢慢進入。</p>
-  </div>
-
-  <div class="journey-wrap">
-    <div class="journey-card">
-      <div class="num">壹</div>
-      <h3>微光・初見</h3>
-      <div class="hour">2H</div>
-      <p>舒服認識彼此的開始。</p>
+    <div class="spacer">
+        <p>— 旅程正在加載 —</p>
     </div>
 
-    <div class="journey-card">
-      <div class="num">貳</div>
-      <h3>微光・稍炙</h3>
-      <div class="hour">3H</div>
-      <p>感覺對了，很多事自然就有了。</p>
-    </div>
+    <script>
+        // 1. 照片由遠變近（隨著捲動流暢放大）
+        window.addEventListener('scroll', () => {
+            const scrollPercent = window.scrollY / window.innerHeight;
+            const bgImg = document.getElementById('bgImg');
+            
+            // 在第一幕範圍內，隨著往下滑，縮放比例從 1 慢慢變大到 1.18 (由遠變近)
+            if (scrollPercent <= 1) {
+                const scaleValue = 1 + (scrollPercent * 0.18);
+                bgImg.style.transform = `scale(${scaleValue})`;
+            }
+        });
 
-    <div class="journey-card">
-      <div class="num">參</div>
-      <h3>微光・微醺</h3>
-      <div class="hour">9H</div>
-      <p>放鬆、洩壓，享受自在舒服的過程。</p>
-    </div>
+        // 2. 文字一行一行自動時差浮出來
+        document.addEventListener("DOMContentLoaded", () => {
+            const fadeLines = document.querySelectorAll('.fade-line');
 
-    <div class="journey-card">
-      <div class="num">肆</div>
-      <h3>微光・之上</h3>
-      <div class="hour">14H</div>
-      <p>客製專屬旅程，享受更完整的微光體驗。</p>
-    </div>
-  </div>
-</section>
+            // 採用 IntersectionObserver 精準偵測
+            const observerOptions = {
+                root: null,
+                threshold: 0.1
+            };
 
-<section class="block">
-  <div class="title">【微光片段】</div>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(fadeLines).indexOf(entry.target);
+                        // 每一行間隔 0.7 秒，產生優雅的逐行浮現時差
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 700); 
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-  <div class="text">
-    <p>有些片段，不用說得太滿。</p>
-  </div>
-
-  <div class="gallery">
-    <img src="journey.jpg" alt="">
-    <img src="life.jpg" alt="">
-    <img src="emotion01.jpg" alt="">
-    <img src="emotion02.jpg" alt="">
-    <img src="emotion03.jpg" alt="">
-    <img src="fragment01.jpg" alt="">
-    <img src="fragment02.jpg" alt="">
-    <img src="fragment03.jpg" alt="">
-  </div>
-</section>
-
-<section id="booking" class="block">
-  <div class="title">【預約】</div>
-
-  <div class="text">
-    <p>不是每段旅程，都會進入微光・之上。</p>
-    <p>有些事情，比起衝動，更需要信任與默契。</p>
-  </div>
-
-  <a class="line-btn" href="#">加入 LINE</a>
-</section>
-
-<footer>
-  微光不是迎合。<br>
-  是剛好遇見，<br>
-  也剛好願意停留。
-</footer>
-
-<script>
-const blocks = document.querySelectorAll('.block');
-
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach((entry)=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-},{threshold:0.12});
-
-blocks.forEach((block)=>{
-  observer.observe(block);
-});
-</script>
-
+            fadeLines.forEach(line => observer.observe(line));
+        });
+    </script>
 </body>
 </html>
-
-
-
-
