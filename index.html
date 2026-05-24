@@ -1,47 +1,105 @@
-<style>
-    /* 1. 萬用重設：防止手機螢幕亂跑 */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        background-color: #000;
-        color: #fff;
-        font-family: "PingFang TC", "Noto Sans TC", sans-serif;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-    }
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>微光・之上</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* 2. 電影感容器：這三行是重點，強制把文字逼到最頂和最底，中間大留白 */
-    .hero-section {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        background: url('這裡換成該頁面的照片名稱.jpg') center 25%/cover no-repeat; /* 自動抓取黃金比例人像 */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; 
-        padding: 60px 24px 50px 24px; /* 安全邊距，字絕對不貼邊 */
-    }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "PingFang TC", "Noto Sans TC", -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* 暗色濾鏡：維持高奢神祕感，確保任何照片上的白字都能看清楚 */
-    .hero-section::before {
-        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.45); z-index: 1;
-    }
+        /* 滿版相框：強制照片當背景，且文字上下拆開 */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('hero.jpg') center 25%/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 核心：文字一組在最頂、一組在最底，中間 100% 留白 */
+            padding: 60px 24px; /* 四週留出舒適的安全邊距 */
+        }
 
-    .top-group, .bottom-group { position: relative; z-index: 2; width: 100%; text-align: center; }
+        .top-group, .bottom-group {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            text-align: center;
+        }
 
-    /* 3. 上半部文字：縮小、強制絕不換行 */
-    .main-title {
-        font-size: 1.5rem; /* 高級細字 */
-        font-weight: 200;
-        letter-spacing: 8px;
-        white-space: nowrap; /* 強制不准斷行 */
-        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    }
+        /* ─── 上半部：主標題（絕對單行，不准折返） ─── */
+        .main-title {
+            font-size: 1.6rem; 
+            font-weight: 200;
+            letter-spacing: 8px; /* 優雅的高級字距 */
+            white-space: nowrap; /* 強制絕對不准斷行 */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+        }
 
-    /* 4. 下半部文字：拉開間距，不與照片主體打架 */
-    .bottom-group { display: flex; flex-direction: column; align-items: center; gap: 24px; }
-    .text-important { font-size: 1.25rem; font-weight: 300; letter-spacing: 5px; white-space: nowrap; }
-    .text-history { font-size: 0.85rem; font-weight: 300; letter-spacing: 2px; color: rgba(255,255,255,0.5); line-height: 1.8; }
-    .bottom-tagline { font-size: 0.85rem; font-weight: 300; letter-spacing: 4px; color: rgba(255,255,255,0.5); }
-</style>
+        /* ─── 下半部：品牌精神與年份（沉澱在最底部） ─── */
+        .bottom-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* 內文段落的呼吸間距 */
+        }
 
+        /* 品牌 Slogan */
+        .text-important {
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            white-space: nowrap;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+        }
+
+        /* 年份歷史 */
+        .text-history {
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6); /* 灰調時間感 */
+            line-height: 1.8;
+        }
+
+        /* 標語 */
+        .bottom-tagline {
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="top-group">
+            <h1 class="main-title">《微光 · 之上》</h1>
+        </div>
+
+        <div class="bottom-group">
+            <p class="text-important">值得，所以不將就</p>
+            
+            <p class="text-history">
+                2019.深深承蒙大家的關照<br>
+                2026.蘇純共邀大家一起<br>
+                共啟微光旅程
+            </p>
+
+            <p class="bottom-tagline">蘇純 ｜ 無限旅程</p>
+        </div>
+    </section>
+
+</body>
+</html>
