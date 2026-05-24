@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>微光・之上</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:#f4efe8;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"PingFang TC",
+sans-serif;
+line-height:1.9;
+overflow-x:hidden;
+}
+
+/* 背景 */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at center,
+rgba(255,255,255,0.04),
+transparent 60%);
+pointer-events:none;
+z-index:-1;
+}
+
+/* 區塊 */
+
+section{
+padding:110px 28px;
+position:relative;
+}
+
+/* 主視覺 */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.hero h1{
+font-size:48px;
+font-weight:200;
+letter-spacing:6px;
+margin-bottom:20px;
+}
+
+.hero .sub{
+font-size:18px;
+color:#b9b1a7;
+margin-bottom:80px;
+letter-spacing:3px;
+}
+
+.hero .quote{
+font-size:26px;
+line-height:1.8;
+margin-bottom:60px;
+font-weight:300;
+}
+
+.hero-buttons{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.hero-buttons a{
+border:1px solid rgba(255,255,255,0.15);
+padding:14px 26px;
+border-radius:100px;
+color:#f4efe8;
+text-decoration:none;
+font-size:15px;
+transition:0.4s;
+backdrop-filter:blur(10px);
+}
+
+.hero-buttons a:hover{
+background:#f4efe8;
+color:#000;
+}
+
+/* 標題 */
+
+.section-title{
+font-size:38px;
+font-weight:200;
+margin-bottom:60px;
+letter-spacing:5px;
+}
+
+/* 文字 */
+
+.text-block{
+max-width:680px;
+font-size:24px;
+color:#d6d0c8;
+line-height:2.1;
+font-weight:300;
+}
+
+.text-block p{
+margin-bottom:36px;
+}
+
+/* 圖片 */
+
+.full-image{
+margin-top:60px;
+border-radius:28px;
+overflow:hidden;
+}
+
+.full-image img{
+width:100%;
+display:block;
+}
+
+/* 微光旅程 */
+
+.journey-list{
+margin-top:60px;
+display:flex;
+flex-direction:column;
+gap:80px;
+}
+
+.journey-item{
+border-left:1px solid rgba(255,255,255,0.12);
+padding-left:26px;
+}
+
+.journey-item .number{
+font-size:14px;
+letter-spacing:4px;
+color:#8f8578;
+margin-bottom:14px;
+}
+
+.journey-item h3{
+font-size:34px;
+font-weight:200;
+margin-bottom:20px;
+letter-spacing:4px;
+}
+
+.journey-item .hour{
+font-size:18px;
+color:#a89f94;
+margin-bottom:24px;
+}
+
+.journey-item p{
+font-size:22px;
+line-height:2;
+color:#d5cec4;
+}
+
+/* 情緒片段 */
+
+.fragment-grid{
+display:flex;
+flex-direction:column;
+gap:40px;
+margin-top:60px;
+}
+
+.fragment-grid img{
+width:100%;
+border-radius:26px;
+display:block;
+}
+
+/* 預約 */
+
+.booking{
+background:#090909;
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.booking-form{
+margin-top:50px;
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select{
+background:#101010;
+border:1px solid rgba(255,255,255,0.08);
+border-radius:18px;
+padding:20px;
+color:#f4efe8;
+font-size:17px;
+outline:none;
+}
+
+.booking-form textarea{
+min-height:140px;
+resize:none;
+}
+
+.booking-form button{
+background:#14d95b;
+border:none;
+padding:22px;
+border-radius:18px;
+font-size:20px;
+color:white;
+font-weight:600;
+margin-top:10px;
+}
+
+/* footer */
+
+footer{
+padding:120px 28px;
+text-align:center;
+color:#8b8176;
+font-size:20px;
+line-height:2.2;
+}
+
+/* 動畫 */
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1.2s;
+}
+
+.fade.show{
+opacity:1;
+transform:none;
+}
+
+/* 手機 */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero .quote{
+font-size:24px;
+}
+
+.section-title{
+font-size:34px;
+}
+
+.text-block{
+font-size:22px;
+}
+
+.journey-item h3{
+font-size:30px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<h1>《微光・之上》</h1>
+
+<div class="sub">
+蘇純 ｜ 無限旅程
+</div>
+
+<div class="quote">
+值得，所以不將就。
+</div>
+
+<div class="hero-buttons">
+<a href="#about">微炙蘇純</a>
+<a href="#journey">微光旅程</a>
+<a href="#booking">預約</a>
+</div>
+
+</section>
+
+<section id="about" class="fade">
+
+<div class="section-title">
+【微炙蘇純】
+</div>
+
+<div class="text-block">
+
+<p>
+曾經以為，
+這圈子很簡單。
+</p>
+
+<p>
+後來才明白，
+深的從來不是圈子，
+而是人性。
+</p>
+
+<p>
+感謝曾經的深深，
+才有現在的蘇純。
+</p>
+
+<p>
+自己的世界，
+照自己的方式生活。
+</p>
+
+</div>
+
+<div class="full-image">
+<img src="hero.jpg">
+</div>
+
+</section>
+
+<section class="fade">
+
+<div class="section-title">
+【關於蘇純】
+</div>
+
+<div class="text-block">
+
+<p>
+153 / 40 / 32B / 45+
+</p>
+
+<p>
+骨感偏瘦、敏感型。
+</p>
+
+<p>
+沒有固定 SOP 流程，
+不刻意迎合，
+也不虛假奉陪。
+</p>
+
+<p>
+感覺是雙向的，
+相處也是。
+</p>
+
+</div>
+
+</section>
+
+<section class="fade">
+
+<div class="section-title">
+【微光場域】
+</div>
+
+<div class="text-block">
+
+<p>
+感受、信任跟尊重，
+一直都很重要。
+</p>
+
+<p>
+雙向自然互動，
+相處舒服，
+彼此才會開心。
+</p>
+
+</div>
+
+<div class="full-image">
+<img src="room01.jpg">
+</div>
+
+</section>
+
+<section id="journey" class="fade">
+
+<div class="section-title">
+【微光旅程】
+</div>
+
+<div class="text-block">
+不是制式選項，
+而是依照感覺慢慢進入。
+</div>
+
+<div class="journey-list">
+
+<div class="journey-item">
+<div class="number">壹</div>
+<h3>微光・初見</h3>
+<div class="hour">2H</div>
+<p>
+舒服認識彼此的開始。
+</p>
+</div>
+
+<div class="journey-item">
+<div class="number">貳</div>
+<h3>微光・稍炙</h3>
+<div class="hour">3H</div>
+<p>
+感覺對了，
+很多事自然就有了。
+</p>
+</div>
+
+<div class="journey-item">
+<div class="number">參</div>
+<h3>微光・微醺</h3>
+<div class="hour">9H</div>
+<p>
+放鬆、洩壓，
+享受自在舒服的過程。
+</p>
+</div>
+
+<div class="journey-item">
+<div class="number">肆</div>
+<h3>微光・之上</h3>
+<div class="hour">14H</div>
+<p>
+客製專屬旅程，
+享受更完整的微光體驗。
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="fade">
+
+<div class="section-title">
+【微光片段】
+</div>
+
+<div class="text-block">
+有些片段，
+不用說得太滿。
+</div>
+
+<div class="fragment-grid">
+
+<img src="journey.jpg">
+<img src="life.jpg">
+<img src="emotion01.jpg">
+<img src="emotion02.jpg">
+<img src="emotion03.jpg">
+<img src="fragment01.jpg">
+<img src="fragment02.jpg">
+<img src="fragment03.jpg">
+
+</div>
+
+</section>
+
+<section id="booking" class="booking fade">
+
+<div class="section-title">
+【預約】
+</div>
+
+<div class="booking-form">
+
+<input type="text" placeholder="LINE 暱稱">
+
+<textarea placeholder="預約日期與時段"></textarea>
+
+<select>
+<option>請選擇旅程</option>
+<option>微光・初見</option>
+<option>微光・稍炙</option>
+<option>微光・微醺</option>
+<option>微光・之上</option>
+</select>
+
+<textarea placeholder="特殊需求（可提前提出）"></textarea>
+
+<button>
+加入 LINE
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+不是每段旅程，
+都會進入微光・之上。
+
+<br><br>
+
+有些事情，
+比起衝動，
+更需要信任與默契。
+
+</footer>
+
+<script>
+
+const fades = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+
+});
+
+},{
+threshold:0.15
+});
+
+fades.forEach(el=>{
+observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
