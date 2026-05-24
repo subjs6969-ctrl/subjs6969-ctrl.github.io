@@ -48,24 +48,38 @@ z-index:-1;
 /* 區塊 */
 
 section{
-padding:110px 28px;
+padding:88px 30px;
 position:relative;
 }
 
 /* 主視覺 */
-
 .hero{
 min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
+padding-top:80px;
+padding-bottom:120px;
+}
+.
+.hero h1{
+font-size:36px;
+font-weight:200;
+letter-spacing:5px;
+line-height:1.65;
+margin-bottom:28px;
+text-shadow:0 0 26px rgba(214,178,112,.32);
+animation:titleFloat 5s ease-in-out infinite alternate;
 }
 
-.hero h1{
-font-size:48px;
-font-weight:200;
-letter-spacing:6px;
-margin-bottom:20px;
+@keyframes titleFloat{
+from{
+transform:translateY(0);
+opacity:.86;
+}
+to{
+transform:translateY(-10px);
+opacity:1;
 }
 
 .hero .sub{
