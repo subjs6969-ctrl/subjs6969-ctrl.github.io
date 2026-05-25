@@ -16,7 +16,6 @@
             color: #fff;
             font-family: "PingFang TC", "Noto Sans TC", -apple-system, sans-serif;
             -webkit-font-smoothing: antialiased;
-            /* 允許網頁順暢向下滾動 */
             overflow-x: hidden;
         }
 
@@ -33,17 +32,13 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* 核心：上方全部刪空留白，文字死死沉在最底部 */
+            justify-content: flex-end; 
             padding: 0 24px 60px 24px;
             overflow: hidden;
         }
 
         .first-page-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: url('hero.jpg') center 25%/cover no-repeat;
             z-index: 1;
             animation: imageZoomInFirst 20s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -65,21 +60,20 @@
             display: flex; flex-direction: column; align-items: center; gap: 22px;
         }
 
-        /* 第一頁字體時間軸 */
         .first-text-important {
             font-size: 1.25rem; font-weight: 300; letter-spacing: 5px; white-space: nowrap;
             text-shadow: 0 2px 12px rgba(0,0,0,0.9);
-            animation: cinematicFadeIn 2.5s ease forwards; /* 第 0 秒直接亮起 */
+            animation: cinematicFadeIn 2.5s ease forwards;
         }
 
         .first-text-history {
             font-size: 0.85rem; font-weight: 300; letter-spacing: 2px; color: rgba(255, 255, 255, 0.55); line-height: 1.8;
             text-shadow: 0 2px 10px rgba(0,0,0,0.9); opacity: 0;
-            animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 5s; /* 隔 5 秒後亮起 */
+            animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 5s;
         }
 
 
-        /* ─── 🎬 【第二頁：中間縮小相框版（圖 2 照片 + 圖 3 文字）】 ─── */
+        /* ─── 🎬 【第二頁：中間版做動畫照片（對齊第一頁呈現方式）】 ─── */
         .second-page {
             width: 100%;
             min-height: 100vh;
@@ -88,70 +82,75 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 80px 28px; /* 上下左右留出極具奢華感的黑色大空間 */
+            padding: 60px 24px;
         }
 
-        /* 核心：留在中間做動畫的照片外框容器 */
+        /* 標題居中 */
+        .gallery-title {
+            font-size: 1.4rem; font-weight: 300; letter-spacing: 6px; color: #fff;
+            text-align: center; margin-bottom: 24px;
+            animation: cinematicFadeIn 2.5s ease forwards;
+        }
+
+        /* 核心：留在中間一版做動畫的照片框，精確鎖定呈現方式與第一頁完全一樣 */
         .photo-frame {
             width: 100%;
-            max-width: 340px; /* 限制照片寬度，不讓它變滿版，精緻呈現人像 */
-            aspect-ratio: 1 / 1.5; /* 鎖定高級直式比例 */
+            max-width: 340px; 
+            aspect-ratio: 1 / 1.35; 
             overflow: hidden;
-            margin: 40px auto; /* 與上下文字拉開完美距離 */
-            box-shadow: 0 20px 50px rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            margin-bottom: 35px;
         }
 
-        /* 照片本體從小到大慢推動畫 */
+        /* ⚙️ 修正：讓 life.jpg 網頁一開就直接執行從小到大慢速拉近的電影動畫 */
         .animated-photo {
             width: 100%;
             height: 100%;
-            background: url('emotion01.jpg') center center/cover no-repeat; /* 這裡換成圖 2 的照片 */
+            background: url('life.jpg') center center/cover no-repeat;
+            transform-origin: center center;
+            /* 與第一頁完全相同的 20秒 cubic-bezier 慢速拉近動畫軌跡 */
             animation: imageZoomInSecond 20s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         @keyframes imageZoomInSecond {
-            0% { transform: scale(1); filter: brightness(0.6); }
-            100% { transform: scale(1.15); filter: brightness(0.9); }
+            0% { transform: scale(1); filter: brightness(0.7); }
+            100% { transform: scale(1.15); filter: brightness(0.95); }
         }
 
-        /* 圖 3 文字排版與 5 秒間隔動畫時序 */
-        .gallery-text-group {
+        /* ─── ⚙️ 質感細節：還原圖三的灰色半透明圓角文字襯底背板 ─── */
+        .text-card-panel {
             width: 100%;
-            max-width: 400px;
-            text-align: center;
+            max-width: 340px;
+            background: rgba(255, 255, 255, 0.05); /* 微光灰色透底 */
+            border-radius: 20px; /* 還原精緻大圓角 */
+            padding: 35px 24px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px; /* 行與行之間的呼吸空隙 */
+            text-align: center;
+            backdrop-filter: blur(5px);
         }
 
-        /* 標題：【微炙蘇純】 */
-        .gallery-title {
-            font-size: 1.4rem; font-weight: 300; letter-spacing: 6px; color: #fff;
-            animation: cinematicFadeIn 2.5s ease forwards; /* 第 0 秒亮起 */
-        }
-
-        /* 獨白第一句：曾經以為... */
+        /* 內文每隔 5 秒依序登場的時間軸 */
         .line-1 {
-            font-size: 1.05rem; font-weight: 300; letter-spacing: 3px; color: rgba(255,255,255,0.9);
-            opacity: 0; animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 5s; /* 第 5 秒 */
+            font-size: 1.05rem; font-weight: 300; letter-spacing: 3px; color: rgba(255,255,255,0.95);
+            animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 5s; opacity: 0;
         }
 
-        /* 獨白第二句：後來才明白... */
         .line-2 {
-            font-size: 1.05rem; font-weight: 300; letter-spacing: 3px; color: rgba(255,255,255,0.9);
-            opacity: 0; animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 10s; /* 第 10 秒 */
+            font-size: 1.05rem; font-weight: 300; letter-spacing: 3px; color: rgba(255,255,255,0.95); line-height: 1.6;
+            animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 10s; opacity: 0;
         }
 
-        /* 獨白第三句：感謝曾經的深深... */
         .line-3 {
-            font-size: 1.05rem; font-weight: 300; letter-spacing: 3px; color: rgba(255,255,255,0.9);
-            opacity: 0; animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 15s; /* 第 15 秒 */
+            font-size: 1.05rem; font-weight: 300; letter-spacing: 3px; color: rgba(255,255,255,0.95);
+            animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 15s; opacity: 0;
         }
 
-        /* 獨白第四句：自己的世界... */
         .line-4 {
-            font-size: 1.15rem; font-weight: 400; letter-spacing: 4px; color: #fff; margin-top: 10px;
-            opacity: 0; animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 20s; /* 第 20 秒終章 */
+            font-size: 1.15rem; font-weight: 400; letter-spacing: 4px; color: #fff;
+            animation: cinematicFadeIn 2.5s ease forwards; animation-delay: 20s; opacity: 0;
         }
     </style>
 </head>
@@ -159,7 +158,6 @@
 
     <section class="first-page">
         <div class="first-page-bg"></div>
-
         <div class="first-bottom-group">
             <p class="first-text-important">值得，所以不將就</p>
             <p class="first-text-history">
@@ -173,21 +171,16 @@
 
     <section class="second-page">
         
-        <div class="gallery-text-group">
-            <h2 class="gallery-title">【微炙蘇純】</h2>
-            
-            <p class="line-1">曾經以為，這圈子很簡單。</p>
-        </div>
+        <h2 class="gallery-title">【微炙蘇純】</h2>
 
         <div class="photo-frame">
             <div class="animated-photo"></div>
         </div>
 
-        <div class="gallery-text-group">
-            <p class="line-2">後來才明白，深的從來不是圈子，而是人性。</p>
-            
+        <div class="text-card-panel">
+            <p class="line-1">曾經以為，這圈子很簡單。</p>
+            <p class="line-2">後來才明白，深的從來不是圈子，<br>而是人性。</p>
             <p class="line-3">感謝曾經的深深，才有現在的蘇純。</p>
-            
             <p class="line-4">自己的世界，照自己的方式生活。</p>
         </div>
 
