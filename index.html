@@ -16,88 +16,236 @@
             color: #fff;
             font-family: "PingFang TC", "Noto Sans TC", -apple-system, sans-serif;
             -webkit-font-smoothing: antialiased;
+            /* 允許網頁緩慢向下捲動瀏覽 */
+            overflow_x: hidden;
         }
 
-        /* 滿版相框：強制照片當背景，且文字上下拆開 */
+        /* 每一頁都是獨立的滿版電影大相框 */
         .hero-section {
             position: relative;
             width: 100%;
             height: 100vh;
-            background: url('hero.jpg') center 25%/cover no-repeat;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* 核心：文字一組在最頂、一組在最底，中間 100% 留白 */
-            padding: 60px 24px; /* 四週留出舒適的安全邊距 */
+            justify-content: space-between; 
+            padding: 60px 24px 50px 24px; 
+            overflow: hidden; /* 確保照片放大時不溢出 */
+        }
+
+        /* 背景照片基礎設定 */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform-origin: center 25%; /* 以人像上半身為中心點 */
+        }
+
+        /* ─── 核心：當畫面進入視線時，照片花 20 秒極其緩慢地從小(scale 1)放大到大(scale 1.12) ─── */
+        .hero-section .background-image {
+            animation: imageZoomIn 20s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes imageZoomIn {
+            0% { transform: scale(1); filter: brightness(0.4); }
+            100% { transform: scale(1.12); filter: brightness(0.55); }
+        }
+
+        /* 暗色遮罩，確保文字絕對清晰 */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
 
         .top-group, .bottom-group {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             width: 100%;
             text-align: center;
         }
 
-        /* ─── 上半部：主標題（絕對單行，不准折返） ─── */
+        /* ─── 核心：文字每隔 5 秒依序浮現動畫 ─── */
+        @keyframes cinematicFadeIn {
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .top-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px; 
+        }
+
+        /* 第 1 行：第 0 秒網頁一開直接絲滑登場 */
         .main-title {
             font-size: 1.6rem; 
             font-weight: 200;
-            letter-spacing: 8px; /* 優雅的高級字距 */
-            white-space: nowrap; /* 強制絕對不准斷行 */
-            text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+            letter-spacing: 8px;
+            white-space: nowrap;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+            animation: cinematicFadeIn 2.5s ease forwards;
         }
 
-        /* ─── 下半部：品牌精神與年份（沉澱在最底部） ─── */
+        /* 第 2 行（副標）：間隔 5 秒後浮現 */
+        .main-tagline {
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: rgba(255, 255, 255, 0.75);
+            white-space: nowrap;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+            opacity: 0; 
+            animation: cinematicFadeIn 2.5s ease forwards;
+            animation-delay: 5s; 
+        }
+
         .bottom-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px; /* 內文段落的呼吸間距 */
+            gap: 22px; 
         }
 
-        /* 品牌 Slogan */
+        /* 第 3 行（Slogan）：再隔 5 秒，第 10 秒優雅浮現 */
         .text-important {
             font-size: 1.25rem;
             font-weight: 300;
             letter-spacing: 5px;
             white-space: nowrap;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+            opacity: 0;
+            animation: cinematicFadeIn 2.5s ease forwards;
+            animation-delay: 10s;
         }
 
-        /* 年份歷史 */
+        /* 第 4 行（歷史年份）：再隔 5 秒，第 15 秒最終登場 */
         .text-history {
             font-size: 0.85rem;
             font-weight: 300;
             letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.6); /* 灰調時間感 */
+            color: rgba(255, 255, 255, 0.55);
             line-height: 1.8;
-        }
-
-        /* 標語 */
-        .bottom-tagline {
-            font-size: 0.85rem;
-            font-weight: 300;
-            letter-spacing: 4px;
-            color: rgba(255, 255, 255, 0.5);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+            opacity: 0;
+            animation: cinematicFadeIn 2.5s ease forwards;
+            animation-delay: 15s;
         }
     </style>
 </head>
 <body>
 
     <section class="hero-section">
+        <div class="background-image" style="background-image: url('hero.jpg'); background-position: center 25%;"></div>
         <div class="top-group">
             <h1 class="main-title">《微光 · 之上》</h1>
+            <p class="main-tagline">蘇純 ｜ 無限旅程</p>
         </div>
-
         <div class="bottom-group">
             <p class="text-important">值得，所以不將就</p>
-            
             <p class="text-history">
                 2019.深深承蒙大家的關照<br>
                 2026.蘇純共邀大家一起<br>
                 共啟微光旅程
             </p>
+        </div>
+    </section>
 
-            <p class="bottom-tagline">蘇純 ｜ 無限旅程</p>
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('emotion01.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">微光 · 初心</h1>
+            <p class="main-tagline">情感片段 ｜ 01</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">在黑暗中，尋找最純粹的光芒</p>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('emotion02.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">微光 · 留白</h1>
+            <p class="main-tagline">情感片段 ｜ 02</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">不將就的背後，是靈魂的繾綣</p>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('emotion03.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">微光 · 凝視</h1>
+            <p class="main-tagline">情感片段 ｜ 03</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">深深承蒙關照，此情依舊</p>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('fragment01.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">記憶 · 碎片</h1>
+            <p class="main-tagline">時光剪影 ｜ 01</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">漫長旅途中，撿拾散落的微光</p>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('fragment02.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">時光 · 沉澱</h1>
+            <p class="main-tagline">時光剪影 ｜ 02</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">走過2019，迎來更堅定的步伐</p>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('fragment03.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">共啟 · 旅程</h1>
+            <p class="main-tagline">時光剪影 ｜ 03</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">這一次，我們一同並肩前行</p>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('journey.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">無限 · 旅程</h1>
+            <p class="main-tagline">極致想像 ｜ INFINITE</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">微光之上，是無止境的璀璨</p>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="background-image" style="background-image: url('free.jpg'); background-position: center center;"></div>
+        <div class="top-group">
+            <h1 class="main-title">共啟 · 微光旅程</h1>
+            <p class="main-tagline">2026 ｜ 蘇純誠摯共邀</p>
+        </div>
+        <div class="bottom-group">
+            <p class="text-important">有你相伴，便是不將就的完美</p>
         </div>
     </section>
 
