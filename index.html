@@ -1,0 +1,235 @@
+<button class="glow-booking-btn" onclick="openBookingPopup()">點擊填寫初步預約單</button>
+
+<div id="luxuryBookingPopup" class="lux-popup">
+  <div class="lux-popup-content">
+    <div class="lux-popup-title">初步預約單 ＆ 項目勾選</div>
+    
+    <div class="lux-service-block">
+      <div class="lux-service-header">✨ 基本溫度服務項目 (可多選)</div>
+      <div class="lux-tag-grid">
+        <label class="lux-tag-checkbox"><input type="checkbox" value="清潔" onchange="syncBookingData()"><span class="lux-tag-label">清潔</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="情慾愛撫" onchange="syncBookingData()"><span class="lux-tag-label">情慾愛撫</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="69式" onchange="syncBookingData()"><span class="lux-tag-label">69式</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="無套口交" onchange="syncBookingData()"><span class="lux-tag-label">無套口交</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="清槍" onchange="syncBookingData()"><span class="lux-tag-label">清槍</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="深喉" onchange="updateBookingText()"><span class="lux-tag-label">深喉</span></label>
+      </div>
+    </div>
+
+    <div class="lux-service-block">
+      <div class="lux-service-header gold">💎 情慾溫度加購項目 (可多選)</div>
+      <div class="lux-tag-grid">
+        <label class="lux-tag-checkbox"><input type="checkbox" value="毒龍" onchange="syncBookingData()"><span class="lux-tag-label">毒龍</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="喉射" onchange="syncBookingData()"><span class="lux-tag-label">喉射</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="情趣用品" onchange="syncBookingData()"><span class="lux-tag-label">情趣用品</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="吞精" onchange="syncBookingData()"><span class="lux-tag-label">吞精</span></label>
+        <label class="lux-tag-checkbox"><input type="checkbox" value="冰火" onchange="syncBookingData()"><span class="lux-tag-label">冰火</span></label>
+      </div>
+    </div>
+
+    <div class="lux-alert-rule">
+      <strong>⚠️ 初次預約重要規範：</strong>
+      為了保障彼此寶貴的時間，首次預約者必須先完成定金匯款。加入 LINE 後請主動出示「匯款明細截圖」或「告知末五碼」，核對看到匯款後預約才正式成立。
+    </div>
+
+    <div id="luxBookingText" class="lux-booking-box">【蘇純｜初步預約單】
+預約稱呼：
+預約日期與時間：
+選擇服務（基本溫度 / 加購項目）：(請在上方點選項目)
+另外需求自填：
+是否為第一次預約：
+初次預約匯款後五碼：
+（加 LINE 後請附上匯款明細截圖）</div>
+
+    <div class="lux-popup-buttons">
+      <button class="lux-btn btn-gold-copy" onclick="copyLuxuryBooking()">1. 複製預約單內容</button>
+      <a class="lux-btn btn-gold-next" href="https://line.me/" target="_blank" onclick="closeBookingPopup()">2. 確定預約，前往 LINE</a>
+      <button class="lux-btn btn-gold-back" onclick="closeBookingPopup()">返回網頁</button>
+    </div>
+  </div>
+</div>
+
+<style>
+/* 預約觸發按鈕 */
+.glow-booking-btn {
+  width: 100%;
+  max-width: 280px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.glow-booking-btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+/* 彈出遮罩全螢幕 */
+.lux-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 99999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.lux-popup.active { display: flex; }
+
+/* 視窗主體：黑金絲邊卡片 */
+.lux-popup-content {
+  background: #080808;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  width: 100%;
+  max-width: 500px;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 35px 25px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.95);
+}
+.lux-popup-title {
+  text-align: center;
+  font-size: 19px;
+  letter-spacing: 5px;
+  color: #d4af37;
+  margin-bottom: 30px;
+}
+
+/* 區塊標題 */
+.lux-service-block { margin-bottom: 25px; text-align: left; }
+.lux-service-header {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  border-left: 2px solid #fff;
+  padding-left: 10px;
+}
+.lux-service-header.gold { color: #d4af37; border-left-color: #d4af37; }
+
+/* 三欄互動標籤網格 */
+.lux-tag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.lux-tag-checkbox { position: relative; user-select: none; }
+.lux-tag-checkbox input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.lux-tag-label {
+  display: block;
+  background: rgba(255,255,255,0.03);
+  color: rgba(245, 241, 235, 0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 2px;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lux-tag-checkbox input[type="checkbox"]:checked + .lux-tag-label {
+  background: rgba(212, 175, 55, 0.12);
+  color: #d4af37;
+  border-color: #d4af37;
+  font-weight: bold;
+}
+
+/* 🛑 警告紅框 */
+.lux-alert-rule {
+  background: rgba(255, 77, 77, 0.02);
+  border: 1px solid rgba(255, 77, 77, 0.2);
+  color: rgba(255, 140, 140, 0.9);
+  padding: 18px;
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 25px;
+  text-align: left;
+}
+.lux-alert-rule strong { color: #ff5555; display: block; margin-bottom: 4px; }
+
+/* 凹陷黑卡文字框 */
+.lux-booking-box {
+  white-space: pre-line;
+  color: #fff;
+  background: #020202;
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  line-height: 2.2;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+/* 按鈕美化 */
+.lux-popup-buttons { display: grid; gap: 12px; }
+.lux-btn {
+  width: 100%; padding: 14px; font-size: 14px; letter-spacing: 3px; text-align: center;
+  background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer;
+}
+.btn-gold-next { background: #d4af37; color: #000; border-color: #d4af37; font-weight: bold; text-decoration: none; display: block; }
+.btn-gold-copy { background: rgba(255,255,255,0.05); }
+.btn-gold-back { border-color: transparent; color: rgba(245,241,235,0.4); font-size: 13px; text-decoration: underline; }
+
+.lux-popup-content::-webkit-scrollbar { width: 3px; }
+.lux-popup-content::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.2); }
+
+@media(max-width:768px){ .lux-tag-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
+<script>
+function openBookingPopup() {
+  document.getElementById('luxuryBookingPopup').classList.add('active');
+  syncBookingData();
+}
+
+function closeBookingPopup() {
+  document.getElementById('luxuryBookingPopup').classList.remove('active');
+}
+
+// 🎯 核心功能：動態捕捉勾選，自動一秒帶入下方文字框
+function syncBookingData() {
+  const checkboxes = document.querySelectorAll('.lux-tag-checkbox input[type="checkbox"]');
+  let checkedItems = [];
+  
+  checkboxes.forEach(box => {
+    if (box.checked) {
+      checkedItems.push(box.value);
+    }
+  });
+  
+  const finalServices = checkedItems.length > 0 ? checkedItems.join('、') : '(請在上方點選項目)';
+  
+  const template = `【蘇純｜初步預約單】
+預約稱呼：
+預約日期與時間：
+選擇服務（基本溫度 / 加購項目）：${finalServices}
+另外需求自填：
+是否為第一次預約：
+初次預約匯款後五碼：
+（加 LINE 後請附上匯款明細截圖）`;
+
+  document.getElementById('luxBookingText').innerText = template;
+}
+
+function copyLuxuryBooking(){
+  const text = document.getElementById("luxBookingText").innerText;
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    alert("預約單已自動生成並複製成功！\n請至 LINE 直接「長按貼上」並主動附上匯款截圖。");
+  } catch (err) {
+    navigator.clipboard.writeText(text).then(function(){
+      alert("預約單已自動生成並複製成功！\n請至 LINE 直接「長按貼上」並主動附上匯款截圖。");
+    });
+  }
+  document.body.removeChild(textarea);
+}
+</script>
