@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微光・之上｜蘇純</title>
+<style>
+/* 🌌 頂級奢華微光美學規範 */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#000;
+  color:#f5f1eb;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+  overflow-x:hidden;
+  line-height:2.3;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* 🪐 沉浸式滿版區塊：文字與宣傳圖完美融為一體 */
+section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 24px;
+  overflow: hidden;
+  background: #000;
+}
+
+.section-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.45; /* 稍微提升清晰度，展現照片原本的文字與質感 */
+}
+
+/* 電影級暗色濾鏡遮罩 */
+.section-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.8) 80%, #000 100%);
+  z-index: 2;
+}
+
+/* 🌟 進場浮現文字與精緻陰影（防止吃字） */
+.content-wrapper {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  max-width: 680px;
+  width: 100%;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.98), 0 2px 10px rgba(0,0,0,0.95);
+}
+
+.section-title {
+  color: #fff;
+  font-size: 28px;
+  letter-spacing: 14px;
+  font-weight: 400;
+  margin-bottom: 55px;
+}
+
+.text-line {
+  font-size: 16.5px;
+  letter-spacing: 4px;
+  color: rgba(245, 241, 235, 0.9);
+  margin-bottom: 26px;
+}
+.text-line strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 🗺️ 微光旅程導覽頁面專屬排版 */
+.journey-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+.journey-link {
+  font-size: 17px;
+  letter-spacing: 8px;
+  color: rgba(245, 241, 235, 0.75);
+  transition: all 0.5s ease;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  width: 260px;
+  margin: 0 auto;
+}
+.journey-link:hover {
+  color: #d4af37;
+  border-bottom-color: #d4af37;
+  letter-spacing: 12px;
+  text-shadow: 0 0 12px rgba(212,175,55,0.4);
+}
+
+/* 🎯 高級極簡預約大按鈕 */
+.start-btn {
+  width: 100%;
+  max-width: 280px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin-top: 40px;
+}
+.start-btn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* 📥 彈出式預約單：黑金美學 */
+.booking-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: none; /* 預設完全隱藏，避免卡死 */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.booking-popup.active {
+  display: flex; /* 啟用時才顯示 */
+}
+.popup-content {
+  background: #0a0a0a;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 35px 25px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.95);
+}
+.popup-title {
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 6px;
+  color: #d4af37;
+  margin-bottom: 35px;
+  font-weight: 300;
+}
+
+/* 🛠️ 互動式項目勾選 */
+.service-block {
+  margin-bottom: 28px;
+  text-align: left;
+}
+.service-header {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  border-left: 2px solid #fff;
+  padding-left: 10px;
+}
+.service-header.gold { 
+  color: #d4af37; 
+  border-left-color: #d4af37;
+}
+
+.tag-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.tag-checkbox {
+  position: relative;
+  user-select: none;
+}
+.tag-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+.tag-label {
+  display: block;
+  background: rgba(255,255,255,0.03);
+  color: rgba(245, 241, 235, 0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 2px;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tag-checkbox input[type="checkbox"]:checked + .tag-label {
+  background: rgba(212, 175, 55, 0.12);
+  color: #d4af37;
+  border-color: #d4af37;
+  font-weight: bold;
+}
+
+/* 🛑 匯款守則 */
+.alert-rule {
+  background: rgba(255, 77, 77, 0.03);
+  border: 1px solid rgba(255, 77, 77, 0.2);
+  color: rgba(255, 150, 150, 0.9);
+  padding: 20px;
+  font-size: 13px;
+  line-height: 2.1;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+.alert-rule strong {
+  color: #ff5555;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* 預約單純文字顯示框 */
+.booking-box {
+  white-space: pre-line;
+  color: #fff;
+  background: #020202;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  line-height: 2.2;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* 按鈕群組 */
+.popup-buttons { display: grid; gap: 14px; }
+.popup-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-align: center;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-next { background: #d4af37; color: #000; border-color: #d4af37; font-weight: bold; }
+.btn-copy { background: rgba(255,255,255,0.05); }
+.btn-back { border-color: transparent; color: rgba(245,241,235,0.5); font-size: 13px; margin-top: 5px; text-decoration: underline; }
+
+@media(max-width:768px){
+  .section-title { font-size: 24px; }
+  .text-line { font-size: 15px; }
+  .tag-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<section id="home">
+  <img src="hero.jpg" class="section-bg" alt="">
+  <div class="section-overlay"></div>
+  <div class="content-wrapper">
+    <div class="section-title" style="font-size:32px;">微光・之上</div>
+    <div class="text-line" style="color:rgba(245,241,235,0.5); font-size:13px; letter-spacing:8px; margin-bottom:45px;">蘇純｜無限旅程</div>
+    <div class="text-line">值得，所以不將就。</div>
+    <div class="text-line">感謝深深，蘇純上線。</div>
+  </div>
+</section>
+
+<section id="journey-index">
+  <img src="trip01.jpg" class="section-bg" alt="">
+  <div class="section-overlay"></div>
+  <div class="content-wrapper">
+    <div class="section-title">微光旅程</div>
+    <div class="journey-menu">
+      <a href="#page-初見" class="journey-link">壹 ｜ 微光・初見</a>
+      <a href="#page-稍炙" class="journey-link">貳 ｜ 微光・稍炙</a>
+      <a href="#page-微醺" class="journey-link">參 ｜ 微光・微醺</a>
+    </div>
+  </div>
+</section>
+
+<section id="page-初見">
+  <img src="IMG_5719.jpg" class="section-bg" alt="">
+  <div class="section-overlay"></div>
+  <div class="content-wrapper">
+    <div class="section-title">微炙蘇純</div>
+  </div>
+</section>
+
+<section id="page-稍炙">
+  <img src="life01.jpg" class="section-bg" alt="">
+  <div class="section-overlay"></div>
+  <div class="content-wrapper">
+    <div class="section-title">關於蘇純</div>
+    <div class="text-line" style="letter-spacing: 5px; color: #d4af37;">153 / 40 / 32B / 45+</div>
+    <div class="text-line">骨感偏瘦、敏感型。</div>
+    <div class="text-line">沒有固定 SOP 流程，不刻意迎合。</div>
+    <div class="text-line">感覺是雙向的，相處也是。</div>
+    <div class="text-line"><strong>適合的人，自然會懂。</strong></div>
+  </div>
+</section>
+
+<section id="page-微醺">
+  <img src="room01.jpg" class="section-bg" alt="">
+  <div class="section-overlay"></div>
+  <div class="content-wrapper">
+    <div class="section-title">微光場域</div>
+    <div class="text-line">感受、信任跟尊重，一直都很重要。</div>
+    <div class="text-line">雙向自然互動，相處舒服。</div>
+    <div class="text-line">要的是舒服、享受過程，<br>滿足身體，也滿足心理。</div>
+  </div>
+</section>
+
+<section>
+  <img src="fragment02.jpg" class="section-bg" alt="">
+  <div class="section-overlay"></div>
+  <div class="content-wrapper">
+    <div class="section-title">預約守則</div>
+    <div class="text-line">個性鮮明、直來直往。</div>
+    <div class="text-line">不喜歡臨時亂改、放鳥。</div>
+    <div class="text-line">Line 文字沒有溫度，只針對重要內容回覆。</div>
+    <div class="text-line" style="color:#d4af37;"><strong>交集，只會在付費房間裡。</strong></div>
+  </div>
+</section>
+
+<section>
+  <img src="room03.jpg" class="section-bg" alt="">
+  <div class="section-overlay"></div>
+  <div class="content-wrapper">
+    <div class="section-title">線上預約</div>
+    <div class="text-line" style="color:rgba(245,241,235,0.6); margin-bottom:40px;">請點擊下方挑選服務內容與填寫預約單</div>
+    <button class="start-btn" onclick="togglePopup(true)">點擊填寫初步預約單</button>
+  </div>
+</section>
+
+<div id="bookingPopup" class="booking-popup">
+  <div class="popup-content">
+    <div class="popup-title">初步預約單 ＆ 項目勾選</div>
+    
+    <div class="service-block">
+      <div class="service-header">✨ 基本溫度服務項目 (可多選)</div>
+      <div class="tag-grid">
+        <label class="tag-checkbox"><input type="checkbox" value="清潔" onchange="updateBookingText()"><span class="tag-label">清潔</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="情慾愛撫" onchange="updateBookingText()"><span class="tag-label">情慾愛撫</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="69式" onchange="updateBookingText()"><span class="tag-label">69式</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="無套口交" onchange="updateBookingText()"><span class="tag-label">無套口交</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="清槍" onchange="updateBookingText()"><span class="tag-label">清槍</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="深喉" onchange="updateBookingText()"><span class="tag-label">深喉</span></label>
+      </div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-header gold">💎 情慾溫度加購項目 (可多選)</div>
+      <div class="tag-grid">
+        <label class="tag-checkbox"><input type="checkbox" value="毒龍" onchange="updateBookingText()"><span class="tag-label">毒龍</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="喉射" onchange="updateBookingText()"><span class="tag-label">喉射</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="情趣用品" onchange="updateBookingText()"><span class="tag-label">情趣用品</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="吞精" onchange="updateBookingText()"><span class="tag-label">吞精</span></label>
+        <label class="tag-checkbox"><input type="checkbox" value="冰火" onchange="updateBookingText()"><span class="tag-label">冰火</span></label>
+      </div>
+    </div>
+
+    <div class="alert-rule">
+      <strong>⚠️ 初次預約重要規範：</strong>
+      為了保障彼此寶貴的時間，首次預約者必須先完成定金匯款。加入 LINE 後請主動出示「匯款明細截圖」或「告知末五碼」，核對看到匯款後預約才正式成立。
+    </div>
+
+    <div id="bookingText" class="booking-box">【蘇純｜初步預約單】
+預約稱呼：
+預約日期與時間：
+選擇服務（基本溫度 / 加購項目）：(請在上方點選項目)
+另外需求自填：
+是否為第一次預約：
+初次預約匯款後五碼：
+（加 LINE 後請附上匯款明細截圖）</div>
+
+    <div class="popup-buttons">
+      <button class="popup-btn btn-copy" onclick="copyBooking()">1. 複製預約單內容</button>
+      <a class="popup-btn btn-next" href="https://line.me/" target="_blank" onclick="togglePopup(false)">2. 確定預約，前往 LINE</a>
+      <button class="popup-btn btn-back" onclick="togglePopup(false)">不約了，返回網頁</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// 🎯 確保視窗開啟與關閉完全順暢
+function togglePopup(show) {
+  const popup = document.getElementById('bookingPopup');
+  if (show) {
+    popup.classList.add('active');
+    updateBookingText(); 
+  } else {
+    popup.classList.remove('active');
+  }
+}
+
+// 🎯 修正：徹底落實點選即時帶入文字的功能
+function updateBookingText() {
+  const checkboxes = document.querySelectorAll('.tag-checkbox input[type="checkbox"]');
+  let selectedServices = [];
+  
+  checkboxes.forEach(cb => {
+    if (cb.checked) {
+      selectedServices.push(cb.value);
+    }
+  });
+  
+  const serviceString = selectedServices.length > 0 ? selectedServices.join('、') : '(請在上方點選項目)';
+  
+  const baseText = `【蘇純｜初步預約單】
+預約稱呼：
+預約日期與時間：
+選擇服務（基本溫度 / 加購項目）：${serviceString}
+另外需求自填：
+是否為第一次預約：
+初次預約匯款後五碼：
+（加 LINE 後請附上匯款明細截圖）`;
+
+  document.getElementById('bookingText').innerText = baseText;
+}
+
+function copyBooking(){
+  const text = document.getElementById("bookingText").innerText;
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    alert("預約單已自動生成並複製！請至 LINE 直接貼上並附上匯款截圖");
+  } catch (err) {
+    navigator.clipboard.writeText(text).then(function(){
+      alert("預約單已自動生成並複製！請至 LINE 直接貼上並附上匯款截圖");
+    });
+  }
+  document.body.removeChild(textarea);
+}
+</script>
+</body>
+</html>
