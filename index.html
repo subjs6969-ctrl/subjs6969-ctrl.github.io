@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>微光・之上</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:#f2ede7;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"PingFang TC",
+"Noto Sans TC",
+sans-serif;
+overflow-x:hidden;
+line-height:1.9;
+letter-spacing:.08em;
+}
+
+.wrap{
+width:100%;
+max-width:680px;
+margin:auto;
+padding:0 28px;
+}
+
+section{
+padding:120px 0;
+border-bottom:1px solid rgba(255,255,255,.06);
+position:relative;
+}
+
+small{
+display:block;
+font-size:12px;
+letter-spacing:.35em;
+color:#7f7f7f;
+margin-bottom:28px;
+text-transform:uppercase;
+}
+
+h1{
+font-size:58px;
+font-weight:200;
+line-height:1.45;
+letter-spacing:.12em;
+margin-bottom:50px;
+text-align:center;
+}
+
+h2{
+font-size:38px;
+font-weight:300;
+line-height:1.7;
+margin-bottom:45px;
+text-align:center;
+}
+
+p{
+font-size:16px;
+font-weight:300;
+color:#bdbdbd;
+margin-bottom:28px;
+text-align:center;
+}
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:
+radial-gradient(circle at top, rgba(255,255,255,.04), transparent 35%),
+#050505;
+}
+
+.brand{
+font-size:18px;
+letter-spacing:.35em;
+margin-bottom:30px;
+color:#bfb7ad;
+}
+
+.since{
+margin-top:60px;
+font-size:14px;
+letter-spacing:.45em;
+color:#7f7f7f;
+}
+
+.btn-group{
+margin-top:70px;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.btn{
+height:66px;
+border-radius:999px;
+border:1px solid rgba(255,255,255,.12);
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:#f2ede7;
+font-size:18px;
+letter-spacing:.15em;
+background:rgba(255,255,255,.02);
+backdrop-filter:blur(20px);
+transition:.35s ease;
+}
+
+.btn:hover{
+background:#f2ede7;
+color:#000;
+transform:translateY(-2px);
+}
+
+.divider{
+width:1px;
+height:80px;
+background:rgba(255,255,255,.08);
+margin:40px auto;
+}
+
+.card{
+padding:42px 30px;
+border-radius:34px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+margin-bottom:26px;
+backdrop-filter:blur(20px);
+}
+
+.card h3{
+font-size:30px;
+font-weight:300;
+margin-bottom:18px;
+text-align:center;
+}
+
+.price{
+font-size:15px;
+letter-spacing:.2em;
+color:#9d9d9d;
+margin-bottom:20px;
+text-align:center;
+}
+
+.list{
+margin-top:35px;
+}
+
+.list div{
+padding:16px 0;
+border-bottom:1px solid rgba(255,255,255,.06);
+font-size:16px;
+color:#d6d6d6;
+text-align:center;
+}
+
+.booking-box{
+padding:36px 28px;
+border-radius:30px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+margin-top:50px;
+}
+
+.booking-box p{
+text-align:left;
+line-height:2;
+}
+
+.footer{
+padding:120px 0 80px;
+text-align:center;
+}
+
+.footer p{
+font-size:14px;
+letter-spacing:.25em;
+color:#6f6f6f;
+}
+
+.copy-btn{
+margin-top:40px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:100%;
+height:68px;
+border-radius:999px;
+background:#f2ede7;
+color:#000;
+text-decoration:none;
+font-size:18px;
+letter-spacing:.12em;
+font-weight:500;
+}
+
+.glow{
+position:absolute;
+width:380px;
+height:380px;
+background:rgba(255,255,255,.03);
+filter:blur(120px);
+border-radius:50%;
+top:-120px;
+left:-100px;
+pointer-events:none;
+}
+
+@media(max-width:768px){
+
+section{
+padding:95px 0;
+}
+
+h1{
+font-size:46px;
+line-height:1.6;
+}
+
+h2{
+font-size:32px;
+}
+
+p{
+font-size:15px;
+line-height:2;
+}
+
+.btn{
+height:62px;
+font-size:17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="glow"></div>
+
+<div class="wrap">
+
+<div class="brand">狐九｜無限旅程</div>
+
+<h1>
+值得，所以不將就。
+</h1>
+
+<div class="since">SINCE.2019</div>
+
+<div class="btn-group">
+
+<a href="#story" class="btn">微炙狐九</a>
+
+<a href="#journey" class="btn">微光旅程</a>
+
+<a href="#booking" class="btn">預約狐九</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="story">
+
+<div class="wrap">
+
+<small>微炙・狐九</small>
+
+<h2>
+以為，這圈子很簡單。
+</h2>
+
+<p>
+久了才明白，<br>
+深的，從來不是環境，而是人性。
+</p>
+
+<p>
+感謝曾經的深深，<br>
+現在的狐九。
+</p>
+
+<p>
+回歸真我，<br>
+自在生活。
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<small>關於・狐九</small>
+
+<h2>
+153 / 40 / 32B / 45+
+</h2>
+
+<p>
+骨感偏瘦、敏感型。
+</p>
+
+<p>
+沒有固定 SOP 流程，<br>
+不刻意迎合，也不虛假奉陪。
+</p>
+
+<p>
+感覺是雙向的，<br>
+相處也是。
+</p>
+
+<p>
+適合的人，自然會懂。
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<small>微光場域</small>
+
+<h2>
+感受、信任跟尊重，<br>
+一直都很重要。
+</h2>
+
+<p>
+雙向自然互動，<br>
+相處舒服，彼此才會開心。
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<small>相幹</small>
+
+<h2>
+要的是舒服、享受過程。
+</h2>
+
+<p>
+滿足身體，也滿足心理，<br>
+這樣的旅程才有意思。
+</p>
+
+<p>
+比起說什麼，<br>
+做什麼、給什麼，<br>
+才是旅程的重點。
+</p>
+
+<div class="divider"></div>
+
+<p>
+無限旅程，<br>
+只留給重視微光旅程的人。
+</p>
+
+</div>
+
+</section>
+
+<section id="journey">
+
+<div class="wrap">
+
+<small>微光旅程</small>
+
+<div class="card">
+
+<div class="price">壹｜2H｜5000</div>
+
+<h3>微光・初見</h3>
+
+<p>
+舒服認識彼此的開始。
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="price">貳｜3H｜6200</div>
+
+<h3>微光・稍炙</h3>
+
+<p>
+感覺對了，<br>
+很多事自然就有了。
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="price">參｜10H｜13990</div>
+
+<h3>微光・微醺</h3>
+
+<p>
+放鬆、洩壓，<br>
+享受自在舒服的過程。
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="price">肆｜16H｜20000</div>
+
+<h3>微光・之上</h3>
+
+<p>
+客製專屬旅程，<br>
+共啟微光無限旅程。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<small>旅程導覽</small>
+
+<div class="list">
+
+<div>共浴</div>
+<div>情慾式放鬆</div>
+<div>無套吹</div>
+<div>69 式</div>
+<div>清槍</div>
+<div>深喉</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="booking">
+
+<div class="wrap">
+
+<small>預約注意事項</small>
+
+<div class="booking-box">
+
+<p>
+預約請先提供：
+<br><br>
+
+・日期<br>
+・時間<br>
+・方案<br>
+・Line 暱稱
+<br><br>
+
+無固定班表，<br>
+請盡量提供兩個方便時段。
+<br><br>
+
+確定預約後，<br>
+會提供詳細匯款資訊。
+<br><br>
+
+不喜歡臨時亂改、放鳥，<br>
+也不太喜歡試探性問題。
+<br><br>
+
+有特殊需求、個人癖好，<br>
+都可以提前提出。
+<br><br>
+
+狐九是老煙槍，<br>
+若介意菸味請提前告知。
+<br><br>
+
+Line 文字沒有溫度，<br>
+只針對重要內容回覆。
+<br><br>
+
+感覺跟尊重是互相的，<br>
+自然相處，旅程才會舒服。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<small>預約單</small>
+
+<div class="booking-box">
+
+<p>
+1｜LINE 稱號
+<br><br>
+
+2｜預約日期、時段
+<br><br>
+
+3｜選擇方案
+<br>
+壹｜微光・初見
+<br>
+貳｜微光・稍炙
+<br>
+參｜微光・微醺
+<br>
+肆｜微光・之上
+<br><br>
+
+4｜是否有進階旅程需求
+<br><br>
+
+5｜特殊需求
+<br><br>
+
+6｜菸味接受度
+<br><br>
+
+7｜初次核對
+<br><br>
+
+8｜訂金確認
+</p>
+
+</div>
+
+<a class="copy-btn" href="#">
+複製預約單｜加入 LINE
+</a>
+
+</div>
+
+</section>
+
+<div class="footer">
+
+<p>
+MICROLIGHT ABOVE
+</p>
+
+</div>
+
+</body>
+</html>
