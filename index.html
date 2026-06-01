@@ -22,11 +22,17 @@ box-sizing:border-box;
 
 }
 
-html{
 
+html,
+body{
+height:100%;
+overflow-y:scroll;
 scroll-behavior:smooth;
-
+scroll-snap-type:y mandatory;
 }
+
+
+
 
 body{
 
@@ -47,7 +53,8 @@ BlinkMacSystemFont,
 serif;
 
 overflow-x:hidden;
-
+scroll-snap-align:start;
+scroll-snap-stop:always;
 }
 
 body::before{
