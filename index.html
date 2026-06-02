@@ -1,0 +1,220 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微光・之上｜蘇純</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+html{
+scroll-behavior:smooth;
+}
+body{
+background:#000;
+color:#f2eee8;
+font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;
+overflow-x:hidden;
+line-height:2;
+}
+/* 背景影片 */
+.bg-video{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+object-fit:contain;
+background:#000;
+z-index:-2;
+opacity:.55;
+filter:brightness(.65);
+}
+/* 黑色遮罩 */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.35);
+z-index:-1;
+pointer-events:none;
+}
+/* 每一頁 */
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:80px 30px;
+text-align:center;
+}
+/* 標題 */
+.hero h1{
+font-size:20px;
+font-weight:300;
+letter-spacing:.35em;
+margin-bottom:90px;
+}
+.hero h2{
+font-size:24px;
+font-weight:300;
+letter-spacing:.12em;
+margin-bottom:60px;
+}
+.hero h3{
+font-size:78px;
+font-weight:200;
+line-height:1.4;
+margin-bottom:70px;
+}
+.hero p{
+font-size:28px;
+font-weight:200;
+letter-spacing:.18em;
+opacity:.72;
+}
+/* 文字頁 */
+.text-block{
+max-width:720px;
+}
+.text-block .small{
+font-size:22px;
+font-weight:300;
+letter-spacing:.15em;
+margin-bottom:55px;
+opacity:.7;
+}
+.text-block .big{
+font-size:64px;
+font-weight:200;
+line-height:1.7;
+margin-bottom:70px;
+}
+.text-block .line{
+font-size:30px;
+font-weight:300;
+line-height:2.6;
+margin-bottom:26px;
+}
+/* 按鈕 */
+.menu{
+display:flex;
+flex-direction:column;
+gap:34px;
+margin-top:70px;
+}
+.menu a{
+color:#f2eee8;
+text-decoration:none;
+font-size:34px;
+font-weight:300;
+letter-spacing:.12em;
+}
+/* 手機 */
+@media(max-width:768px){
+.hero h1{
+font-size:16px;
+margin-bottom:70px;
+}
+.hero h2{
+font-size:18px;
+margin-bottom:50px;
+}
+.hero h3{
+font-size:54px;
+line-height:1.5;
+margin-bottom:50px;
+}
+.hero p{
+font-size:18px;
+}
+.text-block .small{
+font-size:18px;
+margin-bottom:45px;
+}
+.text-block .big{
+font-size:42px;
+line-height:1.8;
+margin-bottom:50px;
+}
+.text-block .line{
+font-size:22px;
+line-height:2.4;
+}
+.menu a{
+font-size:28px;
+}
+}
+</style>
+</head>
+<body>
+<video autoplay muted loop playsinline class="bg-video">
+<source src="hero.mp4" type="video/mp4">
+</video>
+<!-- 第一頁 -->
+<section class="hero">
+<h1>《微光・之上》</h1>
+<h2>狐九｜無限旅程</h2>
+<h3>
+值得<br>
+所以不將就
+</h3>
+<p>SINCE.2019</p>
+</section>
+<!-- 第二頁 -->
+<section>
+<div class="menu">
+<a href="https://lin.ee/">微炙狐九</a>
+<a href="journey.html">微光旅程</a>
+<a href="booking.html">預約狐九</a>
+</div>
+</section>
+<!-- 第三頁 -->
+<section>
+<div class="text-block">
+<div class="small">
+微炙・狐九
+</div>
+<div class="big">
+以為，<br>
+這圈子很簡單。
+</div>
+<div class="line">
+久了才明白，
+</div>
+<div class="line">
+深的，從來不是環境，
+</div>
+<div class="line">
+而是人性。
+</div>
+</div>
+</section>
+<!-- 第四頁 -->
+<section>
+<div class="text-block">
+<div class="line">
+感謝曾經的深深，
+</div>
+<div class="line">
+現在的狐九。
+</div>
+<div class="line">
+回歸真我，
+</div>
+<div class="line">
+自在生活。
+</div>
+</div>
+</section>
+</body>
+</html>
