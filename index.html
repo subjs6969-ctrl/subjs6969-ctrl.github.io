@@ -1,0 +1,283 @@
+把 index.html 全部清空，整份覆蓋這版。這版已修正：每個 section 都完整關閉，不會再疊在首頁。
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《微光・之上》｜狐九</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+background:#050505;
+color:#eee8df;
+font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Serif TC","Microsoft JhengHei",serif;
+overflow-x:hidden;
+letter-spacing:.08em;
+}
+.site-title{
+position:fixed;
+top:30px;
+left:0;
+right:0;
+text-align:center;
+font-size:14px;
+letter-spacing:.34em;
+color:#d8cec5;
+z-index:99;
+}
+.hero{
+min-height:100svh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 28px;
+overflow:hidden;
+}
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(to bottom,rgba(0,0,0,.42),rgba(0,0,0,.82)),
+url("hero.jpg") center/cover no-repeat;
+filter:brightness(.72) blur(1px);
+transform:scale(1.05);
+z-index:0;
+}
+.wrap{
+width:100%;
+max-width:460px;
+margin:auto;
+text-align:center;
+position:relative;
+z-index:2;
+}
+.hero-sub{
+font-size:16px;
+letter-spacing:.24em;
+color:#b8aca2;
+margin-bottom:82px;
+}
+h1{
+font-size:46px;
+font-weight:200;
+line-height:2.15;
+letter-spacing:.16em;
+color:#f0ebe4;
+}
+.since{
+margin-top:82px;
+font-size:14px;
+letter-spacing:.46em;
+color:#8b8178;
+}
+.nav{
+margin-top:90px;
+display:flex;
+flex-direction:column;
+gap:28px;
+}
+.nav a{
+color:#e8dfd7!important;
+text-decoration:none!important;
+font-size:18px;
+letter-spacing:.24em;
+font-weight:300;
+}
+.section{
+min-height:140svh;
+padding:120px 28px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+.label{
+font-size:14px;
+letter-spacing:.36em;
+color:#8e847b;
+margin-bottom:120px;
+}
+.line-item{
+min-height:34vh;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+line-height:2.25;
+letter-spacing:.14em;
+font-weight:300;
+color:#d8cec5;
+opacity:0;
+transform:translateY(90px);
+transition:opacity 1.25s ease,transform 1.25s ease;
+}
+.line-item.big{
+font-size:38px;
+line-height:1.9;
+font-weight:200;
+color:#f0e8df;
+}
+.line-item.show{
+opacity:1;
+transform:translateY(0);
+}
+.plan{
+border-top:1px solid rgba(255,255,255,.1);
+padding:58px 0;
+}
+.plan:last-child{
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+.plan-title{
+font-size:28px;
+font-weight:200;
+letter-spacing:.14em;
+line-height:1.8;
+color:#f0e8df;
+margin-bottom:24px;
+}
+.plan-note{
+font-size:17px;
+line-height:2.2;
+letter-spacing:.1em;
+color:#bfb4aa;
+}
+.divider{
+width:1px;
+height:100px;
+background:rgba(255,255,255,.1);
+margin:80px auto;
+}
+.footer{
+padding:110px 24px 130px;
+text-align:center;
+font-size:13px;
+letter-spacing:.36em;
+color:#766d66;
+}
+@media(max-width:420px){
+h1{font-size:42px}
+.line-item{font-size:20px}
+.line-item.big{font-size:34px}
+}
+</style>
+</head>
+<body>
+<div class="site-title">《微光・之上》</div>
+<section class="hero" id="home">
+<div class="wrap">
+<div class="hero-sub">狐九｜無限旅程</div>
+<h1>
+值得<br><br>
+所以不將就
+</h1>
+<div class="since">SINCE.2019</div>
+<div class="nav">
+<a href="#story">微炙狐九</a>
+<a href="#about">關於狐九</a>
+<a href="#journey">微光旅程</a>
+<a href="#booking">預約狐九</a>
+</div>
+</div>
+</section>
+<section class="section" id="story">
+<div class="wrap">
+<div class="label">微炙・狐九</div>
+<div class="line-item big">以為，這圈子很簡單。</div>
+<div class="line-item">久了才明白</div>
+<div class="line-item">深的，從來不是環境</div>
+<div class="line-item">而是人性。</div>
+<div class="line-item">感謝曾經的深深，現在的狐九</div>
+<div class="line-item">回歸真我，</div>
+<div class="line-item">自在生活。</div>
+</div>
+</section>
+<section class="section" id="about">
+<div class="wrap">
+<div class="label">關於・狐九</div>
+<div class="line-item">狐九（深深）</div>
+<div class="line-item">153 / 40 / 32B / 45+</div>
+<div class="line-item">骨感偏瘦、敏感型。</div>
+<div class="line-item">沒有固定 SOP 流程</div>
+<div class="line-item">不刻意迎合，也不虛假奉陪。</div>
+<div class="line-item">感覺是雙向的，</div>
+<div class="line-item">相處也是。</div>
+<div class="line-item">適合的人，自然會懂。</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<div class="label">微光場域</div>
+<div class="line-item big">感受、信任跟尊重，</div>
+<div class="line-item">一直都很重要。</div>
+<div class="line-item">雙向自然互動，</div>
+<div class="line-item">相處舒服，彼此才會開心。</div>
+</div>
+</section>
+<section class="section" id="journey">
+<div class="wrap">
+<div class="label">微光旅程</div>
+<div class="line-item big">微光・短程</div>
+<div class="plan">
+<div class="plan-title">壹｜微光・初見</div>
+<div class="plan-note">舒服認識彼此的開始。</div>
+</div>
+<div class="plan">
+<div class="plan-title">貳｜微光・稍炙</div>
+<div class="plan-note">感覺對了，很多事自然就有了。</div>
+</div>
+<div class="divider"></div>
+<div class="line-item big">微光・長時</div>
+<div class="plan">
+<div class="plan-title">參｜微光・微醺</div>
+<div class="plan-note">放鬆、洩壓，享受自在舒服的過程。</div>
+</div>
+<div class="plan">
+<div class="plan-title">肆｜微光・之上</div>
+<div class="plan-note">客製專屬旅程，共啟微光無限旅程。</div>
+</div>
+</div>
+</section>
+<section class="section" id="booking">
+<div class="wrap">
+<div class="label">預約注意事項</div>
+<div class="line-item">預約請先提供：</div>
+<div class="line-item">日期・時間・方案・Line 暱稱</div>
+<div class="line-item">無固定班表，</div>
+<div class="line-item">請盡量提供兩個方便時段。</div>
+<div class="line-item">確定預約後，</div>
+<div class="line-item">會提供詳細資訊。</div>
+<div class="line-item">不喜歡臨時亂改、放鳥，</div>
+<div class="line-item">也不太喜歡試探性問題。</div>
+<div class="line-item">有特殊需求，</div>
+<div class="line-item">都可以提前提出。</div>
+<div class="line-item">狐九是老煙槍，</div>
+<div class="line-item">若介意菸味請提前告知。</div>
+<div class="line-item">Line 文字沒有溫度，</div>
+<div class="line-item">只針對重要內容回覆。</div>
+<div class="line-item">感覺跟尊重是互相的，</div>
+<div class="line-item">自然相處，旅程才會舒服。</div>
+</div>
+</section>
+<div class="footer">MICROLIGHT JOURNEY</div>
+<script>
+const items=document.querySelectorAll(".line-item");
+function showLines(){
+const trigger=window.innerHeight*0.78;
+items.forEach(function(item){
+const top=item.getBoundingClientRect().top;
+if(top<trigger){
+item.classList.add("show");
+}
+});
+}
+window.addEventListener("scroll",showLines);
+window.addEventListener("load",showLines);
+</script>
+</body>
+</html>
