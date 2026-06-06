@@ -1,320 +1,277 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>《微光・之上》｜狐九</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-background:#050505;
-color:#eee8df;
-font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Serif TC","Microsoft JhengHei",serif;
-overflow-x:hidden;
-letter-spacing:.08em;
-}
-.site-title{
-position:fixed;
-top:30px;
-left:0;
-right:0;
-text-align:center;
-font-size:14px;
-letter-spacing:.34em;
-color:#d8cec5;
-z-index:99;
-}
-.hero{
-min-height:100svh;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:120px 28px;
-overflow:hidden;
-}
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(to bottom,rgba(0,0,0,.42),rgba(0,0,0,.82)),
-url("hero.jpg") center/cover no-repeat;
-filter:brightness(.72) blur(1px);
-transform:scale(1.05);
-z-index:0;
-}
-.wrap{
-width:100%;
-max-width:460px;
-margin:auto;
-text-align:center;
-position:relative;
-z-index:2;
-}
-.hero-sub{
-font-size:16px;
-letter-spacing:.24em;
-color:#b8aca2;
-margin-bottom:82px;
-}
-h1{
-font-size:46px;
-font-weight:200;
-line-height:2.15;
-letter-spacing:.16em;
-color:#f0ebe4;
-}
-.since{
-margin-top:82px;
-font-size:14px;
-letter-spacing:.46em;
-color:#8b8178;
-}
-.nav{
-margin-top:90px;
-display:flex;
-flex-direction:column;
-gap:28px;
-}
-.nav a{
-color:#e8dfd7!important;
-text-decoration:none!important;
-font-size:18px;
-letter-spacing:.24em;
-font-weight:300;
-}
-.section{
-min-height:140svh;
-padding:120px 28px;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-.label{
-font-size:14px;
-letter-spacing:.36em;
-color:#8e847b;
-margin-bottom:120px;
-}
-.line-item{
-min-height:34vh;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-line-height:2.25;
-letter-spacing:.14em;
-font-weight:300;
-color:#d8cec5;
-opacity:0;
-transform:translateY(90px);
-transition:opacity 1.25s ease,transform 1.25s ease;
-}
-.line-item.big{
-font-size:38px;
-line-height:1.9;
-font-weight:200;
-color:#f0e8df;
-}
-.line-item.show{
-opacity:1;
-transform:translateY(0);
-}
-.plan{
-border-top:1px solid rgba(255,255,255,.1);
-padding:58px 0;
-}
-.plan:last-child{
-border-bottom:1px solid rgba(255,255,255,.1);
-}
-.plan-title{
-font-size:28px;
-font-weight:200;
-letter-spacing:.14em;
-line-height:1.8;
-color:#f0e8df;
-margin-bottom:24px;
-}
-.plan-note{
-font-size:17px;
-line-height:2.2;
-letter-spacing:.1em;
-color:#bfb4aa;
-}
-.divider{
-width:1px;
-height:100px;
-background:rgba(255,255,255,.1);
-margin:80px auto;
-}
-.footer{
-padding:110px 24px 130px;
-text-align:center;
-font-size:13px;
-letter-spacing:.36em;
-color:#766d66;
-}
-@media(max-width:420px){
-h1{font-size:42px}
-.line-item{font-size:20px}
-.line-item.big{font-size:34px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微光之上｜無限旅程</title>
+  <style>
+    /* 全域奢華黑金風格 */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #030303; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; overflow-x: hidden; }
+    
+    /* 質感發光金色字 */
+    .gold-glow {
+      color: #f5d77f;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+    .sub-title { letter-spacing: 4px; font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+    
+    /* 滿版分頁設定 */
+    .page-section {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.05);
+      position: relative;
+    }
+    
+    .container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .full-width-container { width: 100%; max-width: 800px; text-align: center; }
+    
+    .text-content { text-align: left; line-height: 2; letter-spacing: 1.5px; }
+    .text-content h1 { font-size: 42px; letter-spacing: 8px; margin: 15px 0; font-weight: 300; }
+    .text-content p { color: rgba(245, 241, 235, 0.8); font-size: 15px; white-space: pre-line; margin-bottom: 15px; }
+    
+    .img-box { width: 100%; max-height: 80vh; display: flex; justify-content: center; }
+    .img-box img { max-width: 100%; max-height: 80vh; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+
+    /* 星空背景專用區塊 (5-8頁) */
+    .sparkle-bg {
+      background-image: linear-gradient(rgba(3,3,3,0.85), rgba(3,3,3,0.85)), url('bg-sparkles.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* 三欄式承諾區塊 (9頁) */
+    .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 40px; text-align: left; }
+    .promise-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(212,175,55,0.1); padding: 30px 20px; line-height: 2.2; letter-spacing: 1px; font-size: 14px; }
+    .promise-card h3 { font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px; text-align: center; }
+
+    /* 第10頁導向按鈕 */
+    .glow-booking-btn {
+      width: 100%; max-width: 280px; padding: 16px; background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.3); color: #e5c158; font-size: 15px; letter-spacing: 5px;
+      cursor: pointer; transition: all 0.5s ease; margin-top: 30px;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+    }
+    .glow-booking-btn:hover { background: #d4af37; color: #000; box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); text-shadow: none; }
+
+    /* --- 以下為你原先完美的預約單彈出視窗 CSS --- */
+    .lux-popup { position: fixed; inset: 0; background: rgba(5, 5, 5, 0.88); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); z-index: 99999; display: none; justify-content: center; align-items: center; padding: 20px; }
+    .lux-popup.active { display: flex; }
+    .lux-popup-content { background: rgba(12, 12, 12, 0.95); border: 1px solid rgba(212, 175, 55, 0.2); width: 100%; max-width: 500px; max-height: 88vh; overflow-y: auto; padding: 35px 25px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.08); }
+    .lux-popup-title { text-align: center; font-size: 20px; letter-spacing: 6px; color: #f5d77f; margin-bottom: 30px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.6); }
+    .lux-service-block { margin-bottom: 25px; text-align: left; line-height: 2; }
+    .lux-service-header { font-size: 14px; color: #fff; margin-bottom: 15px; letter-spacing: 2px; border-left: 2px solid #fff; padding-left: 10px; }
+    .lux-service-header.gold { color: #f5d77f; border-left-color: #d4af37; }
+    .lux-tag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .lux-tag-checkbox { position: relative; user-select: none; }
+    .lux-tag-checkbox input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .lux-tag-label { display: block; background: rgba(255,255,255,0.02); color: rgba(245, 241, 235, 0.5); border: 1px solid rgba(255,255,255,0.08); padding: 12px 2px; font-size: 13px; text-align: center; cursor: pointer; transition: all 0.3s; }
+    .lux-tag-checkbox input[type="checkbox"]:checked + .lux-tag-label { background: rgba(212, 175, 55, 0.08); color: #fff; border-color: #d4af37; font-weight: bold; text-shadow: 0 0 8px rgba(212, 175, 55, 0.8); box-shadow: 0 0 12px rgba(212, 175, 55, 0.3); }
+    .lux-alert-rule { background: rgba(212, 175, 55, 0.02); border: 1px solid rgba(212, 175, 55, 0.15); color: rgba(245, 241, 235, 0.7); padding: 18px; font-size: 13px; line-height: 2; margin-bottom: 25px; text-align: left; }
+    .lux-booking-box { white-space: pre-line; color: rgba(255,255,255,0.85); background: #050505; border: 1px solid rgba(255,255,255,0.04); font-size: 14px; line-height: 2.2; padding: 20px; margin-bottom: 25px; text-align: left; }
+    .lux-popup-buttons { display: grid; gap: 12px; }
+    .lux-btn { width: 100%; padding: 14px; font-size: 14px; letter-spacing: 3px; text-align: center; background: transparent; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); cursor: pointer; transition: all 0.3s; }
+    .btn-gold-next { background: rgba(212, 175, 55, 0.1); color: #f5d77f; border-color: #d4af37; font-weight: bold; text-decoration: none; display: block; text-shadow: 0 0 6px rgba(212, 175, 55, 0.6); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+    .btn-gold-next:hover { background: #d4af37; color: #000; text-shadow: none; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+    .btn-gold-copy { background: rgba(255,255,255,0.02); }
+    .btn-gold-copy:hover { border-color: #fff; color: #fff; }
+    .btn-gold-back { border-color: transparent; color: rgba(245,241,235,0.3); font-size: 13px; text-decoration: underline; }
+
+    /* RWD 手機版自動調整 */
+    @media(max-width:768px){
+      .container { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+      .text-content { text-align: center; }
+      .text-content h1 { font-size: 32px; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .lux-tag-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
-<div class="site-title">《微光・之上》</div>
-<section class="hero" id="home">
-<div class="wrap">
-<div class="hero-sub">狐九｜無限旅程</div>
-<h1>
-值得<br><br>
-所以不將就
-</h1>
-<div class="since">SINCE.2019</div>
-<div class="nav">
-<a href="#story">微炙狐九</a>
-<a href="#about">關於狐九</a>
-<a href="#journey">微光旅程</a>
-<a href="#booking">預約狐九</a>
-</div>
-</div>
-</section>
-<section class="section" id="story">
-<div class="wrap">
-<div class="label">微炙・狐九</div>
-<div class="line-item big">以為，這圈子很簡單。</div>
-<div class="line-item">久了才明白</div>
-<div class="line-item">深的，從來不是環境</div>
-<div class="line-item">而是人性。</div>
-<div class="line-item">感謝曾經的深深，現在的狐九</div>
-<div class="line-item">回歸真我，</div>
-<div class="line-item">自在生活。</div>
-</div>
-</section>
-<section class="section" id="about">
-<div class="wrap">
-<div class="label">關於・狐九</div>
-<div class="line-item">狐九（深深）</div>
-<div class="line-item">153 / 40 / 32B / 45+</div>
-<div class="line-item">骨感偏瘦、敏感型。</div>
-<div class="line-item">沒有固定 SOP 流程</div>
-<div class="line-item">不刻意迎合，也不虛假奉陪。</div>
-<div class="line-item">感覺是雙向的，</div>
-<div class="line-item">相處也是。</div>
-<div class="line-item">適合的人，自然會懂。</div>
-</div>
-</section>
-<section class="section">
-<div class="wrap">
-<div class="label">微光場域</div>
-<div class="line-item big">感受、信任跟尊重，</div>
-<div class="line-item">一直都很重要。</div>
-<div class="line-item">雙向自然互動，</div>
-<div class="line-item">相處舒服，彼此才會開心。</div>
-</div>
-</section>
-<section class="section" id="journey">
-<div class="wrap">
-<div class="label">微光旅程</div>
-<div class="line-item big">微光・短程</div>
-<div class="plan">
-<div class="plan-title">壹｜微光・初見</div>
-<div class="plan-note">舒服認識彼此的開始。</div>
-</div>
-<div class="plan">
-<div class="plan-title">貳｜微光・稍炙</div>
-<div class="plan-note">感覺對了，很多事自然就有了。</div>
-</div>
-<div class="divider"></div>
-<div class="line-item big">微光・長時</div>
-<div class="plan">
-<div class="plan-title">參｜微光・微醺</div>
-<div class="plan-note">放鬆、洩壓，享受自在舒服的過程。</div>
-</div>
-<div class="plan">
-<div class="plan-title">肆｜微光・之上</div>
-<div class="plan-note">客製專屬旅程，共啟微光無限旅程。</div>
-</div>
-</div>
-</section>
-<section class="section" id="booking">
-<div class="wrap">
-<div class="label">預約注意事項</div>
-<div class="line-item">預約請先提供：</div>
-<div class="line-item">日期・時間・方案・Line 暱稱</div>
-<div class="line-item">無固定班表，</div>
-<div class="line-item">請盡量提供兩個方便時段。</div>
-<div class="line-item">確定預約後，</div>
-<div class="line-item">會提供詳細資訊。</div>
-<div class="line-item">不喜歡臨時亂改、放鳥，</div>
-<div class="line-item">也不太喜歡試探性問題。</div>
-<div class="line-item">有特殊需求，</div>
-<div class="line-item">都可以提前提出。</div>
-<div class="line-item">狐九是老煙槍，</div>
-<div class="line-item">若介意菸味請提前告知。</div>
-<div class="line-item">Line 文字沒有溫度，</div>
-<div class="line-item">只針對重要內容回覆。</div>
-<div class="line-item">感覺跟尊重是互相的，</div>
-<div class="line-item">自然相處，旅程才會舒服。</div>
-</div>
-</section>
-<div class="footer">MICROLIGHT JOURNEY</div>
-<script>
-const items=document.querySelectorAll(".line-item");
-function showLines(){
-const trigger=window.innerHeight*0.78;
-items.forEach(function(item){
-const top=item.getBoundingClientRect().top;
-if(top<trigger){
-item.classList.add("show");
-}
-});
-}
-window.addEventListener("scroll",showLines);
-window.addEventListener("load",showLines);
-</script>
-</body>
-</html><button class="glow-booking-btn" onclick="openBookingPopup()">點擊填寫初步預約單</button>
 
-<div id="luxuryBookingPopup" class="lux-popup">
-  <div class="lux-popup-content">
-    <div class="lux-popup-title">初步預約單 ＆ 項目勾選</div>
-    
-    <div class="lux-service-block">
-      <div class="lux-service-header">✨ 基本溫度服務項目 (可多選)</div>
-      <div class="lux-tag-grid">
-        <label class="lux-tag-checkbox"><input type="checkbox" value="清潔" onchange="syncBookingData()"><span class="lux-tag-label">清潔</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="情慾愛撫" onchange="syncBookingData()"><span class="lux-tag-label">情慾愛撫</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="69式" onchange="syncBookingData()"><span class="lux-tag-label">69式</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="無套口交" onchange="syncBookingData()"><span class="lux-tag-label">無套口交</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="清槍" onchange="syncBookingData()"><span class="lux-tag-label">清槍</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="深喉" onchange="updateBookingText()"><span class="lux-tag-label">深喉</span></label>
+  <section class="page-section">
+    <div class="container">
+      <div class="text-content">
+        <div class="sub-title">微光．之上</div>
+        <h1 class="gold-glow">無限旅程</h1>
+        <p>誠摯邀您一同共創微光旅程</p>
+        <div class="sub-title" style="margin-top: 40px;">WEIGUANG HU JIU</div>
+        <div class="sub-title" style="font-size: 12px; color: rgba(255,255,255,0.4);">SINCE 2019</div>
+      </div>
+      <div class="img-box">
+        <img src="bg-page1.png" alt="無限旅程">
       </div>
     </div>
+  </section>
 
-    <div class="lux-service-block">
-      <div class="lux-service-header gold">💎 情慾溫度加購項目 (可多選)</div>
-      <div class="lux-tag-grid">
-        <label class="lux-tag-checkbox"><input type="checkbox" value="毒龍" onchange="syncBookingData()"><span class="lux-tag-label">毒龍</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="喉射" onchange="syncBookingData()"><span class="lux-tag-label">喉射</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="情趣用品" onchange="syncBookingData()"><span class="lux-tag-label">情趣用品</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="吞精" onchange="syncBookingData()"><span class="lux-tag-label">吞精</span></label>
-        <label class="lux-tag-checkbox"><input type="checkbox" value="冰火" onchange="syncBookingData()"><span class="lux-tag-label">冰火</span></label>
+  <section class="page-section">
+    <div class="container">
+      <div class="text-content">
+        <h1 class="gold-glow" style="font-size: 36px;">分享</h1>
+        <p>以為這環境很單純
+        後來才明白
+        深的不是環境
+        而是</p>
+        <h1 style="font-size: 54px; letter-spacing: 12px; margin-top: 20px;">人性</h1>
+      </div>
+      <div class="img-box">
+        <img src="bg-page2.png" alt="分享">
       </div>
     </div>
+  </section>
 
-    <div class="lux-alert-rule">
-      <strong>⚠️ 初次預約重要規範：</strong>
-      為了保障彼此寶貴的時間，首次預約者必須先完成定金匯款。加入 LINE 後請主動出示「匯款明細截圖」或「告知末五碼」，核對看到匯款後預約才正式成立。
+  <section class="page-section">
+    <div class="container">
+      <div class="text-content">
+        <h1 class="gold-glow" style="font-size: 32px; letter-spacing: 4px;">感受 信任 尊重</h1>
+        <p style="font-size: 16px; line-height: 2.5;">雙向自然互動 相處舒服
+        和狐九 修幹
+        真實的感受 愉快的過程
+        滿足了身體 也滿足了心理
+
+        <span style="color: rgba(255,255,255,0.4); font-size: 14px;">旅程只適合 懂得規矩的人</span></p>
+      </div>
+      <div class="img-box">
+        <img src="bg-page3.png" alt="相處舒服">
+      </div>
     </div>
+  </section>
 
-    <div id="luxBookingText" class="lux-booking-box">【蘇純｜初步預約單】
+  <section class="page-section">
+    <div class="container">
+      <div class="text-content">
+        <h1 class="gold-glow" style="font-size: 36px;">關於狐九</h1>
+        <p style="font-size: 16px; line-height: 2.3;">153 ‧ 40 ‧ B 骨感偏瘦
+        體質敏感 純幹的別來
+        不迎合 也不虛假奉陪
+        比起說什麼 <span class="gold-glow" style="font-size: 20px; font-weight: bold;">做什麼、給什麼</span></p>
+        <h1 style="font-size: 32px; letter-spacing: 4px; margin-top: 20px; text-align: right; width: 100%;">才是修幹的重點</h1>
+      </div>
+      <div class="img-box">
+        <img src="bg-page4.png" alt="關於狐九">
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section sparkle-bg">
+    <div class="full-width-container text-content" style="text-align: center;">
+      <div class="sub-title">微光．旅程</div>
+      <h1 class="gold-glow" style="font-size: 32px;">壹.微光百刻.初見</h1>
+      <p style="margin-top: 30px; font-size: 16px; line-height: 2.5;">在微光之中卸下城市的喧囂。
+      借古人一日百刻之名，將時間拉長成百個刻度的純粹。
+      這是一場毫無保留的深度釋壓，帶您穿透緊繃，在微光之上迎來身心的全然甦醒。</p>
+      <div class="sub-title" style="margin-top: 40px; color: rgba(212,175,55,0.5);">費用含場域‧停車‧盥洗用品</div>
+    </div>
+  </section>
+
+  <section class="page-section sparkle-bg">
+    <div class="full-width-container text-content" style="text-align: center;">
+      <div class="sub-title">微光．旅程</div>
+      <h1 class="gold-glow" style="font-size: 32px;">貳.微光三疊</h1>
+      <p style="margin-top: 30px; font-size: 16px; line-height: 2.5;">如古樂三疊般層層遞進、反覆低吟的細膩撫觸。
+      疊加了三次的奢華時光，帶領感知沉入比平常更深邃的維度。
+      在不被打擾的綿長時空裡，任由緊繃在皮膚上消融，抵達輕盈的彼岸。</p>
+      <div class="sub-title" style="margin-top: 40px; color: rgba(212,175,55,0.5);">費用含場域‧停車‧盥洗用品</div>
+    </div>
+  </section>
+
+  <section class="page-section sparkle-bg">
+    <div class="full-width-container text-content" style="text-align: center;">
+      <div class="sub-title">微光．旅程</div>
+      <h1 class="gold-glow" style="font-size: 32px;">參.微光半景</h1>
+      <p style="margin-top: 30px; font-size: 16px; line-height: 2.5;">撥開半日的光景，在微光中棲息。
+      扣除工作與睡眠，我們將您清醒時分的黃金時段全數溫柔包覆。
+      從白晝到日暮，透過行雲流水般的療癒節奏，給自己一個重新整理身體秩序的完整時空。</p>
+      <div class="sub-title" style="margin-top: 40px; color: rgba(212,175,55,0.5);">費用含場域‧停車‧盥洗用品</div>
+    </div>
+  </section>
+
+  <section class="page-section sparkle-bg">
+    <div class="full-width-container text-content" style="text-align: center;">
+      <div class="sub-title">微光．旅程</div>
+      <h1 class="gold-glow" style="font-size: 32px;">肆.微光晝夜</h1>
+      <p style="margin-top: 30px; font-size: 16px; line-height: 2.5;">歷經一場晝夜交替長度的深度旅程。
+      這是最頂級的訂製奢華，我們將時間的跨度拉到極致，陪您在時光的洪流裡徹底神隱。
+      當您再次睜開眼，歷經日月星辰的呼吸吐納，您已翻然駐足於微光之上。</p>
+      <div class="sub-title" style="margin-top: 40px; color: rgba(212,175,55,0.5);">費用含場域‧停車‧盥洗用品</div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="full-width-container">
+      <h1 class="gold-glow" style="font-size: 28px; letter-spacing: 4px; margin-bottom: 20px;">微光承諾 ｜ 安全與隱私</h1>
+      <div class="promise-grid">
+        <div class="promise-card">
+          <h3 class="gold-glow">絕對隱私</h3>
+          不錄影<br>不留存<br>不對外提及任何細節。<br>您的旅程，僅止於此。
+        </div>
+        <div class="promise-card">
+          <h3 class="gold-glow">誠信對待</h3>
+          所有項目透明公開，<br>絕無額外隱藏費用。<br>您最放心的體驗。
+        </div>
+        <div class="promise-card">
+          <h3 class="gold-glow">嚴格過濾</h3>
+          透過預約確保雙方<br>在最舒適共識狀態下見面。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="full-width-container text-content" style="text-align: center;">
+      <h1 class="gold-glow" style="font-size: 32px; letter-spacing: 6px;">旅程的起點</h1>
+      <p style="font-size: 15px; line-height: 2.3; margin-top: 25px; text-align: left; max-width: 550px; margin-left: auto; margin-right: auto;">
+      初次預約者 需匯<span class="gold-glow">1500元</span> 作為美好旅程的定金
+      狐九本身有抽菸 對於菸味敏感者 提早告知 給彼此一個舒服的環境
+      
+      預約表單含有所有的服務內容及方案價錢 確定預約請點擊開啟預約單
+      <span style="color: rgba(255,255,255,0.4); font-size: 13px;">所看到的價格已經包含房費 停車 盥洗用品 無需再另付費用 (加價服務另議)</span>
+      </p>
+      
+      <button class="glow-booking-btn" onclick="openBookingPopup()">進入微光預約</button>
+    </div>
+  </section>
+
+
+  <div id="luxuryBookingPopup" class="lux-popup">
+    <div class="lux-popup-content">
+      <div class="lux-popup-title">初步預約單 ＆ 項目勾選</div>
+      
+      <div class="lux-service-block">
+        <div class="lux-service-header">✨ 基本溫度服務項目 (可多選)</div>
+        <div class="lux-tag-grid">
+          <label class="lux-tag-checkbox"><input type="checkbox" value="清潔" onchange="syncBookingData()"><span class="lux-tag-label">清潔</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="情慾愛撫" onchange="syncBookingData()"><span class="lux-tag-label">情慾愛撫</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="69式" onchange="syncBookingData()"><span class="lux-tag-label">69式</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="無套口交" onchange="syncBookingData()"><span class="lux-tag-label">無套口交</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="清槍" onchange="syncBookingData()"><span class="lux-tag-label">清槍</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="深喉" onchange="syncBookingData()"><span class="lux-tag-label">深喉</span></label>
+        </div>
+      </div>
+
+      <div class="lux-service-block">
+        <div class="lux-service-header gold">💎 情慾溫度加購項目 (可多選)</div>
+        <div class="lux-tag-grid">
+          <label class="lux-tag-checkbox"><input type="checkbox" value="毒龍" onchange="syncBookingData()"><span class="lux-tag-label">毒龍</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="喉射" onchange="syncBookingData()"><span class="lux-tag-label">喉射</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="情趣用品" onchange="syncBookingData()"><span class="lux-tag-label">情趣用品</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="吞精" onchange="syncBookingData()"><span class="lux-tag-label">吞精</span></label>
+          <label class="lux-tag-checkbox"><input type="checkbox" value="冰火" onchange="syncBookingData()"><span class="lux-tag-label">冰火</span></label>
+        </div>
+      </div>
+
+      <div class="lux-alert-rule">
+        <strong class="gold-glow-text">⚜️ 初次預約重要規範</strong>
+        為了保障彼此寶貴的時間，首次預約者必須先完成定金匯款。加入 LINE 後請主動出示「匯款明細截圖」或「告知末五碼」，核對看到匯款後預約才正式成立。
+      </div>
+
+      <div id="luxBookingText" class="lux-booking-box">【蘇純｜初步預約單】
 預約稱呼：
 預約日期與時間：
 選擇服務（基本溫度 / 加購項目）：(請在上方點選項目)
@@ -323,170 +280,29 @@ window.addEventListener("load",showLines);
 初次預約匯款後五碼：
 （加 LINE 後請附上匯款明細截圖）</div>
 
-    <div class="lux-popup-buttons">
-      <button class="lux-btn btn-gold-copy" onclick="copyLuxuryBooking()">1. 複製預約單內容</button>
-      <a class="lux-btn btn-gold-next" href="https://line.me/" target="_blank" onclick="closeBookingPopup()">2. 確定預約，前往 LINE</a>
-      <button class="lux-btn btn-gold-back" onclick="closeBookingPopup()">返回網頁</button>
+      <div class="lux-popup-buttons">
+        <button class="lux-btn btn-gold-copy" onclick="copyLuxuryBooking()">1. 複製預約單內容</button>
+        <a class="lux-btn btn-gold-next" href="https://line.me/" target="_blank" onclick="closeBookingPopup()">2. 確定預約，前往 LINE</a>
+        <button class="lux-btn btn-gold-back" onclick="closeBookingPopup()">返回網頁</button>
+      </div>
     </div>
   </div>
-</div>
 
-<style>
-/* 預約觸發按鈕 */
-.glow-booking-btn {
-  width: 100%;
-  max-width: 280px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
-  font-size: 15px;
-  letter-spacing: 5px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-.glow-booking-btn:hover {
-  background: #fff;
-  color: #000;
-  box-shadow: 0 0 30px rgba(255,255,255,0.2);
-}
-
-/* 彈出遮罩全螢幕 */
-.lux-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  z-index: 99999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-.lux-popup.active { display: flex; }
-
-/* 視窗主體：黑金絲邊卡片 */
-.lux-popup-content {
-  background: #080808;
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  width: 100%;
-  max-width: 500px;
-  max-height: 88vh;
-  overflow-y: auto;
-  padding: 35px 25px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.95);
-}
-.lux-popup-title {
-  text-align: center;
-  font-size: 19px;
-  letter-spacing: 5px;
-  color: #d4af37;
-  margin-bottom: 30px;
-}
-
-/* 區塊標題 */
-.lux-service-block { margin-bottom: 25px; text-align: left; }
-.lux-service-header {
-  font-size: 14px;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 15px;
-  letter-spacing: 2px;
-  border-left: 2px solid #fff;
-  padding-left: 10px;
-}
-.lux-service-header.gold { color: #d4af37; border-left-color: #d4af37; }
-
-/* 三欄互動標籤網格 */
-.lux-tag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.lux-tag-checkbox { position: relative; user-select: none; }
-.lux-tag-checkbox input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
-.lux-tag-label {
-  display: block;
-  background: rgba(255,255,255,0.03);
-  color: rgba(245, 241, 235, 0.6);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 12px 2px;
-  font-size: 13px;
-  text-align: center;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.lux-tag-checkbox input[type="checkbox"]:checked + .lux-tag-label {
-  background: rgba(212, 175, 55, 0.12);
-  color: #d4af37;
-  border-color: #d4af37;
-  font-weight: bold;
-}
-
-/* 🛑 警告紅框 */
-.lux-alert-rule {
-  background: rgba(255, 77, 77, 0.02);
-  border: 1px solid rgba(255, 77, 77, 0.2);
-  color: rgba(255, 140, 140, 0.9);
-  padding: 18px;
-  font-size: 13px;
-  line-height: 2;
-  margin-bottom: 25px;
-  text-align: left;
-}
-.lux-alert-rule strong { color: #ff5555; display: block; margin-bottom: 4px; }
-
-/* 凹陷黑卡文字框 */
-.lux-booking-box {
-  white-space: pre-line;
-  color: #fff;
-  background: #020202;
-  border: 1px solid rgba(255,255,255,0.06);
-  font-size: 14px;
-  letter-spacing: 1.5px;
-  line-height: 2.2;
-  padding: 20px;
-  margin-bottom: 25px;
-  text-align: left;
-}
-
-/* 按鈕美化 */
-.lux-popup-buttons { display: grid; gap: 12px; }
-.lux-btn {
-  width: 100%; padding: 14px; font-size: 14px; letter-spacing: 3px; text-align: center;
-  background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer;
-}
-.btn-gold-next { background: #d4af37; color: #000; border-color: #d4af37; font-weight: bold; text-decoration: none; display: block; }
-.btn-gold-copy { background: rgba(255,255,255,0.05); }
-.btn-gold-back { border-color: transparent; color: rgba(245,241,235,0.4); font-size: 13px; text-decoration: underline; }
-
-.lux-popup-content::-webkit-scrollbar { width: 3px; }
-.lux-popup-content::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.2); }
-
-@media(max-width:768px){ .lux-tag-grid { grid-template-columns: repeat(2, 1fr); } }
-</style>
-
-<script>
-function openBookingPopup() {
-  document.getElementById('luxuryBookingPopup').classList.add('active');
-  syncBookingData();
-}
-
-function closeBookingPopup() {
-  document.getElementById('luxuryBookingPopup').classList.remove('active');
-}
-
-// 🎯 核心功能：動態捕捉勾選，自動一秒帶入下方文字框
-function syncBookingData() {
-  const checkboxes = document.querySelectorAll('.lux-tag-checkbox input[type="checkbox"]');
-  let checkedItems = [];
-  
-  checkboxes.forEach(box => {
-    if (box.checked) {
-      checkedItems.push(box.value);
+  <script>
+    function openBookingPopup() {
+      document.getElementById('luxuryBookingPopup').classList.add('active');
+      syncBookingData();
     }
-  });
-  
-  const finalServices = checkedItems.length > 0 ? checkedItems.join('、') : '(請在上方點選項目)';
-  
-  const template = `【蘇純｜初步預約單】
+    function closeBookingPopup() {
+      document.getElementById('luxuryBookingPopup').classList.remove('remove');
+      document.getElementById('luxuryBookingPopup').classList.remove('active');
+    }
+    function syncBookingData() {
+      const checkboxes = document.querySelectorAll('.lux-tag-checkbox input[type="checkbox"]');
+      let checkedItems = [];
+      checkboxes.forEach(box => { if (box.checked) { checkedItems.push(box.value); } });
+      const finalServices = checkedItems.length > 0 ? checkedItems.join('、') : '(請在上方點選項目)';
+      const template = `【蘇純｜初步預約單】
 預約稱呼：
 預約日期與時間：
 選擇服務（基本溫度 / 加購項目）：${finalServices}
@@ -494,24 +310,22 @@ function syncBookingData() {
 是否為第一次預約：
 初次預約匯款後五碼：
 （加 LINE 後請附上匯款明細截圖）`;
-
-  document.getElementById('luxBookingText').innerText = template;
-}
-
-function copyLuxuryBooking(){
-  const text = document.getElementById("luxBookingText").innerText;
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  document.body.appendChild(textarea);
-  textarea.select();
-  try {
-    document.execCommand('copy');
-    alert("預約單已自動生成並複製成功！\n請至 LINE 直接「長按貼上」並主動附上匯款截圖。");
-  } catch (err) {
-    navigator.clipboard.writeText(text).then(function(){
-      alert("預約單已自動生成並複製成功！\n請至 LINE 直接「長按貼上」並主動附上匯款截圖。");
-    });
-  }
-  document.body.removeChild(textarea);
-}
-</script>
+      document.getElementById('luxBookingText').innerText = template;
+    }
+    function copyLuxuryBooking(){
+      const text = document.getElementById("luxBookingText").innerText;
+      const textarea = document.createElement("textarea");
+      textarea.value = text; document.body.appendChild(textarea); textarea.select();
+      try {
+        document.execCommand('copy');
+        alert("預約單已自動生成並複製成功！\n請至 LINE 直接「長按貼上」並主動附上匯款截圖。");
+      } catch (err) {
+        navigator.clipboard.writeText(text).then(function(){
+          alert("預約單已自動生成並複製成功！\n請至 LINE 直接「長按貼上」並主動附上匯款截圖。");
+        });
+      }
+      document.body.removeChild(textarea);
+    }
+  </script>
+</body>
+</html>
