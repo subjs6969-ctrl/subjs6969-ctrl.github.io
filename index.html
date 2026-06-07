@@ -1,246 +1,287 @@
-下面完整取代 index.html。
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>微光之上｜無限旅程</title>
+<title>微光・之上｜蘇九・無限旅程</title>
+
 <style>
 :root{
-  --bg:#020202;
-  --black:#000;
-  --gold-hi:#f4dfb4;
-  --gold:#d8b57a;
-  --gold-deep:#9b7745;
-  --gold-soft:rgba(216,181,122,.14);
-  --text:#fff8ec;
-  --text-soft:rgba(255,248,236,.72);
-  --text-faint:rgba(255,248,236,.34);
-  --line:rgba(216,181,122,.28);
-  --shadow-title:
-    0 0 10px rgba(216,181,122,.18),
-    0 0 24px rgba(216,181,122,.06);
-  --ease:cubic-bezier(.16,1,.3,1);
+  --bg:#000;
+  --card:#050505;
+
+  --gold:#d6b07a;
+  --gold-light:#f0d7aa;
+  --gold-deep:#8f6a3d;
+
+  --white:#f8f4ee;
+  --soft:rgba(255,255,255,.72);
+  --faint:rgba(255,255,255,.42);
+  --line:rgba(214,176,122,.24);
+
+  --shadow:
+    0 0 10px rgba(214,176,122,.14),
+    0 0 24px rgba(214,176,122,.06);
 }
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
+
 html{
   background:#000;
   scroll-behavior:smooth;
 }
+
 body{
+  background:#000;
+  color:var(--white);
   font-family:
-    "Times New Roman",
     "Noto Serif TC",
     "Songti TC",
     "PingFang TC",
+    "Times New Roman",
     serif;
-  background:#000;
-  color:var(--text);
   overflow-x:hidden;
   line-height:1.85;
-  letter-spacing:.08em;
+  letter-spacing:.07em;
 }
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
-  background:
-    radial-gradient(circle at center,transparent 38%,rgba(0,0,0,.76) 100%);
-}
+
 #particles{
   position:fixed;
   inset:0;
   z-index:0;
   pointer-events:none;
-  opacity:.45;
+  opacity:.36;
 }
+
 .site{
   position:relative;
   z-index:2;
 }
+
 .section{
-  min-height:100svh;
   width:100%;
-  display:flex;
-  align-items:center;
-  padding:78px 22px;
+  padding:58px 22px;
   position:relative;
-  overflow:hidden;
 }
-.section::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:0;
-  width:82%;
-  height:1px;
-  transform:translateX(-50%);
-  background:linear-gradient(90deg,transparent,var(--line),transparent);
+
+.section + .section{
+  border-top:1px solid rgba(214,176,122,.08);
 }
+
 .poster{
   width:100%;
   max-width:520px;
   margin:auto;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:34px;
-  align-items:center;
+  display:flex;
+  flex-direction:column;
+  gap:26px;
 }
+
 .text-block{
-  position:relative;
-  z-index:3;
+  width:100%;
 }
+
 .kicker{
-  color:var(--gold-hi);
-  font-size:18px;
-  letter-spacing:.28em;
-  margin-bottom:18px;
+  color:var(--gold-light);
+  font-size:15px;
+  letter-spacing:.26em;
+  margin-bottom:14px;
+  text-shadow:var(--shadow);
 }
+
 .title{
-  color:var(--gold-hi);
-  font-size:clamp(46px,14vw,76px);
-  font-weight:400;
-  line-height:1.18;
-  letter-spacing:.16em;
-  text-shadow:var(--shadow-title);
-  margin-bottom:24px;
+  color:var(--gold-light);
+  text-shadow:var(--shadow);
+  font-weight:300;
+  letter-spacing:.15em;
+  font-size:clamp(34px,10vw,52px);
+  line-height:1.22;
+  margin-bottom:20px;
 }
+
 .title-small{
-  font-size:clamp(36px,11vw,58px);
+  font-size:clamp(30px,9vw,44px);
 }
+
 .copy{
-  color:var(--text-soft);
-  font-size:22px;
-  line-height:2.1;
+  color:rgba(255,255,255,.76);
+  font-size:18px;
+  line-height:1.95;
   white-space:pre-line;
 }
+
 .copy-small{
-  font-size:17px;
-  color:var(--text-faint);
+  color:rgba(255,255,255,.62);
+  font-size:15px;
+  line-height:1.9;
 }
+
 .brand-faint{
-  margin-top:34px;
-  font-size:42px;
-  line-height:1.05;
+  margin-top:28px;
+  font-size:34px;
+  line-height:1.08;
   letter-spacing:.12em;
-  color:rgba(244,223,180,.08);
+  color:rgba(240,215,170,.08);
 }
+
 .since{
-  margin-top:54px;
-  color:var(--text-soft);
-  font-size:18px;
-  letter-spacing:.42em;
+  margin-top:36px;
+  color:rgba(255,255,255,.62);
+  font-size:14px;
+  letter-spacing:.36em;
 }
+
+.gold{
+  color:var(--gold-light);
+  text-shadow:var(--shadow);
+}
+
 .image-wrap{
-  position:relative;
   width:100%;
-  overflow:hidden;
   background:#000;
+  position:relative;
+  overflow:hidden;
 }
-.image-wrap::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.22)),
-    radial-gradient(circle at center,transparent 48%,rgba(0,0,0,.52) 100%);
-}
+
 .image-wrap img{
   width:100%;
   height:auto;
   display:block;
-  filter:grayscale(1) contrast(1.08) brightness(.72);
+  filter:grayscale(1) contrast(1.05) brightness(.92);
 }
+
+.image-wrap::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.22)),
+    radial-gradient(circle at center,transparent 52%,rgba(0,0,0,.35) 100%);
+}
+
 .image-caption{
   position:absolute;
-  left:24px;
-  right:24px;
-  bottom:26px;
+  left:18px;
+  right:18px;
+  bottom:20px;
   z-index:3;
-  color:rgba(255,248,236,.54);
-  font-size:17px;
-  letter-spacing:.14em;
+  color:rgba(255,255,255,.58);
+  font-size:15px;
+  letter-spacing:.12em;
   text-align:center;
 }
-.split{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:34px;
-}
+
 .vertical-line{
   width:1px;
-  height:70px;
+  height:52px;
   background:linear-gradient(180deg,transparent,var(--gold),transparent);
-  margin:16px auto;
+  margin:14px auto;
 }
+
 .big-word{
-  color:rgba(255,248,236,.94);
-  font-size:clamp(78px,24vw,126px);
+  color:#fff;
+  font-size:clamp(64px,19vw,88px);
   line-height:1;
-  letter-spacing:.22em;
+  letter-spacing:.18em;
   font-weight:300;
 }
-.gold{
-  color:var(--gold-hi);
-}
+
 .panel-grid{
   width:100%;
   max-width:520px;
   margin:auto;
   display:grid;
   grid-template-columns:1fr;
-  gap:18px;
+  gap:16px;
 }
+
 .panel{
-  border:1px solid var(--line);
-  padding:38px 24px;
-  min-height:210px;
   background:
-    linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.006));
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.018),
+      rgba(255,255,255,.004)
+    );
+  border:1px solid var(--line);
+  padding:28px 20px;
+  position:relative;
+  overflow:hidden;
 }
+
 .panel h3{
-  color:var(--gold-hi);
-  font-size:34px;
-  font-weight:400;
-  letter-spacing:.22em;
+  color:var(--gold-light);
+  text-shadow:var(--shadow);
+  font-size:28px;
+  font-weight:300;
+  letter-spacing:.18em;
   text-align:center;
   margin-bottom:22px;
+  position:relative;
 }
+
 .panel h3::after{
   content:"";
   display:block;
   width:72%;
   height:1px;
-  margin:22px auto 0;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:18px auto 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(214,176,122,.68),
+      transparent
+    );
 }
+
+.panel h3::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:49px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold-light);
+  box-shadow:
+    0 0 10px rgba(214,176,122,.8),
+    0 0 22px rgba(214,176,122,.38);
+}
+
 .panel p{
-  color:var(--text-soft);
-  font-size:22px;
-  line-height:2.3;
+  color:rgba(255,255,255,.72);
+  font-size:17px;
+  line-height:2;
   text-align:center;
   white-space:pre-line;
 }
+
 .cta{
   width:100%;
-  height:58px;
-  margin-top:24px;
-  background:transparent;
+  min-height:56px;
+  padding:14px 18px;
+  margin-top:18px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(214,176,122,.06),
+      rgba(214,176,122,.01)
+    );
   border:1px solid var(--gold);
-  color:var(--gold-hi);
-  font-size:16px;
-  letter-spacing:.26em;
+  color:var(--gold-light);
+  font-size:15px;
+  letter-spacing:.2em;
   font-family:inherit;
+  text-shadow:var(--shadow);
+  cursor:pointer;
 }
+
 .popup{
   position:fixed;
   inset:0;
@@ -248,13 +289,15 @@ body::after{
   display:none;
   align-items:flex-end;
   justify-content:center;
-  padding:18px;
+  padding:16px;
   background:rgba(0,0,0,.78);
   backdrop-filter:blur(18px);
 }
+
 .popup.active{
   display:flex;
 }
+
 .popup-panel{
   width:100%;
   max-width:520px;
@@ -262,298 +305,627 @@ body::after{
   overflow:auto;
   background:#050505;
   border:1px solid var(--line);
-  padding:30px 22px;
+  padding:28px 20px;
+  box-shadow:0 0 40px rgba(0,0,0,.72);
 }
+
 .popup-title{
-  color:var(--gold-hi);
+  color:var(--gold-light);
   text-align:center;
-  font-size:34px;
-  letter-spacing:.28em;
-  margin-bottom:26px;
+  font-size:30px;
+  letter-spacing:.24em;
+  margin-bottom:24px;
+  text-shadow:var(--shadow);
 }
+
 .form-label{
-  color:var(--text);
-  font-size:16px;
+  color:var(--white);
+  font-size:15px;
   margin-bottom:12px;
 }
+
 .tag-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
+
 .tag input{
   display:none;
 }
+
 .tag span{
   display:block;
-  padding:13px 4px;
+  padding:12px 4px;
   text-align:center;
-  color:var(--text-faint);
-  border:1px solid rgba(255,248,236,.12);
+  border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.5);
+  font-size:13px;
 }
+
 .tag input:checked + span{
-  color:var(--gold-hi);
   border-color:var(--gold);
-  background:rgba(216,181,122,.08);
+  color:var(--gold-light);
+  background:rgba(214,176,122,.08);
 }
+
 .booking{
-  background:#000;
-  border:1px solid rgba(255,248,236,.1);
-  padding:18px;
-  color:var(--text-soft);
-  font-size:15px;
-  line-height:2;
+  background:#020202;
+  border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.72);
+  padding:16px;
+  font-size:13px;
+  line-height:1.9;
   white-space:pre-line;
-  margin-bottom:18px;
+  margin-bottom:16px;
 }
+
 .actions{
   display:grid;
   gap:10px;
 }
+
 .btn{
   height:50px;
   background:transparent;
-  border:1px solid rgba(255,248,236,.14);
-  color:var(--text-soft);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.72);
   font-family:inherit;
-  letter-spacing:.2em;
+  letter-spacing:.16em;
 }
+
 .btn-primary{
-  border-color:var(--gold);
-  color:var(--gold-hi);
+  border:1px solid var(--gold);
+  color:var(--gold-light);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(214,176,122,.06),
+      rgba(214,176,122,.01)
+    );
 }
+
+.footer{
+  padding:52px 24px 88px;
+  text-align:center;
+  color:rgba(255,255,255,.42);
+  font-size:12px;
+  line-height:2;
+  letter-spacing:.16em;
+  position:relative;
+  z-index:2;
+}
+
 @media(min-width:900px){
   .section{
     padding:70px 7vw;
   }
+
   .poster{
-    max-width:1200px;
+    max-width:1280px;
+    display:grid;
     grid-template-columns:1fr 1fr;
-    gap:72px;
+    gap:76px;
+    align-items:center;
   }
-  .split{
-    grid-template-columns:1fr 1fr;
-    max-width:1200px;
-    margin:auto;
+
+  .title{
+    font-size:82px;
   }
+
+  .title-small{
+    font-size:60px;
+  }
+
+  .copy{
+    font-size:28px;
+    line-height:2;
+  }
+
+  .big-word{
+    font-size:116px;
+  }
+
+  .image-wrap img{
+    min-height:680px;
+    object-fit:cover;
+  }
+
   .panel-grid{
-    max-width:1200px;
+    max-width:1300px;
     grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+
+  .panel{
+    min-height:460px;
+    padding:38px 30px;
+  }
+
+  .panel h3{
+    font-size:42px;
+  }
+
+  .panel p{
+    font-size:22px;
   }
 }
 </style>
 </head>
+
 <body>
+
 <canvas id="particles"></canvas>
+
 <div class="site">
+
 <section class="section">
   <div class="poster">
     <div class="text-block">
-      <div class="kicker">微 光・之 上</div>
+      <div class="kicker">微 光 ・ 之 上</div>
       <h1 class="title">無 限 旅 程</h1>
-      <p class="copy-small">誠摯邀您一起共啟微光旅程</p>
-      <div class="brand-faint">WEIGUANG<br>HU JIU</div>
-      <div class="since">SINCE2019</div>
+      <p class="copy-small">值得，所以不將就。<br><br>感謝深深，蘇九上線。</p>
+      <div class="brand-faint">WEIGUANG<br>SU JIU</div>
+      <div class="since">SINCE 2019</div>
     </div>
+
     <div class="image-wrap">
       <img src="bg-page1.jpg" alt="">
       <div class="image-caption">值得，所以不將就</div>
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="poster">
     <div class="text-block">
-      <h2 class="title title-small">分 享</h2>
-      <p class="copy">以為這環境很單純
-後來才明白
-深的不是環境
-而是</p>
-      <div class="vertical-line"></div>
-      <div class="big-word">人性</div>
+      <h2 class="title title-small">微 炙 蘇 九</h2>
+      <p class="copy">曾經以為，這圈子很簡單。
+
+後來才明白，
+深的，從來不是這環境
+而是人性。
+
+感謝曾經的深深，
+現在的蘇九。
+
+it's All my life</p>
     </div>
+
     <div class="image-wrap">
       <img src="bg-page2.jpg" alt="">
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="poster">
     <div class="text-block">
       <h2 class="title title-small">關 於 蘇 九</h2>
-      <p class="copy">153・40・B 骨感偏瘦
-體質敏感
-純形式的不適合
-不迎合
-也不虛假奉陪
-比起說什麼
-<span class="gold">做什麼、給什麼</span>
-才是旅程的重點</p>
+      <p class="copy">蘇九（深深）
+
+153 / 40 / 32B / 45+
+
+骨感偏瘦、敏感型。
+
+沒有固定 SOP 流程，
+不刻意迎合，
+也不虛假奉陪。
+
+感覺是雙向的，
+相處也是。
+
+適合的人，
+自然會懂。</p>
     </div>
+
     <div class="image-wrap">
       <img src="bg-page3.jpg" alt="">
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="poster">
     <div class="text-block">
-      <h2 class="title title-small">感 受 信 任 尊 重</h2>
-      <p class="copy">雙向自然互動
-相處舒服
-真實的感受
-愉快的過程
-滿足了身體
-也滿足了心理
-旅程只適合
-懂得規矩的人</p>
+      <h2 class="title title-small">感 受 ・ 信 任 ・ 尊 重</h2>
+      <p class="copy">感受、信任跟尊重，
+一直都很重要。
+
+雙向自然互動，
+相處舒服，
+彼此才會開心。</p>
+
+      <div style="height:32px;"></div>
+
+      <h2 class="title title-small">相 幹</h2>
+      <p class="copy">要的是舒服、享受過程。
+
+滿足身體，
+也滿足心理，
+這樣的旅程才有意思。
+
+比起說什麼，
+
+做什麼、給什麼，
+
+才是旅程的重點。
+
+無限旅程，
+只留給重視微光旅程的人。</p>
     </div>
+
     <div class="image-wrap">
       <img src="bg-page4.jpg" alt="">
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="panel-grid">
     <div class="panel">
-      <h3>空間</h3>
-      <p>安靜
-乾淨
-隱密
-完整準備</p>
+      <h3>微 光 ・ 初 見</h3>
+      <p>壹｜2H
+
+基本 3200
+進階 5000
+尊榮 6500
+
+舒服認識彼此的開始。</p>
     </div>
+
     <div class="panel">
-      <h3>互動</h3>
-      <p>尊重界線
-重視感受
-自然舒服
-不制式</p>
+      <h3>微 光 ・ 稍 炙</h3>
+      <p>貳｜3H
+
+基本 6200
+進階 8000
+尊榮 9500
+
+感覺對了，
+很多事自然就有了。</p>
     </div>
+
     <div class="panel">
-      <h3>規矩</h3>
-      <p>適合懂得尊重的人
-保持禮貌
-保持分寸
-保持理解</p>
+      <h3>微 光 ・ 微 醺</h3>
+      <p>參｜10H
+
+13990
+
+放鬆、洩壓，
+享受自在舒服的過程。</p>
     </div>
-    <button class="cta" id="openPopup">預約旅程</button>
+
+    <div class="panel">
+      <h3>微 光 ・ 之 上</h3>
+      <p>肆｜16H
+
+20000
+
+客製專屬旅程，
+共啟微光無限旅程。</p>
+    </div>
+
+    <div class="panel">
+      <h3>基 本 互 動</h3>
+      <p>・共浴
+・情慾式放鬆
+・無套吹
+・69 式
+・清槍
+・深喉</p>
+    </div>
+
+    <div class="panel">
+      <h3>進 階 旅 程</h3>
+      <p>部分深度互動與私藏旅程，
+確認預約後
+另提供內容。</p>
+    </div>
   </div>
 </section>
+
+<section class="section">
+  <div class="panel-grid">
+    <div class="panel">
+      <h3>預 約 注 意</h3>
+      <p>預約請先提供：
+
+・日期
+・時間
+・方案
+・Line 暱稱
+
+無固定班表，
+請盡量提供兩個方便時段。</p>
+    </div>
+
+    <div class="panel">
+      <h3>旅 程 規 則</h3>
+      <p>確定預約後，
+會提供詳細匯款資訊。
+
+不喜歡臨時亂改、
+放鳥，
+也不太喜歡試探性問題。
+
+有特殊需求、
+個人癖好，
+都可以提前提出。</p>
+    </div>
+
+    <div class="panel">
+      <h3>互 相 尊 重</h3>
+      <p>蘇九是老煙槍，
+若介意菸味請提前告知。
+
+Line 文字沒有溫度，
+只針對重要內容回覆。
+
+感覺跟尊重是互相的，
+自然相處，
+旅程才會舒服。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="panel-grid">
+    <div class="panel">
+      <h3>預 約 單</h3>
+      <p>1｜LINE 稱號
+
+2｜預約日期、時段
+請提供兩個方便時段
+
+3｜選擇方案
+壹｜微光・初見
+貳｜微光・稍炙
+參｜微光・微醺
+肆｜微光・之上
+
+4｜是否有進階旅程需求
+確認預約後另提供內容</p>
+    </div>
+
+    <div class="panel">
+      <h3>資 料 確 認</h3>
+      <p>5｜特殊需求
+可提前提出
+
+6｜菸味接受度
+有抽菸／不介意／介意
+
+7｜初次核對
+請附上來源首頁截圖
+
+8｜訂金確認
+了解 2 小時內完成匯款
+方能保留時段</p>
+    </div>
+
+    <div class="panel">
+      <h3>提 交 預 約</h3>
+      <p>確認內容後，
+請複製預約單。
+
+直接傳送至 LINE，
+等待確認即可。</p>
+
+      <button class="cta" id="openPopup">預 約 微 光 旅 程</button>
+    </div>
+  </div>
+</section>
+
 </div>
+
 <div class="popup" id="popup">
   <div class="popup-panel">
-    <h2 class="popup-title">微光預約</h2>
+    <h2 class="popup-title">微 光 預 約</h2>
+
     <div class="form-label">選擇旅程</div>
+
     <div class="tag-grid">
       <label class="tag">
-        <input type="checkbox" value="微光百刻">
-        <span>微光百刻</span>
+        <input type="checkbox" value="壹｜微光・初見 2H">
+        <span>初見 2H</span>
       </label>
+
       <label class="tag">
-        <input type="checkbox" value="微光三疊">
-        <span>微光三疊</span>
+        <input type="checkbox" value="貳｜微光・稍炙 3H">
+        <span>稍炙 3H</span>
       </label>
+
       <label class="tag">
-        <input type="checkbox" value="無限旅程">
-        <span>無限旅程</span>
+        <input type="checkbox" value="參｜微光・微醺 10H">
+        <span>微醺 10H</span>
       </label>
+
+      <label class="tag">
+        <input type="checkbox" value="肆｜微光・之上 16H">
+        <span>之上 16H</span>
+      </label>
+
+      <label class="tag">
+        <input type="checkbox" value="基本">
+        <span>基本</span>
+      </label>
+
+      <label class="tag">
+        <input type="checkbox" value="進階">
+        <span>進階</span>
+      </label>
+
+      <label class="tag">
+        <input type="checkbox" value="尊榮">
+        <span>尊榮</span>
+      </label>
+
       <label class="tag">
         <input type="checkbox" value="首次預約">
         <span>首次預約</span>
       </label>
     </div>
+
     <div class="booking" id="bookingText">您好，我想預約微光旅程。
-預約項目：
-日期：
-時間：
-是否首次預約：
-補充說明：</div>
+
+1｜LINE 稱號：
+
+2｜預約日期、時段：
+第一時段：
+第二時段：
+
+3｜選擇方案：
+
+4｜是否有進階旅程需求：
+
+5｜特殊需求：
+
+6｜菸味接受度：
+有抽菸／不介意／介意
+
+7｜初次核對：
+請附上來源首頁截圖
+
+8｜訂金確認：
+了解 2 小時內完成匯款方能保留時段</div>
+
     <div class="actions">
-      <button class="btn btn-primary" id="copyBtn">複製預約格式</button>
-      <button class="btn" id="closePopup">返回</button>
+      <button class="btn btn-primary" id="copyBtn">複 製 預 約 單</button>
+      <button class="btn" id="closePopup">返 回</button>
     </div>
   </div>
 </div>
+
+<div class="footer">
+  微光・之上<br>
+  SU JIU ｜ INFINITE JOURNEY<br>
+  SINCE 2019
+</div>
+
 <script>
 const popup = document.getElementById("popup");
 const openPopup = document.getElementById("openPopup");
 const closePopup = document.getElementById("closePopup");
+
 openPopup.addEventListener("click",()=>{
   popup.classList.add("active");
   document.body.style.overflow="hidden";
 });
+
 closePopup.addEventListener("click",()=>{
   popup.classList.remove("active");
   document.body.style.overflow="";
 });
+
 popup.addEventListener("click",(e)=>{
   if(e.target===popup){
     popup.classList.remove("active");
     document.body.style.overflow="";
   }
 });
+
 document.getElementById("copyBtn").addEventListener("click",async()=>{
   const checked = [...document.querySelectorAll(".tag input:checked")]
     .map(i=>i.value)
     .join("、") || "未填寫";
+
   const text =
 `您好，我想預約微光旅程。
-預約項目：${checked}
-日期：
-時間：
-是否首次預約：
-補充說明：`;
+
+1｜LINE 稱號：
+
+2｜預約日期、時段：
+第一時段：
+第二時段：
+
+3｜選擇方案：${checked}
+
+4｜是否有進階旅程需求：
+確認預約後另提供內容
+
+5｜特殊需求：
+
+6｜菸味接受度：
+有抽菸／不介意／介意
+
+7｜初次核對：
+請附上來源首頁截圖
+
+8｜訂金確認：
+了解 2 小時內完成匯款方能保留時段`;
+
   try{
     await navigator.clipboard.writeText(text);
     document.getElementById("bookingText").innerText = text + "\n\n已複製";
   }catch(e){
-    alert("複製失敗");
+    alert("複製失敗，請手動複製。");
   }
 });
+
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
+
 let w;
 let h;
 let particles = [];
+
 function resize(){
   const ratio = window.devicePixelRatio || 1;
+
   w = canvas.width = window.innerWidth * ratio;
   h = canvas.height = window.innerHeight * ratio;
+
   canvas.style.width = window.innerWidth + "px";
   canvas.style.height = window.innerHeight + "px";
-  const count = Math.min(58,Math.floor(window.innerWidth / 8));
+
+  const count = Math.min(52,Math.floor(window.innerWidth / 9));
+
   particles = Array.from({length:count},()=>({
     x:Math.random()*w,
     y:Math.random()*h,
-    r:(Math.random()*1.4+.3)*ratio,
-    a:Math.random()*.24+.04,
-    vx:(Math.random()-.5)*.12*ratio,
-    vy:(Math.random()-.5)*.12*ratio
+    r:(Math.random()*1.2+.3)*ratio,
+    a:Math.random()*.18+.035,
+    vx:(Math.random()-.5)*.1*ratio,
+    vy:(Math.random()-.5)*.1*ratio
   }));
 }
+
 function animate(){
   ctx.clearRect(0,0,w,h);
+
   particles.forEach((p)=>{
     p.x += p.vx;
     p.y += p.vy;
+
     if(p.x<0)p.x=w;
     if(p.x>w)p.x=0;
     if(p.y<0)p.y=h;
     if(p.y>h)p.y=0;
-    const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*8);
-    g.addColorStop(0,`rgba(216,181,122,${p.a})`);
-    g.addColorStop(1,"rgba(216,181,122,0)");
+
+    const g = ctx.createRadialGradient(
+      p.x,p.y,0,
+      p.x,p.y,p.r*8
+    );
+
+    g.addColorStop(0,`rgba(214,176,122,${p.a})`);
+    g.addColorStop(1,"rgba(214,176,122,0)");
+
     ctx.fillStyle = g;
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.r*8,0,Math.PI*2);
     ctx.fill();
   });
+
   requestAnimationFrame(animate);
 }
+
 resize();
 animate();
+
 window.addEventListener("resize",resize);
 </script>
+
 </body>
 </html>
