@@ -1,27 +1,27 @@
+下面完整取代 index.html。
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>
-微光之上｜無限旅程
-</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>微光之上｜無限旅程</title>
 <style>
 :root{
-  --gold-hi:#f5d77f;
-  --gold:#d4af37;
-  --gold-deep:#8f6e20;
-  --bg:#050505;
-  --text:#f3f0ea;
-  --text-soft:rgba(255,255,255,.64);
-  --text-faint:rgba(255,255,255,.34);
-  --line:rgba(212,175,55,.16);
-  --glow-title:
-    0 0 10px rgba(212,175,55,.35),
-    0 0 40px rgba(212,175,55,.08);
-  --ease:
-    cubic-bezier(.16,1,.3,1);
+  --bg:#020202;
+  --black:#000;
+  --gold-hi:#f4dfb4;
+  --gold:#d8b57a;
+  --gold-deep:#9b7745;
+  --gold-soft:rgba(216,181,122,.14);
+  --text:#fff8ec;
+  --text-soft:rgba(255,248,236,.72);
+  --text-faint:rgba(255,248,236,.34);
+  --line:rgba(216,181,122,.28);
+  --shadow-title:
+    0 0 10px rgba(216,181,122,.18),
+    0 0 24px rgba(216,181,122,.06);
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 *{
   margin:0;
@@ -29,33 +29,21 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   box-sizing:border-box;
 }
 html{
-  scroll-behavior:smooth;
   background:#000;
+  scroll-behavior:smooth;
 }
 body{
   font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
+    "Times New Roman",
+    "Noto Serif TC",
+    "Songti TC",
     "PingFang TC",
-    "Noto Sans TC",
-    sans-serif;
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(212,175,55,.08),
-      transparent 34%
-    ),
-    linear-gradient(
-      180deg,
-      #020202 0%,
-      #070707 48%,
-      #020202 100%
-    );
+    serif;
+  background:#000;
   color:var(--text);
   overflow-x:hidden;
-  line-height:1.9;
-  letter-spacing:.05em;
+  line-height:1.85;
+  letter-spacing:.08em;
 }
 body::after{
   content:"";
@@ -64,35 +52,27 @@ body::after{
   pointer-events:none;
   z-index:1;
   background:
-    radial-gradient(
-      circle at center,
-      transparent 42%,
-      rgba(0,0,0,.68) 100%
-    );
+    radial-gradient(circle at center,transparent 38%,rgba(0,0,0,.76) 100%);
 }
-/* PARTICLES */
 #particles{
   position:fixed;
   inset:0;
   z-index:0;
   pointer-events:none;
-  opacity:.68;
+  opacity:.45;
 }
-/* SITE */
 .site{
   position:relative;
   z-index:2;
 }
-/* SECTION */
 .section{
-  width:100%;
   min-height:100svh;
+  width:100%;
   display:flex;
   align-items:center;
-  padding:86px 20px;
+  padding:78px 22px;
   position:relative;
-  border-bottom:
-    1px solid rgba(212,175,55,.06);
+  overflow:hidden;
 }
 .section::after{
   content:"";
@@ -100,175 +80,167 @@ body::after{
   left:50%;
   bottom:0;
   width:82%;
-  max-width:420px;
   height:1px;
   transform:translateX(-50%);
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(212,175,55,.22),
-      transparent
-    );
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
 }
-/* LAYOUT */
-.layout{
+.poster{
   width:100%;
   max-width:520px;
   margin:auto;
-  display:flex;
-  flex-direction:column;
+  display:grid;
+  grid-template-columns:1fr;
   gap:34px;
   align-items:center;
-  text-align:center;
 }
-.center-layout{
-  width:100%;
-  max-width:520px;
-  margin:auto;
-  text-align:center;
+.text-block{
+  position:relative;
+  z-index:3;
 }
-/* TEXT */
-.eyebrow{
-  font-size:11px;
-  letter-spacing:.36em;
-  text-transform:uppercase;
-  color:var(--text-faint);
+.kicker{
+  color:var(--gold-hi);
+  font-size:18px;
+  letter-spacing:.28em;
   margin-bottom:18px;
 }
 .title{
-  font-weight:300;
-  line-height:1.16;
   color:var(--gold-hi);
-  text-shadow:var(--glow-title);
-  font-size:
-    clamp(34px,11vw,56px);
+  font-size:clamp(46px,14vw,76px);
+  font-weight:400;
+  line-height:1.18;
   letter-spacing:.16em;
+  text-shadow:var(--shadow-title);
   margin-bottom:24px;
 }
 .title-small{
-  font-size:
-    clamp(28px,9vw,44px);
-  letter-spacing:.12em;
-}
-.statement{
-  font-size:
-    clamp(58px,18vw,92px);
-  color:#fff;
-  letter-spacing:.28em;
-  text-shadow:none;
-  margin-top:18px;
+  font-size:clamp(36px,11vw,58px);
 }
 .copy{
   color:var(--text-soft);
-  font-size:15px;
-  line-height:2.25;
+  font-size:22px;
+  line-height:2.1;
   white-space:pre-line;
+}
+.copy-small{
+  font-size:17px;
+  color:var(--text-faint);
+}
+.brand-faint{
+  margin-top:34px;
+  font-size:42px;
+  line-height:1.05;
+  letter-spacing:.12em;
+  color:rgba(244,223,180,.08);
+}
+.since{
+  margin-top:54px;
+  color:var(--text-soft);
+  font-size:18px;
+  letter-spacing:.42em;
+}
+.image-wrap{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#000;
+}
+.image-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.22)),
+    radial-gradient(circle at center,transparent 48%,rgba(0,0,0,.52) 100%);
+}
+.image-wrap img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:grayscale(1) contrast(1.08) brightness(.72);
+}
+.image-caption{
+  position:absolute;
+  left:24px;
+  right:24px;
+  bottom:26px;
+  z-index:3;
+  color:rgba(255,248,236,.54);
+  font-size:17px;
+  letter-spacing:.14em;
+  text-align:center;
+}
+.split{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:34px;
+}
+.vertical-line{
+  width:1px;
+  height:70px;
+  background:linear-gradient(180deg,transparent,var(--gold),transparent);
+  margin:16px auto;
+}
+.big-word{
+  color:rgba(255,248,236,.94);
+  font-size:clamp(78px,24vw,126px);
+  line-height:1;
+  letter-spacing:.22em;
+  font-weight:300;
 }
 .gold{
   color:var(--gold-hi);
-  text-shadow:
-    0 0 18px rgba(212,175,55,.18);
 }
-.note{
-  margin-top:32px;
-  color:
-    rgba(212,175,55,.56);
-  font-size:12px;
-  letter-spacing:.2em;
-}
-/* IMAGE */
-.visual{
+.panel-grid{
   width:100%;
-  position:relative;
-}
-.visual::before{
-  content:"";
-  position:absolute;
-  inset:12%;
-  border-radius:50%;
-  background:
-    radial-gradient(
-      circle,
-      rgba(212,175,55,.16),
-      transparent 68%
-    );
-  filter:blur(26px);
-  z-index:-1;
-}
-.visual img{
-  width:100%;
-  height:auto;
-  object-fit:contain;
-  background:#000;
-  padding:14px;
-  border:
-    1px solid rgba(212,175,55,.16);
-  box-shadow:
-    0 24px 68px rgba(0,0,0,.72);
-  display:block;
-}
-/* CARD */
-.card-grid{
-  margin-top:42px;
+  max-width:520px;
+  margin:auto;
   display:grid;
   grid-template-columns:1fr;
-  gap:16px;
+  gap:18px;
 }
-.card{
+.panel{
+  border:1px solid var(--line);
+  padding:38px 24px;
+  min-height:210px;
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.04),
-      rgba(255,255,255,.015)
-    );
-  border:
-    1px solid var(--line);
-  padding:26px 22px;
-  min-height:160px;
+    linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.006));
 }
-.card h3{
-  font-weight:400;
-  font-size:15px;
-  letter-spacing:.18em;
-  text-align:center;
+.panel h3{
   color:var(--gold-hi);
-  margin-bottom:14px;
-  padding-bottom:12px;
-  border-bottom:
-    1px solid rgba(212,175,55,.18);
+  font-size:34px;
+  font-weight:400;
+  letter-spacing:.22em;
+  text-align:center;
+  margin-bottom:22px;
 }
-.card p{
+.panel h3::after{
+  content:"";
+  display:block;
+  width:72%;
+  height:1px;
+  margin:22px auto 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.panel p{
   color:var(--text-soft);
-  font-size:14px;
-  line-height:2.05;
+  font-size:22px;
+  line-height:2.3;
+  text-align:center;
   white-space:pre-line;
 }
-/* BUTTON */
 .cta{
-  margin-top:42px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
   width:100%;
-  height:56px;
-  border:
-    1px solid rgba(212,175,55,.38);
-  background:
-    rgba(0,0,0,.42);
+  height:58px;
+  margin-top:24px;
+  background:transparent;
+  border:1px solid var(--gold);
   color:var(--gold-hi);
-  letter-spacing:.24em;
-  font-size:14px;
-  cursor:pointer;
-  transition:.45s var(--ease);
-  box-shadow:
-    0 0 18px rgba(212,175,55,.08);
+  font-size:16px;
+  letter-spacing:.26em;
+  font-family:inherit;
 }
-.cta:active{
-  background:var(--gold);
-  color:#050505;
-}
-/* POPUP */
 .popup{
   position:fixed;
   inset:0;
@@ -277,8 +249,7 @@ body::after{
   align-items:flex-end;
   justify-content:center;
   padding:18px;
-  background:
-    rgba(0,0,0,.78);
+  background:rgba(0,0,0,.78);
   backdrop-filter:blur(18px);
 }
 .popup.active{
@@ -289,35 +260,21 @@ body::after{
   max-width:520px;
   max-height:86svh;
   overflow:auto;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.05),
-      rgba(255,255,255,.018)
-    ),
-    #090909;
-  border:
-    1px solid rgba(212,175,55,.24);
+  background:#050505;
+  border:1px solid var(--line);
   padding:30px 22px;
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.8);
 }
 .popup-title{
-  text-align:center;
   color:var(--gold-hi);
-  font-size:20px;
-  letter-spacing:.3em;
+  text-align:center;
+  font-size:34px;
+  letter-spacing:.28em;
   margin-bottom:26px;
-  text-shadow:var(--glow-title);
 }
 .form-label{
-  color:#fff;
-  font-size:14px;
-  letter-spacing:.16em;
+  color:var(--text);
+  font-size:16px;
   margin-bottom:12px;
-  padding-left:10px;
-  border-left:
-    2px solid var(--gold);
 }
 .tag-grid{
   display:grid;
@@ -330,65 +287,59 @@ body::after{
 }
 .tag span{
   display:block;
-  padding:12px 4px;
+  padding:13px 4px;
   text-align:center;
-  font-size:13px;
   color:var(--text-faint);
-  border:
-    1px solid rgba(255,255,255,.08);
-  background:
-    rgba(255,255,255,.02);
-  cursor:pointer;
+  border:1px solid rgba(255,248,236,.12);
 }
 .tag input:checked + span{
-  color:#fff;
+  color:var(--gold-hi);
   border-color:var(--gold);
-  background:
-    rgba(212,175,55,.09);
-  box-shadow:
-    0 0 14px rgba(212,175,55,.18);
+  background:rgba(216,181,122,.08);
 }
 .booking{
-  background:#050505;
-  border:
-    1px solid rgba(255,255,255,.06);
+  background:#000;
+  border:1px solid rgba(255,248,236,.1);
   padding:18px;
   color:var(--text-soft);
-  line-height:2.1;
-  font-size:13px;
+  font-size:15px;
+  line-height:2;
   white-space:pre-line;
   margin-bottom:18px;
 }
-.popup-actions{
+.actions{
   display:grid;
   gap:10px;
 }
 .btn{
-  width:100%;
   height:50px;
   background:transparent;
-  border:
-    1px solid rgba(255,255,255,.12);
+  border:1px solid rgba(255,248,236,.14);
   color:var(--text-soft);
-  letter-spacing:.18em;
-  cursor:pointer;
+  font-family:inherit;
+  letter-spacing:.2em;
 }
 .btn-primary{
   border-color:var(--gold);
   color:var(--gold-hi);
-  background:
-    rgba(212,175,55,.08);
 }
-/* FLOAT */
-.float{
-  animation:float 8s ease-in-out infinite;
-}
-@keyframes float{
-  0%,100%{
-    transform:translateY(0);
+@media(min-width:900px){
+  .section{
+    padding:70px 7vw;
   }
-  50%{
-    transform:translateY(-8px);
+  .poster{
+    max-width:1200px;
+    grid-template-columns:1fr 1fr;
+    gap:72px;
+  }
+  .split{
+    grid-template-columns:1fr 1fr;
+    max-width:1200px;
+    margin:auto;
+  }
+  .panel-grid{
+    max-width:1200px;
+    grid-template-columns:repeat(3,1fr);
   }
 }
 </style>
@@ -396,367 +347,213 @@ body::after{
 <body>
 <canvas id="particles"></canvas>
 <div class="site">
-<!-- HERO -->
 <section class="section">
-<div class="layout">
-<div class="reveal">
-<div class="eyebrow">
-微光．之上
-</div>
-<h1 class="title">
-無限旅程
-</h1>
-<p class="copy">
-誠摯邀您一同共創微光旅程
-</p>
-<div class="eyebrow" style="margin-top:42px;">
-WEIGUANG HU JIU
-</div>
-<div class="eyebrow" style="opacity:.6;">
-SINCE 2019
-</div>
-</div>
-<div class="visual reveal float">
-<img loading="lazy"
-src="bg-page1.jpg"
-alt="">
-</div>
-</div>
+  <div class="poster">
+    <div class="text-block">
+      <div class="kicker">微 光・之 上</div>
+      <h1 class="title">無 限 旅 程</h1>
+      <p class="copy-small">誠摯邀您一起共啟微光旅程</p>
+      <div class="brand-faint">WEIGUANG<br>HU JIU</div>
+      <div class="since">SINCE2019</div>
+    </div>
+    <div class="image-wrap">
+      <img src="bg-page1.jpg" alt="">
+      <div class="image-caption">值得，所以不將就</div>
+    </div>
+  </div>
 </section>
-<!-- SHARE -->
 <section class="section">
-<div class="layout">
-<div class="reveal">
-<h2 class="title title-small">
-分享
-</h2>
-<p class="copy">
-以為這環境很單純
+  <div class="poster">
+    <div class="text-block">
+      <h2 class="title title-small">分 享</h2>
+      <p class="copy">以為這環境很單純
 後來才明白
 深的不是環境
-而是
-</p>
-<h2 class="title statement">
-人性
-</h2>
-</div>
-<div class="visual reveal">
-<img loading="lazy"
-src="bg-page2.jpg"
-alt="">
-</div>
-</div>
+而是</p>
+      <div class="vertical-line"></div>
+      <div class="big-word">人性</div>
+    </div>
+    <div class="image-wrap">
+      <img src="bg-page2.jpg" alt="">
+    </div>
+  </div>
 </section>
-<!-- TRUST -->
 <section class="section">
-<div class="layout">
-<div class="reveal">
-<h2 class="title title-small">
-感受 信任 尊重
-</h2>
-<p class="copy">
-雙向自然互動 相處舒服
-真實的感受 愉快的過程
-滿足了身體 也滿足了心理
-旅程只適合 懂得規矩的人
-</p>
-</div>
-<div class="visual reveal float">
-<img loading="lazy"
-src="bg-page3.jpg"
-alt="">
-</div>
-</div>
-</section>
-<!-- ABOUT -->
-<section class="section">
-<div class="layout">
-<div class="reveal">
-<h2 class="title title-small">
-關於蘇九
-</h2>
-<p class="copy">
-153 ‧ 40 ‧ B 骨感偏瘦
-體質敏感 純形式的不適合
-不迎合 也不虛假奉陪
+  <div class="poster">
+    <div class="text-block">
+      <h2 class="title title-small">關 於 蘇 九</h2>
+      <p class="copy">153・40・B 骨感偏瘦
+體質敏感
+純形式的不適合
+不迎合
+也不虛假奉陪
 比起說什麼
-<span class="gold">
-做什麼、給什麼
-</span>
-才是旅程的重點
-</p>
-</div>
-<div class="visual reveal">
-<img loading="lazy"
-src="bg-page4.jpg"
-alt="">
-</div>
-</div>
+<span class="gold">做什麼、給什麼</span>
+才是旅程的重點</p>
+    </div>
+    <div class="image-wrap">
+      <img src="bg-page3.jpg" alt="">
+    </div>
+  </div>
 </section>
-<!-- SERVICE -->
 <section class="section">
-<div class="center-layout reveal">
-<div class="eyebrow">
-微光．旅程
-</div>
-<h2 class="title title-small">
-壹．微光百刻．初見
-</h2>
-<p class="copy">
-在微光之中卸下城市的喧囂。
-借古人一日百刻之名，將時間拉長成百個刻度的純粹。
-這是一場毫無保留的深度釋壓，
-帶您穿透緊繃，在微光之上迎來身心的全然甦醒。
-</p>
-<div class="note">
-費用含場域・停車・盥洗用品
-</div>
-</div>
+  <div class="poster">
+    <div class="text-block">
+      <h2 class="title title-small">感 受 信 任 尊 重</h2>
+      <p class="copy">雙向自然互動
+相處舒服
+真實的感受
+愉快的過程
+滿足了身體
+也滿足了心理
+旅程只適合
+懂得規矩的人</p>
+    </div>
+    <div class="image-wrap">
+      <img src="bg-page4.jpg" alt="">
+    </div>
+  </div>
 </section>
-<!-- PROMISE -->
 <section class="section">
-<div class="center-layout reveal">
-<div class="eyebrow">
-WEIGUANG PROMISE
-</div>
-<h2 class="title title-small">
-微光承諾
-</h2>
-<div class="card-grid">
-<div class="card">
-<h3>空間</h3>
-<p>
-安靜
+  <div class="panel-grid">
+    <div class="panel">
+      <h3>空間</h3>
+      <p>安靜
 乾淨
 隱密
-完整準備
-</p>
-</div>
-<div class="card">
-<h3>互動</h3>
-<p>
-尊重界線
+完整準備</p>
+    </div>
+    <div class="panel">
+      <h3>互動</h3>
+      <p>尊重界線
 重視感受
 自然舒服
-不制式
-</p>
-</div>
-<div class="card">
-<h3>規矩</h3>
-<p>
-適合懂得尊重的人
+不制式</p>
+    </div>
+    <div class="panel">
+      <h3>規矩</h3>
+      <p>適合懂得尊重的人
 保持禮貌
 保持分寸
-保持理解
-</p>
-</div>
-</div>
-<button class="cta" id="openPopup">
-預約旅程
-</button>
-</div>
+保持理解</p>
+    </div>
+    <button class="cta" id="openPopup">預約旅程</button>
+  </div>
 </section>
 </div>
-<!-- POPUP -->
 <div class="popup" id="popup">
-<div class="popup-panel">
-<h2 class="popup-title">
-微光預約
-</h2>
-<div class="form-label">
-選擇旅程
-</div>
-<div class="tag-grid">
-<label class="tag">
-<input type="checkbox" value="微光百刻">
-<span>微光百刻</span>
-</label>
-<label class="tag">
-<input type="checkbox" value="微光三疊">
-<span>微光三疊</span>
-</label>
-<label class="tag">
-<input type="checkbox" value="無限旅程">
-<span>無限旅程</span>
-</label>
-<label class="tag">
-<input type="checkbox" value="首次預約">
-<span>首次預約</span>
-</label>
-</div>
-<div class="booking" id="bookingText">
-您好，我想預約微光旅程。
+  <div class="popup-panel">
+    <h2 class="popup-title">微光預約</h2>
+    <div class="form-label">選擇旅程</div>
+    <div class="tag-grid">
+      <label class="tag">
+        <input type="checkbox" value="微光百刻">
+        <span>微光百刻</span>
+      </label>
+      <label class="tag">
+        <input type="checkbox" value="微光三疊">
+        <span>微光三疊</span>
+      </label>
+      <label class="tag">
+        <input type="checkbox" value="無限旅程">
+        <span>無限旅程</span>
+      </label>
+      <label class="tag">
+        <input type="checkbox" value="首次預約">
+        <span>首次預約</span>
+      </label>
+    </div>
+    <div class="booking" id="bookingText">您好，我想預約微光旅程。
 預約項目：
 日期：
 時間：
 是否首次預約：
-補充說明：
-</div>
-<div class="popup-actions">
-<button class="btn btn-primary"
-id="copyBtn">
-複製預約格式
-</button>
-<button class="btn"
-id="closePopup">
-返回
-</button>
-</div>
-</div>
+補充說明：</div>
+    <div class="actions">
+      <button class="btn btn-primary" id="copyBtn">複製預約格式</button>
+      <button class="btn" id="closePopup">返回</button>
+    </div>
+  </div>
 </div>
 <script>
-/* JS MODE */
-document.documentElement
-.classList.add("js");
-/* REVEAL */
-const reveals =
-document.querySelectorAll(".reveal");
-const observer =
-new IntersectionObserver((entries)=>{
-entries.forEach((entry)=>{
-if(entry.isIntersecting){
-entry.target.classList
-.add("show");
-}
-});
-},{
-threshold:.12
-});
-reveals.forEach((el)=>{
-observer.observe(el);
-});
-/* POPUP */
-const popup =
-document.getElementById("popup");
-const openPopup =
-document.getElementById("openPopup");
-const closePopup =
-document.getElementById("closePopup");
+const popup = document.getElementById("popup");
+const openPopup = document.getElementById("openPopup");
+const closePopup = document.getElementById("closePopup");
 openPopup.addEventListener("click",()=>{
-popup.classList.add("active");
-document.body.style.overflow="hidden";
+  popup.classList.add("active");
+  document.body.style.overflow="hidden";
 });
 closePopup.addEventListener("click",()=>{
-popup.classList.remove("active");
-document.body.style.overflow="";
+  popup.classList.remove("active");
+  document.body.style.overflow="";
 });
 popup.addEventListener("click",(e)=>{
-if(e.target===popup){
-popup.classList.remove("active");
-document.body.style.overflow="";
-}
+  if(e.target===popup){
+    popup.classList.remove("active");
+    document.body.style.overflow="";
+  }
 });
-/* COPY */
-document
-.getElementById("copyBtn")
-.addEventListener("click",async()=>{
-const checked =
-[...document.querySelectorAll(".tag input:checked")]
-.map(i=>i.value)
-.join("、") || "未填寫";
-const text =
+document.getElementById("copyBtn").addEventListener("click",async()=>{
+  const checked = [...document.querySelectorAll(".tag input:checked")]
+    .map(i=>i.value)
+    .join("、") || "未填寫";
+  const text =
 `您好，我想預約微光旅程。
 預約項目：${checked}
 日期：
 時間：
 是否首次預約：
 補充說明：`;
-try{
-await navigator.clipboard.writeText(text);
-document
-.getElementById("bookingText")
-.innerText =
-text + "\n\n已複製";
-}catch(e){
-alert("複製失敗");
-}
+  try{
+    await navigator.clipboard.writeText(text);
+    document.getElementById("bookingText").innerText = text + "\n\n已複製";
+  }catch(e){
+    alert("複製失敗");
+  }
 });
-/* PARTICLE */
-const canvas =
-document.getElementById("particles");
-const ctx =
-canvas.getContext("2d");
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
 let w;
 let h;
 let particles = [];
 function resize(){
-const ratio =
-window.devicePixelRatio || 1;
-w =
-canvas.width =
-window.innerWidth * ratio;
-h =
-canvas.height =
-window.innerHeight * ratio;
-canvas.style.width =
-window.innerWidth + "px";
-canvas.style.height =
-window.innerHeight + "px";
-const count =
-Math.min(
-70,
-Math.floor(window.innerWidth / 7)
-);
-particles =
-Array.from({length:count},()=>({
-x:Math.random()*w,
-y:Math.random()*h,
-r:
-(Math.random()*1.6+.4)
-*ratio,
-a:
-Math.random()*.32+.06,
-vx:
-(Math.random()-.5)
-*.16
-*ratio,
-vy:
-(Math.random()-.5)
-*.16
-*ratio
-}));
+  const ratio = window.devicePixelRatio || 1;
+  w = canvas.width = window.innerWidth * ratio;
+  h = canvas.height = window.innerHeight * ratio;
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+  const count = Math.min(58,Math.floor(window.innerWidth / 8));
+  particles = Array.from({length:count},()=>({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    r:(Math.random()*1.4+.3)*ratio,
+    a:Math.random()*.24+.04,
+    vx:(Math.random()-.5)*.12*ratio,
+    vy:(Math.random()-.5)*.12*ratio
+  }));
 }
 function animate(){
-ctx.clearRect(0,0,w,h);
-particles.forEach((p)=>{
-p.x += p.vx;
-p.y += p.vy;
-if(p.x<0)p.x=w;
-if(p.x>w)p.x=0;
-if(p.y<0)p.y=h;
-if(p.y>h)p.y=0;
-const g =
-ctx.createRadialGradient(
-p.x,p.y,0,
-p.x,p.y,p.r*7
-);
-g.addColorStop(
-0,
-`rgba(245,215,127,${p.a})`
-);
-g.addColorStop(
-1,
-"rgba(245,215,127,0)"
-);
-ctx.fillStyle=g;
-ctx.beginPath();
-ctx.arc(
-p.x,
-p.y,
-p.r*7,
-0,
-Math.PI*2
-);
-ctx.fill();
-});
-requestAnimationFrame(animate);
+  ctx.clearRect(0,0,w,h);
+  particles.forEach((p)=>{
+    p.x += p.vx;
+    p.y += p.vy;
+    if(p.x<0)p.x=w;
+    if(p.x>w)p.x=0;
+    if(p.y<0)p.y=h;
+    if(p.y>h)p.y=0;
+    const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*8);
+    g.addColorStop(0,`rgba(216,181,122,${p.a})`);
+    g.addColorStop(1,"rgba(216,181,122,0)");
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r*8,0,Math.PI*2);
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
 }
 resize();
 animate();
-window.addEventListener(
-"resize",
-resize
-);
+window.addEventListener("resize",resize);
 </script>
 </body>
 </html>
