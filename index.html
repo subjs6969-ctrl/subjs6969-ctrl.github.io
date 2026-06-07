@@ -11,19 +11,17 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 :root{
   --gold-hi:#f5d77f;
   --gold:#d4af37;
+  --gold-deep:#8f6e20;
   --bg:#050505;
   --text:#f3f0ea;
-  --text-soft:rgba(255,255,255,.62);
+  --text-soft:rgba(255,255,255,.64);
   --text-faint:rgba(255,255,255,.34);
-  --line:rgba(212,175,55,.12);
-  --glow:
-    0 0 18px rgba(212,175,55,.18);
+  --line:rgba(212,175,55,.16);
   --glow-title:
     0 0 10px rgba(212,175,55,.35),
     0 0 40px rgba(212,175,55,.08);
   --ease:
     cubic-bezier(.16,1,.3,1);
-  --max:1180px;
 }
 *{
   margin:0;
@@ -32,6 +30,7 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 }
 html{
   scroll-behavior:smooth;
+  background:#000;
 }
 body{
   font-family:
@@ -44,27 +43,40 @@ body{
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(212,175,55,.06),
-      transparent 35%
+      rgba(212,175,55,.08),
+      transparent 34%
     ),
     linear-gradient(
       180deg,
-      #030303 0%,
-      #070707 50%,
+      #020202 0%,
+      #070707 48%,
       #020202 100%
     );
   color:var(--text);
   overflow-x:hidden;
-  line-height:1.8;
-  letter-spacing:.04em;
+  line-height:1.9;
+  letter-spacing:.05em;
 }
-/* PARTICLE */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 42%,
+      rgba(0,0,0,.68) 100%
+    );
+}
+/* PARTICLES */
 #particles{
   position:fixed;
   inset:0;
   z-index:0;
   pointer-events:none;
-  opacity:.7;
+  opacity:.68;
 }
 /* SITE */
 .site{
@@ -73,92 +85,135 @@ body{
 }
 /* SECTION */
 .section{
-  min-height:100vh;
+  width:100%;
+  min-height:100svh;
   display:flex;
   align-items:center;
-  padding:
-    clamp(80px,10vw,140px)
-    24px;
+  padding:86px 20px;
   position:relative;
   border-bottom:
-    1px solid rgba(212,175,55,.05);
+    1px solid rgba(212,175,55,.06);
 }
+.section::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:82%;
+  max-width:420px;
+  height:1px;
+  transform:translateX(-50%);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212,175,55,.22),
+      transparent
+    );
+}
+/* LAYOUT */
 .layout{
   width:100%;
-  max-width:var(--max);
+  max-width:520px;
   margin:auto;
-  display:grid;
-  grid-template-columns:
-    1fr .92fr;
-  gap:
-    clamp(40px,7vw,100px);
+  display:flex;
+  flex-direction:column;
+  gap:34px;
   align-items:center;
+  text-align:center;
 }
 .center-layout{
-  width:min(860px,100%);
+  width:100%;
+  max-width:520px;
   margin:auto;
   text-align:center;
 }
 /* TEXT */
 .eyebrow{
-  font-size:12px;
-  letter-spacing:.34em;
+  font-size:11px;
+  letter-spacing:.36em;
   text-transform:uppercase;
   color:var(--text-faint);
   margin-bottom:18px;
 }
 .title{
   font-weight:300;
-  line-height:1.08;
+  line-height:1.16;
   color:var(--gold-hi);
   text-shadow:var(--glow-title);
   font-size:
-    clamp(36px,6vw,76px);
+    clamp(34px,11vw,56px);
   letter-spacing:.16em;
-  margin-bottom:28px;
+  margin-bottom:24px;
 }
 .title-small{
   font-size:
-    clamp(28px,4vw,52px);
+    clamp(28px,9vw,44px);
   letter-spacing:.12em;
 }
 .statement{
   font-size:
-    clamp(52px,9vw,96px);
+    clamp(58px,18vw,92px);
   color:#fff;
-  letter-spacing:.22em;
+  letter-spacing:.28em;
+  text-shadow:none;
+  margin-top:18px;
 }
 .copy{
   color:var(--text-soft);
-  font-size:
-    clamp(15px,1.6vw,17px);
-  line-height:2.2;
+  font-size:15px;
+  line-height:2.25;
   white-space:pre-line;
 }
 .gold{
   color:var(--gold-hi);
+  text-shadow:
+    0 0 18px rgba(212,175,55,.18);
+}
+.note{
+  margin-top:32px;
+  color:
+    rgba(212,175,55,.56);
+  font-size:12px;
+  letter-spacing:.2em;
 }
 /* IMAGE */
 .visual{
+  width:100%;
   position:relative;
+}
+.visual::before{
+  content:"";
+  position:absolute;
+  inset:12%;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(212,175,55,.16),
+      transparent 68%
+    );
+  filter:blur(26px);
+  z-index:-1;
 }
 .visual img{
   width:100%;
-  max-height:78vh;
-  object-fit:cover;
+  height:auto;
+  object-fit:contain;
+  background:#000;
+  padding:14px;
   border:
-    1px solid rgba(212,175,55,.12);
+    1px solid rgba(212,175,55,.16);
   box-shadow:
-    0 30px 80px rgba(0,0,0,.7);
+    0 24px 68px rgba(0,0,0,.72);
   display:block;
 }
 /* CARD */
 .card-grid{
-  margin-top:44px;
+  margin-top:42px;
   display:grid;
-  grid-template-columns:
-    repeat(3,1fr);
-  gap:18px;
+  grid-template-columns:1fr;
+  gap:16px;
 }
 .card{
   background:
@@ -169,19 +224,19 @@ body{
     );
   border:
     1px solid var(--line);
-  padding:28px 22px;
-  min-height:220px;
+  padding:26px 22px;
+  min-height:160px;
 }
 .card h3{
   font-weight:400;
   font-size:15px;
-  letter-spacing:.16em;
+  letter-spacing:.18em;
   text-align:center;
   color:var(--gold-hi);
-  margin-bottom:16px;
-  padding-bottom:14px;
+  margin-bottom:14px;
+  padding-bottom:12px;
   border-bottom:
-    1px solid rgba(212,175,55,.16);
+    1px solid rgba(212,175,55,.18);
 }
 .card p{
   color:var(--text-soft);
@@ -195,20 +250,21 @@ body{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:280px;
+  width:100%;
   height:56px;
   border:
-    1px solid rgba(212,175,55,.34);
+    1px solid rgba(212,175,55,.38);
   background:
     rgba(0,0,0,.42);
   color:var(--gold-hi);
   letter-spacing:.24em;
   font-size:14px;
   cursor:pointer;
-  transition:
-    .5s var(--ease);
+  transition:.45s var(--ease);
+  box-shadow:
+    0 0 18px rgba(212,175,55,.08);
 }
-.cta:hover{
+.cta:active{
   background:var(--gold);
   color:#050505;
 }
@@ -218,9 +274,9 @@ body{
   inset:0;
   z-index:999;
   display:none;
-  align-items:center;
+  align-items:flex-end;
   justify-content:center;
-  padding:20px;
+  padding:18px;
   background:
     rgba(0,0,0,.78);
   backdrop-filter:blur(18px);
@@ -229,18 +285,68 @@ body{
   display:flex;
 }
 .popup-panel{
-  width:min(100%,520px);
-  background:#090909;
+  width:100%;
+  max-width:520px;
+  max-height:86svh;
+  overflow:auto;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.018)
+    ),
+    #090909;
   border:
-    1px solid rgba(212,175,55,.22);
-  padding:34px 26px;
+    1px solid rgba(212,175,55,.24);
+  padding:30px 22px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.8);
 }
 .popup-title{
   text-align:center;
   color:var(--gold-hi);
   font-size:20px;
   letter-spacing:.3em;
-  margin-bottom:28px;
+  margin-bottom:26px;
+  text-shadow:var(--glow-title);
+}
+.form-label{
+  color:#fff;
+  font-size:14px;
+  letter-spacing:.16em;
+  margin-bottom:12px;
+  padding-left:10px;
+  border-left:
+    2px solid var(--gold);
+}
+.tag-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:22px;
+}
+.tag input{
+  display:none;
+}
+.tag span{
+  display:block;
+  padding:12px 4px;
+  text-align:center;
+  font-size:13px;
+  color:var(--text-faint);
+  border:
+    1px solid rgba(255,255,255,.08);
+  background:
+    rgba(255,255,255,.02);
+  cursor:pointer;
+}
+.tag input:checked + span{
+  color:#fff;
+  border-color:var(--gold);
+  background:
+    rgba(212,175,55,.09);
+  box-shadow:
+    0 0 14px rgba(212,175,55,.18);
 }
 .booking{
   background:#050505;
@@ -251,30 +357,38 @@ body{
   line-height:2.1;
   font-size:13px;
   white-space:pre-line;
-  margin-bottom:20px;
+  margin-bottom:18px;
+}
+.popup-actions{
+  display:grid;
+  gap:10px;
 }
 .btn{
   width:100%;
-  height:48px;
-  background:
-    rgba(212,175,55,.08);
+  height:50px;
+  background:transparent;
   border:
-    1px solid var(--gold);
-  color:var(--gold-hi);
+    1px solid rgba(255,255,255,.12);
+  color:var(--text-soft);
   letter-spacing:.18em;
   cursor:pointer;
 }
-/* MOBILE */
-@media(max-width:860px){
-  .layout{
-    grid-template-columns:1fr;
-    text-align:center;
+.btn-primary{
+  border-color:var(--gold);
+  color:var(--gold-hi);
+  background:
+    rgba(212,175,55,.08);
+}
+/* FLOAT */
+.float{
+  animation:float 8s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
   }
-  .card-grid{
-    grid-template-columns:1fr;
-  }
-  .visual img{
-    max-height:58vh;
+  50%{
+    transform:translateY(-8px);
   }
 }
 </style>
@@ -285,7 +399,7 @@ body{
 <!-- HERO -->
 <section class="section">
 <div class="layout">
-<div>
+<div class="reveal">
 <div class="eyebrow">
 微光．之上
 </div>
@@ -295,10 +409,16 @@ body{
 <p class="copy">
 誠摯邀您一同共創微光旅程
 </p>
+<div class="eyebrow" style="margin-top:42px;">
+WEIGUANG HU JIU
 </div>
-<div class="visual">
+<div class="eyebrow" style="opacity:.6;">
+SINCE 2019
+</div>
+</div>
+<div class="visual reveal float">
 <img loading="lazy"
-src="https://images.unsplash.com/photo-1493246318656-5bfd4cfb29b8?q=80&w=1200&auto=format&fit=crop"
+src="bg-page1.jpg"
 alt="">
 </div>
 </div>
@@ -306,7 +426,7 @@ alt="">
 <!-- SHARE -->
 <section class="section">
 <div class="layout">
-<div>
+<div class="reveal">
 <h2 class="title title-small">
 分享
 </h2>
@@ -320,9 +440,9 @@ alt="">
 人性
 </h2>
 </div>
-<div class="visual">
+<div class="visual reveal">
 <img loading="lazy"
-src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1200&auto=format&fit=crop"
+src="bg-page2.jpg"
 alt="">
 </div>
 </div>
@@ -330,7 +450,7 @@ alt="">
 <!-- TRUST -->
 <section class="section">
 <div class="layout">
-<div>
+<div class="reveal">
 <h2 class="title title-small">
 感受 信任 尊重
 </h2>
@@ -341,9 +461,9 @@ alt="">
 旅程只適合 懂得規矩的人
 </p>
 </div>
-<div class="visual">
+<div class="visual reveal float">
 <img loading="lazy"
-src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"
+src="bg-page3.jpg"
 alt="">
 </div>
 </div>
@@ -351,7 +471,7 @@ alt="">
 <!-- ABOUT -->
 <section class="section">
 <div class="layout">
-<div>
+<div class="reveal">
 <h2 class="title title-small">
 關於蘇九
 </h2>
@@ -366,16 +486,36 @@ alt="">
 才是旅程的重點
 </p>
 </div>
-<div class="visual">
+<div class="visual reveal">
 <img loading="lazy"
-src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop"
+src="bg-page4.jpg"
 alt="">
+</div>
+</div>
+</section>
+<!-- SERVICE -->
+<section class="section">
+<div class="center-layout reveal">
+<div class="eyebrow">
+微光．旅程
+</div>
+<h2 class="title title-small">
+壹．微光百刻．初見
+</h2>
+<p class="copy">
+在微光之中卸下城市的喧囂。
+借古人一日百刻之名，將時間拉長成百個刻度的純粹。
+這是一場毫無保留的深度釋壓，
+帶您穿透緊繃，在微光之上迎來身心的全然甦醒。
+</p>
+<div class="note">
+費用含場域・停車・盥洗用品
 </div>
 </div>
 </section>
 <!-- PROMISE -->
 <section class="section">
-<div class="center-layout">
+<div class="center-layout reveal">
 <div class="eyebrow">
 WEIGUANG PROMISE
 </div>
@@ -423,6 +563,27 @@ WEIGUANG PROMISE
 <h2 class="popup-title">
 微光預約
 </h2>
+<div class="form-label">
+選擇旅程
+</div>
+<div class="tag-grid">
+<label class="tag">
+<input type="checkbox" value="微光百刻">
+<span>微光百刻</span>
+</label>
+<label class="tag">
+<input type="checkbox" value="微光三疊">
+<span>微光三疊</span>
+</label>
+<label class="tag">
+<input type="checkbox" value="無限旅程">
+<span>無限旅程</span>
+</label>
+<label class="tag">
+<input type="checkbox" value="首次預約">
+<span>首次預約</span>
+</label>
+</div>
 <div class="booking" id="bookingText">
 您好，我想預約微光旅程。
 預約項目：
@@ -431,59 +592,128 @@ WEIGUANG PROMISE
 是否首次預約：
 補充說明：
 </div>
-<button class="btn" id="copyBtn">
+<div class="popup-actions">
+<button class="btn btn-primary"
+id="copyBtn">
 複製預約格式
+</button>
+<button class="btn"
+id="closePopup">
+返回
 </button>
 </div>
 </div>
+</div>
 <script>
+/* JS MODE */
+document.documentElement
+.classList.add("js");
+/* REVEAL */
+const reveals =
+document.querySelectorAll(".reveal");
+const observer =
+new IntersectionObserver((entries)=>{
+entries.forEach((entry)=>{
+if(entry.isIntersecting){
+entry.target.classList
+.add("show");
+}
+});
+},{
+threshold:.12
+});
+reveals.forEach((el)=>{
+observer.observe(el);
+});
 /* POPUP */
 const popup =
 document.getElementById("popup");
-document
-.getElementById("openPopup")
-.addEventListener("click",()=>{
+const openPopup =
+document.getElementById("openPopup");
+const closePopup =
+document.getElementById("closePopup");
+openPopup.addEventListener("click",()=>{
 popup.classList.add("active");
+document.body.style.overflow="hidden";
+});
+closePopup.addEventListener("click",()=>{
+popup.classList.remove("active");
+document.body.style.overflow="";
 });
 popup.addEventListener("click",(e)=>{
 if(e.target===popup){
 popup.classList.remove("active");
+document.body.style.overflow="";
 }
 });
 /* COPY */
 document
 .getElementById("copyBtn")
 .addEventListener("click",async()=>{
+const checked =
+[...document.querySelectorAll(".tag input:checked")]
+.map(i=>i.value)
+.join("、") || "未填寫";
 const text =
 `您好，我想預約微光旅程。
-預約項目：
+預約項目：${checked}
 日期：
 時間：
 是否首次預約：
 補充說明：`;
+try{
 await navigator.clipboard.writeText(text);
-alert("已複製");
+document
+.getElementById("bookingText")
+.innerText =
+text + "\n\n已複製";
+}catch(e){
+alert("複製失敗");
+}
 });
-/* PARTICLES */
+/* PARTICLE */
 const canvas =
 document.getElementById("particles");
 const ctx =
 canvas.getContext("2d");
-let w,h,particles=[];
+let w;
+let h;
+let particles = [];
 function resize(){
+const ratio =
+window.devicePixelRatio || 1;
 w =
 canvas.width =
-window.innerWidth;
+window.innerWidth * ratio;
 h =
 canvas.height =
-window.innerHeight;
+window.innerHeight * ratio;
+canvas.style.width =
+window.innerWidth + "px";
+canvas.style.height =
+window.innerHeight + "px";
+const count =
+Math.min(
+70,
+Math.floor(window.innerWidth / 7)
+);
 particles =
-Array.from({length:80},()=>({
+Array.from({length:count},()=>({
 x:Math.random()*w,
 y:Math.random()*h,
-r:Math.random()*2+1,
-vx:(Math.random()-.5)*0.2,
-vy:(Math.random()-.5)*0.2
+r:
+(Math.random()*1.6+.4)
+*ratio,
+a:
+Math.random()*.32+.06,
+vx:
+(Math.random()-.5)
+*.16
+*ratio,
+vy:
+(Math.random()-.5)
+*.16
+*ratio
 }));
 }
 function animate(){
@@ -495,13 +725,25 @@ if(p.x<0)p.x=w;
 if(p.x>w)p.x=0;
 if(p.y<0)p.y=h;
 if(p.y>h)p.y=0;
+const g =
+ctx.createRadialGradient(
+p.x,p.y,0,
+p.x,p.y,p.r*7
+);
+g.addColorStop(
+0,
+`rgba(245,215,127,${p.a})`
+);
+g.addColorStop(
+1,
+"rgba(245,215,127,0)"
+);
+ctx.fillStyle=g;
 ctx.beginPath();
-ctx.fillStyle =
-"rgba(245,215,127,.25)";
 ctx.arc(
 p.x,
 p.y,
-p.r,
+p.r*7,
 0,
 Math.PI*2
 );
