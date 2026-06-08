@@ -26,7 +26,7 @@ html{
 body{
   background:#000;
   color:var(--text);
-  font-family:"Noto Serif TC","Songti TC","PingFang TC","Times New Roman",serif;
+  font-family:"Noto Serif TC","Songti TC","STSong","Times New Roman",serif;
   overflow-x:hidden;
   line-height:1.9;
   letter-spacing:.08em;
@@ -71,7 +71,7 @@ body::before{
   width:86%;
   height:1px;
   transform:translateX(-50%);
-  background:linear-gradient(90deg,transparent,rgba(212,175,55,.16),transparent);
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.13),transparent);
 }
 .stage{
   width:100%;
@@ -80,32 +80,41 @@ body::before{
   position:relative;
 }
 .kicker{
-  color:var(--gold-high-light);
+  color:#f3e2b2;
+  opacity:.98;
   font-size:14px;
   letter-spacing:.34em;
   margin-bottom:18px;
-  text-shadow:var(--gold-glow);
+  text-shadow:
+    0 0 1px rgba(255,255,255,1),
+    0 0 5px rgba(245,215,127,.64),
+    0 0 14px rgba(212,175,55,.34),
+    0 0 30px rgba(212,175,55,.14);
 }
 .title{
-  color:var(--gold-high-light);
-  opacity:.92;
+  color:#f3e2b2;
+  opacity:1;
   font-size:clamp(38px,12vw,62px);
   line-height:1.25;
   font-weight:300;
-  letter-spacing:.12em;
-  -webkit-text-stroke:.2px rgba(255,248,220,.22);
+  letter-spacing:.13em;
+  -webkit-text-stroke:.22px rgba(255,248,220,.24);
   text-shadow:
-text-shadow:
-  0 0 1px rgba(255,255,255,1),
-  0 0 6px rgba(245,215,127,.78),
-  0 0 14px rgba(212,175,55,.48),
-  0 0 30px rgba(212,175,55,.24),
-  0 0 54px rgba(212,175,55,.10);
+    0 0 1px rgba(255,255,255,1),
+    0 0 6px rgba(245,215,127,.78),
+    0 0 14px rgba(212,175,55,.48),
+    0 0 30px rgba(212,175,55,.24),
+    0 0 54px rgba(212,175,55,.10);
 }
 .title.big{
   font-size:clamp(58px,20vw,110px);
   color:#fff;
-  letter-spacing:.2em;
+  letter-spacing:.18em;
+  -webkit-text-stroke:.18px rgba(255,255,255,.18);
+  text-shadow:
+    0 0 1px rgba(255,255,255,.95),
+    0 0 6px rgba(255,255,255,.22),
+    0 0 18px rgba(255,255,255,.08);
 }
 .copy{
   margin-top:28px;
@@ -120,8 +129,11 @@ text-shadow:
   line-height:2;
 }
 .gold{
-  color:var(--gold-high-light);
-  text-shadow:var(--gold-glow);
+  color:#f3e2b2;
+  text-shadow:
+    0 0 1px rgba(255,255,255,1),
+    0 0 5px rgba(245,215,127,.56),
+    0 0 12px rgba(212,175,55,.28);
 }
 .brand-ghost{
   margin-top:38px;
@@ -145,7 +157,7 @@ text-shadow:
 .photo img{
   width:100%;
   display:block;
-  filter:grayscale(1) contrast(1.08) brightness(.8);
+  filter:grayscale(1) contrast(1.08) brightness(.78);
   transform:scale(1.01);
   animation:photoBreath 14s ease-in-out infinite alternate;
 }
@@ -159,8 +171,8 @@ text-shadow:
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.46)),
-    radial-gradient(circle at center,transparent 42%,rgba(0,0,0,.55) 100%);
+    linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.48)),
+    radial-gradient(circle at center,transparent 42%,rgba(0,0,0,.58) 100%);
 }
 .caption{
   position:absolute;
@@ -178,6 +190,7 @@ text-shadow:
   height:58px;
   margin:28px auto;
   background:linear-gradient(180deg,transparent,var(--gold-classic),transparent);
+  box-shadow:0 0 16px rgba(212,175,55,.18);
 }
 .float-block{
   opacity:0;
@@ -199,18 +212,18 @@ text-shadow:
   position:relative;
   overflow:hidden;
   padding:38px 24px;
-  border:1px solid rgba(212,175,55,.18);
-  background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.004));
+  border:1px solid rgba(212,175,55,.11);
+  background:linear-gradient(180deg,rgba(255,255,255,.014),rgba(255,255,255,.003));
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.018),
-    0 0 32px rgba(212,175,55,.035);
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 0 34px rgba(212,175,55,.03);
 }
 .panel::before{
   content:"";
   position:absolute;
   inset:-45%;
   background:
-    linear-gradient(120deg,transparent 20%,rgba(212,175,55,.035) 42%,rgba(255,255,255,.05) 50%,rgba(212,175,55,.035) 58%,transparent 80%);
+    linear-gradient(120deg,transparent 20%,rgba(212,175,55,.028) 42%,rgba(255,255,255,.04) 50%,rgba(212,175,55,.028) 58%,transparent 80%);
   transform:translateX(-120%) rotate(8deg);
   animation:panelFlow 10s linear infinite;
   pointer-events:none;
@@ -221,37 +234,64 @@ text-shadow:
 }
 .panel-title{
   position:relative;
-  color:var(--gold-high-light);
+  color:#f3e2b2;
+  opacity:1;
   font-size:32px;
   font-weight:300;
-  letter-spacing:.16em
-  -webkit-text-stroke:.2px rgba(255,248,220,.22);
+  letter-spacing:.13em;
   text-align:center;
+  -webkit-text-stroke:.22px rgba(255,248,220,.24);
   text-shadow:
-  0 0 1px rgba(255,248,220,.95),
-  0 0 6px rgba(245,215,127,.55),
-  0 0 14px rgba(212,175,55,.38),
-  0 0 32px rgba(212,175,55,.18),
-  0 0 58px rgba(212,175,55,.08);
-
-filter:drop-shadow(0 0 12px rgba(212,175,55,.12));
-
-animation:titleGlow 5s ease-in-out infinite;
+    0 0 1px rgba(255,255,255,1),
+    0 0 6px rgba(245,215,127,.78),
+    0 0 14px rgba(212,175,55,.48),
+    0 0 30px rgba(212,175,55,.24),
+    0 0 54px rgba(212,175,55,.10);
+  filter:drop-shadow(0 0 8px rgba(212,175,55,.10));
+  animation:titleGlow 5.8s ease-in-out infinite;
+}
+@keyframes titleGlow{
+  0%{
+    opacity:.92;
+    text-shadow:
+      0 0 1px rgba(255,255,255,.95),
+      0 0 4px rgba(245,215,127,.50),
+      0 0 10px rgba(212,175,55,.26),
+      0 0 22px rgba(212,175,55,.10);
+  }
+  50%{
+    opacity:1;
+    text-shadow:
+      0 0 1px rgba(255,255,255,1),
+      0 0 7px rgba(245,215,127,.82),
+      0 0 16px rgba(212,175,55,.52),
+      0 0 34px rgba(212,175,55,.22),
+      0 0 56px rgba(212,175,55,.10);
+  }
+  100%{
+    opacity:.92;
+    text-shadow:
+      0 0 1px rgba(255,255,255,.95),
+      0 0 4px rgba(245,215,127,.50),
+      0 0 10px rgba(212,175,55,.26),
+      0 0 22px rgba(212,175,55,.10);
+  }
+}
 .panel-dot{
   width:9px;
   height:9px;
   border-radius:50%;
   margin:24px auto 18px;
-  background:var(--gold-high-light);
+  background:#e9cf8d;
   box-shadow:
-    0 0 10px rgba(245,215,127,.72),
-    0 0 28px rgba(212,175,55,.38);
+    0 0 8px rgba(245,215,127,.42),
+    0 0 20px rgba(212,175,55,.22);
 }
 .panel-line{
   width:76%;
   height:1px;
   margin:0 auto 32px;
-  background:linear-gradient(90deg,transparent,rgba(212,175,55,.45),transparent);
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.36),transparent);
 }
 .panel-copy{
   color:rgba(255,255,255,.72);
@@ -260,18 +300,49 @@ animation:titleGlow 5s ease-in-out infinite;
   text-align:center;
   white-space:pre-line;
 }
+.plan-meta{
+  margin-bottom:18px;
+  color:rgba(255,255,255,.82);
+  font-size:15px;
+  letter-spacing:.12em;
+  line-height:1.9;
+}
+.price-list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:8px;
+  margin-bottom:22px;
+}
+.price-list span{
+  color:#f3e2b2;
+  font-size:16px;
+  letter-spacing:.1em;
+  text-shadow:
+    0 0 1px rgba(255,255,255,.9),
+    0 0 5px rgba(245,215,127,.36),
+    0 0 12px rgba(212,175,55,.16);
+}
+.plan-desc{
+  color:rgba(255,255,255,.64);
+  line-height:2;
+  font-size:15px;
+  letter-spacing:.08em;
+}
 .cta{
   width:100%;
   min-height:58px;
   padding:14px 18px;
   margin-top:24px;
   background:rgba(0,0,0,.36);
-  border:1px solid rgba(212,175,55,.38);
-  color:var(--gold-high-light);
+  border:1px solid rgba(212,175,55,.32);
+  color:#f3e2b2;
   font-family:inherit;
   font-size:15px;
-  letter-spacing:.22em;
-  text-shadow:var(--gold-glow);
+  letter-spacing:.18em;
+  text-shadow:
+    0 0 1px rgba(255,255,255,.95),
+    0 0 5px rgba(245,215,127,.46),
+    0 0 12px rgba(212,175,55,.22);
 }
 .popup{
   position:fixed;
@@ -293,17 +364,23 @@ animation:titleGlow 5s ease-in-out infinite;
   max-height:86svh;
   overflow:auto;
   background:#050505;
-  border:1px solid rgba(212,175,55,.26);
+  border:1px solid rgba(212,175,55,.22);
   padding:30px 22px;
   box-shadow:0 0 60px rgba(0,0,0,.8);
 }
 .popup-title{
-  color:var(--gold-high-light);
+  color:#f3e2b2;
   text-align:center;
   font-size:32px;
   font-weight:300;
-  letter-spacing:.24em;
+  letter-spacing:.18em;
   margin-bottom:24px;
+  -webkit-text-stroke:.22px rgba(255,248,220,.22);
+  text-shadow:
+    0 0 1px rgba(255,255,255,1),
+    0 0 6px rgba(245,215,127,.72),
+    0 0 14px rgba(212,175,55,.42),
+    0 0 30px rgba(212,175,55,.18);
 }
 .tag-grid{
   display:grid;
@@ -321,7 +398,7 @@ animation:titleGlow 5s ease-in-out infinite;
   font-size:13px;
 }
 .tag input:checked + span{
-  color:var(--gold-high-light);
+  color:#f3e2b2;
   border-color:rgba(212,175,55,.55);
   background:rgba(212,175,55,.08);
 }
@@ -348,8 +425,8 @@ animation:titleGlow 5s ease-in-out infinite;
   letter-spacing:.16em;
 }
 .btn-primary{
-  border-color:rgba(212,175,55,.46);
-  color:var(--gold-high-light);
+  border-color:rgba(212,175,55,.42);
+  color:#f3e2b2;
 }
 .footer{
   position:relative;
@@ -408,9 +485,9 @@ animation:titleGlow 5s ease-in-out infinite;
   <div class="stage">
     <div class="float-block">
       <h2 class="title">微 炙 蘇 九</h2>
-      <p class="copy">曾經以為，這圈子很簡單。
+      <p class="copy">曾經以為，這環境很簡單。
 後來才明白，
-深的，從來不是這環境
+複雜的，不是這環境
 而是人性。
 感謝曾經的深深，
 現在的蘇九。
@@ -473,40 +550,53 @@ it's All my life</p>
       <div class="panel-title">微 光 ・ 初 見</div>
       <div class="panel-dot"></div>
       <div class="panel-line"></div>
-      <div class="panel-copy">壹｜微光・初見 2H
-基本 3200
-進階 5000
-尊榮 6500
-舒服認識彼此的開始。</div>
+      <div class="panel-copy">
+        <div class="plan-meta">壹｜微光・初見｜2H</div>
+        <div class="price-list">
+          <span>基本 3200</span>
+          <span>進階 5000</span>
+          <span>尊榮 6500</span>
+        </div>
+        <div class="plan-desc">舒服認識彼此的開始。</div>
+      </div>
     </div>
     <div class="panel float-block">
       <div class="panel-title">微 光 ・ 稍 炙</div>
       <div class="panel-dot"></div>
       <div class="panel-line"></div>
-      <div class="panel-copy">貳｜微光・稍炙 3H
-基本 6200
-進階 8000
-尊榮 9500
-感覺對了，
-很多事自然就有了。</div>
+      <div class="panel-copy">
+        <div class="plan-meta">貳｜微光・稍炙｜3H</div>
+        <div class="price-list">
+          <span>基本 6200</span>
+          <span>進階 8000</span>
+          <span>尊榮 9500</span>
+        </div>
+        <div class="plan-desc">感覺對了，很多事自然就有了。</div>
+      </div>
     </div>
     <div class="panel float-block">
       <div class="panel-title">微 光 ・ 微 醺</div>
       <div class="panel-dot"></div>
       <div class="panel-line"></div>
-      <div class="panel-copy">參｜微光・微醺
-10H｜13990
-放鬆、洩壓，
-享受自在舒服的過程。</div>
+      <div class="panel-copy">
+        <div class="plan-meta">參｜微光・微醺｜10H</div>
+        <div class="price-list">
+          <span>15000</span>
+        </div>
+        <div class="plan-desc">放鬆、洩壓，享受自在舒服的過程。</div>
+      </div>
     </div>
     <div class="panel float-block">
       <div class="panel-title">微 光 ・ 之 上</div>
       <div class="panel-dot"></div>
       <div class="panel-line"></div>
-      <div class="panel-copy">肆｜微光・之上
-16H｜20000
-客製專屬旅程，
-共啟微光無限旅程。</div>
+      <div class="panel-copy">
+        <div class="plan-meta">肆｜微光・之上｜16H</div>
+        <div class="price-list">
+          <span>20000</span>
+        </div>
+        <div class="plan-desc">客製專屬旅程，共啟微光無限旅程。</div>
+      </div>
     </div>
     <div class="panel float-block">
       <div class="panel-title">基 本 互 動</div>
