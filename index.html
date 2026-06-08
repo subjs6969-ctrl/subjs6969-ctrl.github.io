@@ -2,312 +2,725 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>微光・之上｜蘇純</title>
-<meta name="theme-color" content="#050505">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>微光・之上｜蘇九・無限旅程</title>
 <style>
-/* --- 極致深夜：純粹的黑與微弱的脈動 --- */
+:root{
+  --gold-high-light:#f5d77f;
+  --gold-classic:#d4af37;
+  --gold-shadow:#aa8a30;
+  --bg-dark-pure:#0a0a0a;
+  --bg-dark-panel:#111111;
+  --gold-glow:0 0 12px rgba(212,175,55,.4);
+  --text:#f2eee6;
+  --text-soft:rgba(242,238,230,.68);
+  --text-faint:rgba(242,238,230,.36);
+  --line:rgba(212,175,55,.24);
+}
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;background-color:#050505;}
-
+html{
+  background:#000;
+  scroll-behavior:smooth;
+}
 body{
-  background:#050505;
-  background-image: radial-gradient(circle at 50% 50%, #121212 0%, #030303 100%);
-  background-size: 150% 150%;
-  animation: bgBreath 18s ease-in-out infinite alternate;
-  color:#dccdbd; 
+  background:#000;
+  color:var(--text);
+  font-family:"Noto Serif TC","Songti TC","PingFang TC","Times New Roman",serif;
   overflow-x:hidden;
-  font-family:"Noto Serif TC","PingFang TC","STHeitiTC-Light",serif;
-  -webkit-font-smoothing:antialiased;
+  line-height:1.9;
+  letter-spacing:.08em;
 }
-
-/* 背景的深淺呼吸 */
-@keyframes bgBreath {
-  0% { background-position: 0% 50%; opacity: 0.9; }
-  100% { background-position: 100% 50%; opacity: 1; }
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 22% 18%,rgba(212,175,55,.055),transparent 28%),
+    radial-gradient(circle at 78% 70%,rgba(212,175,55,.04),transparent 34%);
+  animation:bgFlow 24s ease-in-out infinite alternate;
 }
-
-/* --- 窒息式留白：強迫放慢腳步 --- */
-.section {
+@keyframes bgFlow{
+  from{transform:translateY(0) scale(1);}
+  to{transform:translateY(-46px) scale(1.04);}
+}
+#particles{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:.42;
+}
+.site{
+  position:relative;
+  z-index:2;
+}
+.section{
   position:relative;
   width:100%;
-  padding: 28vh 10vw; /* 留白比上一版加大將近一倍 */
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  padding:78px 22px;
+  overflow:hidden;
 }
-
-.container {
+.section::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:86%;
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.16),transparent);
+}
+.stage{
   width:100%;
-  max-width:340px;
-  margin:0 auto;
+  max-width:520px;
+  margin:auto;
+  position:relative;
 }
-
-/* --- 真正的呼吸感文字：如吐氣般從模糊到清晰，完全不滑動 --- */
-.line {
-  opacity: 0;
-  filter: blur(18px); /* 極深的模糊起點 */
-  transform: scale(0.98); /* 微微收縮 */
-  /* 將動畫時間拉長到 3.5 秒，極度緩慢 */
-  transition: opacity 3.5s ease-in-out, filter 3.5s ease-in-out, transform 3.5s ease-in-out;
-}
-
-.active .line {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1); /* 舒展 */
-}
-
-/* 句子之間的停頓拉得更長，營造深夜慢慢說話的節奏 */
-.active .delay-1 { transition-delay: 1.2s; }
-.active .delay-2 { transition-delay: 3.0s; }
-.active .delay-3 { transition-delay: 4.8s; }
-.active .delay-4 { transition-delay: 6.6s; }
-
-.text-box { margin-bottom: 12vh; }
-
-p {
+.kicker{
+  color:var(--gold-high-light);
   font-size:14px;
-  line-height:2.8; 
-  letter-spacing:0.18em;
-  color:rgba(220,205,189,0.65);
-  margin-bottom:32px;
+  letter-spacing:.34em;
+  margin-bottom:18px;
+  text-shadow:var(--gold-glow);
+}
+.title{
+  color:var(--gold-high-light);
+  font-size:clamp(38px,12vw,62px);
+  line-height:1.25;
   font-weight:300;
+  letter-spacing:.18em;
+  text-shadow:
+    0 0 8px rgba(245,215,127,.32),
+    0 0 24px rgba(212,175,55,.14);
 }
-
-.real-talk {
-  color:rgba(255,255,255,0.85);
-  font-size:13.5px;
-  letter-spacing:0.16em;
-}
-
-/* --- 永不靜止的畫面：照片與影片持續呼吸 --- */
-.img-box, .video-box {
-  width: 85%; 
-  margin: 0 auto 10vh;
-  position: relative;
-  overflow: hidden; /* 確保圖片放大時不會超出框線 */
-}
-
-.img-box img, .video-box video {
-  width: 100%;
-  height: auto;
-  display: block;
-  /* 加上無止盡的呼吸縮放動畫，週期長達 24 秒 */
-  animation: elementBreath 24s ease-in-out infinite alternate;
-}
-
-/* 專屬照片的生命力：微微放大、亮度微調 */
-@keyframes elementBreath {
-  0% { transform: scale(1); filter: brightness(0.65) contrast(0.9); }
-  100% { transform: scale(1.06); filter: brightness(0.85) contrast(0.95); }
-}
-
-.video-box { width: 100%; padding: 0 2vw; }
-
-.section-label {
-  font-size:10.5px;
-  letter-spacing:0.3em;
-  color:rgba(220,205,189,0.3);
-  margin-bottom:36px;
-  border-bottom:1px solid rgba(220,205,189,0.08);
-  padding-bottom:10px;
-  display:inline-block;
-}
-
-/* --- 安靜的邀請按鈕 --- */
-.btn-group { display:flex; flex-direction:column; gap:16px; margin-top:40px; }
-.btn {
-  display:block;
-  width:100%;
-  padding:18px 0;
-  border:1px solid rgba(220,205,189,0.12); 
-  color:rgba(220,205,189,0.4);
-  text-decoration:none;
-  font-size:11.5px;
-  letter-spacing:0.3em;
-  text-align:center;
-  transition:all 1s ease;
-  background:transparent;
-}
-.btn:active, .btn:hover {
-  border-color:rgba(220,205,189,0.4);
+.title.big{
+  font-size:clamp(58px,20vw,110px);
   color:#fff;
+  letter-spacing:.2em;
 }
-
-/* --- 首頁 Hero --- */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 10vw 15vh;overflow:hidden;}
-.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% center;filter:brightness(0.55) contrast(0.95) saturate(0.8);animation:heroBreath 28s ease-in-out infinite alternate;}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,0.98) 0%,rgba(5,5,5,0.5) 45%,rgba(5,5,5,0.15) 100%);z-index:1;}
-.hero-content{position:relative;z-index:2;width:100%;max-width:340px;}
-
-@keyframes heroBreath{from{transform:scale(1);}to{transform:scale(1.05);}}
+.copy{
+  margin-top:28px;
+  color:var(--text-soft);
+  font-size:18px;
+  line-height:2.15;
+  white-space:pre-line;
+}
+.copy.small{
+  font-size:15px;
+  color:var(--text-faint);
+  line-height:2;
+}
+.gold{
+  color:var(--gold-high-light);
+  text-shadow:var(--gold-glow);
+}
+.brand-ghost{
+  margin-top:38px;
+  font-size:38px;
+  line-height:1.05;
+  letter-spacing:.14em;
+  color:rgba(245,215,127,.075);
+}
+.since{
+  margin-top:46px;
+  color:rgba(255,255,255,.48);
+  font-size:14px;
+  letter-spacing:.36em;
+}
+.photo{
+  margin-top:34px;
+  position:relative;
+  overflow:hidden;
+  background:#000;
+}
+.photo img{
+  width:100%;
+  display:block;
+  filter:grayscale(1) contrast(1.08) brightness(.8);
+  transform:scale(1.01);
+  animation:photoBreath 14s ease-in-out infinite alternate;
+}
+@keyframes photoBreath{
+  from{transform:scale(1.01);}
+  to{transform:scale(1.055);}
+}
+.photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.46)),
+    radial-gradient(circle at center,transparent 42%,rgba(0,0,0,.55) 100%);
+}
+.caption{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:20px;
+  z-index:2;
+  text-align:center;
+  color:rgba(255,255,255,.52);
+  font-size:14px;
+  letter-spacing:.16em;
+}
+.line{
+  width:1px;
+  height:58px;
+  margin:28px auto;
+  background:linear-gradient(180deg,transparent,var(--gold-classic),transparent);
+}
+.float-block{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity 1.2s ease,transform 1.2s ease;
+}
+.float-block.show{
+  opacity:1;
+  transform:none;
+}
+.panel-grid{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+  display:grid;
+  gap:22px;
+}
+.panel{
+  position:relative;
+  overflow:hidden;
+  padding:38px 24px;
+  border:1px solid rgba(212,175,55,.18);
+  background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.004));
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.018),
+    0 0 32px rgba(212,175,55,.035);
+}
+.panel::before{
+  content:"";
+  position:absolute;
+  inset:-45%;
+  background:
+    linear-gradient(120deg,transparent 20%,rgba(212,175,55,.035) 42%,rgba(255,255,255,.05) 50%,rgba(212,175,55,.035) 58%,transparent 80%);
+  transform:translateX(-120%) rotate(8deg);
+  animation:panelFlow 10s linear infinite;
+  pointer-events:none;
+}
+@keyframes panelFlow{
+  from{transform:translateX(-120%) rotate(8deg);}
+  to{transform:translateX(120%) rotate(8deg);}
+}
+.panel-title{
+  position:relative;
+  color:var(--gold-high-light);
+  font-size:32px;
+  font-weight:300;
+  letter-spacing:.18em;
+  text-align:center;
+  text-shadow:
+    0 0 6px rgba(245,215,127,.36),
+    0 0 18px rgba(212,175,55,.18),
+    0 0 38px rgba(212,175,55,.1);
+}
+.panel-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  margin:24px auto 18px;
+  background:var(--gold-high-light);
+  box-shadow:
+    0 0 10px rgba(245,215,127,.72),
+    0 0 28px rgba(212,175,55,.38);
+}
+.panel-line{
+  width:76%;
+  height:1px;
+  margin:0 auto 32px;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.45),transparent);
+}
+.panel-copy{
+  color:rgba(255,255,255,.72);
+  font-size:17px;
+  line-height:2.05;
+  text-align:center;
+  white-space:pre-line;
+}
+.cta{
+  width:100%;
+  min-height:58px;
+  padding:14px 18px;
+  margin-top:24px;
+  background:rgba(0,0,0,.36);
+  border:1px solid rgba(212,175,55,.38);
+  color:var(--gold-high-light);
+  font-family:inherit;
+  font-size:15px;
+  letter-spacing:.22em;
+  text-shadow:var(--gold-glow);
+}
+.popup{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:16px;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(16px);
+}
+.popup.active{
+  display:flex;
+}
+.popup-panel{
+  width:100%;
+  max-width:520px;
+  max-height:86svh;
+  overflow:auto;
+  background:#050505;
+  border:1px solid rgba(212,175,55,.26);
+  padding:30px 22px;
+  box-shadow:0 0 60px rgba(0,0,0,.8);
+}
+.popup-title{
+  color:var(--gold-high-light);
+  text-align:center;
+  font-size:32px;
+  font-weight:300;
+  letter-spacing:.24em;
+  margin-bottom:24px;
+}
+.tag-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+}
+.tag input{display:none;}
+.tag span{
+  display:block;
+  padding:12px 4px;
+  text-align:center;
+  color:rgba(255,255,255,.52);
+  border:1px solid rgba(255,255,255,.09);
+  font-size:13px;
+}
+.tag input:checked + span{
+  color:var(--gold-high-light);
+  border-color:rgba(212,175,55,.55);
+  background:rgba(212,175,55,.08);
+}
+.booking{
+  background:#000;
+  border:1px solid rgba(255,255,255,.09);
+  color:rgba(255,255,255,.72);
+  padding:16px;
+  font-size:13px;
+  line-height:1.9;
+  white-space:pre-line;
+  margin-bottom:16px;
+}
+.actions{
+  display:grid;
+  gap:10px;
+}
+.btn{
+  height:50px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.72);
+  font-family:inherit;
+  letter-spacing:.16em;
+}
+.btn-primary{
+  border-color:rgba(212,175,55,.46);
+  color:var(--gold-high-light);
+}
+.footer{
+  position:relative;
+  z-index:2;
+  padding:58px 24px 90px;
+  text-align:center;
+  color:rgba(255,255,255,.42);
+  font-size:12px;
+  line-height:2;
+  letter-spacing:.18em;
+}
+@media(min-width:900px){
+  .section{padding:90px 7vw;}
+  .stage{
+    max-width:1280px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:78px;
+    align-items:center;
+  }
+  .title{font-size:82px;}
+  .copy{font-size:28px;}
+  .photo{margin-top:0;}
+  .photo img{
+    min-height:720px;
+    object-fit:cover;
+  }
+  .panel-grid{
+    max-width:1300px;
+    grid-template-columns:repeat(3,1fr);
+  }
+  .panel{min-height:460px;}
+}
 </style>
 </head>
 <body>
-
-<section class="hero active">
-  <img class="hero-image" src="./hero.jpg" onerror="this.src='./hero.jpeg'" alt="蘇純">
-  <div class="hero-content">
-    <div class="line" style="margin-bottom:40px;font-size:12.5px;line-height:2.6;letter-spacing:0.3em;color:rgba(220,205,189,0.5);">
-      《微光・之上》<br>蘇純｜無限旅程
+<canvas id="particles"></canvas>
+<div class="site">
+<section class="section">
+  <div class="stage">
+    <div class="float-block">
+      <div class="kicker">微 光 ・ 之 上</div>
+      <h1 class="title">無 限 旅 程</h1>
+      <p class="copy small">值得，所以不將就。
+感謝深深，蘇九上線。</p>
+      <div class="brand-ghost">WEIGUANG<br>SU JIU</div>
+      <div class="since">SINCE 2019</div>
     </div>
-    <div class="line delay-1" style="margin-bottom:40px;font-size:18px;letter-spacing:0.16em;font-weight:200;color:rgba(255,255,255,0.8);">
-      值得，所以不將就。
-    </div>
-    <div class="line delay-2" style="font-size:11.5px;letter-spacing:0.22em;color:rgba(220,205,189,0.35);">
-      感謝深深，蘇九上線。
-    </div>
-    <div class="btn-group line delay-3" style="margin-top: 8vh;">
-      <a href="#s9-booking" class="btn">預約蘇九</a>
-      <a href="#s6-journey" class="btn">微光旅程</a>
-    </div>
-  </div>
-</section>
-
-<section class="section scroll-reveal" id="s2-story">
-  <div class="container">
-    <div class="img-box line" style="width: 100%;">
-      <img src="./kept-01.jpg" alt="微光故事"> 
-    </div>
-    <div class="text-box">
-      <p class="line delay-1">曾經以為，<br>這圈子很簡單。</p>
-      <p class="line delay-2 real-talk">後來才明白，<br>深的從來不是環境，<br>而是人性。</p>
-      <p class="line delay-3" style="margin-top: 6vh;">感謝曾經的深深，<br>現在的蘇九</p>
+    <div class="photo float-block">
+      <img src="bg-page1.jpg" alt="">
+      <div class="caption">值得，所以不將就</div>
     </div>
   </div>
 </section>
-
-<section class="section scroll-reveal" id="s3-real">
-  <div class="container">
-    <div class="img-box line">
-      <img src="./kept-02.jpg" alt="蘇純生活感">
+<section class="section">
+  <div class="stage">
+    <div class="float-block">
+      <h2 class="title">微 炙 蘇 九</h2>
+      <p class="copy">曾經以為，這圈子很簡單。
+後來才明白，
+深的，從來不是這環境
+而是人性。
+感謝曾經的深深，
+現在的蘇九。
+it's All my life</p>
+      <div class="line"></div>
+      <h2 class="title big">人 性</h2>
     </div>
-    <div class="text-box">
-      <p class="line delay-1">自己的世界，<br>照自己的方式生活。</p>
-      <p class="line delay-2 real-talk" style="margin-top: 8vh;">不迎合。<br>但很真。</p>
-    </div>
-  </div>
-</section>
-
-<section class="section scroll-reveal" id="s4-close">
-  <div class="container">
-    <div class="img-box line">
-      <img src="./kept-03.jpg" alt="真誠靠近">
-    </div>
-    <div class="img-box line" style="width: 75%; margin-left: 0;">
-      <img src="./kept-04.jpg" alt="反差微笑">
-    </div>
-    <div class="text-box" style="margin-top: 8vh;">
-      <div class="line section-label">PROFILE</div>
-      <p class="line delay-1">153 / 40 / 32B / 45+<br>骨感偏瘦、敏感型。</p>
-      <p class="line delay-2">沒有固定 SOP 流程，<br>不刻意迎合，<br>也不虛假奉陪。</p>
-      <p class="line delay-3">感覺是雙向的，<br>相處也是。</p>
-      <p class="line delay-4 real-talk" style="margin-top: 6vh;">適合的人，<br>自然會懂。</p>
+    <div class="photo float-block">
+      <img src="bg-page2.jpg" alt="">
     </div>
   </div>
 </section>
-
-<section class="section scroll-reveal" id="s5-space">
-  <div class="container">
-    <div class="text-box">
-      <p class="line delay-1">感受、信任跟尊重，<br>一直都很重要。</p>
-      <p class="line delay-2">雙向自然互動，<br>相處舒服，<br>彼此才會開心。</p>
+<section class="section">
+  <div class="stage">
+    <div class="float-block">
+      <h2 class="title">關 於 蘇 九</h2>
+      <p class="copy">蘇九（深深）
+153 / 40 / 32B / 45+
+骨感偏瘦、敏感型。
+沒有固定 SOP 流程，
+不刻意迎合，
+也不虛假奉陪。
+感覺是雙向的，
+相處也是。
+適合的人，
+自然會懂。</p>
     </div>
-    <div class="text-box" style="margin-top:14vh;">
-      <p class="line delay-1" style="font-size:11.5px; color:rgba(220,205,189,0.25);">《相幹》</p>
-      <p class="line delay-2">要的是舒服、享受過程。<br>滿足身體，也滿足心理。</p>
-      <p class="line delay-3 real-talk" style="margin-top: 6vh;">比起說什麼，<br>做什麼、給什麼，<br>才是旅程的重點。</p>
-    </div>
-    <div class="text-box" style="margin-top:14vh;">
-      <p class="line delay-1 real-talk">無限旅程，<br>只留給重視微光旅程的人。</p>
-    </div>
-  </div>
-</section>
-
-<section class="section scroll-reveal" id="s5-video-work">
-  <div class="container">
-    <div class="line section-label">WORK / SPACE</div>
-    <div class="video-box line delay-1">
-      <video src="./V1.mp4" autoplay loop muted playsinline></video>
-    </div>
-    <div class="text-box" style="margin-top: 6vh;">
-      <p class="line delay-2 real-talk">
-        微光場域的流動光影。<br>
-        這裡的空氣慢下來，<br>
-        只留下真實的對話與呼吸。
-      </p>
-      <p class="line delay-3" style="font-size: 12.5px; color:rgba(220,205,189,0.3);">
-        ( 現場畫面不定期更換，記錄轉瞬即逝的默契 )
-      </p>
+    <div class="photo float-block">
+      <img src="bg-page3.jpg" alt="">
     </div>
   </div>
 </section>
-
-<section class="section scroll-reveal" id="s6-journey">
-  <div class="container">
-    <div class="text-box">
-      <div class="line section-label">JOURNEY</div>
-      <p class="line delay-1">壹｜微光・初見</p>
-      <p class="line delay-2">貳｜微光・稍炙</p>
-      <p class="line delay-3">參｜微光・微醺</p>
-      <p class="line delay-4 real-talk" style="margin-top: 6vh;">肆｜微光・之上</p>
+<section class="section">
+  <div class="stage">
+    <div class="float-block">
+      <h2 class="title">感 受 ・ 信 任 ・ 尊 重</h2>
+      <p class="copy">感受、信任跟尊重，
+一直都很重要。
+雙向自然互動，
+相處舒服，彼此才會開心。</p>
+      <div class="line"></div>
+      <h2 class="title">相 幹</h2>
+      <p class="copy">要的是舒服、享受過程。
+滿足身體，也滿足心理，
+這樣的旅程才有意思。
+比起說什麼，
+<span class="gold">做什麼、給什麼，</span>
+才是旅程的重點。
+無限旅程，
+只留給重視微光旅程的人。</p>
+    </div>
+    <div class="photo float-block">
+      <img src="bg-page4.jpg" alt="">
     </div>
   </div>
 </section>
-
-<section class="section scroll-reveal" id="s7-guide">
-  <div class="container">
-    <div class="text-box">
-      <div class="line section-label">GUIDE</div>
-      <p class="line delay-1">基本互動</p>
-      <p class="line delay-2">進階旅程</p>
-      <p class="line delay-3" style="font-size:11.5px;color:rgba(220,205,189,0.2);">( 細節不過度展開，保留想像與空間 )</p>
+<section class="section">
+  <div class="panel-grid">
+    <div class="panel float-block">
+      <div class="panel-title">微 光 ・ 初 見</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">壹｜微光・初見 2H
+基本 3200
+進階 5000
+尊榮 6500
+舒服認識彼此的開始。</div>
+    </div>
+    <div class="panel float-block">
+      <div class="panel-title">微 光 ・ 稍 炙</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">貳｜微光・稍炙 3H
+基本 6200
+進階 8000
+尊榮 9500
+感覺對了，
+很多事自然就有了。</div>
+    </div>
+    <div class="panel float-block">
+      <div class="panel-title">微 光 ・ 微 醺</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">參｜微光・微醺
+10H｜13990
+放鬆、洩壓，
+享受自在舒服的過程。</div>
+    </div>
+    <div class="panel float-block">
+      <div class="panel-title">微 光 ・ 之 上</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">肆｜微光・之上
+16H｜20000
+客製專屬旅程，
+共啟微光無限旅程。</div>
+    </div>
+    <div class="panel float-block">
+      <div class="panel-title">基 本 互 動</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">・共浴
+・情慾式放鬆
+・無套吹
+・69 式
+・清槍
+・深喉</div>
+    </div>
+    <div class="panel float-block">
+      <div class="panel-title">進 階 旅 程</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">部分深度互動與私藏旅程，
+確認預約後
+另提供內容。</div>
     </div>
   </div>
 </section>
-
-<section class="section scroll-reveal" id="s8-rules">
-  <div class="container">
-    <div class="text-box">
-      <div class="line section-label">RULES</div>
-      <p class="line delay-1">不喜歡臨時亂改、放鳥。</p>
-      <p class="line delay-2 real-talk">Line 文字沒有溫度，<br>只針對重要內容回覆。</p>
-      <p class="line delay-3" style="margin-top: 6vh;">感覺跟尊重是互相的。</p>
+<section class="section">
+  <div class="panel-grid">
+    <div class="panel float-block">
+      <div class="panel-title">預 約 注 意</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">預約請先提供：
+・日期
+・時間
+・方案
+・Line 暱稱
+無固定班表，
+請盡量提供兩個方便時段。</div>
+    </div>
+    <div class="panel float-block">
+      <div class="panel-title">旅 程 規 則</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">確定預約後，
+會提供詳細匯款資訊。
+不喜歡臨時亂改、放鳥，
+也不太喜歡試探性問題。
+有特殊需求、個人癖好，
+都可以提前提出。</div>
+    </div>
+    <div class="panel float-block">
+      <div class="panel-title">互 相 尊 重</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">蘇九是老煙槍，
+若介意菸味請提前告知。
+Line 文字沒有溫度，
+只針對重要內容回覆。
+感覺跟尊重是互相的，
+自然相處，旅程才會舒服。</div>
     </div>
   </div>
 </section>
-
-<section class="section scroll-reveal" id="s9-booking" style="padding-bottom: 25vh;">
-  <div class="container">
-    <div class="text-box">
-      <div class="line section-label">RESERVATION</div>
-      <p class="line delay-1" style="font-size:13px; color:rgba(220,205,189,0.5); line-height:3; letter-spacing:0.14em;">
-        稱呼：<br>時段：<br>方案：<br>想說的話：
-      </p>
+<section class="section">
+  <div class="panel-grid">
+    <div class="panel float-block">
+      <div class="panel-title">預 約 單</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">確認預約後，
+請複製以下內容，
+直接傳送至 LINE。</div>
     </div>
-    <div class="btn-group line delay-2">
-      <a href="#" class="btn btn-copy">複製預約單</a>
-      <a href="https://line.me/ti/p/你的LINEID" target="_blank" class="btn">加入 LINE</a>
+    <div class="panel float-block">
+      <div class="panel-title">預 約 流 程</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">1｜LINE 稱號
+2｜預約日期、時段
+請提供兩個方便時段
+3｜選擇方案
+4｜是否有進階旅程需求
+5｜特殊需求
+6｜菸味接受度
+7｜初次核對
+8｜訂金確認</div>
     </div>
-    
-    <div class="text-box" style="margin-top: 28vh; text-align: center;">
-      <p class="line delay-3" style="font-size:11.5px; line-height:2.6; color:rgba(220,205,189,0.2);">
-        不是每段旅程，都會進入微光・之上。<br><br>
-        有些事情，比起衝動，<br>更需要信任與默契。
-      </p>
+    <div class="panel float-block">
+      <div class="panel-title">提 交 預 約</div>
+      <div class="panel-dot"></div>
+      <div class="panel-line"></div>
+      <div class="panel-copy">確認內容後，
+請複製預約單。
+直接傳送至 LINE，
+等待確認即可。</div>
+      <button class="cta" id="openPopup">複 製 預 約 單</button>
     </div>
   </div>
 </section>
-
+</div>
+<div class="popup" id="popup">
+  <div class="popup-panel">
+    <h2 class="popup-title">微 光 預 約</h2>
+    <div class="tag-grid">
+      <label class="tag"><input type="checkbox" value="壹｜微光・初見 2H"><span>初見 2H</span></label>
+      <label class="tag"><input type="checkbox" value="貳｜微光・稍炙 3H"><span>稍炙 3H</span></label>
+      <label class="tag"><input type="checkbox" value="參｜微光・微醺 10H"><span>微醺 10H</span></label>
+      <label class="tag"><input type="checkbox" value="肆｜微光・之上 16H"><span>之上 16H</span></label>
+      <label class="tag"><input type="checkbox" value="基本"><span>基本</span></label>
+      <label class="tag"><input type="checkbox" value="進階"><span>進階</span></label>
+      <label class="tag"><input type="checkbox" value="尊榮"><span>尊榮</span></label>
+      <label class="tag"><input type="checkbox" value="首次預約"><span>首次預約</span></label>
+    </div>
+    <div class="booking" id="bookingText">您好，我想預約微光旅程。
+1｜LINE 稱號：
+2｜預約日期、時段：
+第一時段：
+第二時段：
+3｜選擇方案：
+4｜是否有進階旅程需求：
+確認預約後另提供內容
+5｜特殊需求：
+6｜菸味接受度：
+有抽菸／不介意／介意
+7｜初次核對：
+請附上來源首頁截圖
+8｜訂金確認：
+了解 2 小時內完成匯款方能保留時段</div>
+    <div class="actions">
+      <button class="btn btn-primary" id="copyBtn">複 製 預 約 單</button>
+      <button class="btn" id="closePopup">返 回</button>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  微光・之上<br>
+  SU JIU ｜ INFINITE JOURNEY<br>
+  SINCE 2019
+</div>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const reveals = document.querySelectorAll(".scroll-reveal");
-  // 讓區塊進入畫面深一點才觸發，增加期待感
-  const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -15% 0px" };
-
-  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("activ
+const popup=document.getElementById("popup");
+document.getElementById("openPopup").addEventListener("click",()=>{
+  popup.classList.add("active");
+  document.body.style.overflow="hidden";
+});
+document.getElementById("closePopup").addEventListener("click",()=>{
+  popup.classList.remove("active");
+  document.body.style.overflow="";
+});
+popup.addEventListener("click",(e)=>{
+  if(e.target===popup){
+    popup.classList.remove("active");
+    document.body.style.overflow="";
+  }
+});
+document.getElementById("copyBtn").addEventListener("click",async()=>{
+  const checked=[...document.querySelectorAll(".tag input:checked")]
+  .map(i=>i.value).join("、")||"未填寫";
+  const text=`您好，我想預約微光旅程。
+1｜LINE 稱號：
+2｜預約日期、時段：
+第一時段：
+第二時段：
+3｜選擇方案：${checked}
+4｜是否有進階旅程需求：
+確認預約後另提供內容
+5｜特殊需求：
+6｜菸味接受度：
+有抽菸／不介意／介意
+7｜初次核對：
+請附上來源首頁截圖
+8｜訂金確認：
+了解 2 小時內完成匯款方能保留時段`;
+  try{
+    await navigator.clipboard.writeText(text);
+    document.getElementById("bookingText").innerText=text+"\n\n已複製";
+  }catch(e){
+    alert("複製失敗，請手動複製。");
+  }
+});
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll(".float-block").forEach(el=>{
+  observer.observe(el);
+});
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+let w,h,particles=[];
+function resize(){
+  const ratio=window.devicePixelRatio||1;
+  w=canvas.width=window.innerWidth*ratio;
+  h=canvas.height=window.innerHeight*ratio;
+  canvas.style.width=window.innerWidth+"px";
+  canvas.style.height=window.innerHeight+"px";
+  particles=Array.from({length:58},()=>({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    r:(Math.random()*1.4+.4)*ratio,
+    a:Math.random()*.22+.04,
+    vx:(Math.random()-.5)*.12*ratio,
+    vy:(Math.random()-.5)*.12*ratio
+  }));
+}
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  particles.forEach(p=>{
+    p.x+=p.vx;
+    p.y+=p.vy;
+    if(p.x<0)p.x=w;
+    if(p.x>w)p.x=0;
+    if(p.y<0)p.y=h;
+    if(p.y>h)p.y=0;
+    const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*8);
+    g.addColorStop(0,`rgba(212,175,55,${p.a})`);
+    g.addColorStop(1,"rgba(212,175,55,0)");
+    ctx.fillStyle=g;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r*8,0,Math.PI*2);
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+resize();
+animate();
+window.addEventListener("resize",resize);
+</script>
+</body>
+</html>
