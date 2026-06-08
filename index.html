@@ -220,10 +220,15 @@ body::before{
   letter-spacing:.18em;
   text-align:center;
   text-shadow:
-    0 0 6px rgba(245,215,127,.36),
-    0 0 18px rgba(212,175,55,.18),
-    0 0 38px rgba(212,175,55,.1);
-}
+  0 0 1px rgba(255,248,220,.95),
+  0 0 6px rgba(245,215,127,.55),
+  0 0 14px rgba(212,175,55,.38),
+  0 0 32px rgba(212,175,55,.18),
+  0 0 58px rgba(212,175,55,.08);
+
+filter:drop-shadow(0 0 12px rgba(212,175,55,.12));
+
+animation:titleGlow 5s ease-in-out infinite;
 .panel-dot{
   width:9px;
   height:9px;
