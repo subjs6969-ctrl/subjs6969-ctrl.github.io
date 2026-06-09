@@ -1,680 +1,616 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>微光・蘇九</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: #090807;
-      color: #e8e0d4;
-      font-family: "Noto Serif TC", "Songti TC", serif;
-      letter-spacing: 0.12em;
-      line-height: 2.1;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at 25% 18%, rgba(220,180,90,.16), transparent 26%),
-        radial-gradient(circle at 80% 72%, rgba(255,210,120,.08), transparent 32%),
-        #090807;
-      z-index: -3;
-    }
-
-    .grain {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(255,220,140,.18) 1px, transparent 1px);
-      background-size: 38px 38px;
-      opacity: .14;
-      animation: drift 18s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes drift {
-      from { transform: translateY(0); }
-      to { transform: translateY(-80px); }
-    }
-
-    section {
-      min-height: 100vh;
-      padding: 92px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 760px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .photo-section {
-      max-width: none;
-      padding-left: max(28px, 8vw);
-      padding-right: max(28px, 8vw);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      isolation: isolate;
-    }
-
-    .photo-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.55), rgba(0,0,0,.72));
-      z-index: -1;
-    }
-
-    .photo-section::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 40% 20%, rgba(255,220,150,.08), transparent 38%);
-      z-index: -1;
-    }
-
-    .inner {
-      width: min(720px, 100%);
-    }
-
-    .small {
-      font-size: 14px;
-      color: #c9bda9;
-      letter-spacing: .28em;
-    }
-
-    h1, h2 {
-      font-weight: 400;
-      margin: 0 0 40px;
-      color: #f6d98d;
-      text-shadow: 0 0 18px rgba(255,210,120,.72);
-    }
-
-    h1 {
-      font-size: clamp(48px, 13vw, 92px);
-      letter-spacing: .35em;
-      line-height: 1.5;
-    }
-
-    h2 {
-      font-size: clamp(32px, 9vw, 58px);
-      letter-spacing: .28em;
-    }
-
-    h3 {
-      font-weight: 400;
-      color: #f5dfb0;
-      letter-spacing: .22em;
-    }
-
-    p {
-      margin: 0 0 26px;
-      font-size: 17px;
-      color: #ddd6cc;
-    }
-
-    .muted { color: #a89f91; }
-
-    .hero {
-      min-height: 100svh;
-      background-image: url("big-page1.jpg");
-      background-position: center;
-    }
-
-    .hero::before {
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.48), rgba(0,0,0,.78)),
-        linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.88));
-    }
-
-    .hero-title { margin-top: 32px; }
-
-    .sujiu-story {
-      background-image: url("bg-page2.jpg");
-      background-position: center right;
-    }
-
-    .about-chat {
-      background-image: url("about-chat.jpg");
-      background-position: center;
-    }
-
-    .soft-section {
-      background-image: url("bg-page3.jpg");
-      background-position: center;
-    }
-
-    .journey-section {
-      background-image: url("room01.jpg");
-      background-position: center;
-    }
-
-    .rule-section {
-      background-image: url("room6.jpg");
-      background-position: center;
-    }
-
-    .respect-section {
-      background-image: url("room7.jpg");
-      background-position: center;
-    }
-
-    .card {
-      border: 1px solid rgba(230,220,200,.28);
-      padding: 42px 26px;
-      margin: 34px 0;
-      background: rgba(9,8,7,.46);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 24px 80px rgba(0,0,0,.28);
-    }
-
-    .plans {
-      display: grid;
-      gap: 26px;
-    }
-
-    .plan h3 {
-      font-size: 28px;
-      margin: 0 0 24px;
-      text-shadow: 0 0 10px rgba(255,220,160,.5);
-    }
-
-    .price {
-      font-size: 20px;
-      color: #fff;
-      letter-spacing: .12em;
-    }
-
-    .note {
-      font-size: 14px;
-      color: #a79d91;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 32px;
-      padding: 16px 30px;
-      border: 1px solid rgba(245,220,170,.8);
-      color: #f5dfb0;
-      background: transparent;
-      text-decoration: none;
-      font-size: 15px;
-      letter-spacing: .25em;
-      transition: .3s;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .button:hover {
-      background: rgba(245,220,170,.12);
-      box-shadow: 0 0 18px rgba(245,220,170,.35);
-    }
-
-    ul {
-      padding-left: 1.2em;
-      color: #ddd6cc;
-    }
-
-    li { margin-bottom: 12px; }
-
-    footer {
-      padding: 90px 28px;
-      text-align: center;
-      color: #8f877d;
-      position: relative;
-      overflow: hidden;
-    }
-
-    footer::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url("fragment01.jpg") center / cover no-repeat;
-      opacity: .08;
-      z-index: -1;
-    }
-
-    .fade {
-      opacity: 0;
-      transform: translateY(28px);
-      animation: fadeUp 1.2s ease forwards;
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 640px) {
-      section {
-        padding: 82px 24px;
-        min-height: 100svh;
-      }
-
-      p {
-        font-size: 16px;
-      }
-
-      .photo-section {
-        padding-left: 28px;
-        padding-right: 28px;
-      }
-
-      .photo-section::before {
-        background:
-          linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,.62), rgba(0,0,0,.88));
-      }
-
-      .card {
-        padding: 34px 22px;
-      }/* ===== 底部浮動預約 ===== */
-
-.floating-booking{
-  position: fixed;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
-  z-index: 9999;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>微光・蘇九</title>
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:#090807;
+  color:#e8e0d4;
+  font-family:"Noto Serif TC","Songti TC",serif;
+  letter-spacing:.12em;
+  line-height:2.1;
+  overflow-x:hidden;
 }
-
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 25% 18%,rgba(220,180,90,.16),transparent 26%),
+    radial-gradient(circle at 80% 72%,rgba(255,210,120,.08),transparent 32%),
+    #090807;
+  z-index:-3;
+}
+.grain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:radial-gradient(rgba(255,220,140,.18) 1px,transparent 1px);
+  background-size:38px 38px;
+  opacity:.14;
+  animation:drift 18s linear infinite;
+  z-index:-1;
+}
+@keyframes drift{
+  from{transform:translateY(0);}
+  to{transform:translateY(-80px);}
+}
+section{
+  min-height:100vh;
+  padding:92px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width:760px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+.photo-section{
+  max-width:none;
+  padding-left:max(28px,8vw);
+  padding-right:max(28px,8vw);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  isolation:isolate;
+}
+.photo-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.55),rgba(0,0,0,.72));
+  z-index:-1;
+}
+.photo-section::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 40% 20%,rgba(255,220,150,.08),transparent 38%);
+  z-index:-1;
+}
+.inner{width:min(720px,100%);}
+.small{
+  font-size:14px;
+  color:#c9bda9;
+  letter-spacing:.28em;
+}
+h1,h2{
+  font-weight:400;
+  margin:0 0 40px;
+  color:#f6d98d;
+  text-shadow:0 0 18px rgba(255,210,120,.72);
+}
+h1{
+  font-size:clamp(48px,13vw,92px);
+  letter-spacing:.35em;
+  line-height:1.5;
+}
+h2{
+  font-size:clamp(32px,9vw,58px);
+  letter-spacing:.28em;
+}
+h3{
+  font-weight:400;
+  color:#f5dfb0;
+  letter-spacing:.22em;
+}
+p{
+  margin:0 0 26px;
+  font-size:17px;
+  color:#ddd6cc;
+}
+.muted{color:#a89f91;}
+.hero{
+  min-height:100svh;
+  background-image:url("big-page1.jpg");
+  background-position:center;
+}
+.hero::before{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.48),rgba(0,0,0,.78)),
+    linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.88));
+}
+.hero-title{margin-top:32px;}
+.sujiu-story{
+  background-image:url("bg-page2.jpg");
+  background-position:center right;
+}
+.about-chat{
+  background-image:url("about-chat.jpg");
+  background-position:center;
+}
+.soft-section{
+  background-image:url("bg-page3.jpg");
+  background-position:center;
+}
+.journey-section{
+  background-image:url("room01.jpg");
+  background-position:center;
+}
+.rule-section{
+  background-image:url("room6.jpg");
+  background-position:center;
+}
+.respect-section{
+  background-image:url("room7.jpg");
+  background-position:center;
+}
+.card{
+  border:1px solid rgba(230,220,200,.28);
+  padding:42px 26px;
+  margin:34px 0;
+  background:rgba(9,8,7,.46);
+  backdrop-filter:blur(10px);
+  box-shadow:0 24px 80px rgba(0,0,0,.28);
+}
+.plans{
+  display:grid;
+  gap:26px;
+}
+.plan h3{
+  font-size:28px;
+  margin:0 0 24px;
+  text-shadow:0 0 10px rgba(255,220,160,.5);
+}
+.price{
+  font-size:20px;
+  color:#fff;
+  letter-spacing:.12em;
+}
+.note{
+  font-size:14px;
+  color:#a79d91;
+}
+.button{
+  display:inline-block;
+  margin-top:32px;
+  padding:16px 30px;
+  border:1px solid rgba(245,220,170,.8);
+  color:#f5dfb0;
+  background:transparent;
+  text-decoration:none;
+  font-size:15px;
+  letter-spacing:.25em;
+  transition:.3s;
+  cursor:pointer;
+  font-family:inherit;
+}
+.button:hover{
+  background:rgba(245,220,170,.12);
+  box-shadow:0 0 18px rgba(245,220,170,.35);
+}
+ul{
+  padding-left:1.2em;
+  color:#ddd6cc;
+}
+li{margin-bottom:12px;}
+footer{
+  padding:90px 28px;
+  text-align:center;
+  color:#8f877d;
+  position:relative;
+  overflow:hidden;
+}
+footer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("fragment01.jpg") center / cover no-repeat;
+  opacity:.08;
+  z-index:-1;
+}
+.fade{
+  opacity:0;
+  transform:translateY(28px);
+  animation:fadeUp 1.2s ease forwards;
+}
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.booking-popup{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(16px);
+}
+.booking-panel{
+  width:100%;
+  max-width:560px;
+  max-height:86svh;
+  overflow:auto;
+  background:rgba(9,8,7,.96);
+  border:1px solid rgba(245,220,170,.26);
+  padding:34px 24px;
+  box-shadow:0 30px 100px rgba(0,0,0,.72);
+}
+.booking-options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:24px 0;
+}
+.booking-options label{
+  border:1px solid rgba(245,220,170,.18);
+  padding:12px 8px;
+  text-align:center;
+  color:#c9bda9;
+  font-size:13px;
+  cursor:pointer;
+}
+.booking-options input{display:none;}
+.booking-options input:checked + span{
+  color:#f5dfb0;
+  text-shadow:0 0 12px rgba(245,220,170,.55);
+}
+.booking-text{
+  white-space:pre-line;
+  border:1px solid rgba(255,255,255,.08);
+  padding:18px;
+  background:rgba(0,0,0,.24);
+  color:#ddd6cc;
+  font-size:14px;
+  line-height:2;
+}
+.booking-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:18px;
+}
+.booking-actions .button{
+  width:100%;
+  margin-top:0;
+}
+.floating-booking{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%);
+  z-index:9999;
+}
 .floating-booking button{
-  border: 1px solid rgba(245,220,170,.38);
-  background: rgba(0,0,0,.72);
-  backdrop-filter: blur(12px);
-  color: #f5dfb0;
-  padding: 16px 34px;
-  font-size: 14px;
-  letter-spacing: .28em;
-  border-radius: 999px;
-  cursor: pointer;
-  font-family: inherit;
+  border:1px solid rgba(245,220,170,.38);
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(12px);
+  color:#f5dfb0;
+  padding:16px 34px;
+  font-size:14px;
+  letter-spacing:.28em;
+  border-radius:999px;
+  cursor:pointer;
+  font-family:inherit;
   box-shadow:
     0 0 40px rgba(245,220,170,.12),
     0 10px 40px rgba(0,0,0,.45);
-  animation: floatingGlow 3s ease-in-out infinite;
+  animation:floatingGlow 3s ease-in-out infinite;
 }
-
 @keyframes floatingGlow{
-
   0%{
-    transform: translateY(0);
+    transform:translateY(0);
     box-shadow:
       0 0 30px rgba(245,220,170,.08),
       0 10px 40px rgba(0,0,0,.45);
   }
-
   50%{
-    transform: translateY(-4px);
+    transform:translateY(-4px);
     box-shadow:
       0 0 55px rgba(245,220,170,.22),
       0 18px 50px rgba(0,0,0,.55);
   }
-
   100%{
-    transform: translateY(0);
+    transform:translateY(0);
     box-shadow:
       0 0 30px rgba(245,220,170,.08),
       0 10px 40px rgba(0,0,0,.45);
   }
-
 }
-    }
-  </style>
+@media(max-width:640px){
+  section{
+    padding:82px 24px;
+    min-height:100svh;
+  }
+  p{font-size:16px;}
+  .photo-section{
+    padding-left:28px;
+    padding-right:28px;
+  }
+  .photo-section::before{
+    background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.62),rgba(0,0,0,.88));
+  }
+  .card{padding:34px 22px;}
+}
+</style>
 </head>
 
 <body>
-  <div class="grain"></div>
+<div class="grain"></div>
 
-  <section class="hero photo-section">
-    <div class="inner fade">
-      <div class="small">微光・之上</div>
-      <h1 class="hero-title">無限旅程</h1>
+<section class="hero photo-section">
+  <div class="inner fade">
+    <div class="small">微光・之上</div>
+    <h1 class="hero-title">無限旅程</h1>
+    <p>值得，所以不將就。</p>
+    <p>我不是來符合誰的期待。</p>
+    <p>也沒有打算把自己包裝成什麼樣子。</p>
+    <p>這裡只是讓你先知道，我是什麼樣的人。</p>
+    <p class="muted">能接受，再往下看。<br>不能接受，離開也很好。</p>
+    <div class="small">WEIGUANG SU JIU<br>Since 2019</div>
+  </div>
+</section>
 
-      <p>值得，所以不將就。</p>
-      <p>我不是來符合誰的期待。</p>
-      <p>也沒有打算把自己包裝成什麼樣子。</p>
-      <p>這裡只是讓你先知道，我是什麼樣的人。</p>
+<section class="sujiu-story photo-section">
+  <div class="inner fade">
+    <h2>微炙・蘇九</h2>
+    <p>曾經以為，這環境很單純。</p>
+    <p>後來才明白。</p>
+    <p>複雜的從來不是環境。</p>
+    <p>而是人性。</p>
+    <p>看過很多人，也經歷過很多事。</p>
+    <p>有些留下，有些離開。</p>
+    <p>慢慢地，我開始知道什麼值得，什麼不值得。</p>
+    <p>感謝曾經的深深。</p>
+    <p>因為那些經歷，才有現在的蘇九。</p>
+    <p class="muted">現在的我，比以前更直接，也比以前更誠實。</p>
+  </div>
+</section>
 
-      <p class="muted">能接受，再往下看。<br>不能接受，離開也很好。</p>
+<section>
+  <div class="fade">
+    <h2>關於蘇九</h2>
+    <p>蘇九（深深）</p>
+    <p>153 / 40 / 32B / 45+</p>
+    <p>沒有固定 SOP。</p>
+    <p>沒有標準答案。</p>
+    <p>也沒有刻意設計的人設。</p>
+    <p>我不太會演。</p>
+    <p>也不太喜歡勉強。</p>
+    <p>感覺是雙向的。</p>
+    <p>相處也是。</p>
+    <p class="muted">適合的人自然會懂。<br>不適合的人其實不用勉強。</p>
+  </div>
+</section>
 
-      <div class="small">WEIGUANG SU JIU<br>Since 2019</div>
-    </div>
-  </section>
+<section class="about-chat photo-section">
+  <div class="inner fade">
+    <h2>關於聊天</h2>
+    <p>我不喜歡一直聊天。</p>
+    <p>也不喜歡沒意義的試探。</p>
+    <p>Line 對我來說，只是聯絡工具。</p>
+    <p>不是感情培養器。</p>
+    <p>如果你期待的是：</p>
+    <ul>
+      <li>每天聊天</li>
+      <li>秒回訊息</li>
+      <li>早安午安晚安</li>
+      <li>一直問在幹嘛</li>
+    </ul>
+    <p>那我可能會讓你失望。</p>
+    <p class="muted">但如果你重視的是見面時的舒服，那我們比較有機會聊得來。</p>
+  </div>
+</section>
 
-  <section class="sujiu-story photo-section">
-    <div class="inner fade">
-      <h2>微炙・蘇九</h2>
+<section class="soft-section photo-section">
+  <div class="inner fade">
+    <h2>舒服・自然・真誠</h2>
+    <p>不用刻意找話題。</p>
+    <p>不用刻意表現什麼。</p>
+    <p>也不用硬把氣氛弄得很熱絡。</p>
+    <p>舒服比較重要。</p>
+    <p>我不喜歡消耗別人。</p>
+    <p>也不喜歡被消耗。</p>
+    <p class="muted">自然一點，反而比較容易相處。</p>
+  </div>
+</section>
 
-      <p>曾經以為，這環境很單純。</p>
-      <p>後來才明白。</p>
-      <p>複雜的從來不是環境。</p>
-      <p>而是人性。</p>
-
-      <p>看過很多人，也經歷過很多事。</p>
-      <p>有些留下，有些離開。</p>
-
-      <p>慢慢地，我開始知道什麼值得，什麼不值得。</p>
-
-      <p>感謝曾經的深深。</p>
-      <p>因為那些經歷，才有現在的蘇九。</p>
-
-      <p class="muted">現在的我，比以前更直接，也比以前更誠實。</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="fade">
-      <h2>關於蘇九</h2>
-
-      <p>蘇九（深深）</p>
-      <p>153 / 40 / 32B / 45+</p>
-
-      <p>沒有固定 SOP。</p>
-      <p>沒有標準答案。</p>
-      <p>也沒有刻意設計的人設。</p>
-
-      <p>我不太會演。</p>
-      <p>也不太喜歡勉強。</p>
-
-      <p>感覺是雙向的。</p>
-      <p>相處也是。</p>
-
-      <p class="muted">適合的人自然會懂。<br>不適合的人其實不用勉強。</p>
-    </div>
-  </section>
-
-  <section class="about-chat photo-section">
-    <div class="inner fade">
-      <h2>關於聊天</h2>
-
-      <p>我不喜歡一直聊天。</p>
-      <p>也不喜歡沒意義的試探。</p>
-
-      <p>Line 對我來說，只是聯絡工具。</p>
-      <p>不是感情培養器。</p>
-
-      <p>如果你期待的是：</p>
-
-      <ul>
-        <li>每天聊天</li>
-        <li>秒回訊息</li>
-        <li>早安午安晚安</li>
-        <li>一直問在幹嘛</li>
-      </ul>
-
-      <p>那我可能會讓你失望。</p>
-
-      <p class="muted">但如果你重視的是見面時的舒服，那我們比較有機會聊得來。</p>
-    </div>
-  </section>
-
-  <section class="soft-section photo-section">
-    <div class="inner fade">
-      <h2>舒服・自然・真誠</h2>
-
-      <p>不用刻意找話題。</p>
-      <p>不用刻意表現什麼。</p>
-      <p>也不用硬把氣氛弄得很熱絡。</p>
-
-      <p>舒服比較重要。</p>
-
-      <p>我不喜歡消耗別人。</p>
-      <p>也不喜歡被消耗。</p>
-
-      <p class="muted">自然一點，反而比較容易相處。</p>
-    </div>
-  </section>
-
-  <section class="journey-section photo-section">
-    <div class="inner fade">
-      <h2>旅程</h2>
-
-      <div class="plans">
-        <div class="card plan">
-          <h3>微光・初見</h3>
-          <p>2H</p>
-          <p class="price">5000 / 6000 / 8000</p>
-          <p class="note">第一次認識彼此的開始。</p>
-        </div>
-
-        <div class="card plan">
-          <h3>微光・稍炙</h3>
-          <p>3H</p>
-          <p class="price">6200 / 7200 / 9200</p>
-          <p class="note">感覺對了，很多事自然就有了。</p>
-        </div>
-
-        <div class="card plan">
-          <h3>微光・微醺</h3>
-          <p>10H</p>
-          <p class="price">15000</p>
-          <p class="note">放鬆，淺壓，享受自在舒服的過程。</p>
-        </div>
-
-        <div class="card plan">
-          <h3>微光・之上</h3>
-          <p>16H</p>
-          <p class="price">20000</p>
-          <p class="note">客製專屬旅程，共感微光無限旅程。</p>
-        </div>
+<section class="journey-section photo-section">
+  <div class="inner fade">
+    <h2>旅程</h2>
+    <div class="plans">
+      <div class="card plan">
+        <h3>微光・初見</h3>
+        <p>2H</p>
+        <p class="price">5000 / 6000 / 8000</p>
+        <p class="note">第一次認識彼此的開始。</p>
+      </div>
+      <div class="card plan">
+        <h3>微光・稍炙</h3>
+        <p>3H</p>
+        <p class="price">6200 / 7200 / 9200</p>
+        <p class="note">感覺對了，很多事自然就有了。</p>
+      </div>
+      <div class="card plan">
+        <h3>微光・微醺</h3>
+        <p>10H</p>
+        <p class="price">15000</p>
+        <p class="note">放鬆，淺壓，享受自在舒服的過程。</p>
+      </div>
+      <div class="card plan">
+        <h3>微光・之上</h3>
+        <p>16H</p>
+        <p class="price">20000</p>
+        <p class="note">客製專屬旅程，共感微光無限旅程。</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="fade">
-      <h2>基本互動</h2>
-
-      <ul>
-        <li>共浴</li>
-        <li>情慾式放鬆</li>
-        <li>無套吹</li>
-        <li>69 式</li>
-        <li>清槍</li>
-        <li>深喉</li>
-      </ul>
-
-      <div class="card">
-        <h3>進階旅程</h3>
-        <p>部分深度互動與私藏旅程，確認預約後另外提供內容。</p>
-      </div>
+<section>
+  <div class="fade">
+    <h2>基本互動</h2>
+    <ul>
+      <li>共浴</li>
+      <li>情慾式放鬆</li>
+      <li>無套吹</li>
+      <li>69 式</li>
+      <li>清槍</li>
+      <li>深喉</li>
+    </ul>
+    <div class="card">
+      <h3>進階旅程</h3>
+      <p>部分深度互動與私藏旅程，確認預約後另外提供內容。</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="fade">
-      <h2>預約注意</h2>
+<section>
+  <div class="fade">
+    <h2>預約注意</h2>
+    <p>預約請先提供：</p>
+    <ul>
+      <li>日期</li>
+      <li>時間</li>
+      <li>方案</li>
+      <li>Line 暱稱</li>
+    </ul>
+    <p>我沒有固定班表。</p>
+    <p>請盡量提供兩個方便時段。</p>
+  </div>
+</section>
 
-      <p>預約請先提供：</p>
+<section class="rule-section photo-section">
+  <div class="inner fade">
+    <h2>旅程規則</h2>
+    <p>確定預約後，會提供詳細匯款資訊。</p>
+    <p>不喜歡臨時亂改、放鳥。</p>
+    <p>也不太喜歡試探性問題。</p>
+    <p>有特殊需求、個人偏好，都可以提前提出。</p>
+    <p class="muted">講清楚，比亂猜好。</p>
+  </div>
+</section>
 
-      <ul>
-        <li>日期</li>
-        <li>時間</li>
-        <li>方案</li>
-        <li>Line 暱稱</li>
-      </ul>
+<section class="respect-section photo-section">
+  <div class="inner fade">
+    <h2>互相尊重</h2>
+    <p>蘇九是老煙槍。</p>
+    <p>若介意菸味，請提前告知。</p>
+    <p>Line 文字沒有溫度。</p>
+    <p>所以我只針對重要內容回覆。</p>
+    <p>感覺跟尊重是互相的。</p>
+    <p>自然相處，旅程才會舒服。</p>
+  </div>
+</section>
 
-      <p>我沒有固定班表。</p>
-      <p>請盡量提供兩個方便時段。</p>
+<section>
+  <div class="fade">
+    <h2>預約流程</h2>
+    <div class="card">
+      <p>1｜LINE 稱號：</p>
+      <p>2｜預約日期、時段：</p>
+      <p>3｜選擇方案：</p>
+      <p>4｜是否有進階旅程需求：</p>
+      <p>5｜特殊需求：</p>
+      <p>6｜菸味接受度：</p>
+      <p>7｜初次核對：</p>
+      <p>8｜訂金確認：</p>
+      <button class="button" onclick="openBooking()">複製預約單</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="rule-section photo-section">
-    <div class="inner fade">
-      <h2>旅程規則</h2>
-
-      <p>確定預約後，會提供詳細匯款資訊。</p>
-
-      <p>不喜歡臨時亂改、放鳥。</p>
-      <p>也不太喜歡試探性問題。</p>
-
-      <p>有特殊需求、個人偏好，都可以提前提出。</p>
-
-      <p class="muted">講清楚，比亂猜好。</p>
-    </div>
-  </section>
-
-  <section class="respect-section photo-section">
-    <div class="inner fade">
-      <h2>互相尊重</h2>
-
-      <p>蘇九是老煙槍。</p>
-      <p>若介意菸味，請提前告知。</p>
-
-      <p>Line 文字沒有溫度。</p>
-      <p>所以我只針對重要內容回覆。</p>
-
-      <p>感覺跟尊重是互相的。</p>
-      <p>自然相處，旅程才會舒服。</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="fade">
-      <h2>預約流程</h2>
-
-      <div class="card">
-      <div class="card">
-  <p>1｜LINE 稱號：</p>
-  <p>2｜預約日期、時段：</p>
-  <p>3｜選擇方案：</p>
-  <p>4｜是否有進階旅程需求：</p>
-  <p>5｜特殊需求：</p>
-  <p>6｜菸味接受度：</p>
-  <p>7｜初次核對：</p>
-  <p>8｜訂金確認：</p>
-  <button
-    class="button"
-    onclick="
-      document.getElementById('bookingPopup').style.display='flex';
-      document.body.style.overflow='hidden';
-    "
-  >
-    複製預約單
-  </button>
-</div>
-</div>
 <div class="floating-booking" id="floatingBooking">
-
-  <button
-    
-  >onclick="
-  document.getElementById('bookingPopup').style.display='none';
-  document.getElementById('floatingBooking').style.display='block';
-  document.body.style.overflow='';
-"
-    開始預約
-  </button>
-
+  <button onclick="openBooking()">開始預約</button>
 </div>
+
 <footer>
   微光・之上<br>
   SU JIU ｜ INFINITE JOURNEY<br>
   Since 2019
 </footer>
+
 <div class="booking-popup" id="bookingPopup">
   <div class="booking-panel">
     <h2>預約單</h2>
-    <p class="muted">
-      確認預約後，請複製以下內容，直接傳送至 LINE。
-    </p>
+    <p class="muted">確認預約後，請複製以下內容，直接傳送至 LINE。</p>
+
     <div class="booking-options">
-      <label>
-        <input type="checkbox" value="微光・初見 2H">
-        <span>初見 2H</span>
-      </label>
-      <label>
-        <input type="checkbox" value="微光・稍炙 3H">
-        <span>稍炙 3H</span>
-      </label>
-      <label>
-        <input type="checkbox" value="微光・微醺 10H">
-        <span>微醺 10H</span>
-      </label>
-      <label>
-        <input type="checkbox" value="微光・之上 16H">
-        <span>之上 16H</span>
-      </label>
+      <label><input type="checkbox" value="微光・初見 2H"><span>初見 2H</span></label>
+      <label><input type="checkbox" value="微光・稍炙 3H"><span>稍炙 3H</span></label>
+      <label><input type="checkbox" value="微光・微醺 10H"><span>微醺 10H</span></label>
+      <label><input type="checkbox" value="微光・之上 16H"><span>之上 16H</span></label>
     </div>
-    <div class="booking-text" id="bookingText">
-您好，我想預約微光旅程。
+
+    <div class="booking-text" id="bookingText">您好，我想預約微光旅程。
+
 1｜LINE 稱號：
+
 2｜預約日期、時段：
 第一時段：
 第二時段：
+
 3｜選擇方案：
+
 4｜是否有進階旅程需求：
+
 5｜特殊需求：
+
 6｜菸味接受度：
 有抽菸／不介意／介意
+
 7｜初次核對：
 請附上來源首頁截圖
+
 8｜訂金確認：
-了解 2 小時內完成匯款方能保留時段
-    </div>
+了解 2 小時內完成匯款方能保留時段</div>
+
     <div class="booking-actions">
-      <button class="button" onclick="copyBooking()">
-        複製
-      <button
-  class="button"
-  onclick="
-    document.getElementById('bookingPopup').style.display='flex';
-document.getElementById('floatingBooking').style.display='none';
-document.body.style.overflow='hidden';
-  返回
-</button>
-        返回
-      </button>
+      <button class="button" onclick="copyBooking()">複製</button>
+      <button class="button" onclick="closeBooking()">返回</button>
     </div>
   </div>
 </div>
+
 <script>
+function openBooking(){
+  document.getElementById('bookingPopup').style.display='flex';
+  document.getElementById('floatingBooking').style.display='none';
+  document.body.style.overflow='hidden';
+}
+
+function closeBooking(){
+  document.getElementById('bookingPopup').style.display='none';
+  document.getElementById('floatingBooking').style.display='block';
+  document.body.style.overflow='';
+}
+
 function copyBooking(){
-  const selected = Array.from(
+  const selected=Array.from(
     document.querySelectorAll('.booking-options input:checked')
-  )
-  .map(function(item){
+  ).map(function(item){
     return item.value;
-  })
-  .join('、') || '未填寫';
-  const text =
-'您好，我想預約微光旅程。\n\n' +
-'1｜LINE 稱號：\n\n' +
-'2｜預約日期、時段：\n第一時段：\n第二時段：\n\n' +
-'3｜選擇方案：' + selected + '\n\n' +
-'4｜是否有進階旅程需求：\n\n' +
-'5｜特殊需求：\n\n' +
-'6｜菸味接受度：\n有抽菸／不介意／介意\n\n' +
-'7｜初次核對：\n請附上來源首頁截圖\n\n' +
-'8｜訂金確認：\n了解 2 小時內完成匯款方能保留時段';
-  navigator.clipboard.writeText(text)
-  .then(function(){
-    document.getElementById('bookingText').innerText =
-      text + '\n\n已複製';
-  })
-  .catch(function(){
+  }).join('、') || '未填寫';
+
+  const text=
+    '您好，我想預約微光旅程。\n\n' +
+    '1｜LINE 稱號：\n\n' +
+    '2｜預約日期、時段：\n第一時段：\n第二時段：\n\n' +
+    '3｜選擇方案：' + selected + '\n\n' +
+    '4｜是否有進階旅程需求：\n\n' +
+    '5｜特殊需求：\n\n' +
+    '6｜菸味接受度：\n有抽菸／不介意／介意\n\n' +
+    '7｜初次核對：\n請附上來源首頁截圖\n\n' +
+    '8｜訂金確認：\n了解 2 小時內完成匯款方能保留時段';
+
+  navigator.clipboard.writeText(text).then(function(){
+    document.getElementById('bookingText').innerText=text + '\n\n已複製';
+  }).catch(function(){
     alert('複製失敗，請手動複製。');
   });
 }
 </script>
+
 </body>
 </html>
-     
-    
-    
