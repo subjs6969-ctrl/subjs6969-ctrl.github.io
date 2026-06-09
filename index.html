@@ -22,18 +22,18 @@ body::before{
   position:fixed;
   inset:0;
   background:
-  radial-gradient(circle at 28% 16%, rgba(245,220,170,.18), transparent 28%),
-  radial-gradient(circle at 70% 74%, rgba(120,88,38,.10), transparent 34%),
-  linear-gradient(180deg, #15110d 0%, #0f0c0a 42%, #070605 100%);
+    radial-gradient(circle at 28% 16%,rgba(245,220,170,.18),transparent 28%),
+    radial-gradient(circle at 70% 74%,rgba(120,88,38,.10),transparent 34%),
+    linear-gradient(180deg,#15110d 0%,#0f0c0a 42%,#070605 100%);
   z-index:-3;
 }
 .grain{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background-image:radial-gradient(rgba(255,220,140,.18) 1px,transparent 1px);
+  background-image:radial-gradient(rgba(255,220,140,.16) 1px,transparent 1px);
   background-size:38px 38px;
-  opacity:.14;
+  opacity:.12;
   animation:drift 18s linear infinite;
   z-index:-1;
 }
@@ -65,7 +65,7 @@ section{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.55),rgba(0,0,0,.72));
+  background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.56),rgba(0,0,0,.78));
   z-index:-1;
 }
 .photo-section::after{
@@ -78,19 +78,21 @@ section{
 .inner{width:min(720px,100%);}
 .small{
   font-size:14px;
-  color:#c9bda9;
+  color:rgba(214,206,194,.62);
   letter-spacing:.28em;
+  font-weight:300;
 }
-h1, h2 {
-  font-weight: 300;
-  margin: 0 0 40px;
-  color: #f5dfb0;
+h1,h2{
+  font-weight:300;
+  margin:0 0 40px;
+  color:#f5dfb0;
   text-shadow:
-    0 0 8px rgba(245,220,170,.32),
-    0 0 18px rgba(245,220,170,.18);
+    0 0 1px rgba(255,255,255,.95),
+    0 0 5px rgba(255,245,215,.58),
+    0 0 14px rgba(245,220,170,.34),
+    0 0 32px rgba(223,186,107,.16),
+    0 0 64px rgba(120,88,38,.10);
 }
-
-
 h1{
   font-size:clamp(48px,13vw,92px);
   letter-spacing:.35em;
@@ -101,8 +103,8 @@ h2{
   letter-spacing:.28em;
 }
 h3{
-  font-weight:400;
-  color:#f5dfb0;
+  font-weight:300;
+  color:#d8bd7a;
   letter-spacing:.22em;
 }
 p{
@@ -111,24 +113,41 @@ p{
   color:rgba(214,206,194,.82);
   font-weight:300;
   letter-spacing:.04em;
-line-height:2.1;
-
+  line-height:2.1;
 }
 .muted{
-  color:#d8d1c7;
-  font-weight:400;
+  color:rgba(184,174,160,.72);
+  font-weight:300;
 }
 .hero{
   min-height:100svh;
-  background-image:url("big-page1.jpg");
+  background-image:url("bg-page1.jpg");
   background-position:center;
+  background-size:cover;
 }
 .hero::before{
   background:
-    linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.48),rgba(0,0,0,.78)),
-    linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.88));
+    linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.66),rgba(0,0,0,.86)),
+    linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.9));
+}
+.hero-home-inner{
+  max-width:680px;
+}
+.hero-home p{
+  max-width:520px;
+  color:rgba(214,206,194,.82);
+  font-weight:300;
+  line-height:2.25;
+  letter-spacing:.06em;
+}
+.hero-home .muted{
+  color:rgba(184,174,160,.72);
 }
 .hero-title{margin-top:32px;}
+.brand-mark{
+  margin-top:48px;
+  color:rgba(214,206,194,.62);
+}
 .sujiu-story{
   background-image:url("bg-page2.jpg");
   background-position:center right;
@@ -168,44 +187,49 @@ line-height:2.1;
 .plan h3{
   font-size:28px;
   margin:0 0 24px;
-  text-shadow:0 0 10px rgba(255,220,160,.5);
+  text-shadow:0 0 10px rgba(255,220,160,.35);
 }
 .price{
   font-size:20px;
-  color:#fff;
+  color:rgba(241,238,232,.9);
   letter-spacing:.12em;
 }
 .note{
   font-size:14px;
-  color:#a79d91;
+  color:rgba(184,174,160,.72);
 }
 .button{
   display:inline-block;
   margin-top:32px;
   padding:16px 30px;
-  border:1px solid rgba(245,220,170,.8);
+  border:1px solid rgba(245,220,170,.62);
   color:#f5dfb0;
-  background:transparent;
+  background:rgba(0,0,0,.38);
   text-decoration:none;
   font-size:15px;
   letter-spacing:.25em;
   transition:.3s;
   cursor:pointer;
   font-family:inherit;
+  border-radius:999px;
 }
 .button:hover{
   background:rgba(245,220,170,.12);
-  box-shadow:0 0 18px rgba(245,220,170,.35);
+  box-shadow:0 0 18px rgba(245,220,170,.28);
 }
 ul{
   padding-left:1.2em;
-  color:#ddd6cc;
+  color:rgba(214,206,194,.82);
 }
-li{margin-bottom:12px;}
+li{
+  margin-bottom:12px;
+  color:rgba(214,206,194,.82);
+  font-weight:300;
+}
 footer{
   padding:90px 28px;
   text-align:center;
-  color:#8f877d;
+  color:rgba(184,174,160,.72);
   position:relative;
   overflow:hidden;
 }
@@ -259,7 +283,7 @@ footer::before{
   border:1px solid rgba(245,220,170,.18);
   padding:12px 8px;
   text-align:center;
-  color:#c9bda9;
+  color:rgba(214,206,194,.82);
   font-size:13px;
   cursor:pointer;
 }
@@ -273,7 +297,7 @@ footer::before{
   border:1px solid rgba(255,255,255,.08);
   padding:18px;
   background:rgba(0,0,0,.24);
-  color:#ddd6cc;
+  color:rgba(214,206,194,.82);
   font-size:14px;
   line-height:2;
 }
@@ -290,7 +314,7 @@ footer::before{
 .floating-booking{
   position:fixed;
   left:50%;
-  bottom:24px;
+  bottom:calc(24px + env(safe-area-inset-bottom));
   transform:translateX(-50%);
   z-index:9999;
 }
@@ -341,7 +365,12 @@ footer::before{
     padding-right:28px;
   }
   .photo-section::before{
-    background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.62),rgba(0,0,0,.88));
+    background:linear-gradient(180deg,rgba(0,0,0,.74),rgba(0,0,0,.64),rgba(0,0,0,.9));
+  }
+  .hero::before{
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.76),rgba(0,0,0,.66),rgba(0,0,0,.92)),
+      linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.56),rgba(0,0,0,.82));
   }
   .card{padding:34px 22px;}
 }
@@ -351,16 +380,20 @@ footer::before{
 <body>
 <div class="grain"></div>
 
-<section class="hero photo-section">
-  <div class="inner fade">
-    <div class="small">微光・之上</div>
-    <h1 class="hero-title">無限旅程</h1>
+<section class="hero photo-section hero-home">
+  <div class="inner fade hero-home-inner">
+    <div class="small">微 光 ・ 之 上</div>
+
+    <h1 class="hero-title">無 限 旅 程</h1>
+
     <p>值得，所以不將就。</p>
     <p>我不是來符合誰的期待。</p>
     <p>也沒有打算把自己包裝成什麼樣子。</p>
     <p>這裡只是讓你先知道，我是什麼樣的人。</p>
+
     <p class="muted">能接受，再往下看。<br>不能接受，離開也很好。</p>
-    <div class="small">WEIGUANG SU JIU<br>Since 2019</div>
+
+    <div class="small brand-mark">WEIGUANG SU JIU<br>Since 2019</div>
   </div>
 </section>
 
@@ -622,27 +655,7 @@ function copyBooking(){
     alert('複製失敗，請手動複製。');
   });
 }
-</script><style>
-
-/* 內文金色 */
-
-p,
-li{
-  color:#f5dfb0 !important;
-}
-
-/* 小標題灰白 */
-
-span,
-.small,
-.muted{
-  color:#d8d1c7 !important;
-}
-
-</style>
+</script>
 
 </body>
 </html>
-<
-
-</style>
