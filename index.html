@@ -5,16 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>微光・蘇九</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   margin:0;
-  background:#0f0c0a;
-  color:#e8e0d4;
+  background:#15110e;
+  color:#e6ded2;
   font-family:"Noto Serif TC","Source Han Serif TC","Songti TC","STSong",serif;
-  letter-spacing:.12em;
+  letter-spacing:.1em;
   line-height:2.1;
   overflow-x:hidden;
 }
@@ -22,28 +21,28 @@ body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:
-    radial-gradient(circle at 28% 16%,rgba(245,220,170,.18),transparent 28%),
-    radial-gradient(circle at 70% 74%,rgba(120,88,38,.10),transparent 34%),
-    linear-gradient(180deg,#16120f 0%,#100d0b 45%,#0b0908 100%);
   z-index:-3;
+  background:
+    radial-gradient(circle at 22% 12%,rgba(245,220,170,.16),transparent 30%),
+    radial-gradient(circle at 80% 78%,rgba(180,130,70,.10),transparent 38%),
+    linear-gradient(180deg,#1b1511 0%,#15110e 45%,#0d0a08 100%);
 }
 .grain{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background-image:radial-gradient(rgba(255,220,140,.16) 1px,transparent 1px);
-  background-size:38px 38px;
-  opacity:.12;
-  animation:drift 18s linear infinite;
   z-index:-1;
+  opacity:.1;
+  background-image:radial-gradient(rgba(255,230,170,.16) 1px,transparent 1px);
+  background-size:42px 42px;
+  animation:drift 20s linear infinite;
 }
 @keyframes drift{
   from{transform:translateY(0);}
   to{transform:translateY(-80px);}
 }
 section{
-  min-height:100vh;
+  min-height:100svh;
   padding:92px 28px;
   display:flex;
   flex-direction:column;
@@ -66,67 +65,25 @@ section{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.32),
-      rgba(0,0,0,.08),
-      rgba(0,0,0,.26)
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.06),
-      rgba(0,0,0,.18)
-    );
   z-index:-1;
-}
-  content:"";
-  position:absolute;
-  inset:0;
   background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.42)
-      rgba(0,0,0,.28),
-      rgba(0,0,0,.52)
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.18),
-      rgba(0,0,0,.32)
-    );
-  z-index:-1;
-}
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.62),rgba(0,0,0,.82)),
-    linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.88));
-  z-index:-1;
+    linear-gradient(90deg,rgba(0,0,0,.58),rgba(0,0,0,.22),rgba(0,0,0,.38)),
+    linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34));
 }
 .photo-section::after{
   content:"";
   position:absolute;
   inset:0;
+  z-index:-1;
   background:
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(255,220,160,.08),
-      transparent 42%
-    );
-  z-index:-1;
+    radial-gradient(circle at 28% 18%,rgba(245,220,170,.10),transparent 42%);
 }
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 34% 18%,rgba(255,220,150,.09),transparent 38%);
-  z-index:-1;
+.inner{
+  width:min(720px,100%);
 }
-.inner{width:min(720px,100%);}
 .small{
   font-size:14px;
-  color:rgba(214,206,194,.62);
+  color:rgba(214,206,194,.66);
   letter-spacing:.28em;
   font-weight:300;
 }
@@ -135,11 +92,9 @@ h1,h2{
   margin:0 0 40px;
   color:#f5dfb0;
   text-shadow:
-    0 0 1px rgba(255,255,255,.95),
-    0 0 5px rgba(255,245,215,.58),
-    0 0 14px rgba(245,220,170,.34),
-    0 0 32px rgba(223,186,107,.16),
-    0 0 64px rgba(120,88,38,.10);
+    0 0 1px rgba(255,255,255,.9),
+    0 0 6px rgba(255,245,215,.46),
+    0 0 20px rgba(245,220,170,.22);
 }
 h1{
   font-size:clamp(48px,13vw,92px);
@@ -158,30 +113,31 @@ h3{
 p{
   margin:0 0 26px;
   font-size:17px;
-  color:rgba(214,206,194,.82);
+  color:rgba(224,216,204,.84);
   font-weight:300;
   letter-spacing:.04em;
   line-height:2.1;
 }
 .muted{
-  color:rgba(184,174,160,.72);
+  color:rgba(196,186,172,.76);
   font-weight:300;
 }
 .hero{
   min-height:100svh;
   background-image:url("bg-page1.jpg");
   background-position:center;
-  background-size:cover;
 }
 .hero::before{
   background:
-    linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.66),rgba(0,0,0,.86)),
-    linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.9));
+    linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.28),rgba(0,0,0,.48)),
+    linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.42));
 }
-.hero-title{margin-top:32px;}
+.hero-title{
+  margin-top:32px;
+}
 .brand-mark{
   margin-top:48px;
-  color:rgba(214,206,194,.62);
+  color:rgba(214,206,194,.64);
 }
 .sujiu-story{
   background-image:url("bg-page2.jpg");
@@ -216,12 +172,12 @@ p{
   background-position:center;
 }
 .card{
-  border:1px solid rgba(230,220,200,.28);
+  border:1px solid rgba(230,220,200,.26);
   padding:42px 26px;
   margin:34px 0;
-  background:rgba(9,8,7,.54);
-  backdrop-filter:blur(10px);
-  box-shadow:0 24px 80px rgba(0,0,0,.32);
+  background:rgba(20,15,12,.52);
+  backdrop-filter:blur(8px);
+  box-shadow:0 24px 80px rgba(0,0,0,.28);
 }
 .plans{
   display:grid;
@@ -230,24 +186,24 @@ p{
 .plan h3{
   font-size:28px;
   margin:0 0 24px;
-  text-shadow:0 0 10px rgba(255,220,160,.35);
+  text-shadow:0 0 10px rgba(255,220,160,.28);
 }
 .price{
   font-size:20px;
-  color:rgba(241,238,232,.9);
+  color:rgba(241,238,232,.92);
   letter-spacing:.12em;
 }
 .note{
   font-size:14px;
-  color:rgba(184,174,160,.72);
+  color:rgba(196,186,172,.76);
 }
 .button{
   display:inline-block;
   margin-top:32px;
   padding:16px 30px;
-  border:1px solid rgba(245,220,170,.62);
+  border:1px solid rgba(245,220,170,.56);
   color:#f5dfb0;
-  background:rgba(0,0,0,.38);
+  background:rgba(0,0,0,.32);
   text-decoration:none;
   font-size:15px;
   letter-spacing:.25em;
@@ -258,21 +214,21 @@ p{
 }
 .button:hover{
   background:rgba(245,220,170,.12);
-  box-shadow:0 0 18px rgba(245,220,170,.28);
+  box-shadow:0 0 18px rgba(245,220,170,.25);
 }
 ul{
   padding-left:1.2em;
-  color:rgba(214,206,194,.82);
+  color:rgba(224,216,204,.84);
 }
 li{
   margin-bottom:12px;
-  color:rgba(214,206,194,.82);
+  color:rgba(224,216,204,.84);
   font-weight:300;
 }
 footer{
   padding:90px 28px;
   text-align:center;
-  color:rgba(184,174,160,.72);
+  color:rgba(196,186,172,.72);
   position:relative;
   overflow:hidden;
 }
@@ -281,7 +237,7 @@ footer::before{
   position:absolute;
   inset:0;
   background:url("fragment01.jpg") center / cover no-repeat;
-  opacity:.08;
+  opacity:.12;
   z-index:-1;
 }
 .fade{
@@ -303,7 +259,7 @@ footer::before{
   align-items:flex-end;
   justify-content:center;
   padding:18px;
-  background:rgba(0,0,0,.82);
+  background:rgba(0,0,0,.76);
   backdrop-filter:blur(16px);
 }
 .booking-panel{
@@ -311,8 +267,8 @@ footer::before{
   max-width:560px;
   max-height:86svh;
   overflow:auto;
-  background:rgba(9,8,7,.96);
-  border:1px solid rgba(245,220,170,.26);
+  background:rgba(15,12,10,.96);
+  border:1px solid rgba(245,220,170,.28);
   padding:34px 24px;
   box-shadow:0 30px 100px rgba(0,0,0,.72);
 }
@@ -326,11 +282,13 @@ footer::before{
   border:1px solid rgba(245,220,170,.18);
   padding:12px 8px;
   text-align:center;
-  color:rgba(214,206,194,.82);
+  color:rgba(224,216,204,.82);
   font-size:13px;
   cursor:pointer;
 }
-.booking-options input{display:none;}
+.booking-options input{
+  display:none;
+}
 .booking-options input:checked + span{
   color:#f5dfb0;
   text-shadow:0 0 12px rgba(245,220,170,.55);
@@ -340,7 +298,7 @@ footer::before{
   border:1px solid rgba(255,255,255,.08);
   padding:18px;
   background:rgba(0,0,0,.24);
-  color:rgba(214,206,194,.82);
+  color:rgba(224,216,204,.84);
   font-size:14px;
   line-height:2;
 }
@@ -363,7 +321,7 @@ footer::before{
 }
 .floating-booking button{
   border:1px solid rgba(245,220,170,.38);
-  background:rgba(0,0,0,.72);
+  background:rgba(0,0,0,.66);
   backdrop-filter:blur(12px);
   color:#f5dfb0;
   padding:16px 34px;
@@ -373,28 +331,28 @@ footer::before{
   cursor:pointer;
   font-family:inherit;
   box-shadow:
-    0 0 40px rgba(245,220,170,.12),
-    0 10px 40px rgba(0,0,0,.45);
+    0 0 36px rgba(245,220,170,.12),
+    0 10px 40px rgba(0,0,0,.42);
   animation:floatingGlow 3s ease-in-out infinite;
 }
 @keyframes floatingGlow{
   0%{
     transform:translateY(0);
     box-shadow:
-      0 0 30px rgba(245,220,170,.08),
-      0 10px 40px rgba(0,0,0,.45);
+      0 0 26px rgba(245,220,170,.08),
+      0 10px 40px rgba(0,0,0,.42);
   }
   50%{
     transform:translateY(-4px);
     box-shadow:
-      0 0 55px rgba(245,220,170,.22),
-      0 18px 50px rgba(0,0,0,.55);
+      0 0 48px rgba(245,220,170,.2),
+      0 18px 50px rgba(0,0,0,.5);
   }
   100%{
     transform:translateY(0);
     box-shadow:
-      0 0 30px rgba(245,220,170,.08),
-      0 10px 40px rgba(0,0,0,.45);
+      0 0 26px rgba(245,220,170,.08),
+      0 10px 40px rgba(0,0,0,.42);
   }
 }
 @media(max-width:640px){
@@ -402,24 +360,31 @@ footer::before{
     padding:82px 24px;
     min-height:100svh;
   }
-  p{font-size:16px;}
+  p{
+    font-size:16px;
+  }
   .photo-section{
     padding-left:28px;
     padding-right:28px;
   }
   .photo-section::before{
     background:
-      linear-gradient(180deg,rgba(0,0,0,.76),rgba(0,0,0,.66),rgba(0,0,0,.92)),
-      linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.56),rgba(0,0,0,.82));
+      linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,.30),rgba(0,0,0,.56)),
+      linear-gradient(90deg,rgba(0,0,0,.46),rgba(0,0,0,.18),rgba(0,0,0,.42));
   }
-  .card{padding:34px 22px;}
+  .hero::before{
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.24),rgba(0,0,0,.58)),
+      linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.16),rgba(0,0,0,.42));
+  }
+  .card{
+    padding:34px 22px;
+  }
 }
 </style>
 </head>
-
 <body>
 <div class="grain"></div>
-
 <section class="hero photo-section">
   <div class="inner fade">
     <div class="small">微 光 ・ 之 上</div>
@@ -432,7 +397,6 @@ footer::before{
     <div class="small brand-mark">WEIGUANG SU JIU<br>Since 2019</div>
   </div>
 </section>
-
 <section class="sujiu-story photo-section">
   <div class="inner fade">
     <h2>微炙・蘇九</h2>
@@ -448,7 +412,6 @@ footer::before{
     <p class="muted">現在的我，比以前更直接，也比以前更誠實。</p>
   </div>
 </section>
-
 <section class="about-sujiu photo-section">
   <div class="inner fade">
     <h2>關於蘇九</h2>
@@ -464,7 +427,6 @@ footer::before{
     <p class="muted">適合的人自然會懂。<br>不適合的人其實不用勉強。</p>
   </div>
 </section>
-
 <section class="about-chat photo-section">
   <div class="inner fade">
     <h2>關於聊天</h2>
@@ -483,7 +445,6 @@ footer::before{
     <p class="muted">但如果你重視的是見面時的舒服，那我們比較有機會聊得來。</p>
   </div>
 </section>
-
 <section class="soft-section photo-section">
   <div class="inner fade">
     <h2>舒服・自然・真誠</h2>
@@ -496,11 +457,9 @@ footer::before{
     <p class="muted">自然一點，反而比較容易相處。</p>
   </div>
 </section>
-
 <section class="journey-section photo-section">
   <div class="inner fade">
     <h2>旅程</h2>
-
     <div class="plans">
       <div class="card plan">
         <h3>微光・初見</h3>
@@ -508,21 +467,18 @@ footer::before{
         <p class="price">5000 / 6000 / 8000</p>
         <p class="note">第一次認識彼此的開始。</p>
       </div>
-
       <div class="card plan">
         <h3>微光・稍炙</h3>
         <p>3H</p>
         <p class="price">6200 / 7200 / 9200</p>
         <p class="note">感覺對了，很多事自然就有了。</p>
       </div>
-
       <div class="card plan">
         <h3>微光・微醺</h3>
         <p>10H</p>
         <p class="price">15000</p>
         <p class="note">放鬆，淺壓，享受自在舒服的過程。</p>
       </div>
-
       <div class="card plan">
         <h3>微光・之上</h3>
         <p>16H</p>
@@ -532,7 +488,6 @@ footer::before{
     </div>
   </div>
 </section>
-
 <section>
   <div class="fade">
     <h2>基本互動</h2>
@@ -544,14 +499,12 @@ footer::before{
       <li>清槍</li>
       <li>深喉</li>
     </ul>
-
     <div class="card">
       <h3>進階旅程</h3>
       <p>部分深度互動與私藏旅程，確認預約後另外提供內容。</p>
     </div>
   </div>
 </section>
-
 <section>
   <div class="fade">
     <h2>預約注意</h2>
@@ -566,7 +519,6 @@ footer::before{
     <p>請盡量提供兩個方便時段。</p>
   </div>
 </section>
-
 <section class="rule-section photo-section">
   <div class="inner fade">
     <h2>旅程規則</h2>
@@ -577,7 +529,6 @@ footer::before{
     <p class="muted">講清楚，比亂猜好。</p>
   </div>
 </section>
-
 <section class="respect-section photo-section">
   <div class="inner fade">
     <h2>互相尊重</h2>
@@ -589,7 +540,6 @@ footer::before{
     <p>自然相處，旅程才會舒服。</p>
   </div>
 </section>
-
 <section class="booking-section photo-section">
   <div class="inner fade">
     <h2>預約流程</h2>
@@ -606,79 +556,61 @@ footer::before{
     </div>
   </div>
 </section>
-
 <div class="floating-booking" id="floatingBooking">
   <button onclick="openBooking()">開始預約</button>
 </div>
-
 <footer>
   微光・之上<br>
   SU JIU ｜ INFINITE JOURNEY<br>
   Since 2019
 </footer>
-
 <div class="booking-popup" id="bookingPopup">
   <div class="booking-panel">
     <h2>預約單</h2>
     <p class="muted">確認預約後，請複製以下內容，直接傳送至 LINE。</p>
-
     <div class="booking-options">
       <label><input type="checkbox" value="微光・初見 2H"><span>初見 2H</span></label>
       <label><input type="checkbox" value="微光・稍炙 3H"><span>稍炙 3H</span></label>
       <label><input type="checkbox" value="微光・微醺 10H"><span>微醺 10H</span></label>
       <label><input type="checkbox" value="微光・之上 16H"><span>之上 16H</span></label>
     </div>
-
     <div class="booking-text" id="bookingText">您好，我想預約微光旅程。
-
 1｜LINE 稱號：
-
 2｜預約日期、時段：
 第一時段：
 第二時段：
-
 3｜選擇方案：
-
 4｜是否有進階旅程需求：
-
 5｜特殊需求：
-
 6｜菸味接受度：
 有抽菸／不介意／介意
-
 7｜初次核對：
 請附上來源首頁截圖
-
 8｜訂金確認：
 了解 2 小時內完成匯款方能保留時段</div>
-
     <div class="booking-actions">
       <button class="button" onclick="copyBooking()">複製</button>
       <button class="button" onclick="closeBooking()">返回</button>
     </div>
   </div>
 </div>
-
 <script>
 function openBooking(){
   document.getElementById('bookingPopup').style.display='flex';
   document.getElementById('floatingBooking').style.display='none';
   document.body.style.overflow='hidden';
 }
-
 function closeBooking(){
   document.getElementById('bookingPopup').style.display='none';
   document.getElementById('floatingBooking').style.display='block';
   document.body.style.overflow='';
 }
-
 function copyBooking(){
   const selected=Array.from(
     document.querySelectorAll('.booking-options input:checked')
   ).map(function(item){
     return item.value;
   }).join('、') || '未填寫';
-
   const text=
     '您好，我想預約微光旅程。\n\n' +
     '1｜LINE 稱號：\n\n' +
@@ -689,7 +621,6 @@ function copyBooking(){
     '6｜菸味接受度：\n有抽菸／不介意／介意\n\n' +
     '7｜初次核對：\n請附上來源首頁截圖\n\n' +
     '8｜訂金確認：\n了解 2 小時內完成匯款方能保留時段';
-
   navigator.clipboard.writeText(text).then(function(){
     document.getElementById('bookingText').innerText=text + '\n\n已複製';
   }).catch(function(){
@@ -697,6 +628,5 @@ function copyBooking(){
   });
 }
 </script>
-
 </body>
 </html>
