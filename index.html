@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>微光・蘇九</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -65,14 +66,16 @@ section{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.56),rgba(0,0,0,.78));
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.62),rgba(0,0,0,.82)),
+    linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.88));
   z-index:-1;
 }
 .photo-section::after{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at 40% 20%,rgba(255,220,150,.08),transparent 38%);
+  background:radial-gradient(circle at 34% 18%,rgba(255,220,150,.09),transparent 38%);
   z-index:-1;
 }
 .inner{width:min(720px,100%);}
@@ -130,35 +133,22 @@ p{
     linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.66),rgba(0,0,0,.86)),
     linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.9));
 }
-.hero-home-inner{
-  max-width:680px;
-}
-.hero-home p{
-  max-width:520px;
-  color:rgba(214,206,194,.82);
-  font-weight:300;
-  line-height:2.25;
-  letter-spacing:.06em;
-}
-.hero-home .muted{
-  color:rgba(184,174,160,.72);
-}
 .hero-title{margin-top:32px;}
 .brand-mark{
   margin-top:48px;
   color:rgba(214,206,194,.62);
 }
-..sujiu-story{
+.sujiu-story{
+  background-image:url("bg-page2.jpg");
+  background-position:center right;
+}
+.about-sujiu{
   background-image:url("bg-page6.jpg");
   background-position:center;
-  background-size:cover;
 }
-
 .about-chat{
   background-image:url("bg-page5.jpg");
   background-position:center;
-  background-size:cover;
-}
 }
 .soft-section{
   background-image:url("bg-page3.jpg");
@@ -176,13 +166,17 @@ p{
   background-image:url("room7.jpg");
   background-position:center;
 }
+.booking-section{
+  background-image:url("fragment01.jpg");
+  background-position:center;
+}
 .card{
   border:1px solid rgba(230,220,200,.28);
   padding:42px 26px;
   margin:34px 0;
-  background:rgba(9,8,7,.46);
+  background:rgba(9,8,7,.54);
   backdrop-filter:blur(10px);
-  box-shadow:0 24px 80px rgba(0,0,0,.28);
+  box-shadow:0 24px 80px rgba(0,0,0,.32);
 }
 .plans{
   display:grid;
@@ -369,12 +363,9 @@ footer::before{
     padding-right:28px;
   }
   .photo-section::before{
-    background:linear-gradient(180deg,rgba(0,0,0,.74),rgba(0,0,0,.64),rgba(0,0,0,.9));
-  }
-  .hero::before{
     background:
       linear-gradient(180deg,rgba(0,0,0,.76),rgba(0,0,0,.66),rgba(0,0,0,.92)),
-      linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.56),rgba(0,0,0,.82));
+      linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.56),rgba(0,0,0,.82));
   }
   .card{padding:34px 22px;}
 }
@@ -384,19 +375,15 @@ footer::before{
 <body>
 <div class="grain"></div>
 
-<section class="hero photo-section hero-home">
-  <div class="inner fade hero-home-inner">
+<section class="hero photo-section">
+  <div class="inner fade">
     <div class="small">微 光 ・ 之 上</div>
-
     <h1 class="hero-title">無 限 旅 程</h1>
-
     <p>值得，所以不將就。</p>
     <p>我不是來符合誰的期待。</p>
     <p>也沒有打算把自己包裝成什麼樣子。</p>
     <p>這裡只是讓你先知道，我是什麼樣的人。</p>
-
     <p class="muted">能接受，再往下看。<br>不能接受，離開也很好。</p>
-
     <div class="small brand-mark">WEIGUANG SU JIU<br>Since 2019</div>
   </div>
 </section>
@@ -417,8 +404,8 @@ footer::before{
   </div>
 </section>
 
-<section>
-  <div class="fade">
+<section class="about-sujiu photo-section">
+  <div class="inner fade">
     <h2>關於蘇九</h2>
     <p>蘇九（深深）</p>
     <p>153 / 40 / 32B / 45+</p>
@@ -468,6 +455,7 @@ footer::before{
 <section class="journey-section photo-section">
   <div class="inner fade">
     <h2>旅程</h2>
+
     <div class="plans">
       <div class="card plan">
         <h3>微光・初見</h3>
@@ -475,18 +463,21 @@ footer::before{
         <p class="price">5000 / 6000 / 8000</p>
         <p class="note">第一次認識彼此的開始。</p>
       </div>
+
       <div class="card plan">
         <h3>微光・稍炙</h3>
         <p>3H</p>
         <p class="price">6200 / 7200 / 9200</p>
         <p class="note">感覺對了，很多事自然就有了。</p>
       </div>
+
       <div class="card plan">
         <h3>微光・微醺</h3>
         <p>10H</p>
         <p class="price">15000</p>
         <p class="note">放鬆，淺壓，享受自在舒服的過程。</p>
       </div>
+
       <div class="card plan">
         <h3>微光・之上</h3>
         <p>16H</p>
@@ -508,6 +499,7 @@ footer::before{
       <li>清槍</li>
       <li>深喉</li>
     </ul>
+
     <div class="card">
       <h3>進階旅程</h3>
       <p>部分深度互動與私藏旅程，確認預約後另外提供內容。</p>
@@ -553,8 +545,8 @@ footer::before{
   </div>
 </section>
 
-<section>
-  <div class="fade">
+<section class="booking-section photo-section">
+  <div class="inner fade">
     <h2>預約流程</h2>
     <div class="card">
       <p>1｜LINE 稱號：</p>
