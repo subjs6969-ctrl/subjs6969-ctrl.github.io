@@ -631,14 +631,16 @@
     <div class="booking-actions">
       <button class="button" onclick="copyBooking()">
         複製
-      </button>
       <button
-        class="button"
-        onclick="
-          document.getElementById('bookingPopup').style.display='none';
-          document.body.style.overflow='';
-        "
-      >
+  class="button"
+  onclick="
+    document.getElementById('bookingPopup').style.display='none';
+    document.getElementById('floatingBooking').style.display='block';
+    document.body.style.overflow='';
+  "
+>
+  返回
+</button>
         返回
       </button>
     </div>
