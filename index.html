@@ -500,6 +500,119 @@
       <h2>預約流程</h2>
 
       <div class="card">
+      <div class="card">
+  <p>1｜LINE 稱號：</p>
+  <p>2｜預約日期、時段：</p>
+  <p>3｜選擇方案：</p>
+  <p>4｜是否有進階旅程需求：</p>
+  <p>5｜特殊需求：</p>
+  <p>6｜菸味接受度：</p>
+  <p>7｜初次核對：</p>
+  <p>8｜訂金確認：</p>
+  <button
+    class="button"
+    onclick="
+      document.getElementById('bookingPopup').style.display='flex';
+      document.body.style.overflow='hidden';
+    "
+  >
+    複製預約單
+  </button>
+</div>
+</div>
+</section>
+<footer>
+  微光・之上<br>
+  SU JIU ｜ INFINITE JOURNEY<br>
+  Since 2019
+</footer>
+<div class="booking-popup" id="bookingPopup">
+  <div class="booking-panel">
+    <h2>預約單</h2>
+    <p class="muted">
+      確認預約後，請複製以下內容，直接傳送至 LINE。
+    </p>
+    <div class="booking-options">
+      <label>
+        <input type="checkbox" value="微光・初見 2H">
+        <span>初見 2H</span>
+      </label>
+      <label>
+        <input type="checkbox" value="微光・稍炙 3H">
+        <span>稍炙 3H</span>
+      </label>
+      <label>
+        <input type="checkbox" value="微光・微醺 10H">
+        <span>微醺 10H</span>
+      </label>
+      <label>
+        <input type="checkbox" value="微光・之上 16H">
+        <span>之上 16H</span>
+      </label>
+    </div>
+    <div class="booking-text" id="bookingText">
+您好，我想預約微光旅程。
+1｜LINE 稱號：
+2｜預約日期、時段：
+第一時段：
+第二時段：
+3｜選擇方案：
+4｜是否有進階旅程需求：
+5｜特殊需求：
+6｜菸味接受度：
+有抽菸／不介意／介意
+7｜初次核對：
+請附上來源首頁截圖
+8｜訂金確認：
+了解 2 小時內完成匯款方能保留時段
+    </div>
+    <div class="booking-actions">
+      <button class="button" onclick="copyBooking()">
+        複製
+      </button>
+      <button
+        class="button"
+        onclick="
+          document.getElementById('bookingPopup').style.display='none';
+          document.body.style.overflow='';
+        "
+      >
+        返回
+      </button>
+    </div>
+  </div>
+</div>
+<script>
+function copyBooking(){
+  const selected = Array.from(
+    document.querySelectorAll('.booking-options input:checked')
+  )
+  .map(function(item){
+    return item.value;
+  })
+  .join('、') || '未填寫';
+  const text =
+'您好，我想預約微光旅程。\n\n' +
+'1｜LINE 稱號：\n\n' +
+'2｜預約日期、時段：\n第一時段：\n第二時段：\n\n' +
+'3｜選擇方案：' + selected + '\n\n' +
+'4｜是否有進階旅程需求：\n\n' +
+'5｜特殊需求：\n\n' +
+'6｜菸味接受度：\n有抽菸／不介意／介意\n\n' +
+'7｜初次核對：\n請附上來源首頁截圖\n\n' +
+'8｜訂金確認：\n了解 2 小時內完成匯款方能保留時段';
+  navigator.clipboard.writeText(text)
+  .then(function(){
+    document.getElementById('bookingText').innerText =
+      text + '\n\n已複製';
+  })
+  .catch(function(){
+    alert('複製失敗，請手動複製。');
+  });
+}
+</script>
+</body>
+</html>
      
     
     
