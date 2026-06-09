@@ -570,14 +570,15 @@
   </button>
 </div>
 </div>
-</section><div class="floating-booking">
+<div class="floating-booking" id="floatingBooking">
 
   <button
-    onclick="
-      document.getElementById('bookingPopup').style.display='flex';
-      document.body.style.overflow='hidden';
-    "
-  >
+    
+  >onclick="
+  document.getElementById('bookingPopup').style.display='none';
+  document.getElementById('floatingBooking').style.display='block';
+  document.body.style.overflow='';
+"
     開始預約
   </button>
 
