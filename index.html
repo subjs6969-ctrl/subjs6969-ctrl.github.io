@@ -43,8 +43,11 @@ body::before{
   to{transform:translateY(-80px);}
 }
 section{
-  min-height:100svh;
+  min-height:88svh;
+  position:relative;
+  margin-top:-2px;
   padding:92px 28px;
+  
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -68,7 +71,7 @@ section{
   inset:0;
   z-index:-1;
   background:
-    linear-gradient(90deg,rgba(0,0,0,.34),rgba(0,0,0,.06),rgba(0,0,0,.22)),
+    linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,.06),rgba(0,0,0,.22)),
     linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.16));
 }
   content:"";
