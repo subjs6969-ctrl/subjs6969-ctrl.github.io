@@ -405,6 +405,70 @@ footer::before{
   .card{
     padding:34px 22px;
   }
+}/* SJ V2 PREMIUM JOURNEY */
+
+.journey-premium{
+  max-width:900px;
+  margin:auto;
+}
+
+.journey-item{
+  position:relative;
+  padding:38px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.journey-item:last-child{
+  border-bottom:none;
+}
+
+.journey-no{
+  font-size:12px;
+  letter-spacing:.45em;
+  color:rgba(245,220,170,.45);
+  margin-bottom:12px;
+}
+
+.journey-item h3{
+  margin:0;
+  font-size:32px;
+  font-weight:300;
+  color:#f5dfb0;
+}
+
+.journey-desc{
+  margin:14px 0;
+  color:rgba(224,216,204,.65);
+  max-width:420px;
+}
+
+.journey-time{
+  font-size:14px;
+  letter-spacing:.3em;
+  color:rgba(245,220,170,.55);
+}
+
+.journey-price{
+  margin-top:8px;
+  font-size:24px;
+  color:#fff;
+  letter-spacing:.08em;
+}
+
+@media(max-width:640px){
+
+  .journey-item{
+    padding:30px 0;
+  }
+
+  .journey-item h3{
+    font-size:26px;
+  }
+
+  .journey-price{
+    font-size:20px;
+  }
+
 }
 </style>
 </head>
@@ -481,35 +545,40 @@ footer::before{
     <p>也不喜歡被消耗。</p>
     <p class="muted">自然一點，反而比較容易相處。</p>
   </div>
-</section>
-<section class="journey-section photo-section">
+<section class="journey-section journey-premium">
   <div class="inner fade">
     <h2>旅程</h2>
-    <div class="plans">
-      <div class="card plan">
-        <h3>微光・初見</h3>
-        <p>2H</p>
-        <p class="price">5000 / 6000 / 8000</p>
-        <p class="note">第一次認識彼此的開始。</p>
-      </div>
-      <div class="card plan">
-        <h3>微光・稍炙</h3>
-        <p>3H</p>
-        <p class="price">6200 / 7200 / 9200</p>
-        <p class="note">感覺對了，很多事自然就有了。</p>
-      </div>
-      <div class="card plan">
-        <h3>微光・微醺</h3>
-        <p>10H</p>
-        <p class="price">15000</p>
-        <p class="note">放鬆，淺壓，享受自在舒服的過程。</p>
-      </div>
-      <div class="card plan">
-        <h3>微光・之上</h3>
-        <p>16H</p>
-        <p class="price">20000</p>
-        <p class="note">客製專屬旅程，共感微光無限旅程。</p>
-      </div>
+
+    <div class="journey-item">
+      <div class="journey-no">01</div>
+      <h3>微光・初見</h3>
+      <p class="journey-desc">第一次認識彼此的開始。</p>
+      <div class="journey-time">2H</div>
+      <div class="journey-price">5000 / 6000 / 8000</div>
+    </div>
+
+    <div class="journey-item">
+      <div class="journey-no">02</div>
+      <h3>微光・稍炙</h3>
+      <p class="journey-desc">感覺對了，很多事自然就有了。</p>
+      <div class="journey-time">3H</div>
+      <div class="journey-price">6200 / 7200 / 9200</div>
+    </div>
+
+    <div class="journey-item">
+      <div class="journey-no">03</div>
+      <h3>微光・微醺</h3>
+      <p class="journey-desc">放鬆，淺壓，享受自在舒服的過程。</p>
+      <div class="journey-time">10H</div>
+      <div class="journey-price">15000</div>
+    </div>
+
+    <div class="journey-item">
+      <div class="journey-no">04</div>
+      <h3>微光・之上</h3>
+      <p class="journey-desc">客製專屬旅程，共感微光無限旅程。</p>
+      <div class="journey-time">16H</div>
+      <div class="journey-price">20000</div>
     </div>
   </div>
 </section>
