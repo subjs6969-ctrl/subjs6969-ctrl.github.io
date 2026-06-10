@@ -546,6 +546,28 @@ padding-right:8px !important;
   letter-spacing:.08em !important;
 }
 </style>
+/* S2 FLOW：照片大變小，文字小變大 */
+.photo-section{
+  background-size:112% auto;
+  transition:background-size 1.8s ease;
+}
+
+.photo-section.inview{
+  background-size:100% auto;
+}
+
+.photo-section .inner,
+section .fade{
+  transform:scale(.96) translateY(22px);
+  opacity:0;
+  transition:opacity 1.2s ease, transform 1.4s ease;
+}
+
+.photo-section.inview .inner,
+section.inview .fade{
+  transform:scale(1) translateY(0);
+  opacity:1;
+}
 </head>
 <body>
 <div class="grain"></div>
@@ -794,6 +816,19 @@ function copyBooking(){
     alert('複製失敗，請手動複製。');
   });
 }
+const flowSections=document.querySelectorAll('section');
+
+const flowObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('inview');
+    }
+  });
+},{threshold:.28});
+
+flowSections.forEach(function(section){
+  flowObserver.observe(section);
+});
 </script>
 </body>
 </html>
