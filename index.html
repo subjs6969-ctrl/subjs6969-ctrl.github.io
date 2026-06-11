@@ -193,8 +193,11 @@ p{
 .booking-section{
   background-image:url("fragment01.jpg");
   background-position:center;
+  background-size:cover;
+  padding-top:90px;
+  padding-bottom:90px;
 }
-..card{
+.card{
   margin-top:60px;
   background:rgba(8,8,8,.55);
   border:1px solid rgba(230,210,180,.25);
@@ -209,6 +212,14 @@ p{
 
   box-shadow:none;
   backdrop-filter:none;
+}.booking-section .card{
+  max-width:560px;
+  width:88%;
+  margin:48px auto 0;
+  background:rgba(8,7,6,.46);
+  border:1px solid rgba(245,220,170,.22);
+  padding:42px 30px;
+  backdrop-filter:blur(10px);
 }
 .card h3{
   font-size:28px;
