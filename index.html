@@ -177,8 +177,23 @@ p{
   background-position:center;
 }
 .soft-section{
-  background-image:url("bg-page3.jpg");
-  background-position:center;
+    background-image:url("bg-page3.jpg");
+    background-position:center;
+    background-size:cover;
+    background-attachment:fixed;
+    position:relative;
+}
+.soft-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(10,8,7,.45);
+    backdrop-filter:blur(2px);
+    pointer-events:none;
+}
+.soft-section .container{
+    position:relative;
+    z-index:2;
 }
 .journey-section{
     background:#0a0807;
