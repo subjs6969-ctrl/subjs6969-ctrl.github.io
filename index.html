@@ -202,9 +202,33 @@ p{
   background-image:url("room6.jpg");
   background-position:center;
 }
+.rule-section .container{
+    max-width:760px;
+    margin:auto;
+    background:rgba(8,8,8,.55);
+    border:1px solid rgba(230,210,170,.25);
+    backdrop-filter:blur(12px);
+    padding:48px 38px;
+}
 .respect-section{
-  background-image:url("room7.jpg");
-  background-position:center;
+    background-image:url("room7.jpg");
+    background-position:center;
+    background-size:cover;
+    position:relative;
+}
+
+.respect-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(10,8,7,.45);
+    backdrop-filter:blur(2px);
+    pointer-events:none;
+}
+
+.respect-section .container{
+    position:relative;
+    z-index:2;
 }
 .booking-section{
   background-image:url("fragment01.jpg");
