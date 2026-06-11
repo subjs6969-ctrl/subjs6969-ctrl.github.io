@@ -403,7 +403,7 @@ footer::before{
   margin-top:0;
 }
 .floating-booking{
-    display:none !important;
+    display:block !important;
     position:fixed;
   left:50%;
   bottom:calc(24px + env(safe-area-inset-bottom));
@@ -867,5 +867,8 @@ function copyBooking(){
   });
 }
 </script>
+<button class="floating-booking" onclick="openBooking()">
+開始預約
+</button>
 </body>
 </html>
