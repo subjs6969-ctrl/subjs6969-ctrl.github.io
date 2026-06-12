@@ -57,10 +57,14 @@ section::after{
   content:"";
   position:absolute;
   inset:0;
-  background:transparent;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.15),
+      rgba(0,0,0,.35)
+    );
   z-index:1;
 }
-
 .content{
   position:relative;
   z-index:2;
@@ -71,8 +75,8 @@ section::after{
 .center{
   text-align:center;
   margin:auto;
+  transform:translateY(-8vh);
 }
-
 h1,h2{
   color:var(--gold);
   font-weight:300;
