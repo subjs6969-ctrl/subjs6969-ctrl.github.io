@@ -11,7 +11,7 @@
 :root{
   --bg:#050505;
   --gold:#E6D6B3;
-  --text:#D8D0C3;
+  --gold:#E9DAB8;
   --soft:rgba(216,208,195,.72);
 }
 
@@ -82,10 +82,10 @@ h1,h2{
 }
 
 h1{
-  font-size:clamp(30px,8vw,58px);
-  margin-bottom:28px;
+  font-size:clamp(42px,11vw,72px);
+  margin-bottom:32px;
 }
-
+  
 h2{
   font-size:clamp(28px,7vw,46px);
   margin-bottom:42px;
@@ -99,11 +99,10 @@ h2{
   opacity:0;
   transform:translateY(18px);
   transition:
-    opacity .9s ease,
-    transform .9s ease;
-  transition-delay:calc(var(--i) * .22s);
-  text-shadow:0 2px 10px rgba(0,0,0,.45);
-}
+opacity 1.8s ease,
+transform 1.8s ease;
+
+transition-delay:calc(var(--i) * .2.0s);
 
 section.in-view .line{
   opacity:1;
