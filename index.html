@@ -373,12 +373,18 @@ section.in-view .line{
 <script>
 const sections = document.querySelectorAll("section");
 
+sections[0].classList.add("in-view");
+
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
       entry.target.classList.add("in-view");
     }
   });
+},{threshold:0.2});
+
+sections.forEach(section=>observer.observe(section));
+</script>
 },{threshold:0.35});
 
 sections.forEach(section=>observer.observe(section));
