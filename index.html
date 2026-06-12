@@ -1,446 +1,609 @@
+<!DOCTYPE html>
+
 <html lang="zh-Hant">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>微光・之上｜蘇純</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>微光・之上｜蘇九</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
 
-html{
-  scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
 
 body{
-  background:#050505;
-  color:#eee6d8;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",serif;
-  letter-spacing:.12em;
-  line-height:2.1;
-  overflow-x:hidden;
-}
 
-a{
-  color:inherit;
-  text-decoration:none;
+  background:#030303;
+
+  color:#f1e6d0;
+
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+
+  overflow-x:hidden;
+
+  letter-spacing:.12em;
+
 }
 
 section{
+
   position:relative;
+
   min-height:100vh;
-  padding:90px 8%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  overflow:hidden;
-}
 
-.bg{
-  position:absolute;
-  inset:0;
   background-size:cover;
+
   background-position:center;
-  z-index:0;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:80px 8%;
+
+  overflow:hidden;
+
 }
 
-.bg::after{
+section::before{
+
   content:"";
+
   position:absolute;
+
   inset:0;
-  background:rgba(0,0,0,.48);
+
+  background:rgba(0,0,0,.68);
+
   z-index:1;
+
 }
 
 .content{
+
   position:relative;
+
   z-index:2;
-  max-width:620px;
+
+  width:100%;
+
+  max-width:720px;
+
 }
 
-.center{
-  text-align:center;
-  margin:auto;
+.center{text-align:center;margin:auto}
+
+.num{
+
+  color:rgba(241,230,208,.45);
+
+  font-size:18px;
+
+  margin-bottom:36px;
+
+  letter-spacing:.35em;
+
+}
+
+h1,h2{
+
+  color:#f3dfb5;
+
+  font-weight:300;
+
+  text-shadow:0 0 22px rgba(255,225,170,.25);
+
 }
 
 h1{
-  font-size:clamp(56px,13vw,108px);
-  font-weight:300;
-  line-height:1.25;
-  letter-spacing:.42em;
-  color:#f7e6bd;
-  text-shadow:0 0 18px rgba(255,218,150,.7);
+
+  font-size:clamp(42px,10vw,88px);
+
+  line-height:1.4;
+
+  letter-spacing:.28em;
+
   margin-bottom:48px;
+
 }
 
 h2{
-  font-size:clamp(34px,8vw,56px);
-  font-weight:300;
-  letter-spacing:.28em;
-  color:#f7e6bd;
-  text-shadow:0 0 15px rgba(255,218,150,.55);
-  margin-bottom:42px;
+
+  font-size:clamp(34px,8vw,62px);
+
+  line-height:1.5;
+
+  letter-spacing:.22em;
+
+  margin-bottom:50px;
+
 }
 
-h3{
-  font-size:24px;
-  font-weight:300;
-  color:#f3dfb5;
-  margin-bottom:20px;
-}
+.line{
 
-p{
-  font-size:17px;
-  color:rgba(238,230,216,.78);
-  margin-bottom:28px;
+  opacity:0;
+
+  transform:translateY(22px);
+
+  animation:fadeUp .8s forwards;
+
+  color:rgba(255,255,255,.9);
+
+  font-size:clamp(18px,4.8vw,26px);
+
+  line-height:2.25;
+
+  margin-bottom:10px;
+
+  text-shadow:0 2px 12px rgba(0,0,0,.65);
+
 }
 
 .small{
-  font-size:13px;
-  color:rgba(238,230,216,.45);
-}
 
-.btn{
-  display:inline-block;
-  margin-top:38px;
-  padding:12px 28px;
-  border:1px solid rgba(247,230,189,.75);
-  border-radius:999px;
-  color:#f7e6bd;
-  background:rgba(0,0,0,.28);
-  font-size:14px;
-  letter-spacing:.12em;
-}
+  font-size:15px;
 
-.btn:hover{
-  background:rgba(247,230,189,.12);
-}
+  color:rgba(255,255,255,.42);
 
-.hero .bg{
-  background-image:url("room7.jpg");
-  background-position:center;
-}
+  letter-spacing:.35em;
 
-.hero .content{
-  max-width:720px;
-  text-align:center;
-  margin:auto;
-}
+  margin-top:40px;
 
-.hero h1{
-  letter-spacing:.55em;
-  padding-left:.55em;
-}
-
-.brand{
-  margin-top:46px;
-  font-size:14px;
-  color:rgba(238,230,216,.55);
-  letter-spacing:.32em;
-}
-
-.dark-card{
-  background:rgba(0,0,0,.72);
-  border:1px solid rgba(247,230,189,.16);
-  padding:56px 8%;
-  margin-top:36px;
-}
-
-.price-item{
-  padding:44px 0;
-  border-bottom:1px solid rgba(247,230,189,.13);
-}
-
-.price-item:last-child{
-  border-bottom:none;
-}
-
-.num{
-  font-size:12px;
-  color:rgba(238,230,216,.35);
-  letter-spacing:.28em;
-  margin-bottom:18px;
 }
 
 .price{
-  font-size:32px;
-  color:#fff;
-  letter-spacing:.16em;
-  margin-top:18px;
-}
 
-.list{
+  font-size:clamp(42px,12vw,78px);
+
+  color:#fff5df;
+
   margin-top:28px;
-  padding-left:24px;
+
+  letter-spacing:.18em;
+
 }
 
-.list li{
-  color:rgba(238,230,216,.72);
-  font-size:17px;
-  margin-bottom:18px;
+.btn{
+
+  display:inline-block;
+
+  margin-top:50px;
+
+  padding:15px 34px;
+
+  border:1px solid rgba(243,223,181,.7);
+
+  border-radius:999px;
+
+  color:#f3dfb5;
+
+  text-decoration:none;
+
+  background:rgba(0,0,0,.3);
+
 }
 
-.notice-box{
-  border:1px solid rgba(247,230,189,.34);
-  background:rgba(0,0,0,.26);
-  padding:42px 30px;
-  margin-top:44px;
+.btn:hover{background:rgba(243,223,181,.12)}
+
+@keyframes fadeUp{
+
+  to{opacity:1;transform:translateY(0)}
+
 }
 
-.flow-box{
-  border:1px solid rgba(247,230,189,.42);
-  background:rgba(0,0,0,.42);
-  padding:46px 28px;
-  margin-top:36px;
+.line:nth-child(1){animation-delay:.2s}
+
+.line:nth-child(2){animation-delay:.55s}
+
+.line:nth-child(3){animation-delay:.9s}
+
+.line:nth-child(4){animation-delay:1.25s}
+
+.line:nth-child(5){animation-delay:1.6s}
+
+.line:nth-child(6){animation-delay:1.95s}
+
+.line:nth-child(7){animation-delay:2.3s}
+
+.line:nth-child(8){animation-delay:2.65s}
+
+.line:nth-child(9){animation-delay:3s}
+
+.line:nth-child(10){animation-delay:3.35s}
+
+.line:nth-child(11){animation-delay:3.7s}
+
+.line:nth-child(12){animation-delay:4.05s}
+
+.line:nth-child(13){animation-delay:4.4s}
+
+.line:nth-child(14){animation-delay:4.75s}
+
+.hero{background-image:url("bg-page1.jpg")}
+
+.page2{background-image:url("bg-page2.jpg")}
+
+.page3{background-image:url("bg-page3.jpg")}
+
+.page4{background-image:url("room7.jpg")}
+
+.page5{background-image:url("room2.jpg")}
+
+.page6{background-image:url("room6.jpg")}
+
+.page7{background-image:url("room1.jpg")}
+
+.page8{background-image:url("bg-page6.jpg")}
+
+.page9{background-image:url("bg-page5.jpg")}
+
+.page10{background-image:url("fragment01.jpg")}
+
+.popup{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.78);
+
+  z-index:99;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:24px;
+
 }
 
-.flow-box p{
-  margin-bottom:22px;
+.popup-box{
+
+  background:#080808;
+
+  border:1px solid rgba(243,223,181,.35);
+
+  padding:32px;
+
+  max-width:420px;
+
+  width:100%;
+
 }
 
-.footer{
-  min-height:60vh;
+.popup-box textarea{
+
+  width:100%;
+
+  height:280px;
+
+  background:#111;
+
+  color:#f1e6d0;
+
+  border:1px solid rgba(243,223,181,.25);
+
+  padding:18px;
+
+  line-height:1.8;
+
+}
+
+.close{
+
+  margin-top:18px;
+
+  display:block;
+
   text-align:center;
+
+  color:#f3dfb5;
+
+  cursor:pointer;
+
 }
 
-.footer .bg{
-  background-image:url("bg-page1.jpg");
+footer{
+
+  background:#030303;
+
+  text-align:center;
+
+  padding:70px 20px;
+
+  color:rgba(241,230,208,.5);
+
+  line-height:2.2;
+
 }
 
-.footer .content{
-  margin:auto;
-}
-
-@media(max-width:768px){
-  section{
-    padding:80px 7%;
-    min-height:100vh;
-  }
-
-  h1{
-    font-size:58px;
-    letter-spacing:.36em;
-  }
-
-  .hero h1{
-    letter-spacing:.42em;
-    padding-left:.42em;
-  }
-
-  h2{
-    font-size:36px;
-  }
-
-  p{
-    font-size:16px;
-  }
-
-  .price{
-    font-size:28px;
-  }
-
-  .dark-card{
-    padding:44px 7%;
-  }
-}
 </style>
+
 </head>
 
 <body>
 
 <section class="hero">
-  <div class="bg"></div>
-  <div class="content">
-    <h1>無限<br>旅程</h1>
 
-    <p>值得，所以不將就。</p>
-    <p>我不是來符合誰的期待。</p>
-    <p>也沒有打算把自己包裝成什麼樣子。</p>
-    <p>這裡只是讓你先知道，我是什麼樣的人。</p>
-    <p>能接受，再往下看。<br>不能接受，離開也很好。</p>
-
-    <div class="brand">
-      WEIGUANG SU JIU<br>
-      Since 2019
-    </div>
-
-    <a href="#booking" class="btn">點擊取得初步單</a>
-  </div>
-</section>
-
-<section>
-  <div class="bg" style="background-image:url('room6.jpg');"></div>
-  <div class="content">
-    <h2>舒 服・自 然・真 誠</h2>
-
-    <p>不用刻意找話題。</p>
-    <p>不用刻意表現什麼。</p>
-    <p>也不用硬把氣氛弄得很熱絡。</p>
-    <p>舒服比歡鬧更重要。</p>
-    <p>我不喜歡消耗別人。</p>
-    <p>也不喜歡被消耗。</p>
-    <p>自然一點，反而比較容易相處。</p>
-  </div>
-</section>
-
-<section>
-  <div class="bg" style="background-image:url('bg-page2.jpg');"></div>
-  <div class="content">
-    <h2>關 於 蘇 純</h2>
-
-    <p>骨感偏瘦，敏感型。</p>
-    <p>不走熱鬧路線，也不刻意討好。</p>
-    <p>我比較在意的是相處時的感覺。</p>
-    <p>安靜、乾淨、有分寸。</p>
-    <p>可以自然靠近，也可以保有距離。</p>
-  </div>
-</section>
-
-<section>
-  <div class="bg" style="background-image:url('room7.jpg');"></div>
-  <div class="content">
-    <h2>旅 程</h2>
-
-    <div class="dark-card">
-
-      <div class="price-item">
-        <div class="num">01</div>
-        <h3>微光・初見</h3>
-        <p>第一次認識彼此的開始。</p>
-        <div class="small">2H</div>
-        <div class="price">5000 / 6000 / 8000</div>
-      </div>
-
-      <div class="price-item">
-        <div class="num">02</div>
-        <h3>微光・稍炙</h3>
-        <p>感覺對了，很多事情自然就有了。</p>
-        <div class="small">3H</div>
-        <div class="price">6200 / 7200 / 9200</div>
-      </div>
-
-      <div class="price-item">
-        <div class="num">03</div>
-        <h3>微光・微醺</h3>
-        <p>放鬆，淺壓，享受自在舒服的過程。</p>
-        <div class="small">10H</div>
-        <div class="price">15000</div>
-      </div>
-
-      <div class="price-item">
-        <div class="num">04</div>
-        <h3>無限旅程</h3>
-        <p>更完整的相處時間。</p>
-        <div class="small">16H</div>
-        <div class="price">20000</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="bg" style="background-image:url('room6.jpg');"></div>
-  <div class="content">
-    <h2>基 本 互 動</h2>
-
-    <ul class="list">
-      <li>共浴</li>
-      <li>情慾式放鬆</li>
-      <li>無壓力相處</li>
-      <li>依雙方舒適度調整</li>
-      <li>部分進階內容，確認預約後另行說明</li>
-    </ul>
-
-    <div class="notice-box">
-      <h3>進階旅程</h3>
-      <p>部分深度互動與私藏旅程，確認預約後另外提供內容。</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="bg" style="background-image:url('room7.jpg');"></div>
   <div class="content center">
-    <h2>預 約 注 意</h2>
 
-    <p>預約請先提供：</p>
+    <h1>微光・之上<br>蘇九｜無限旅程</h1>
 
-    <ul class="list" style="display:inline-block;text-align:left;">
-      <li>日期</li>
-      <li>時間</li>
-      <li>方案</li>
-      <li>Line 暱稱</li>
-    </ul>
+    <p class="line">值得，所以不將就。</p>
 
-    <p>我沒有固定班表。</p>
-    <p>請盡量提供兩個方便時段。</p>
+    <div class="small">SINCE.2019</div>
+
   </div>
+
 </section>
 
-<section>
-  <div class="bg" style="background-image:url('room7.jpg');"></div>
-  <div class="content center">
-    <h2>互 相 尊 重</h2>
+<section class="page2">
 
-    <p>蘇九是老煙槍。</p>
-    <p>若介意菸味，請提前告知。</p>
-    <p>Line 文字沒有溫度。</p>
-    <p>所以我只針對重要內容回覆。</p>
-    <p>感覺跟尊重是互相的。</p>
-    <p>自然相處，旅程才會舒服。</p>
-  </div>
-</section>
-
-<section id="booking">
-  <div class="bg" style="background-image:url('fragment01.jpg');"></div>
-  <div class="content center">
-    <h2>預 約 流 程</h2>
-
-    <div class="flow-box">
-      <p>1｜LINE 稱號：</p>
-      <p>2｜預約日期、時段：</p>
-      <p>3｜選擇方案：</p>
-      <p>4｜是否有進階旅程需求：</p>
-      <p>5｜特殊需求：</p>
-      <p>6｜菸味接受度：</p>
-      <p>7｜初次核對：</p>
-      <p>8｜訂金確認：</p>
-
-      <a class="btn" href="javascript:void(0)" onclick="copyBooking()">複製預約單</a>
-    </div>
-  </div>
-</section>
-
-<section class="footer">
-  <div class="bg"></div>
   <div class="content">
-    <p>微光・之上</p>
-    <p>SU JIU｜INFINITE JOURNEY</p>
-    <p>Since 2019</p>
+
+    <div class="num">01</div>
+
+    <h2>微光・蘇九</h2>
+
+    <p class="line">舒服・自然・真實</p>
+
+    <p class="line">我不是來符合誰的期待。</p>
+
+    <p class="line">也沒有打算把自己包裝成什麼樣子。</p>
+
+    <p class="line">能接受。</p>
+
+    <p class="line">再往下看。</p>
+
+    <p class="line">不能接受，</p>
+
+    <p class="line">離開也很好。</p>
+
   </div>
+
 </section>
+
+<section class="page3">
+
+  <div class="content">
+
+    <div class="num">02</div>
+
+    <h2>認識蘇九</h2>
+
+    <p class="line">曾經以為，</p>
+
+    <p class="line">這環境很單純。</p>
+
+    <p class="line">後來才明白。</p>
+
+    <p class="line">複雜的從來不是環境。</p>
+
+    <p class="line">而是人性。</p>
+
+    <p class="line">感謝曾經的深深。</p>
+
+    <p class="line">現在，</p>
+
+    <p class="line">只有蘇九。</p>
+
+    <p class="line">我不迎合虛偽奉承。</p>
+
+    <p class="line">也不太喜歡勉強。</p>
+
+    <p class="line">相處，感覺是雙向的。</p>
+
+    <p class="line">相幹也是。</p>
+
+  </div>
+
+</section>
+
+<section class="page4">
+
+  <div class="content">
+
+    <div class="num">04</div>
+
+    <h2>微光・初見</h2>
+
+    <p class="line">壹</p>
+
+    <p class="line">100分</p>
+
+    <div class="price">5000 / 7500</div>
+
+  </div>
+
+</section>
+
+<section class="page5">
+
+  <div class="content">
+
+    <div class="num">05</div>
+
+    <h2>微光・稍炙</h2>
+
+    <p class="line">貳</p>
+
+    <p class="line">180分</p>
+
+    <div class="price">6200 / 8500</div>
+
+  </div>
+
+</section>
+
+<section class="page6">
+
+  <div class="content">
+
+    <div class="num">06</div>
+
+    <h2>微光・微醺</h2>
+
+    <p class="line">參</p>
+
+    <p class="line">10H</p>
+
+    <div class="price">15000</div>
+
+  </div>
+
+</section>
+
+<section class="page7">
+
+  <div class="content">
+
+    <div class="num">07</div>
+
+    <h2>微光・之上</h2>
+
+    <p class="line">肆</p>
+
+    <p class="line">16H</p>
+
+    <div class="price">20000</div>
+
+  </div>
+
+</section>
+
+<section class="page8">
+
+  <div class="content">
+
+    <div class="num">08</div>
+
+    <h2>旅程內容</h2>
+
+    <p class="line">共浴</p>
+
+    <p class="line">放鬆</p>
+
+    <p class="line">聊天</p>
+
+    <p class="line">陪伴</p>
+
+    <p class="line">擁抱</p>
+
+    <p class="line">親吻</p>
+
+    <p class="line">情慾</p>
+
+  </div>
+
+</section>
+
+<section class="page9">
+
+  <div class="content">
+
+    <div class="num">09</div>
+
+    <h2>蘇九的重點</h2>
+
+    <p class="line">人來心來。</p>
+
+    <p class="line">人走心帶走。</p>
+
+    <p class="line">花錢不是大爺。</p>
+
+    <p class="line">你的錢也不是美金。</p>
+
+    <p class="line">互相尊重。</p>
+
+    <p class="line">才會得到彼此想要的感覺。</p>
+
+    <p class="line">蘇九給的是專業服務。</p>
+
+    <p class="line">不是賣肉。</p>
+
+    <p class="line">砍價殺價請去菜市場。</p>
+
+  </div>
+
+</section>
+
+<section class="page10">
+
+  <div class="content center">
+
+    <div class="num">10</div>
+
+    <h2>開始旅程</h2>
+
+    <a class="btn" onclick="openPopup()">按下按鈕</a>
+
+  </div>
+
+</section>
+
+<div class="popup" id="popup">
+
+  <div class="popup-box">
+
+    <textarea readonly>
+
+LINE稱號：
+
+預約日期：
+
+預約時間：
+
+選擇旅程：
+
+是否初次：
+
+想安排的感覺：
+
+其他想說的：
+
+    </textarea>
+
+    <span class="close" onclick="closePopup()">關閉</span>
+
+  </div>
+
+</div>
+
+<footer>
+
+  <p>微光・之上</p>
+
+  <p>Infinite Journey</p>
+
+  <p>Since 2019</p>
+
+</footer>
 
 <script>
-function copyBooking(){
-  const text =
-`1｜LINE 稱號：
-2｜預約日期、時段：
-3｜選擇方案：
-4｜是否有進階旅程需求：
-5｜特殊需求：
-6｜菸味接受度：
-7｜初次核對：
-8｜訂金確認：`;
 
-  navigator.clipboard.writeText(text).then(function(){
-    alert("預約單已複製");
-  });
+function openPopup(){
+
+  document.getElementById("popup").style.display="flex";
+
 }
+
+function closePopup(){
+
+  document.getElementById("popup").style.display="none";
+
+}
+
 </script>
 
 </body>
+
 </html>
