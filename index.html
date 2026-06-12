@@ -370,21 +370,29 @@ section.in-view .line{
     <a class="btn line" style="--i:3" href="https://line.me/R/ti/p/@你的官方LINEID">官方 LINE</a>
   </div>
 </section>
-
 <script>
+
 const sections = document.querySelectorAll("section");
 
 sections[0].classList.add("in-view");
 
 const observer = new IntersectionObserver((entries)=>{
+
   entries.forEach(entry=>{
+
     if(entry.isIntersecting){
+
       entry.target.classList.add("in-view");
+
     }
+
   });
+
 },{threshold:0.2});
 
 sections.forEach(section=>observer.observe(section));
+
 </script>
 </body>
 </html>
+
