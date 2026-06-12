@@ -404,20 +404,20 @@ footer::before{
 .floating-booking{
     display:block !important;
     position:fixed;
-  left:50%;
-  bottom:calc(24px + env(safe-area-inset-bottom));
-  transform:translateX(-50%);
-  z-index:9999;
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%);
+    z-index:9999;
 }
 .floating-booking button{
   border:1px solid rgba(245,220,170,.38);
   background:rgba(0,0,0,.66);
   backdrop-filter:blur(12px);
   color:#f5dfb0;
-  padding:16px 34px;
-  font-size:14px;
+  padding:18px 40px;
+  font-size:18px;
   letter-spacing:.28em;
-  border-radius:999px;
+  border-radius:50px;
   cursor:pointer;
   font-family:
   box-shadow:
@@ -804,7 +804,7 @@ padding-right:8px !important;
 </footer>
 <div class="booking-popup" id="bookingPopup">
   <div class="booking-panel">
-    <h2>預約單</h2>
+    <h2>初步預約單</h2>
     <p class="muted">確認預約後，請複製以下內容，直接傳送至 LINE。</p>
     <div class="booking-options">
       <label><input type="checkbox" value="微光・初見 2H"><span>初見 2H</span></label>
@@ -867,7 +867,7 @@ function copyBooking(){
 }
 </script>
 <button class="floating-booking" onclick="openBooking()">
-開始預約
+點擊取得初步單
 </button>
 </body>
 </html>
