@@ -78,7 +78,9 @@ h1,h2{
   text-shadow:0 2px 18px rgba(0,0,0,.65);
 }
 
-h1{
+  h1{
+  color:#F7F1E8;
+}
   font-size:clamp(30px,8vw,58px);
   margin-bottom:30px;
 }
@@ -87,9 +89,9 @@ h2{
   font-size:clamp(28px,7vw,46px);
   margin-bottom:42px;
 }
-
-.line{
-  color:var(--text);
+ .line{
+  color:#E9DAB8;
+}
   font-size:clamp(18px,4.8vw,25px);
   line-height:2.05;
   margin:8px 0;
@@ -97,16 +99,19 @@ h2{
   transform:translateY(18px);
   transition:opacity 1.8s ease, transform 1.8s ease;
   transition-delay:calc(var(--i) * .38s);
-  text-shadow:0 2px 14px rgba(0,0,0,.75);
+.line{
+  text-shadow:
+    0 0 8px rgba(255,255,255,.08),
+    0 0 20px rgba(233,218,184,.12);
 }
 
 section.in-view .line{
   opacity:1;
   transform:translateY(0);
 }
-
-.small{
-  color:rgba(230,214,179,.62);
+ .small{
+  color:rgba(233,218,184,.75);
+}
   font-size:clamp(13px,3.6vw,18px);
   letter-spacing:.38em;
   margin-top:34px;
