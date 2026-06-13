@@ -8,7 +8,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* 🎨 高對比・奢華黑金配色 */
+/* 🎨 頂級高對比・奢華黑金配色 */
 :root{
   --bg: #000000;
   --gold-bright: #FFF3D6;            /* 耀眼香檳金（主標題） */
@@ -30,38 +30,6 @@ body{
   letter-spacing:.15em;
 }
 
-/* 🛠️ 安全不跑版核心：4-7頁專屬的滿版固定背景層 */
-.journey-fixed-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100svh; /* 完美適應手機環境列 */
-  background-image: url("room01.jpg");
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-/* 當進入旅程區塊時，透過 JS 讓它顯現出來 */
-.journey-fixed-bg.show {
-  opacity: 1;
-}
-
-/* 為這個固定背景層加上微光暗化遮罩 */
-.journey-fixed-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
-    rgba(0,0,0,0.2);
-}
-
 /* 通用 Section 設定 */
 section{
   position:relative;
@@ -75,13 +43,13 @@ section{
   z-index: 3;
 }
 
-/* 普通頁面的背景（1, 2, 3, 8, 9, 10 頁） */
+/* 🛠️ 普通頁面的背景（1, 2, 3, 8, 9, 10 頁） */
 .bg{
   position:absolute;
   inset:0;
   background-size:cover;
   background-position:center;
-  transform:scale(1.08);
+  transform:scale(1.1);
   transition:transform 2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index:1;
 }
@@ -90,7 +58,15 @@ section.in-view .bg{
   transform:scale(1);
 }
 
-/* 1, 2, 3 頁普通遮罩 */
+/* 🛠️ 【靈魂修正】旅程區塊（page-plan 4, 5, 6, 7 頁）：同步第 9 區的一直滾動滿版效果 */
+section.page-plan {
+  background-image: url("room01.jpg"); /* 4頁共用同一張長圖 */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* 讓照片絕對靜止滿版，文字在上方自由流動漂浮 */
+}
+
+/* 普通頁面遮罩（1, 2, 3 頁） */
 section:not(.page-plan):not(.dark-fix)::after{
   content:"";
   position:absolute;
@@ -101,7 +77,18 @@ section:not(.page-plan):not(.dark-fix)::after{
   z-index:2;
 }
 
-/* 8, 9, 10 頁（浴室、床照等亮色背景）的高級暗化遮罩 */
+/* 旅程區塊專屬全黑柔化遮罩（4, 5, 6, 7 頁） */
+section.page-plan::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75)),
+    rgba(0,0,0,0.2);
+  z-index:2;
+}
+
+/* 後段稍微偏亮的頁面加強遮罩（8, 9, 10 頁） */
 section.dark-fix::after {
   content:"";
   position:absolute;
@@ -112,11 +99,6 @@ section.dark-fix::after {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   z-index:2;
-}
-
-/* 旅程區塊（4, 5, 6, 7 頁）本身不需要背景圖，因為它會透出下方的固定層 */
-section.page-plan {
-  background: transparent;
 }
 
 .content{
@@ -228,7 +210,7 @@ section.in-view .line{
   transform: translateY(-2px);
 }
 
-/* 指派獨立背景圖（排除了4,5,6,7頁，改由獨立固定層接管） */
+/* 指派獨立背景圖 */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
@@ -238,13 +220,13 @@ section.in-view .line{
 
 @media (max-width:480px){
   section{ padding:60px 24px; }
+  /* 手機端若不支援 fixed 可以流暢退回一般滿版滾動 */
+  section.page-plan { background-attachment: scroll; }
 }
 </style>
 </head>
 
 <body>
-
-<div class="journey-fixed-bg" id="journeyBg"></div>
 
 <section class="page1">
   <div class="bg"></div>
@@ -405,28 +387,13 @@ section.in-view .line{
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const allSections = document.querySelectorAll("section");
-  const journeyBg = document.getElementById("journeyBg");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
-
-        // 如果目前滑到旅程區區塊（4, 5, 6, 7頁），就把固定滿版背景叫出來
-        if (entry.target.classList.contains("page-plan")) {
-          journeyBg.classList.add("show");
-        }
       } else {
         entry.target.classList.remove("in-view");
-        
-        // 離開旅程區塊時隱藏，讓前面和後面的獨立頁背景正常顯示
-        if (entry.target.classList.contains("page-plan")) {
-          // 檢查是不是所有 page-plan 都離開視窗了
-          const anyPlanVisible = Array.from(document.querySelectorAll(".page-plan")).some(el => el.classList.contains("in-view"));
-          if (!anyPlanVisible) {
-            journeyBg.classList.remove("show");
-          }
-        }
       }
     });
   }, {
