@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+ html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
@@ -30,8 +31,69 @@ body{
   letter-spacing:.15em;
 }
 
-/* 🛠️ 核心修正：手機不跑版「獨立滿版固定背景層」 */
-/* 讓 4、5、6、7 頁的 room01.jpg 真正頂天立地固定在背後，文字自由滑過 */
+/* ===================================================
+   👑 第一頁（首頁）專屬大氣排版樣式
+   =================================================== */
+.page1 {
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+}
+
+/* 破除過窄限制，讓字體在手機上完全伸展 */
+.page1 .content {
+  max-width: 90% !important; 
+  margin-top: -6vh; /* 整個文字往上提，視覺焦點更集中、避開底部選單 */
+  text-align: center;
+}
+
+/* 主標題：極致放大、加厚，奢華流沙金 */
+.page1 h1 {
+  font-size: clamp(44px, 12vw, 68px) !important; 
+  font-weight: 400; /* 微加粗，讓漸層顏色更顯眼 */
+  letter-spacing: 0.3em; /* 大幅拉開字距，製造空靈高級感 */
+  padding-left: 0.3em;   /* 平衡因字距產生的排版偏心 */
+  margin-bottom: 40px;   /* 跟下方副標拉開距離 */
+  background: linear-gradient(135deg, #FFF5DF 0%, #E6C280 50%, #C6A669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 3px 12px rgba(0, 0, 0, 0.95));
+}
+
+/* 副標題：蘇九｜無限旅程 */
+.page1 .sub-title {
+  color: #E6C280 !important; 
+  font-size: clamp(20px, 5.5vw, 26px) !important; /* 大幅放大 */
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  padding-left: 0.25em;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.95);
+}
+
+/* 核心精神：值得，所以不將就 */
+.page1 .brand-concept {
+  color: #FFFFFF !important;
+  font-size: clamp(21px, 5vw, 25px) !important; /* 放大內文 */
+  font-weight: 300;
+  line-height: 2.3; /* 拉高行距，讀起來非常優雅舒適 */
+  letter-spacing: 0.3em;
+  padding-left: 0.3em;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.95);
+}
+
+/* 年份小標籤 */
+.page1 .since-tag {
+  color: rgba(230, 194, 128, 0.6) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.6em;
+  padding-left: 0.6em;
+  margin-top: 50px;
+}
+
+/* ===================================================
+   🛠️ 手機不跑版「獨立滿版固定背景層」 (4, 5, 6, 7頁接管)
+   =================================================== */
 .journey-fixed-bg {
   position: fixed;
   top: 0;
@@ -48,12 +110,11 @@ body{
   transition: opacity 0.5s ease;
 }
 
-/* 當進入旅程區塊時（4-7頁），無縫浮現 */
 .journey-fixed-bg.show {
   opacity: 1;
 }
 
-/* 調整旅程區遮罩：告別死黑，讓精緻的房間背景隱約透出奢華感 */
+/* 調整旅程區遮罩：告別死黑，讓房間背景隱約透出奢華感 */
 .journey-fixed-bg::after {
   content: "";
   position: absolute;
@@ -63,7 +124,9 @@ body{
     rgba(3,3,3,0.2);
 }
 
-/* 通用 Section 設定 */
+/* ===================================================
+   📜 其他通用 Section 與內文樣式
+   =================================================== */
 section{
   position:relative;
   min-height:100svh;
@@ -91,8 +154,8 @@ section.in-view .bg{
   transform:scale(1);
 }
 
-/* 1, 2, 3 頁普通輕量遮罩（降低黑色比例，不讓畫面黑成一團） */
-section:not(.page-plan):not(.dark-fix)::after{
+/* 2, 3 頁普通輕量遮罩（降低黑色比例，透出照片細節） */
+section:not(.page1):not(.page-plan):not(.dark-fix)::after{
   content:"";
   position:absolute;
   inset:0;
@@ -102,7 +165,7 @@ section:not(.page-plan):not(.dark-fix)::after{
   z-index:2;
 }
 
-/* 8, 9, 10 頁（高亮照片專用）高級暗化遮罩，隱化刺眼雜亂細節 */
+/* 8, 9, 10 頁高級暗化遮罩（隱化雜亂細節） */
 section.dark-fix::after {
   content:"";
   position:absolute;
@@ -115,7 +178,7 @@ section.dark-fix::after {
   z-index:2;
 }
 
-/* 旅程區塊（4, 5, 6, 7 頁）本身保持完全透明，完美顯露背後的滿版長圖 */
+/* 旅程區塊（4, 5, 6, 7 頁）保持透明，顯露背後的滿版固定長圖 */
 section.page-plan {
   background: transparent !important;
 }
@@ -132,17 +195,7 @@ section.page-plan {
   text-align:center;
 }
 
-/* 大標題：耀眼的高亮香檳金漸層 */
-h1 {
-  font-size: clamp(34px, 9vw, 56px);
-  margin-bottom: 24px;
-  font-weight: 300;
-  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 2px 8px var(--shadow-dark));
-}
-
+/* 2-10頁的大標題樣式 */
 h2 {
   font-size: clamp(26px, 7vw, 38px);
   margin-bottom: 36px;
@@ -158,7 +211,7 @@ h2 {
   padding-left: 0;
 }
 
-/* 內文細字：純白 + 強烈雙重文字陰影，即使在亮光背景處也絕對清晰 */
+/* 2-10頁的內文細字：純白 + 強烈文字陰影 */
 .line{
   color: var(--pure-white); 
   font-size:clamp(16px,4.3vw,21px);
@@ -178,14 +231,7 @@ section.in-view .line{
   transform:translateY(0);
 }
 
-.small{
-  color: var(--gold-accent);
-  font-size:clamp(12px,3.4vw,15px);
-  letter-spacing:.4em;
-  margin-top:30px;
-}
-
-/* 微光旅程專屬排版 */
+/* 微光旅程頁面專屬排版 */
 .plan-tag{
   position:absolute;
   z-index:5;
@@ -206,7 +252,7 @@ section.in-view .line{
 .plan-note{ margin-top:40px; border-top: 1px solid rgba(230,194,128,0.25); padding-top: 24px; }
 .plan-note .line { color: rgba(255,255,255,0.85); }
 
-/* 按鈕外框：完美復刻圖文選單圓角與細線質感 */
+/* 按鈕外框 */
 .btn{
   display:inline-block;
   margin-top:40px;
@@ -229,7 +275,7 @@ section.in-view .line{
   transform: translateY(-2px);
 }
 
-/* 指派獨立背景圖（旅程區4、5、6、7頁已排除，由全版固定層無縫接管） */
+/* 指派獨立背景圖（旅程區4、5、6、7頁由全版固定層無縫接管） */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
@@ -249,12 +295,12 @@ section.in-view .line{
 
 <section class="page1">
   <div class="bg"></div>
-  <div class="content center">
+  <div class="content">
     <h1 class="line" style="--i:0">微光・之上</h1>
-    <p class="line" style="--i:1">蘇九｜無限旅程</p>
-    <p class="line" style="--i:2">值得</p>
-    <p class="line" style="--i:3">所以不將就</p>
-    <p class="line small" style="--i:4">SINCE 2019</p>
+    <p class="line sub-title" style="--i:1">蘇九｜無限旅程</p>
+    <p class="line brand-concept" style="--i:2">值得</p>
+    <p class="line brand-concept" style="--i:3">所以不將就</p>
+    <p class="line since-tag" style="--i:4">SINCE 2019</p>
   </div>
 </section>
 
@@ -341,7 +387,7 @@ section.in-view .line{
       <p class="line" style="--i:3">共啟旅程中，</p>
       <p class="line" style="--i:4">感覺對了。</p>
       <p class="line" style="--i:5">很多事情，</p>
-      <p class="line" style="--i:6">自然就會 brass 發生。</p>
+      <p class="line" style="--i:6">自然就會發生。</p>
     </div>
   </div>
 </section>
@@ -430,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, {
-    threshold: 0.12, /* 針對手機微調觸發時機，滑動更靈敏 */
+    threshold: 0.12, /* 針對手機端精準優化觸發時機 */
     rootMargin: "0px 0px -8% 0px"
   });
 
