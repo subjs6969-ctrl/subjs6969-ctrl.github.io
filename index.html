@@ -1,3 +1,4 @@
+上線版
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -8,11 +9,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
+/* 🛠️ 設計師精準調色：完全同步官方 LINE 圖文選單的高奢黑金 */
 :root{
-  --bg:#050505;
-  --gold:#E6D6B3;
-  --text:#D8D0C3;
-  --white:#F8F3EA;
+  --bg: #030303;                     /* 深邃黑夜底色 */
+  --gold-light: #F2E5C9;             /* 流沙香檳金（主標題） */
+  --gold-mid: #D0B480;               /* 微光星塵金（重點標籤/按鈕） */
+  --platinum-text: #EAE6DF;          /* 月光鉑金白（高級感內文，好讀不單調） */
+  --sub-text: rgba(234,230,223,0.55);/* 輔助文字陰影色 */
 }
 
 html{
@@ -22,13 +25,13 @@ html{
 }
 
 body{
-  color:var(--text);
+  color:var(--platinum-text);
   font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
   overflow-x:hidden;
-  letter-spacing:.12em;
+  letter-spacing:.15em; /* 稍微加寬字距，更有精品排版感 */
 }
 
-/* 核心：共享背景容器（專屬 4, 5, 6, 7 頁的 room01.jpg） */
+/* 共享長圖背景容器（專屬 4, 5, 6, 7 頁） */
 .global-bg-container {
   position: fixed;
   top: 0;
@@ -38,11 +41,10 @@ body{
   z-index: 1;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0; /* 預設隱形，只有滑到旅程區塊才會亮起來 */
-  transition: opacity 0.6s ease;
+  opacity: 0; 
+  transition: opacity 0.8s ease;
 }
 
-/* 當進入微光旅程區塊時，透過 JS 讓這張長圖浮現 */
 .global-bg-container.show {
   opacity: 1;
 }
@@ -56,12 +58,12 @@ body{
   background-image: url("room01.jpg");
   background-size: cover;
   background-position: center top;
-  transform: scale(1.15);
-  transition: background-position 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1.12);
+  transition: background-position 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .global-bg.pulse-flow {
-  transform: scale(1);
+  transform: scale(1.02);
 }
 
 .global-bg-container::after {
@@ -69,8 +71,8 @@ body{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,.7)),
-    rgba(0,0,0,.2);
+    linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+    rgba(0,0,0,0.3);
   z-index: 2;
 }
 
@@ -83,18 +85,18 @@ section{
   scroll-snap-align:start;
   display:flex;
   align-items:center;
-  padding:88px 26px;
+  padding:60px 28px;
   z-index: 3;
 }
 
-/* 普通頁面的獨立背景（1, 2, 3, 8, 9, 10 頁專用） */
+/* 普通頁面的獨立背景 */
 .bg{
   position:absolute;
   inset:0;
   background-size:cover;
   background-position:center;
-  transform:scale(1.15);
-  transition:transform 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform:scale(1.1);
+  transition:transform 2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index:1;
 }
 
@@ -102,14 +104,27 @@ section.in-view .bg{
   transform:scale(1);
 }
 
-/* 普通頁面的背景暗化遮罩 */
-section:not(.page-plan)::after{
+/* 普通頁面遮罩（1,2,3頁） */
+section:not(.page-plan):not(.dark-fix)::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom,rgba(0,0,0,.46),rgba(0,0,0,.66)),
-    rgba(0,0,0,.14);
+    linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+    rgba(0,0,0,0.2);
+  z-index:2;
+}
+
+/* 🛠️ 重度暗化遮罩（8,9,10頁專用）：徹底降伏太亮的床照與浴室照，完美銜接暗黑主調 */
+section.dark-fix::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom, rgba(3,3,3,0.82), rgba(3,3,3,0.95)),
+    rgba(3,3,3,0.7);
+  backdrop-filter: blur(4px); /* 加強毛玻璃效果，隱化刺眼雜亂的背景細節 */
+  -webkit-backdrop-filter: blur(4px);
   z-index:2;
 }
 
@@ -117,35 +132,53 @@ section:not(.page-plan)::after{
   position:relative;
   z-index:4;
   width:100%;
-  max-width:680px;
+  max-width:600px;
+  margin: 0 auto;
 }
 
 .center{
   text-align:center;
-  margin:auto;
 }
 
-h1,h2{
-  color:var(--gold);
-  font-weight:300;
-  line-height:1.55;
-  text-shadow:0 0 18px rgba(230,214,179,.12);
+/* 🛠️ 大標題：導入 LINE 圖文選單的黃金星塵微光漸層 */
+h1, h2 {
+  font-weight: 300;
+  line-height: 1.5;
 }
 
-h1{ font-size:clamp(30px,8vw,58px); margin-bottom:28px; }
-h2{ font-size:clamp(28px,7vw,46px); margin-bottom:42px; }
+h1 {
+  font-size: clamp(34px, 9vw, 56px);
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-mid) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 0px 20px rgba(242,229,201,0.1);
+}
 
-/* 文字滑入與一行行跳出動態 */
+h2 {
+  font-size: clamp(26px, 7vw, 38px);
+  margin-bottom: 36px;
+  color: var(--gold-light);
+  border-left: 2px solid var(--gold-mid);
+  padding-left: 14px;
+}
+
+.center h2 {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* 內文細字線條 */
 .line{
-  color:var(--text);
-  font-size:clamp(18px,4.8vw,25px);
-  line-height:2.05;
-  margin:8px 0;
+  color: var(--platinum-text); /* 月光鉑金白，層次分明 */
+  font-size:clamp(16px,4.3vw,21px);
+  line-height:2.1;
+  margin:6px 0;
   opacity:0;
-  transform:translateY(20px);
-  transition:opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay:calc(var(--i) * .23s);
-  text-shadow:0 2px 10px rgba(0,0,0,.5);
+  transform:translateY(15px);
+  transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay:calc(var(--i) * .14s);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.85);
 }
 
 section.in-view .line{
@@ -154,45 +187,56 @@ section.in-view .line{
 }
 
 .small{
-  color:rgba(230,214,179,.62);
-  font-size:clamp(13px,3.6vw,18px);
-  letter-spacing:.38em;
-  margin-top:34px;
+  color: var(--gold-mid);
+  font-size:clamp(12px,3.4vw,15px);
+  letter-spacing:.4em;
+  margin-top:30px;
 }
 
+/* 微光旅程專屬排版 */
 .plan-tag{
   position:absolute;
   z-index:5;
-  top:28px;
-  left:22px;
-  color:rgba(230,214,179,.76);
-  font-size:12px;
-  letter-spacing:.35em;
+  top:32px;
+  left:28px;
+  color: var(--gold-mid);
+  font-size:11px;
+  letter-spacing:.4em;
+  border-bottom: 1px solid rgba(208,180,128,0.3);
+  padding-bottom: 4px;
 }
 
-.plan{ text-align:center; margin:auto; }
-.plan-title{ color:var(--gold); font-size:clamp(32px,8.5vw,56px); font-weight:300; line-height:1.7; margin-bottom:18px; }
-.plan-time{ color:rgba(216,208,195,.82); font-size:clamp(18px,4.6vw,24px); margin:18px 0 28px; }
-.plan-price{ color:var(--white); font-size:clamp(20px,5.4vw,30px); line-height:1.8; margin:8px 0; }
-.plan-note{ margin-top:60px; }
+.plan{ text-align:center; }
+.plan-title{ color:var(--gold-light); font-size:clamp(34px,9vw,52px); font-weight:300; margin-bottom:8px; border-left:none; padding-left:0; }
+.plan-time{ color: var(--gold-mid); font-size:clamp(16px,4.2vw,20px); margin-bottom:24px; letter-spacing: 0.2em; font-weight: 300; }
+.plan-price{ color:var(--platinum-text); font-size:clamp(19px,5vw,26px); font-weight:400; line-height:1.6; margin:4px 0; }
+.plan-note{ margin-top:40px; border-top: 1px solid rgba(208,180,128,0.2); padding-top: 24px; }
+.plan-note .line { color: var(--sub-text); } /* 讓備註文字稍微變暗，拉開視覺權重 */
 
+/* 🛠️ 按鈕：完美復刻圖文選單外框的高奢圓角細線質感 */
 .btn{
   display:inline-block;
-  margin-top:42px;
-  padding:14px 34px;
-  border:1px solid rgba(230,214,179,.55);
+  margin-top:40px;
+  padding:14px 45px;
+  border:1px solid var(--gold-mid);
   border-radius:999px;
-  color:var(--gold);
+  color: var(--gold-light);
   text-decoration:none;
-  font-size:16px;
-  letter-spacing:.18em;
-  background:rgba(0,0,0,.18);
-  transition:.35s ease;
+  font-size:15px;
+  letter-spacing:.25em;
+  background: rgba(3,3,3,0.6);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-.btn:hover{ background:rgba(230,214,179,.12); }
+.btn:hover{ 
+  background: var(--gold-mid); 
+  color: var(--bg); 
+  box-shadow: 0 0 25px rgba(208,180,128,0.4);
+  transform: translateY(-2px);
+}
 
-/* 指派普通頁面的專屬背景圖（4,5,6,7頁在這裡不設背景，因為她們要共享長圖） */
+/* 指派獨立背景圖 */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
@@ -201,9 +245,7 @@ section.in-view .line{
 .page10 .bg{background-image:url("room7.jpg")}
 
 @media (max-width:480px){
-  section{ padding:82px 24px; }
-  .content{ max-width:100%; }
-  .plan-note{ margin-top:52px; }
+  section{ padding:60px 24px; }
 }
 </style>
 </head>
@@ -261,8 +303,8 @@ section.in-view .line{
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">壹・初見</h2>
     <p class="line plan-time" style="--i:1">100分</p>
-    <p class="line plan-price" style="--i:2">5000・基本服務</p>
-    <p class="line plan-price" style="--i:3">7000・職人進階</p>
+    <p class="line plan-price" style="--i:2">5000 ・ 基本服務</p>
+    <p class="line plan-price" style="--i:3">7000 ・ 職人進階</p>
     <div class="plan-note">
       <p class="line" style="--i:4">第一次嘗試的你</p>
       <p class="line" style="--i:5">很適合。</p>
@@ -275,8 +317,8 @@ section.in-view .line{
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">貳・短程</h2>
     <p class="line plan-time" style="--i:1">180分</p>
-    <p class="line plan-price" style="--i:2">6200・基本服務</p>
-    <p class="line plan-price" style="--i:3">8200・職人進階</p>
+    <p class="line plan-price" style="--i:2">6200 ・ 基本服務</p>
+    <p class="line plan-price" style="--i:3">8200 ・ 職人進階</p>
     <div class="plan-note">
       <p class="line" style="--i:4">時間多一點</p>
       <p class="line" style="--i:5">相處也多一點。</p>
@@ -308,12 +350,12 @@ section.in-view .line{
       <p class="line" style="--i:3">共啟旅程中，</p>
       <p class="line" style="--i:4">感覺對了。</p>
       <p class="line" style="--i:5">很多事情，</p>
-      <p class="line" style="--i:6">自然就會放生。</p>
+      <p class="line" style="--i:6">自然就會發生。</p>
     </div>
   </div>
 </section>
 
-<section class="page8">
+<section class="page8 dark-fix">
   <div class="bg"></div>
   <div class="content">
     <h2 class="line" style="--i:0">旅程內容</h2>
@@ -335,33 +377,32 @@ section.in-view .line{
     <p class="line" style="--i:16">才是旅程的重點。</p>
     <p class="line" style="--i:17">適合的人，</p>
     <p class="line" style="--i:18">自然會懂。</p>
-    <p class="line" style="--i:19">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
+    <p class="line" style="--i:19" style="color:var(--gold-mid)">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
   </div>
 </section>
 
-<section class="page9">
+<section class="page9 dark-fix">
   <div class="bg"></div>
   <div class="content">
     <h2 class="line" style="--i:0">預約前注意事項</h2>
-    <p class="line" style="--i:1">1｜蘇九有抽菸。</p>
+    <p class="line" style="--i:1"><span style="color:var(--gold-mid)">1｜</span>蘇九有抽菸。</p>
     <p class="line" style="--i:2">對菸味敏感，請務必告知。</p>
-    <p class="line" style="--i:3">這是對您來訪的尊重。</p>
-    <p class="line" style="--i:4">2｜初次預約需先匯款。</p>
+    <p class="line" style="--i:3" style="color:var(--sub-text)">這是對您來訪的尊重。</p>
+    <p class="line" style="--i:4"><span style="color:var(--gold-mid)">2｜</span>初次預約需先匯款。</p>
     <p class="line" style="--i:5">壹、貳 定金 1500。</p>
     <p class="line" style="--i:6">參、肆 定金 3000。</p>
-    <p class="line" style="--i:7">你怕詐騙。</p>
-    <p class="line" style="--i:8">我也怕被騙。</p>
-    <p class="line" style="--i:9">3｜環境很重要。</p>
-    <p class="line" style="--i:10">價格已包含房費。</p>
-    <p class="line" style="--i:11">無需另外負擔費用。</p>
-    <p class="line" style="--i:12">4｜想要的服務、體驗，</p>
-    <p class="line" style="--i:13">請直接列在預約單上。</p>
-    <p class="line" style="--i:14">詳細流程與規則，</p>
-    <p class="line" style="--i:15">請至官方 LINE 了解。</p>
+    <p class="line" style="--i:7" style="color:var(--gold-light)">你怕詐騙，我也怕被騙。</p>
+    <p class="line" style="--i:8"><span style="color:var(--gold-mid)">3｜</span>環境很重要。</p>
+    <p class="line" style="--i:9">價格已包含房費。</p>
+    <p class="line" style="--i:10" style="color:var(--sub-text)">無需另外負擔費用。</p>
+    <p class="line" style="--i:11"><span style="color:var(--gold-mid)">4｜</span>想要的服務、體驗，</p>
+    <p class="line" style="--i:12">請直接列在預約單上。</p>
+    <p class="line" style="--i:13">詳細流程與規則，</p>
+    <p class="line" style="--i:14">請至官方 LINE 了解。</p>
   </div>
 </section>
 
-<section class="page10">
+<section class="page10 dark-fix">
   <div class="bg"></div>
   <div class="content center">
     <h2 class="line" style="--i:0">開始旅程</h2>
@@ -379,25 +420,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // 不管是哪一頁，只要進畫面，字體一行行出來的效果都要觸發
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
 
-        // 🛠️ 核心檢查：如果是「微光旅程（壹貳參肆）」這四個專屬區塊
         if (entry.target.classList.contains("page-plan")) {
-          // 1. 顯現共享背景
           container.classList.add("show");
           
-          // 2. 移動照片到對應的身體位置（頭、腰、大腿、腳）
           const targetPos = entry.target.getAttribute("data-bg-pos");
           sharedBg.style.backgroundPosition = targetPos;
 
-          // 3. 觸發大變小流動感
           sharedBg.classList.remove("pulse-flow");
           void sharedBg.offsetWidth; 
           sharedBg.classList.add("pulse-flow");
         } else {
-          // 如果滑到了其他一般頁面，把共享長圖隱藏，讓一般頁面的背景露出來
           container.classList.remove("show");
         }
       } else {
@@ -405,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, {
-    threshold: 0.15,
+    threshold: 0.2,
     rootMargin: "0px 0px -10% 0px"
   });
 
