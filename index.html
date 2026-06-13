@@ -354,25 +354,32 @@ section.in-view .line{
     <a class="btn line" style="--i:3" href="https://lin.ee/8PWbHBM" target="_blank">官方 LINE</a>
   </div>
 </section>
+</section>
+
+<section class="page10">
+...
+</section>
 
 <script>
 const sections = document.querySelectorAll("section");
-//sections[0].classList.add("in-view");
 
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
       entry.target.classList.add("in-view");
+    }else{
+      entry.target.classList.remove("in-view");
     }
   });
-},{threshold:0.35});
+},{threshold:0.45});
 
 sections.forEach(section=>observer.observe(section));
+
 window.addEventListener("load",()=>{
   setTimeout(()=>{
     document.querySelector(".page1").classList.add("in-view");
   },300);
-});
+  });係
 </script>
 
 </body>
