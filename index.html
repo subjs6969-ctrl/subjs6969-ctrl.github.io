@@ -18,16 +18,63 @@
 html{
   scroll-behavior:smooth;
   scroll-snap-type:y proximity;
+  background: var(--bg);
 }
 
 body{
-  background:var(--bg);
   color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
   overflow-x:hidden;
   letter-spacing:.12em;
 }
 
+/* 核心：共享背景容器（專屬 4, 5, 6, 7 頁的 room01.jpg） */
+.global-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0; /* 預設隱形，只有滑到旅程區塊才會亮起來 */
+  transition: opacity 0.6s ease;
+}
+
+/* 當進入微光旅程區塊時，透過 JS 讓這張長圖浮現 */
+.global-bg-container.show {
+  opacity: 1;
+}
+
+.global-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("room01.jpg");
+  background-size: cover;
+  background-position: center top;
+  transform: scale(1.15);
+  transition: background-position 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.global-bg.pulse-flow {
+  transform: scale(1);
+}
+
+.global-bg-container::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,.7)),
+    rgba(0,0,0,.2);
+  z-index: 2;
+}
+
+/* 通用 Section 設定 */
 section{
   position:relative;
   min-height:100svh;
@@ -37,34 +84,38 @@ section{
   display:flex;
   align-items:center;
   padding:88px 26px;
+  z-index: 3;
 }
 
+/* 普通頁面的獨立背景（1, 2, 3, 8, 9, 10 頁專用） */
 .bg{
   position:absolute;
   inset:0;
   background-size:cover;
   background-position:center;
-  transform:scale(1.12);
-  transition:transform 2.8s ease;
+  transform:scale(1.15);
+  transition:transform 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index:1;
 }
 
 section.in-view .bg{
   transform:scale(1);
 }
 
-section::after{
+/* 普通頁面的背景暗化遮罩 */
+section:not(.page-plan)::after{
   content:"";
   position:absolute;
   inset:0;
   background:
     linear-gradient(to bottom,rgba(0,0,0,.46),rgba(0,0,0,.66)),
     rgba(0,0,0,.14);
-  z-index:1;
+  z-index:2;
 }
 
 .content{
   position:relative;
-  z-index:2;
+  z-index:4;
   width:100%;
   max-width:680px;
 }
@@ -81,26 +132,20 @@ h1,h2{
   text-shadow:0 0 18px rgba(230,214,179,.12);
 }
 
-h1{
-  font-size:clamp(30px,8vw,58px);
-  margin-bottom:28px;
-}
+h1{ font-size:clamp(30px,8vw,58px); margin-bottom:28px; }
+h2{ font-size:clamp(28px,7vw,46px); margin-bottom:42px; }
 
-h2{
-  font-size:clamp(28px,7vw,46px);
-  margin-bottom:42px;
-}
-
+/* 文字滑入與一行行跳出動態 */
 .line{
   color:var(--text);
   font-size:clamp(18px,4.8vw,25px);
   line-height:2.05;
   margin:8px 0;
   opacity:0;
-  transform:translateY(18px);
-  transition:opacity .9s ease, transform .9s ease;
-  transition-delay:calc(var(--i) * .22s);
-  text-shadow:0 2px 10px rgba(0,0,0,.45);
+  transform:translateY(20px);
+  transition:opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay:calc(var(--i) * .23s);
+  text-shadow:0 2px 10px rgba(0,0,0,.5);
 }
 
 section.in-view .line{
@@ -117,7 +162,7 @@ section.in-view .line{
 
 .plan-tag{
   position:absolute;
-  z-index:3;
+  z-index:5;
   top:28px;
   left:22px;
   color:rgba(230,214,179,.76);
@@ -125,35 +170,11 @@ section.in-view .line{
   letter-spacing:.35em;
 }
 
-.plan{
-  text-align:center;
-  margin:auto;
-}
-
-.plan-title{
-  color:var(--gold);
-  font-size:clamp(32px,8.5vw,56px);
-  font-weight:300;
-  line-height:1.7;
-  margin-bottom:18px;
-}
-
-.plan-time{
-  color:rgba(216,208,195,.82);
-  font-size:clamp(18px,4.6vw,24px);
-  margin:18px 0 28px;
-}
-
-.plan-price{
-  color:var(--white);
-  font-size:clamp(20px,5.4vw,30px);
-  line-height:1.8;
-  margin:8px 0;
-}
-
-.plan-note{
-  margin-top:60px;
-}
+.plan{ text-align:center; margin:auto; }
+.plan-title{ color:var(--gold); font-size:clamp(32px,8.5vw,56px); font-weight:300; line-height:1.7; margin-bottom:18px; }
+.plan-time{ color:rgba(216,208,195,.82); font-size:clamp(18px,4.6vw,24px); margin:18px 0 28px; }
+.plan-price{ color:var(--white); font-size:clamp(20px,5.4vw,30px); line-height:1.8; margin:8px 0; }
+.plan-note{ margin-top:60px; }
 
 .btn{
   display:inline-block;
@@ -169,38 +190,29 @@ section.in-view .line{
   transition:.35s ease;
 }
 
-.btn:hover{
-  background:rgba(230,214,179,.12);
-}
+.btn:hover{ background:rgba(230,214,179,.12); }
 
+/* 指派普通頁面的專屬背景圖（4,5,6,7頁在這裡不設背景，因為她們要共享長圖） */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
-.page4 .bg{background-image:url("room01jpg")}
-.page5 .bg{background-image:url("room01jpg")}
-.page6 .bg{background-image:url("roomo1.jpg")}
-.page7 .bg{background-image:url("room01.jpg")}
 .page8 .bg{background-image:url("bg-page8.jpg")}
 .page9 .bg{background-image:url("bg-page5.jpg")}
-.page10 .bg{background-image:url("room7'.jpg")}
+.page10 .bg{background-image:url("room7.jpg")}
 
 @media (max-width:480px){
-  section{
-    padding:82px 24px;
-  }
-
-  .content{
-    max-width:100%;
-  }
-
-  .plan-note{
-    margin-top:52px;
-  }
+  section{ padding:82px 24px; }
+  .content{ max-width:100%; }
+  .plan-note{ margin-top:52px; }
 }
 </style>
 </head>
 
 <body>
+
+<div class="global-bg-container" id="globalBgContainer">
+  <div class="global-bg" id="sharedBg"></div>
+</div>
 
 <section class="page1">
   <div class="bg"></div>
@@ -244,8 +256,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page4">
-  <div class="bg"></div>
+<section class="page-plan" data-bg-pos="center 0%">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">壹・初見</h2>
@@ -259,8 +270,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page5">
-  <div class="bg"></div>
+<section class="page-plan" data-bg-pos="center 33%">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">貳・短程</h2>
@@ -274,8 +284,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page6">
-  <div class="bg"></div>
+<section class="page-plan" data-bg-pos="center 66%">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">參・半日遊</h2>
@@ -289,8 +298,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page7">
-  <div class="bg"></div>
+<section class="page-plan" data-bg-pos="center 100%">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">肆・之上</h2>
@@ -300,7 +308,7 @@ section.in-view .line{
       <p class="line" style="--i:3">共啟旅程中，</p>
       <p class="line" style="--i:4">感覺對了。</p>
       <p class="line" style="--i:5">很多事情，</p>
-      <p class="line" style="--i:6">自然就會發生。</p>
+      <p class="line" style="--i:6">自然就會放生。</p>
     </div>
   </div>
 </section>
@@ -315,7 +323,7 @@ section.in-view .line{
     <p class="line" style="--i:4">沒有固定 SOP 流程。</p>
     <p class="line" style="--i:5">不迎合，</p>
     <p class="line" style="--i:6">不虛假奉承。</p>
-    <p class="line" style="--i:7">《相幹》</p>
+    <p class="line" style="--i:7">《相伴》</p>
     <p class="line" style="--i:8">要的是舒服，</p>
     <p class="line" style="--i:9">享受過程。</p>
     <p class="line" style="--i:10">滿足身體，</p>
@@ -364,17 +372,45 @@ section.in-view .line{
 </section>
 
 <script>
-const sections = document.querySelectorAll("section");
+document.addEventListener("DOMContentLoaded", () => {
+  const allSections = document.querySelectorAll("section");
+  const container = document.getElementById("globalBgContainer");
+  const sharedBg = document.getElementById("sharedBg");
 
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("in-view");
-    }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // 不管是哪一頁，只要進畫面，字體一行行出來的效果都要觸發
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+
+        // 🛠️ 核心檢查：如果是「微光旅程（壹貳參肆）」這四個專屬區塊
+        if (entry.target.classList.contains("page-plan")) {
+          // 1. 顯現共享背景
+          container.classList.add("show");
+          
+          // 2. 移動照片到對應的身體位置（頭、腰、大腿、腳）
+          const targetPos = entry.target.getAttribute("data-bg-pos");
+          sharedBg.style.backgroundPosition = targetPos;
+
+          // 3. 觸發大變小流動感
+          sharedBg.classList.remove("pulse-flow");
+          void sharedBg.offsetWidth; 
+          sharedBg.classList.add("pulse-flow");
+        } else {
+          // 如果滑到了其他一般頁面，把共享長圖隱藏，讓一般頁面的背景露出來
+          container.classList.remove("show");
+        }
+      } else {
+        entry.target.classList.remove("in-view");
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -10% 0px"
   });
-},{threshold:0.35});
 
-sections.forEach(section=>observer.observe(section));
+  allSections.forEach(section => observer.observe(section));
+});
 </script>
 
 </body>
