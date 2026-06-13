@@ -1,5 +1,4 @@
-
- html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
@@ -15,7 +14,7 @@
   --gold-bright: #FFF3D6;            /* 耀眼香檳金（主標題） */
   --gold-accent: #E6C280;            /* 核心重點金（標籤、數字、按鈕外框） */
   --pure-white: #FFFFFF;             /* 內文一律純白，手機上絕對清晰 */
-  --shadow-dark: rgba(0, 0, 0, 0.95);/* 超深文字陰影，把字體完全托襯出來 */
+  --shadow-dark: rgba(0, 0, 0, 0.95);/* 超深文字陰影 */
 }
 
 html{
@@ -32,63 +31,62 @@ body{
 }
 
 /* ===================================================
-   👑 第一頁（首頁）專屬大氣排版樣式
+   👑 第一頁（首頁）完美比例版面微調（不擋人、夠大氣）
    =================================================== */
 .page1 {
   display: flex;
-  align-items: center;      
+  align-items: flex-end;     /* 🛠️ 改為靠底部對齊，完全避開上方的人物背影剪影 */
   justify-content: center;  
+  padding-bottom: 8vh;       /* 留出底部安全距離，防止被手機環境列遮擋 */
 }
 
-/* 破除過窄限制，讓字體在手機上完全伸展 */
 .page1 .content {
-  max-width: 90% !important; 
-  margin-top: -6vh; /* 整個文字往上提，視覺焦點更集中、避開底部選單 */
+  max-width: 85% !important; 
   text-align: center;
 }
 
-/* 主標題：極致放大、加厚，奢華流沙金 */
+/* 主標題：加厚體、大氣流沙金 */
 .page1 h1 {
-  font-size: clamp(44px, 12vw, 68px) !important; 
-  font-weight: 400; /* 微加粗，讓漸層顏色更顯眼 */
-  letter-spacing: 0.3em; /* 大幅拉開字距，製造空靈高級感 */
-  padding-left: 0.3em;   /* 平衡因字距產生的排版偏心 */
-  margin-bottom: 40px;   /* 跟下方副標拉開距離 */
-  background: linear-gradient(135deg, #FFF5DF 0%, #E6C280 50%, #C6A669 100%);
+  font-size: clamp(38px, 10.5vw, 56px) !important; /* 微調黃金尺寸，大小適中 */
+  font-weight: 600; /* 🛠️ 大幅加粗字體！讓字體本身更有分量，不靠傻大取勝 */
+  letter-spacing: 0.2em; /* 優雅的精品字距，既有高級感又不會過於空散 */
+  padding-left: 0.2em;   
+  margin-bottom: 24px;   
+  background: linear-gradient(135deg, #FFF5DF 0%, #E6C280 60%, #C6A669 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 3px 12px rgba(0, 0, 0, 0.95));
+  filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.95));
 }
 
 /* 副標題：蘇九｜無限旅程 */
 .page1 .sub-title {
   color: #E6C280 !important; 
-  font-size: clamp(20px, 5.5vw, 26px) !important; /* 大幅放大 */
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  padding-left: 0.25em;
-  margin-bottom: 24px;
+  font-size: clamp(18px, 5vw, 22px) !important; 
+  font-weight: 500; /* 🛠️ 加粗，確保文字立體清晰 */
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;
+  margin-bottom: 20px;
   text-shadow: 0 2px 10px rgba(0,0,0,0.95);
 }
 
 /* 核心精神：值得，所以不將就 */
 .page1 .brand-concept {
   color: #FFFFFF !important;
-  font-size: clamp(21px, 5vw, 25px) !important; /* 放大內文 */
-  font-weight: 300;
-  line-height: 2.3; /* 拉高行距，讀起來非常優雅舒適 */
-  letter-spacing: 0.3em;
-  padding-left: 0.3em;
+  font-size: clamp(18px, 4.8vw, 22px) !important; 
+  font-weight: 400; /* 🛠️ 微加粗，不變螞蟻字 */
+  line-height: 2.0; /* 適度緊湊，避免短螢幕手機切字 */
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;
   text-shadow: 0 2px 10px rgba(0,0,0,0.95);
 }
 
 /* 年份小標籤 */
 .page1 .since-tag {
   color: rgba(230, 194, 128, 0.6) !important;
-  font-size: 13px !important;
-  letter-spacing: 0.6em;
-  padding-left: 0.6em;
-  margin-top: 50px;
+  font-size: 12px !important;
+  letter-spacing: 0.4em;
+  padding-left: 0.4em;
+  margin-top: 35px;
 }
 
 /* ===================================================
@@ -100,7 +98,7 @@ body{
   left: 0;
   width: 100%;
   height: 100vh;
-  height: 100svh; /* 完美適應 LINE 與手機瀏覽器環境列 */
+  height: 100svh; 
   background-image: url("room01.jpg");
   background-size: cover;
   background-position: center;
@@ -114,7 +112,6 @@ body{
   opacity: 1;
 }
 
-/* 調整旅程區遮罩：告別死黑，讓房間背景隱約透出奢華感 */
 .journey-fixed-bg::after {
   content: "";
   position: absolute;
@@ -139,7 +136,6 @@ section{
   z-index: 3;
 }
 
-/* 普通頁面的背景（1, 2, 3, 8, 9, 10 頁） */
 .bg{
   position:absolute;
   inset:0;
@@ -154,7 +150,6 @@ section.in-view .bg{
   transform:scale(1);
 }
 
-/* 2, 3 頁普通輕量遮罩（降低黑色比例，透出照片細節） */
 section:not(.page1):not(.page-plan):not(.dark-fix)::after{
   content:"";
   position:absolute;
@@ -165,7 +160,6 @@ section:not(.page1):not(.page-plan):not(.dark-fix)::after{
   z-index:2;
 }
 
-/* 8, 9, 10 頁高級暗化遮罩（隱化雜亂細節） */
 section.dark-fix::after {
   content:"";
   position:absolute;
@@ -178,7 +172,6 @@ section.dark-fix::after {
   z-index:2;
 }
 
-/* 旅程區塊（4, 5, 6, 7 頁）保持透明，顯露背後的滿版固定長圖 */
 section.page-plan {
   background: transparent !important;
 }
@@ -195,7 +188,6 @@ section.page-plan {
   text-align:center;
 }
 
-/* 2-10頁的大標題樣式 */
 h2 {
   font-size: clamp(26px, 7vw, 38px);
   margin-bottom: 36px;
@@ -211,7 +203,6 @@ h2 {
   padding-left: 0;
 }
 
-/* 2-10頁的內文細字：純白 + 強烈文字陰影 */
 .line{
   color: var(--pure-white); 
   font-size:clamp(16px,4.3vw,21px);
@@ -231,7 +222,6 @@ section.in-view .line{
   transform:translateY(0);
 }
 
-/* 微光旅程頁面專屬排版 */
 .plan-tag{
   position:absolute;
   z-index:5;
@@ -252,7 +242,6 @@ section.in-view .line{
 .plan-note{ margin-top:40px; border-top: 1px solid rgba(230,194,128,0.25); padding-top: 24px; }
 .plan-note .line { color: rgba(255,255,255,0.85); }
 
-/* 按鈕外框 */
 .btn{
   display:inline-block;
   margin-top:40px;
@@ -275,7 +264,7 @@ section.in-view .line{
   transform: translateY(-2px);
 }
 
-/* 指派獨立背景圖（旅程區4、5、6、7頁由全版固定層無縫接管） */
+/* 指派獨立背景圖 */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
@@ -458,15 +447,11 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
-
-        // 一旦進入旅程區塊（4、5、6、7頁），就無縫亮起背後滿版照片
         if (entry.target.classList.contains("page-plan")) {
           journeyBg.classList.add("show");
         }
       } else {
         entry.target.classList.remove("in-view");
-        
-        // 離開旅程區時隱藏，讓前後頁面的獨立房間圖能乾淨轉換
         if (entry.target.classList.contains("page-plan")) {
           const anyPlanVisible = Array.from(document.querySelectorAll(".page-plan")).some(el => el.classList.contains("in-view"));
           if (!anyPlanVisible) {
@@ -476,7 +461,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, {
-    threshold: 0.12, /* 針對手機端精準優化觸發時機 */
+    threshold: 0.12, 
     rootMargin: "0px 0px -8% 0px"
   });
 
