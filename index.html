@@ -359,28 +359,32 @@ section.in-view .line{
 <section class="page10">
 ...
 </section>
-
 <script>
-const sections = document.querySelectorAll("section");
+document.addEventListener("DOMContentLoaded",()=>{
+  const sections=document.querySelectorAll("section");
 
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("in-view");
-    }else{
-      entry.target.classList.remove("in-view");
-    }
+  const showSection=(section)=>{
+    section.classList.add("in-view");
+  };
+
+  showSection(sections[0]);
+
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        showSection(entry.target);
+      }
+    });
+  },{
+    threshold:0.25
   });
-},{threshold:0.45});
 
-sections.forEach(section=>observer.observe(section));
-
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.querySelector(".page1").classList.add("in-view");
-  },300);
-  });係
+  sections.forEach(section=>{
+    observer.observe(section);
+  });
+});
 </script>
+
 
 </body>
 </html>
