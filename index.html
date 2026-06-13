@@ -196,16 +196,43 @@ section.in-view .line{opacity:1;transform:translateY(0)}
 </div>
 </section>
 <script>
-const sections=document.querySelectorAll("section");
+const sections = document.querySelectorAll("section");
+
 sections[0].classList.add("in-view");
-const observer=new IntersectionObserver((entries)=>{
+
+let currentIndex = 0;
+let autoTimer = null;
+let userTouch = false;
+
+const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
       entry.target.classList.add("in-view");
+      currentIndex = [...sections].indexOf(entry.target);
+
+      clearTimeout(autoTimer);
+
+      autoTimer = setTimeout(()=>{
+        if(!userTouch && currentIndex < sections.length - 1){
+          sections[currentIndex + 1].scrollIntoView({
+            behavior:"smooth"
+          });
+        }
+      }, 9000);
     }
   });
-},{threshold:0.25});
+},{threshold:0.55});
+
 sections.forEach(section=>observer.observe(section));
+
+window.addEventListener("touchstart",()=>{
+  userTouch = true;
+  clearTimeout(autoTimer);
+
+  setTimeout(()=>{
+    userTouch = false;
+  }, 5000);
+});
 </script>
 </body>
 </html>
