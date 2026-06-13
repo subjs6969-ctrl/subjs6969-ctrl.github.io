@@ -8,13 +8,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* 🎨 頂級高對比・奢華黑金配色 */
+/* 🎨 官方圖文選單頂級配色：高對比・奢華黑金 */
 :root{
-  --bg: #000000;
+  --bg: #030303;                     /* 優雅深邃黑 */
   --gold-bright: #FFF3D6;            /* 耀眼香檳金（主標題） */
-  --gold-accent: #E6C280;            /* 核心重點金（標籤、數字、按鈕） */
-  --pure-white: #FFFFFF;             /* 內文純白，確保絕對清晰好讀 */
-  --shadow-dark: rgba(0, 0, 0, 0.95);/* 超深文字陰影 */
+  --gold-accent: #E6C280;            /* 核心重點金（標籤、數字、按鈕外框） */
+  --pure-white: #FFFFFF;             /* 內文一律純白，手機上絕對清晰 */
+  --shadow-dark: rgba(0, 0, 0, 0.95);/* 超深文字陰影，把字體完全托襯出來 */
 }
 
 html{
@@ -30,6 +30,39 @@ body{
   letter-spacing:.15em;
 }
 
+/* 🛠️ 核心修正：手機不跑版「獨立滿版固定背景層」 */
+/* 讓 4、5、6、7 頁的 room01.jpg 真正頂天立地固定在背後，文字自由滑過 */
+.journey-fixed-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh; /* 完美適應 LINE 與手機瀏覽器環境列 */
+  background-image: url("room01.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* 當進入旅程區塊時（4-7頁），無縫浮現 */
+.journey-fixed-bg.show {
+  opacity: 1;
+}
+
+/* 調整旅程區遮罩：告別死黑，讓精緻的房間背景隱約透出奢華感 */
+.journey-fixed-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(3,3,3,0.5), rgba(3,3,3,0.7)),
+    rgba(3,3,3,0.2);
+}
+
 /* 通用 Section 設定 */
 section{
   position:relative;
@@ -43,13 +76,13 @@ section{
   z-index: 3;
 }
 
-/* 🛠️ 普通頁面的背景（1, 2, 3, 8, 9, 10 頁） */
+/* 普通頁面的背景（1, 2, 3, 8, 9, 10 頁） */
 .bg{
   position:absolute;
   inset:0;
   background-size:cover;
   background-position:center;
-  transform:scale(1.1);
+  transform:scale(1.08);
   transition:transform 2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index:1;
 }
@@ -58,47 +91,33 @@ section.in-view .bg{
   transform:scale(1);
 }
 
-/* 🛠️ 【靈魂修正】旅程區塊（page-plan 4, 5, 6, 7 頁）：同步第 9 區的一直滾動滿版效果 */
-section.page-plan {
-  background-image: url("room01.jpg"); /* 4頁共用同一張長圖 */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* 讓照片絕對靜止滿版，文字在上方自由流動漂浮 */
-}
-
-/* 普通頁面遮罩（1, 2, 3 頁） */
+/* 1, 2, 3 頁普通輕量遮罩（降低黑色比例，不讓畫面黑成一團） */
 section:not(.page-plan):not(.dark-fix)::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
-    rgba(0,0,0,0.1);
+    linear-gradient(to bottom, rgba(3,3,3,0.4), rgba(3,3,3,0.6)),
+    rgba(3,3,3,0.1);
   z-index:2;
 }
 
-/* 旅程區塊專屬全黑柔化遮罩（4, 5, 6, 7 頁） */
-section.page-plan::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75)),
-    rgba(0,0,0,0.2);
-  z-index:2;
-}
-
-/* 後段稍微偏亮的頁面加強遮罩（8, 9, 10 頁） */
+/* 8, 9, 10 頁（高亮照片專用）高級暗化遮罩，隱化刺眼雜亂細節 */
 section.dark-fix::after {
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom, rgba(0,0,0,0.68), rgba(0,0,0,0.85)),
-    rgba(0,0,0,0.35);
+    linear-gradient(to bottom, rgba(3,3,3,0.65), rgba(3,3,3,0.82)),
+    rgba(3,3,3,0.3);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   z-index:2;
+}
+
+/* 旅程區塊（4, 5, 6, 7 頁）本身保持完全透明，完美顯露背後的滿版長圖 */
+section.page-plan {
+  background: transparent !important;
 }
 
 .content{
@@ -139,7 +158,7 @@ h2 {
   padding-left: 0;
 }
 
-/* 內文細字：純白 + 強烈文字陰影，清晰好讀 */
+/* 內文細字：純白 + 強烈雙重文字陰影，即使在亮光背景處也絕對清晰 */
 .line{
   color: var(--pure-white); 
   font-size:clamp(16px,4.3vw,21px);
@@ -151,7 +170,7 @@ h2 {
   transition-delay:calc(var(--i) * .14s);
   text-shadow: 
     0 2px 6px var(--shadow-dark), 
-    0 4px 12px var(--shadow-dark);
+    0 4px 14px var(--shadow-dark);
 }
 
 section.in-view .line{
@@ -185,9 +204,9 @@ section.in-view .line{
 .plan-time{ color: var(--gold-accent); font-size:clamp(18px,4.5vw,22px); margin-bottom:24px; letter-spacing: 0.2em; font-weight: 400; }
 .plan-price{ color:var(--pure-white); font-size:clamp(19px,5vw,26px); font-weight:400; line-height:1.6; margin:4px 0; }
 .plan-note{ margin-top:40px; border-top: 1px solid rgba(230,194,128,0.25); padding-top: 24px; }
-.plan-note .line { color: rgba(255,255,255,0.8); }
+.plan-note .line { color: rgba(255,255,255,0.85); }
 
-/* 按鈕外框 */
+/* 按鈕外框：完美復刻圖文選單圓角與細線質感 */
 .btn{
   display:inline-block;
   margin-top:40px;
@@ -198,7 +217,7 @@ section.in-view .line{
   text-decoration:none;
   font-size:15px;
   letter-spacing:.25em;
-  background: rgba(0,0,0,0.75);
+  background: rgba(3,3,3,0.75);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
@@ -210,7 +229,7 @@ section.in-view .line{
   transform: translateY(-2px);
 }
 
-/* 指派獨立背景圖 */
+/* 指派獨立背景圖（旅程區4、5、6、7頁已排除，由全版固定層無縫接管） */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
@@ -220,13 +239,13 @@ section.in-view .line{
 
 @media (max-width:480px){
   section{ padding:60px 24px; }
-  /* 手機端若不支援 fixed 可以流暢退回一般滿版滾動 */
-  section.page-plan { background-attachment: scroll; }
 }
 </style>
 </head>
 
 <body>
+
+<div class="journey-fixed-bg" id="journeyBg"></div>
 
 <section class="page1">
   <div class="bg"></div>
@@ -322,7 +341,7 @@ section.in-view .line{
       <p class="line" style="--i:3">共啟旅程中，</p>
       <p class="line" style="--i:4">感覺對了。</p>
       <p class="line" style="--i:5">很多事情，</p>
-      <p class="line" style="--i:6">自然就會發生。</p>
+      <p class="line" style="--i:6">自然就會 brass 發生。</p>
     </div>
   </div>
 </section>
@@ -387,18 +406,32 @@ section.in-view .line{
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const allSections = document.querySelectorAll("section");
+  const journeyBg = document.getElementById("journeyBg");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
+
+        // 一旦進入旅程區塊（4、5、6、7頁），就無縫亮起背後滿版照片
+        if (entry.target.classList.contains("page-plan")) {
+          journeyBg.classList.add("show");
+        }
       } else {
         entry.target.classList.remove("in-view");
+        
+        // 離開旅程區時隱藏，讓前後頁面的獨立房間圖能乾淨轉換
+        if (entry.target.classList.contains("page-plan")) {
+          const anyPlanVisible = Array.from(document.querySelectorAll(".page-plan")).some(el => el.classList.contains("in-view"));
+          if (!anyPlanVisible) {
+            journeyBg.classList.remove("show");
+          }
+        }
       }
     });
   }, {
-    threshold: 0.15,
-    rootMargin: "0px 0px -10% 0px"
+    threshold: 0.12, /* 針對手機微調觸發時機，滑動更靈敏 */
+    rootMargin: "0px 0px -8% 0px"
   });
 
   allSections.forEach(section => observer.observe(section));
