@@ -12,11 +12,12 @@
   --bg:#050505;
   --gold:#E6D6B3;
   --text:#D8D0C3;
+  --white:#F8F3EA;
 }
 
 html{
   scroll-behavior:smooth;
-  scroll-snap-type:y mandatory;
+  scroll-snap-type:y proximity;
 }
 
 body{
@@ -35,17 +36,16 @@ section{
   scroll-snap-align:start;
   display:flex;
   align-items:center;
-  padding:96px 28px;
+  padding:88px 26px;
 }
 
 .bg{
   position:absolute;
   inset:0;
   background-size:cover;
-  background-position:center center;
-  transform:scale(1.15); /* 微調初始放大比例，流動感更強 */
-  transition:transform 2.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease;
-  z-index: 1;
+  background-position:center;
+  transform:scale(1.12);
+  transition:transform 2.8s ease;
 }
 
 section.in-view .bg{
@@ -56,13 +56,15 @@ section::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.52),rgba(0,0,0,.68));
-  z-index:2; /* 確保遮罩在背景圖上方 */
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.46),rgba(0,0,0,.66)),
+    rgba(0,0,0,.14);
+  z-index:1;
 }
 
 .content{
   position:relative;
-  z-index:3; /* 確保內容在遮罩上方 */
+  z-index:2;
   width:100%;
   max-width:680px;
 }
@@ -76,14 +78,12 @@ h1,h2{
   color:var(--gold);
   font-weight:300;
   line-height:1.55;
-  text-shadow:0 2px 18px rgba(0,0,0,.65);
+  text-shadow:0 0 18px rgba(230,214,179,.12);
 }
 
-/* 修正：將 h1 被切斷的語法合併完成 */
 h1{
-  color:#F7F1E8;
   font-size:clamp(30px,8vw,58px);
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 
 h2{
@@ -91,19 +91,16 @@ h2{
   margin-bottom:42px;
 }
 
-/* 修正：將 .line 零散的語法完整包覆，優化動態延遲 */
 .line{
-  color:#E9DAB8;
+  color:var(--text);
   font-size:clamp(18px,4.8vw,25px);
   line-height:2.05;
-  margin:28px 0;
+  margin:8px 0;
   opacity:0;
-  transform:translateY(25px); /* 增加位移，讓手機滑動出現感更明顯 */
-  transition:opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-  transition-delay:calc(var(--i) * .28s); /* 優化行與行之間的出來速度，節奏更順暢 */
-  text-shadow:
-    0 0 8px rgba(255,255,255,.08),
-    0 0 20px rgba(233,218,184,.12);
+  transform:translateY(18px);
+  transition:opacity .9s ease, transform .9s ease;
+  transition-delay:calc(var(--i) * .22s);
+  text-shadow:0 2px 10px rgba(0,0,0,.45);
 }
 
 section.in-view .line{
@@ -111,9 +108,8 @@ section.in-view .line{
   transform:translateY(0);
 }
 
-/* 修正：將 .small 被切斷的語法合併完成 */
 .small{
-  color:rgba(233,218,184,.75);
+  color:rgba(230,214,179,.62);
   font-size:clamp(13px,3.6vw,18px);
   letter-spacing:.38em;
   margin-top:34px;
@@ -121,12 +117,12 @@ section.in-view .line{
 
 .plan-tag{
   position:absolute;
-  z-index:4;
-  top:42px;
-  left:26px;
-  color:rgba(230,214,179,.72);
-  font-size:13px;
-  letter-spacing:.32em;
+  z-index:3;
+  top:28px;
+  left:22px;
+  color:rgba(230,214,179,.76);
+  font-size:12px;
+  letter-spacing:.35em;
 }
 
 .plan{
@@ -136,62 +132,70 @@ section.in-view .line{
 
 .plan-title{
   color:var(--gold);
-  font-size:clamp(34px,8.8vw,56px);
+  font-size:clamp(32px,8.5vw,56px);
   font-weight:300;
   line-height:1.7;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 
 .plan-time{
   color:rgba(216,208,195,.82);
   font-size:clamp(18px,4.6vw,24px);
-  margin:18px 0 34px;
+  margin:18px 0 28px;
 }
 
 .plan-price{
-  color:#F8F3EA;
-  font-size:clamp(22px,5.5vw,30px);
-  line-height:1.9;
-  margin:10px 0;
+  color:var(--white);
+  font-size:clamp(20px,5.4vw,30px);
+  line-height:1.8;
+  margin:8px 0;
 }
 
 .plan-note{
-  margin-top:54px;
+  margin-top:60px;
 }
 
 .btn{
   display:inline-block;
-  margin-top:48px;
-  padding:15px 38px;
+  margin-top:42px;
+  padding:14px 34px;
   border:1px solid rgba(230,214,179,.55);
   border-radius:999px;
   color:var(--gold);
   text-decoration:none;
   font-size:16px;
-  letter-spacing:.22em;
-  background:rgba(0,0,0,.22);
-  backdrop-filter:blur(10px);
+  letter-spacing:.18em;
+  background:rgba(0,0,0,.18);
+  transition:.35s ease;
 }
 
-/* 圖片路徑基本設定 */
-.page1 .bg{ background-image:url("bg-page1.jpg"); }
-.page2 .bg{ background-image:url("bg-page2.jpg"); }
-.page3 .bg{ background-image:url("bg-page3.jpg"); }
+.btn:hover{
+  background:rgba(230,214,179,.12);
+}
 
-/* 修正：同一張房間照片，利用不同 background-position 延伸 */
-.page4 .bg{ background-image:url("room01.jpg"); background-position:center 5%; }
-.page5 .bg{ background-image:url("room01.jpg"); background-position:center 30%; }
-.page6 .bg{ background-image:url("room01.jpg"); background-position:center 60%; }
-.page7 .bg{ background-image:url("room01.jpg"); background-position:center 85%; }
-
-.page8 .bg{ background-image:url("bg-page8.jpg"); }
-.page9 .bg{ background-image:url("bg-page5.jpg"); }
-.page10 .bg{ background-image:url("room7.jpg"); }
+.page1 .bg{background-image:url("bg-page1.jpg")}
+.page2 .bg{background-image:url("bg-page2.jpg")}
+.page3 .bg{background-image:url("bg-page3.jpg")}
+.page4 .bg{background-image:url("room01jpg")}
+.page5 .bg{background-image:url("room01jpg")}
+.page6 .bg{background-image:url("roomo1.jpg")}
+.page7 .bg{background-image:url("room01.jpg")}
+.page8 .bg{background-image:url("bg-page8.jpg")}
+.page9 .bg{background-image:url("bg-page5.jpg")}
+.page10 .bg{background-image:url("room7'.jpg")}
 
 @media (max-width:480px){
-  section{padding:100px 28px}
-  .content{max-width:100%}
-  .plan-tag{top:42px;left:24px;font-size:12px}
+  section{
+    padding:82px 24px;
+  }
+
+  .content{
+    max-width:100%;
+  }
+
+  .plan-note{
+    margin-top:52px;
+  }
 }
 </style>
 </head>
@@ -311,8 +315,19 @@ section.in-view .line{
     <p class="line" style="--i:4">沒有固定 SOP 流程。</p>
     <p class="line" style="--i:5">不迎合，</p>
     <p class="line" style="--i:6">不虛假奉承。</p>
-    <p class="line" style="--i:7">適合的人，</p>
-    <p class="line" style="--i:8">自然會懂。</p>
+    <p class="line" style="--i:7">《相幹》</p>
+    <p class="line" style="--i:8">要的是舒服，</p>
+    <p class="line" style="--i:9">享受過程。</p>
+    <p class="line" style="--i:10">滿足身體，</p>
+    <p class="line" style="--i:11">也滿足心理。</p>
+    <p class="line" style="--i:12">這樣的旅程，</p>
+    <p class="line" style="--i:13">才有意思。</p>
+    <p class="line" style="--i:14">比起說什麼，</p>
+    <p class="line" style="--i:15">做什麼、給什麼，</p>
+    <p class="line" style="--i:16">才是旅程的重點。</p>
+    <p class="line" style="--i:17">適合的人，</p>
+    <p class="line" style="--i:18">自然會懂。</p>
+    <p class="line" style="--i:19">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
   </div>
 </section>
 
@@ -322,12 +337,19 @@ section.in-view .line{
     <h2 class="line" style="--i:0">預約前注意事項</h2>
     <p class="line" style="--i:1">1｜蘇九有抽菸。</p>
     <p class="line" style="--i:2">對菸味敏感，請務必告知。</p>
-    <p class="line" style="--i:3">2｜初次預約需先匯款。</p>
-    <p class="line" style="--i:4">壹、貳 定金 1500。</p>
-    <p class="line" style="--i:5">參、肆 定金 3000。</p>
-    <p class="line" style="--i:6">3｜環境很重要。</p>
-    <p class="line" style="--i:7">價格已包含房費。</p>
-    <p class="line" style="--i:8">無需另外負擔費用。</p>
+    <p class="line" style="--i:3">這是對您來訪的尊重。</p>
+    <p class="line" style="--i:4">2｜初次預約需先匯款。</p>
+    <p class="line" style="--i:5">壹、貳 定金 1500。</p>
+    <p class="line" style="--i:6">參、肆 定金 3000。</p>
+    <p class="line" style="--i:7">你怕詐騙。</p>
+    <p class="line" style="--i:8">我也怕被騙。</p>
+    <p class="line" style="--i:9">3｜環境很重要。</p>
+    <p class="line" style="--i:10">價格已包含房費。</p>
+    <p class="line" style="--i:11">無需另外負擔費用。</p>
+    <p class="line" style="--i:12">4｜想要的服務、體驗，</p>
+    <p class="line" style="--i:13">請直接列在預約單上。</p>
+    <p class="line" style="--i:14">詳細流程與規則，</p>
+    <p class="line" style="--i:15">請至官方 LINE 了解。</p>
   </div>
 </section>
 
@@ -342,27 +364,17 @@ section.in-view .line{
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded",()=>{
-  const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll("section");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-      } else {
-        // 手機版往回滑時移除樣式，這樣再次滑到時，動畫會重新「一行行跳出來」
-        entry.target.classList.remove("in-view");
-      }
-    });
-  }, {
-    threshold: 0.15, // 手機版調整到 15% 露出來就觸發，反應更靈敏
-    rootMargin: "0px 0px -10% 0px"
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("in-view");
+    }
   });
+},{threshold:0.35});
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-});
+sections.forEach(section=>observer.observe(section));
 </script>
 
 </body>
