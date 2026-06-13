@@ -352,7 +352,7 @@ section.in-view .line{
 
 <script>
 const sections = document.querySelectorAll("section");
-sections[0].classList.add("in-view");
+//sections[0].classList.add("in-view");
 
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
@@ -363,6 +363,11 @@ const observer = new IntersectionObserver((entries)=>{
 },{threshold:0.35});
 
 sections.forEach(section=>observer.observe(section));
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.querySelector(".page1").classList.add("in-view");
+  },300);
+});
 </script>
 
 </body>
