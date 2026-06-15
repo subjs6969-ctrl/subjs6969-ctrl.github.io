@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -8,13 +9,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* 🛠️ 設計師精準調色：完全同步官方 LINE 圖文選單的高奢黑金 */
+/* 🎨 官方圖文選單頂級配色：高對比・奢華黑金 */
 :root{
-  --bg: #030303;                     /* 深邃黑夜底色 */
-  --gold-light: #F2E5C9;             /* 流沙香檳金（主標題） */
-  --gold-mid: #D0B480;               /* 微光星塵金（重點標籤/按鈕） */
-  --platinum-text: #EAE6DF;          /* 月光鉑金白（高級感內文，好讀不單調） */
-  --sub-text: rgba(234,230,223,0.55);/* 輔助文字陰影色 */
+  --bg: #030303;                     /* 優雅深邃黑 */
+  --gold-bright: #FFF3D6;            /* 耀眼香檳金（主標題） */
+  --gold-accent: #E6C280;            /* 核心重點金（標籤、數字、按鈕外框） */
+  --pure-white: #FFFFFF;             /* 內文一律純白，手機上絕對清晰 */
+  --shadow-dark: rgba(0, 0, 0, 0.95);/* 超深文字陰影 */
 }
 
 html{
@@ -24,58 +25,106 @@ html{
 }
 
 body{
-  color:var(--platinum-text);
+  color: var(--pure-white);
   font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
   overflow-x:hidden;
-  letter-spacing:.15em; /* 稍微加寬字距，更有精品排版感 */
+  letter-spacing:.15em;
 }
 
-/* 共享長圖背景容器（專屬 4, 5, 6, 7 頁） */
-.global-bg-container {
+/* ===================================================
+   👑 第一頁（首頁）完美比例版面微調（不擋人、夠大氣）
+   =================================================== */
+.page1 {
+  display: flex;
+  align-items: flex-end;     /* 🛠️ 改為靠底部對齊，完全避開上方的人物背影剪影 */
+  justify-content: center;  
+  padding-bottom: 8vh;       /* 留出底部安全距離，防止被手機環境列遮擋 */
+}
+
+.page1 .content {
+  max-width: 85% !important; 
+  text-align: center;
+}
+
+/* 主標題：加厚體、大氣流沙金 */
+.page1 h1 {
+  font-size: clamp(38px, 10.5vw, 56px) !important; /* 微調黃金尺寸，大小適中 */
+  font-weight: 600; /* 🛠️ 大幅加粗字體！讓字體本身更有分量，不靠傻大取勝 */
+  letter-spacing: 0.2em; /* 優雅的精品字距，既有高級感又不會過於空散 */
+  padding-left: 0.2em;   
+  margin-bottom: 24px;   
+  background: linear-gradient(135deg, #FFF5DF 0%, #E6C280 60%, #C6A669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.95));
+}
+
+/* 副標題：蘇九｜無限旅程 */
+.page1 .sub-title {
+  color: #E6C280 !important; 
+  font-size: clamp(18px, 5vw, 22px) !important; 
+  font-weight: 500; /* 🛠️ 加粗，確保文字立體清晰 */
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.95);
+}
+
+/* 核心精神：值得，所以不將就 */
+.page1 .brand-concept {
+  color: #FFFFFF !important;
+  font-size: clamp(18px, 4.8vw, 22px) !important; 
+  font-weight: 400; /* 🛠️ 微加粗，不變螞蟻字 */
+  line-height: 2.0; /* 適度緊湊，避免短螢幕手機切字 */
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.95);
+}
+
+/* 年份小標籤 */
+.page1 .since-tag {
+  color: rgba(230, 194, 128, 0.6) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.4em;
+  padding-left: 0.4em;
+  margin-top: 35px;
+}
+
+/* ===================================================
+   🛠️ 手機不跑版「獨立滿版固定背景層」 (4, 5, 6, 7頁接管)
+   =================================================== */
+.journey-fixed-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
+  height: 100svh; 
+  background-image: url("room01.jpg");
+  background-size: cover;
+  background-position: center;
   z-index: 1;
-  overflow: hidden;
+  opacity: 0;
   pointer-events: none;
-  opacity: 0; 
-  transition: opacity 0.8s ease;
+  transition: opacity 0.5s ease;
 }
 
-.global-bg-container.show {
+.journey-fixed-bg.show {
   opacity: 1;
 }
 
-.global-bg {
+.journey-fixed-bg::after {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("room01.jpg");
-  background-size: cover;
-  background-position: center top;
-  transform: scale(1.12);
-  transition: background-position 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.global-bg.pulse-flow {
-  transform: scale(1.02);
-}
-
-.global-bg-container::after {
-  content:"";
-  position:absolute;
-  inset:0;
+  inset: 0;
   background:
-    linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
-    rgba(0,0,0,0.3);
-  z-index: 2;
+    linear-gradient(to bottom, rgba(3,3,3,0.5), rgba(3,3,3,0.7)),
+    rgba(3,3,3,0.2);
 }
 
-/* 通用 Section 設定 */
+/* ===================================================
+   📜 其他通用 Section 與內文樣式
+   =================================================== */
 section{
   position:relative;
   min-height:100svh;
@@ -88,13 +137,12 @@ section{
   z-index: 3;
 }
 
-/* 普通頁面的獨立背景 */
 .bg{
   position:absolute;
   inset:0;
   background-size:cover;
   background-position:center;
-  transform:scale(1.1);
+  transform:scale(1.08);
   transition:transform 2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index:1;
 }
@@ -103,28 +151,30 @@ section.in-view .bg{
   transform:scale(1);
 }
 
-/* 普通頁面遮罩（1,2,3頁） */
-section:not(.page-plan):not(.dark-fix)::after{
+section:not(.page1):not(.page-plan):not(.dark-fix)::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
-    rgba(0,0,0,0.2);
+    linear-gradient(to bottom, rgba(3,3,3,0.4), rgba(3,3,3,0.6)),
+    rgba(3,3,3,0.1);
   z-index:2;
 }
 
-/* 🛠️ 重度暗化遮罩（8,9,10頁專用）：徹底降伏太亮的床照與浴室照，完美銜接暗黑主調 */
 section.dark-fix::after {
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to bottom, rgba(3,3,3,0.82), rgba(3,3,3,0.95)),
-    rgba(3,3,3,0.7);
-  backdrop-filter: blur(4px); /* 加強毛玻璃效果，隱化刺眼雜亂的背景細節 */
-  -webkit-backdrop-filter: blur(4px);
+    linear-gradient(to bottom, rgba(3,3,3,0.65), rgba(3,3,3,0.82)),
+    rgba(3,3,3,0.3);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   z-index:2;
+}
+
+section.page-plan {
+  background: transparent !important;
 }
 
 .content{
@@ -139,27 +189,14 @@ section.dark-fix::after {
   text-align:center;
 }
 
-/* 🛠️ 大標題：導入 LINE 圖文選單的黃金星塵微光漸層 */
-h1, h2 {
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-h1 {
-  font-size: clamp(34px, 9vw, 56px);
-  margin-bottom: 24px;
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-mid) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0px 0px 20px rgba(242,229,201,0.1);
-}
-
 h2 {
   font-size: clamp(26px, 7vw, 38px);
   margin-bottom: 36px;
-  color: var(--gold-light);
-  border-left: 2px solid var(--gold-mid);
+  font-weight: 300;
+  color: var(--gold-bright);
+  border-left: 3px solid var(--gold-accent);
   padding-left: 14px;
+  text-shadow: 0 2px 8px var(--shadow-dark);
 }
 
 .center h2 {
@@ -167,9 +204,8 @@ h2 {
   padding-left: 0;
 }
 
-/* 內文細字線條 */
 .line{
-  color: var(--platinum-text); /* 月光鉑金白，層次分明 */
+  color: var(--pure-white); 
   font-size:clamp(16px,4.3vw,21px);
   line-height:2.1;
   margin:6px 0;
@@ -177,7 +213,9 @@ h2 {
   transform:translateY(15px);
   transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay:calc(var(--i) * .14s);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+  text-shadow: 
+    0 2px 6px var(--shadow-dark), 
+    0 4px 14px var(--shadow-dark);
 }
 
 section.in-view .line{
@@ -185,53 +223,45 @@ section.in-view .line{
   transform:translateY(0);
 }
 
-.small{
-  color: var(--gold-mid);
-  font-size:clamp(12px,3.4vw,15px);
-  letter-spacing:.4em;
-  margin-top:30px;
-}
-
-/* 微光旅程專屬排版 */
 .plan-tag{
   position:absolute;
   z-index:5;
   top:32px;
   left:28px;
-  color: var(--gold-mid);
-  font-size:11px;
+  color: var(--gold-accent);
+  font-size:12px;
   letter-spacing:.4em;
-  border-bottom: 1px solid rgba(208,180,128,0.3);
+  border-bottom: 1px solid rgba(230,194,128,0.4);
   padding-bottom: 4px;
+  text-shadow: 0 2px 4px var(--shadow-dark);
 }
 
-.plan{ text-align:center; }
-.plan-title{ color:var(--gold-light); font-size:clamp(34px,9vw,52px); font-weight:300; margin-bottom:8px; border-left:none; padding-left:0; }
-.plan-time{ color: var(--gold-mid); font-size:clamp(16px,4.2vw,20px); margin-bottom:24px; letter-spacing: 0.2em; font-weight: 300; }
-.plan-price{ color:var(--platinum-text); font-size:clamp(19px,5vw,26px); font-weight:400; line-height:1.6; margin:4px 0; }
-.plan-note{ margin-top:40px; border-top: 1px solid rgba(208,180,128,0.2); padding-top: 24px; }
-.plan-note .line { color: var(--sub-text); } /* 讓備註文字稍微變暗，拉開視覺權重 */
+.plan { text-align:center; }
+.plan-title{ color:var(--gold-bright); font-size:clamp(34px,9vw,52px); font-weight:300; margin-bottom:8px; border-left:none; padding-left:0; }
+.plan-time{ color: var(--gold-accent); font-size:clamp(18px,4.5vw,22px); margin-bottom:24px; letter-spacing: 0.2em; font-weight: 400; }
+.plan-price{ color:var(--pure-white); font-size:clamp(19px,5vw,26px); font-weight:400; line-height:1.6; margin:4px 0; }
+.plan-note{ margin-top:40px; border-top: 1px solid rgba(230,194,128,0.25); padding-top: 24px; }
+.plan-note .line { color: rgba(255,255,255,0.85); }
 
-/* 🛠️ 按鈕：完美復刻圖文選單外框的高奢圓角細線質感 */
 .btn{
   display:inline-block;
   margin-top:40px;
   padding:14px 45px;
-  border:1px solid var(--gold-mid);
+  border:1.5px solid var(--gold-accent);
   border-radius:999px;
-  color: var(--gold-light);
+  color: var(--gold-bright);
   text-decoration:none;
   font-size:15px;
   letter-spacing:.25em;
-  background: rgba(3,3,3,0.6);
+  background: rgba(3,3,3,0.75);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
 .btn:hover{ 
-  background: var(--gold-mid); 
-  color: var(--bg); 
-  box-shadow: 0 0 25px rgba(208,180,128,0.4);
+  background: var(--gold-accent); 
+  color: #000; 
+  box-shadow: 0 0 25px rgba(230,194,128,0.6);
   transform: translateY(-2px);
 }
 
@@ -251,18 +281,16 @@ section.in-view .line{
 
 <body>
 
-<div class="global-bg-container" id="globalBgContainer">
-  <div class="global-bg" id="sharedBg"></div>
-</div>
+<div class="journey-fixed-bg" id="journeyBg"></div>
 
 <section class="page1">
   <div class="bg"></div>
-  <div class="content center">
+  <div class="content">
     <h1 class="line" style="--i:0">微光・之上</h1>
-    <p class="line" style="--i:1">蘇九｜無限旅程</p>
-    <p class="line" style="--i:2">值得</p>
-    <p class="line" style="--i:3">所以不將就</p>
-    <p class="line small" style="--i:4">SINCE 2019</p>
+    <p class="line sub-title" style="--i:1">蘇九｜無限旅程</p>
+    <p class="line brand-concept" style="--i:2">值得</p>
+    <p class="line brand-concept" style="--i:3">所以不將就</p>
+    <p class="line since-tag" style="--i:4">SINCE 2019</p>
   </div>
 </section>
 
@@ -297,7 +325,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page-plan" data-bg-pos="center 0%">
+<section class="page-plan">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">壹・初見</h2>
@@ -311,7 +339,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page-plan" data-bg-pos="center 33%">
+<section class="page-plan">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">貳・短程</h2>
@@ -325,7 +353,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page-plan" data-bg-pos="center 66%">
+<section class="page-plan">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">參・半日遊</h2>
@@ -339,7 +367,7 @@ section.in-view .line{
   </div>
 </section>
 
-<section class="page-plan" data-bg-pos="center 100%">
+<section class="page-plan">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
     <h2 class="line plan-title" style="--i:0">肆・之上</h2>
@@ -376,7 +404,7 @@ section.in-view .line{
     <p class="line" style="--i:16">才是旅程的重點。</p>
     <p class="line" style="--i:17">適合的人，</p>
     <p class="line" style="--i:18">自然會懂。</p>
-    <p class="line" style="--i:19" style="color:var(--gold-mid)">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
+    <p class="line" style="--i:19" style="color:var(--gold-accent); font-weight:500;">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
   </div>
 </section>
 
@@ -384,17 +412,17 @@ section.in-view .line{
   <div class="bg"></div>
   <div class="content">
     <h2 class="line" style="--i:0">預約前注意事項</h2>
-    <p class="line" style="--i:1"><span style="color:var(--gold-mid)">1｜</span>蘇九有抽菸。</p>
+    <p class="line" style="--i:1"><span style="color:var(--gold-accent); font-weight:bold;">1｜</span>蘇九有抽菸。</p>
     <p class="line" style="--i:2">對菸味敏感，請務必告知。</p>
-    <p class="line" style="--i:3" style="color:var(--sub-text)">這是對您來訪的尊重。</p>
-    <p class="line" style="--i:4"><span style="color:var(--gold-mid)">2｜</span>初次預約需先匯款。</p>
+    <p class="line" style="--i:3" style="color: rgba(255,255,255,0.7)">這是對您來訪的尊重。</p>
+    <p class="line" style="--i:4"><span style="color:var(--gold-accent); font-weight:bold;">2｜</span>初次預約需先匯款。</p>
     <p class="line" style="--i:5">壹、貳 定金 1500。</p>
     <p class="line" style="--i:6">參、肆 定金 3000。</p>
-    <p class="line" style="--i:7" style="color:var(--gold-light)">你怕詐騙，我也怕被騙。</p>
-    <p class="line" style="--i:8"><span style="color:var(--gold-mid)">3｜</span>環境很重要。</p>
+    <p class="line" style="--i:7" style="color:var(--gold-bright)">你怕詐騙，我也怕被騙。</p>
+    <p class="line" style="--i:8"><span style="color:var(--gold-accent); font-weight:bold;">3｜</span>環境很重要。</p>
     <p class="line" style="--i:9">價格已包含房費。</p>
-    <p class="line" style="--i:10" style="color:var(--sub-text)">無需另外負擔費用。</p>
-    <p class="line" style="--i:11"><span style="color:var(--gold-mid)">4｜</span>想要的服務、體驗，</p>
+    <p class="line" style="--i:10" style="color: rgba(255,255,255,0.7)">無需另外負擔費用。</p>
+    <p class="line" style="--i:11"><span style="color:var(--gold-accent); font-weight:bold;">4｜</span>想要的服務、體驗，</p>
     <p class="line" style="--i:12">請直接列在預約單上。</p>
     <p class="line" style="--i:13">詳細流程與規則，</p>
     <p class="line" style="--i:14">請至官方 LINE 了解。</p>
@@ -414,33 +442,28 @@ section.in-view .line{
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const allSections = document.querySelectorAll("section");
-  const container = document.getElementById("globalBgContainer");
-  const sharedBg = document.getElementById("sharedBg");
+  const journeyBg = document.getElementById("journeyBg");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
-
         if (entry.target.classList.contains("page-plan")) {
-          container.classList.add("show");
-          
-          const targetPos = entry.target.getAttribute("data-bg-pos");
-          sharedBg.style.backgroundPosition = targetPos;
-
-          sharedBg.classList.remove("pulse-flow");
-          void sharedBg.offsetWidth; 
-          sharedBg.classList.add("pulse-flow");
-        } else {
-          container.classList.remove("show");
+          journeyBg.classList.add("show");
         }
       } else {
         entry.target.classList.remove("in-view");
+        if (entry.target.classList.contains("page-plan")) {
+          const anyPlanVisible = Array.from(document.querySelectorAll(".page-plan")).some(el => el.classList.contains("in-view"));
+          if (!anyPlanVisible) {
+            journeyBg.classList.remove("show");
+          }
+        }
       }
     });
   }, {
-    threshold: 0.2,
-    rootMargin: "0px 0px -10% 0px"
+    threshold: 0.12, 
+    rootMargin: "0px 0px -8% 0px"
   });
 
   allSections.forEach(section => observer.observe(section));
