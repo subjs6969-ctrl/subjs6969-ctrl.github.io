@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -11,7 +12,7 @@
 :root{
   --bg:#030303;
   --title:#E8DCC8;
-  --accent:#D6B98A;
+  --accent:#F2D6A2;
   --text:#F5F2EC;
   --shadow:rgba(0,0,0,.95);
 }
@@ -95,8 +96,8 @@ h2,
   -webkit-text-fill-color:var(--title);
   font-weight:300;
   text-shadow:
-    0 0 6px rgba(232,220,200,.25),
-    0 0 12px rgba(180,140,90,.18),
+    0 0 6px rgba(232,220,200,.35),
+    0 0 14px rgba(180,140,90,.25),
     0 3px 10px var(--shadow);
 }
 
@@ -177,12 +178,15 @@ section.in-view .line{
 }
 
 .page1 .since-tag{
-  color:rgba(245,242,236,.55);
-  -webkit-text-fill-color:rgba(245,242,236,.55);
+  color:rgba(232,220,200,.68);
+  -webkit-text-fill-color:rgba(232,220,200,.68);
   font-size:11px;
   letter-spacing:.8em;
   padding-left:.8em;
   margin-top:35px;
+  text-shadow:
+    0 0 4px rgba(232,220,200,.22),
+    0 2px 8px rgba(0,0,0,.9);
 }
 
 /* 旅程固定背景 */
@@ -232,7 +236,7 @@ section.page-plan{
   -webkit-text-fill-color:var(--accent);
   font-size:12px;
   letter-spacing:.4em;
-  border-bottom:1px solid rgba(232,220,200,.35);
+  border-bottom:1px solid rgba(232,220,200,.45);
   padding-bottom:4px;
   text-shadow:0 2px 4px var(--shadow);
 }
@@ -246,18 +250,21 @@ section.page-plan{
 .plan-price{
   color:var(--accent);
   -webkit-text-fill-color:var(--accent);
+  text-shadow:
+    0 0 8px rgba(242,214,162,.35),
+    0 0 18px rgba(242,214,162,.15);
 }
 
 .plan-time{
   font-size:clamp(18px,4.5vw,22px);
   margin-bottom:24px;
   letter-spacing:.2em;
-  font-weight:400;
+  font-weight:500;
 }
 
 .plan-price{
-  font-size:clamp(19px,5vw,26px);
-  font-weight:300;
+  font-size:clamp(20px,5.5vw,28px);
+  font-weight:600;
   line-height:1.6;
   margin:4px 0;
   letter-spacing:.08em;
@@ -267,6 +274,12 @@ section.page-plan{
   margin-top:38px;
   padding-top:26px;
   border-top:none;
+}
+
+/* 重點文字 */
+.highlight{
+  color:var(--accent) !important;
+  -webkit-text-fill-color:var(--accent) !important;
 }
 
 /* 注意事項重點數字 */
@@ -281,7 +294,7 @@ section.page-plan{
   display:inline-block;
   margin-top:40px;
   padding:14px 45px;
-  border:2px solid var(--title);
+  border:1.5px solid rgba(232,220,200,.45);
   border-radius:999px;
   color:var(--title);
   -webkit-text-fill-color:var(--title);
@@ -293,9 +306,10 @@ section.page-plan{
 }
 
 .btn:hover{
-  background:var(--title);
+  background:var(--accent);
   color:#000;
   -webkit-text-fill-color:#000;
+  box-shadow:0 0 10px rgba(242,214,162,.8);
 }
 
 /* 背景圖 */
@@ -306,58 +320,29 @@ section.page-plan{
 .page9 .bg{background-image:url("bg-page5.jpg")}
 .page10 .bg{background-image:url("room7.jpg")}
 
-@media(max-width:480px){
-  section{padding:60px 24px}
-}
-/* ==========================
-   S5 微光月光金色彩系統
-========================== */
-
-/* 主標題 */
-h1,
-h2,
-.plan-title{
-    color:#E8DCC8 !important;
-    -webkit-text-fill-color:#E8DCC8 !important;
-
-    text-shadow:
-      0 0 6px rgba(232,220,200,.35),
-      0 0 14px rgba(180,140,90,.25);
+/* S5 強制文字層級覆蓋 */
+h1.line,
+h2.line,
+.plan-title.line{
+  color:var(--title) !important;
+  -webkit-text-fill-color:var(--title) !important;
 }
 
-/* 重點文字 */
-.highlight,
 .plan-tag,
 .plan-time,
-.plan-price{
-    color:#F2D6A2 !important;
-    -webkit-text-fill-color:#F2D6A2 !important;
-}
-
-/* 一般內文 */
-.line{
-    color:#F5F2EC !important;
-    -webkit-text-fill-color:#F5F2EC !important;
-}
-
-/* 官方 LINE */
-.btn{
-    color:#E8DCC8 !important;
-    border:1px solid rgba(232,220,200,.45) !important;
-}
-
-/* Hover */
-.btn:hover{
-    background:#F2D6A2 !important;
-    color:#000 !important;
-
-    box-shadow:
-      0 0 10px rgba(242,214,162,.8);
-}
-
+.plan-price,
 .highlight{
-    color:#F2D6A2 !important;
-    -webkit-text-fill-color:#F2D6A2 !important;
+  color:var(--accent) !important;
+  -webkit-text-fill-color:var(--accent) !important;
+}
+
+p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.since-tag):not(.brand-concept){
+  color:var(--text) !important;
+  -webkit-text-fill-color:var(--text) !important;
+}
+
+@media(max-width:480px){
+  section{padding:60px 24px}
 }
 </style>
 </head>
@@ -384,7 +369,7 @@ h2,
 <section class="page2">
   <div class="bg"></div>
   <div class="content">
-    <h2 class="line" style="--i:0">微光.蘇九</p>
+    <h2 class="line" style="--i:0">微光・蘇九</h2>
     <p class="line highlight" style="--i:1">舒服・自然・真實</p>
     <p class="line" style="--i:2">我不是來符合誰的期待。</p>
     <p class="line" style="--i:3">做自己就是我的樣子。</p>
@@ -487,11 +472,11 @@ h2,
     <p class="line" style="--i:12">才有意思。</p>
     <p class="line" style="--i:13">不是選妃 介意顏值 請饒過</p>
     <p class="line" style="--i:14">比起說什麼，</p>
-    <p class="line highlight" style="--i:7">做什麼 給什麼</p>
+    <p class="line" style="--i:15">做什麼、給什麼，</p>
     <p class="line" style="--i:16">才是旅程的重點。</p>
     <p class="line" style="--i:17">適合的人，</p>
     <p class="line" style="--i:18">自然會懂。</p>
-    <p class="line highlight"style="--i:19;color:var(--accent);-webkit-text-fill-color:var(--accent);font-weight:500;">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
+    <p class="line highlight" style="--i:19">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
   </div>
 </section>
 
@@ -505,7 +490,7 @@ h2,
     <p class="line" style="--i:4"><span>2｜</span>初次預約需先匯款。</p>
     <p class="line" style="--i:5">壹、貳 定金 1500。</p>
     <p class="line" style="--i:6">參、肆 定金 3000。</p>
-    <p class="line highlight"style="--i:7">你怕詐騙，我也怕被騙。</p>
+    <p class="line highlight" style="--i:7">你怕詐騙，我也怕被騙。</p>
     <p class="line" style="--i:8"><span>3｜</span>環境很重要。</p>
     <p class="line" style="--i:9">價格已包含房費。</p>
     <p class="line" style="--i:10">無需另外負擔費用。</p>
