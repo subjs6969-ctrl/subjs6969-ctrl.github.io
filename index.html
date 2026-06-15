@@ -478,7 +478,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   allSections.forEach(section => observer.observe(section));
 });
+/* S5 色彩鎖定修復 */
+h1,
+h2,
+.plan-title,
+.plan-time,
+.plan-tag{
+  color:#E9DAB8 !important;
+  -webkit-text-fill-color:#E9DAB8 !important;
+}
+
+.line,
+p,
+.content,
+.plan-note .line{
+  color:#F3EEE5 !important;
+  -webkit-text-fill-color:#F3EEE5 !important;
+}
+
+.plan-price{
+  color:#E9DAB8 !important;
+  -webkit-text-fill-color:#E9DAB8 !important;
+}
+
+.btn{
+  color:#E9DAB8 !important;
+  border-color:#E9DAB8 !important;
+}
 </script>
+
 
 </body>
 </html>
