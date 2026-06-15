@@ -1,474 +1,319 @@
-
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>微光・之上｜蘇九</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微光・之上 ｜ 蘇九</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d0d0d;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            color: #E0E0E0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 25px;
+            text-align: center;
+            box-sizing: border-box;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 基礎文字行高 */
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+        /* ==========================================
+           1. 品牌首頁 【微光・之上】（全面更換為圖二月光白金色）
+           ========================================== */
+        .hero-section {
+            position: relative;
+        }
+        .hero-brand {
+            font-size: 2.8rem;          
+            font-weight: bold;
+            color: #D9CEB2;             /* 已修正：圖二清冷月光白金色 */
+            letter-spacing: 8px;        
+            white-space: nowrap;        /* 核心防跑版：強制維持單行 */
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        @media (max-width: 375px) {
+            .hero-brand {
+                font-size: 2.2rem;      
+                letter-spacing: 5px;
+            }
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: #D9CEB2;             /* 已修正：圖二清冷月光白金色 */
+            letter-spacing: 3px;
+            margin-bottom: 4rem;        
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        .hero-subtitle span {
+            margin: 0 8px;
+            font-weight: 300;
+        }
+        .hero-slogan p {
+            font-size: 1.25rem;         
+            color: #FFFFFF;             
+            letter-spacing: 5px;        
+            margin-bottom: 16px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 1);
+        }
+        .hero-since {
+            position: absolute;
+            bottom: 35px;               
+            left: 30px;                 
+            font-size: 0.75rem;         
+            color: #FFFFFF;             
+            letter-spacing: 3px;
+            font-weight: 300;
+            opacity: 0.12;              /* 12%不透明度，達成完美的似有若無 */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); 
+            white-space: nowrap; 
+        }
 
-/* 🎨 官方圖文選單頂級配色：高對比・奢華黑金 */
-:root{
-  --bg: #030303;                     /* 優雅深邃黑 */
-  --gold-bright: #FFF3D6;            /* 耀眼香檳金（主標題） */
-  --gold-accent: #E6C280;            /* 核心重點金（標籤、數字、按鈕外框） */
-  --pure-white: #FFFFFF;             /* 內文一律純白，手機上絕對清晰 */
-  --shadow-dark: rgba(0, 0, 0, 0.95);/* 超深文字陰影 */
-}
+        /* ==========================================
+           2. 統一大標題與直條樣式
+           ========================================== */
+        .section-title {
+            color: #E0E0E0;                 
+            border-left: 3px solid #D9CEB2;      /* 已修正：圖二清冷月光白金色直條 */
+            padding-left: 12px;             
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-align: left;
+            width: 100%;
+            max-width: 450px;
+        }
 
-html{
-  scroll-behavior:smooth;
-  scroll-snap-type:y proximity;
-  background: var(--bg);
-}
+        /* 內容容器 */
+        .content-wrapper {
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
 
-body{
-  color: var(--pure-white);
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
-  overflow-x:hidden;
-  letter-spacing:.15em;
-}
+        /* ==========================================
+           3. 《相伴》專屬內文樣式
+           ========================================== */
+        .companion-section {
+            margin-top: 3.5rem;
+            text-align: center;
+            width: 100%;
+        }
+        .companion-subtitle {
+            color: #D9CEB2;             /* 已修正：圖二清冷月光白金色 */
+            font-size: 1.15rem;
+            font-weight: bold;
+            letter-spacing: 2px;  
+            margin-bottom: 1.5rem;
+        }
+        .companion-tags {
+            color: #D9CEB2;             /* 已修正：圖二清冷月光白金色 */
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            margin-top: 2rem;
+            font-weight: 500;
+        }
 
-/* ===================================================
-   👑 第一頁（首頁）完美比例版面微調（不擋人、夠大氣）
-   =================================================== */
-.page1 {
-  display: flex;
-  align-items: flex-end;     /* 🛠️ 改為靠底部對齊，完全避開上方的人物背影剪影 */
-  justify-content: center;  
-  padding-bottom: 8vh;       /* 留出底部安全距離，防止被手機環境列遮擋 */
-}
+        /* ==========================================
+           4. 預約注意事項排版
+           ========================================== */
+        .rules-container {
+            width: 100%;
+            max-width: 450px;
+            text-align: left;
+        }
+        .rules-block {
+            display: flex;
+            align-items: flex-start;        
+            margin-bottom: 2.5rem;          /* 控制大段落之間空一行 */
+        }
+        .rule-num {
+            color: #D9CEB2;             /* 已修正：數字同步圖二冷白金色 */
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 25px;                /* 右側內文垂直對齊不跑版 */
+            display: inline-block;
+        }
+        .rule-content {
+            flex: 1;
+        }
+        .rule-content p {
+            margin-bottom: 8px;              
+            color: #E0E0E0;      
+        }
+        .rules-block:last-child {
+            margin-bottom: 0;
+        }
 
-.page1 .content {
-  max-width: 85% !important; 
-  text-align: center;
-}
-
-/* 主標題：加厚體、大氣流沙金 */
-.page1 h1 {
-  font-size: clamp(38px, 10.5vw, 56px) !important; /* 微調黃金尺寸，大小適中 */
-  font-weight: 600; /* 🛠️ 大幅加粗字體！讓字體本身更有分量，不靠傻大取勝 */
-  letter-spacing: 0.2em; /* 優雅的精品字距，既有高級感又不會過於空散 */
-  padding-left: 0.2em;   
-  margin-bottom: 24px;   
-  background: linear-gradient(135deg, #FFF5DF 0%, #E6C280 60%, #C6A669 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.95));
-}
-
-/* 副標題：蘇九｜無限旅程 */
-.page1 .sub-title {
-  color: #E6C280 !important; 
-  font-size: clamp(18px, 5vw, 22px) !important; 
-  font-weight: 500; /* 🛠️ 加粗，確保文字立體清晰 */
-  letter-spacing: 0.2em;
-  padding-left: 0.2em;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.95);
-}
-
-/* 核心精神：值得，所以不將就 */
-.page1 .brand-concept {
-  color: #FFFFFF !important;
-  font-size: clamp(18px, 4.8vw, 22px) !important; 
-  font-weight: 400; /* 🛠️ 微加粗，不變螞蟻字 */
-  line-height: 2.0; /* 適度緊湊，避免短螢幕手機切字 */
-  letter-spacing: 0.2em;
-  padding-left: 0.2em;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.95);
-}
-
-/* 年份小標籤 */
-.page1 .since-tag {
-  color: rgba(230, 194, 128, 0.6) !important;
-  font-size: 12px !important;
-  letter-spacing: 0.4em;
-  padding-left: 0.4em;
-  margin-top: 35px;
-}
-
-/* ===================================================
-   🛠️ 手機不跑版「獨立滿版固定背景層」 (4, 5, 6, 7頁接管)
-   =================================================== */
-.journey-fixed-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100svh; 
-  background-image: url("room01.jpg");
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-.journey-fixed-bg.show {
-  opacity: 1;
-}
-
-.journey-fixed-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(3,3,3,0.5), rgba(3,3,3,0.7)),
-    rgba(3,3,3,0.2);
-}
-
-/* ===================================================
-   📜 其他通用 Section 與內文樣式
-   =================================================== */
-section{
-  position:relative;
-  min-height:100svh;
-  width:100%;
-  overflow:hidden;
-  scroll-snap-align:start;
-  display:flex;
-  align-items:center;
-  padding:60px 28px;
-  z-index: 3;
-}
-
-.bg{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  transform:scale(1.08);
-  transition:transform 2s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index:1;
-}
-
-section.in-view .bg{
-  transform:scale(1);
-}
-
-section:not(.page1):not(.page-plan):not(.dark-fix)::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to bottom, rgba(3,3,3,0.4), rgba(3,3,3,0.6)),
-    rgba(3,3,3,0.1);
-  z-index:2;
-}
-
-section.dark-fix::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to bottom, rgba(3,3,3,0.65), rgba(3,3,3,0.82)),
-    rgba(3,3,3,0.3);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index:2;
-}
-
-section.page-plan {
-  background: transparent !important;
-}
-
-.content{
-  position:relative;
-  z-index:4;
-  width:100%;
-  max-width:600px;
-  margin: 0 auto;
-}
-
-.center{
-  text-align:center;
-}
-
-h2 {
-  font-size: clamp(26px, 7vw, 38px);
-  margin-bottom: 36px;
-  font-weight: 300;
-  color: var(--gold-bright);
-  border-left: 3px solid var(--gold-accent);
-  padding-left: 14px;
-  text-shadow: 0 2px 8px var(--shadow-dark);
-}
-
-.center h2 {
-  border-left: none;
-  padding-left: 0;
-}
-
-.line{
-  color: var(--pure-white); 
-  font-size:clamp(16px,4.3vw,21px);
-  line-height:2.1;
-  margin:6px 0;
-  opacity:0;
-  transform:translateY(15px);
-  transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay:calc(var(--i) * .14s);
-  text-shadow: 
-    0 2px 6px var(--shadow-dark), 
-    0 4px 14px var(--shadow-dark);
-}
-
-section.in-view .line{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.plan-tag{
-  position:absolute;
-  z-index:5;
-  top:32px;
-  left:28px;
-  color: var(--gold-accent);
-  font-size:12px;
-  letter-spacing:.4em;
-  border-bottom: 1px solid rgba(230,194,128,0.4);
-  padding-bottom: 4px;
-  text-shadow: 0 2px 4px var(--shadow-dark);
-}
-
-.plan { text-align:center; }
-.plan-title{ color:var(--gold-bright); font-size:clamp(34px,9vw,52px); font-weight:300; margin-bottom:8px; border-left:none; padding-left:0; }
-.plan-time{ color: var(--gold-accent); font-size:clamp(18px,4.5vw,22px); margin-bottom:24px; letter-spacing: 0.2em; font-weight: 400; }
-.plan-price{ color:var(--pure-white); font-size:clamp(19px,5vw,26px); font-weight:400; line-height:1.6; margin:4px 0; }
-.plan-note{ margin-top:40px; border-top: 1px solid rgba(230,194,128,0.25); padding-top: 24px; }
-.plan-note .line { color: rgba(255,255,255,0.85); }
-
-.btn{
-  display:inline-block;
-  margin-top:40px;
-  padding:14px 45px;
-  border:1.5px solid var(--gold-accent);
-  border-radius:999px;
-  color: var(--gold-bright);
-  text-decoration:none;
-  font-size:15px;
-  letter-spacing:.25em;
-  background: rgba(3,3,3,0.75);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-}
-
-.btn:hover{ 
-  background: var(--gold-accent); 
-  color: #000; 
-  box-shadow: 0 0 25px rgba(230,194,128,0.6);
-  transform: translateY(-2px);
-}
-
-/* 指派獨立背景圖 */
-.page1 .bg{background-image:url("bg-page1.jpg")}
-.page2 .bg{background-image:url("bg-page2.jpg")}
-.page3 .bg{background-image:url("bg-page3.jpg")}
-.page8 .bg{background-image:url("bg-page8.jpg")}
-.page9 .bg{background-image:url("bg-page5.jpg")}
-.page10 .bg{background-image:url("room7.jpg")}
-
-@media (max-width:480px){
-  section{ padding:60px 24px; }
-}
-</style>
+        /* ==========================================
+           5. 底部按鈕樣式
+           ========================================== */
+        .line-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 50px;
+            border: 1px solid #D9CEB2;  /* 已修正：邊框同步冷白金色 */
+            color: #D9CEB2;             /* 已修正：文字同步冷白金色 */
+            text-decoration: none;
+            border-radius: 30px; 
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+        .line-btn:hover {
+            background-color: #D9CEB2;
+            color: #0d0d0d;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="journey-fixed-bg" id="journeyBg"></div>
+    <section class="page hero-section">
+        <h1 class="hero-brand">微光・之上</h1>
+        <h2 class="hero-subtitle">蘇九 <span>|</span> 無限旅程</h2>
+        <div class="hero-slogan">
+            <p>值得</p>
+            <p>所以不將就</p>
+        </div>
+        <div class="hero-since">SINCE 2019</div>
+    </section>
 
-<section class="page1">
-  <div class="bg"></div>
-  <div class="content">
-    <h1 class="line" style="--i:0">微光・之上</h1>
-    <p class="line sub-title" style="--i:1">蘇九｜無限旅程</p>
-    <p class="line brand-concept" style="--i:2">值得</p>
-    <p class="line brand-concept" style="--i:3">所以不將就</p>
-    <p class="line since-tag" style="--i:4">SINCE 2019</p>
-  </div>
-</section>
+    <section class="page">
+        <div class="section-title">微光・蘇九</div>
+        <div class="content-wrapper">
+            <p>舒服・自然・真實</p>
+            <p>我不是來符合誰的期待。</p>
+            <p>做自己就是我的樣子。</p>
+            <p>能接受，</p>
+            <p>再往下看。</p>
+            <p>不能接受，</p>
+            <p>離開也很好。</p>
+        </div>
+    </section>
 
-<section class="page2">
-  <div class="bg"></div>
-  <div class="content">
-    <h2 class="line" style="--i:0">微光・蘇九</h2>
-    <p class="line" style="--i:1">舒服・自然・真實</p>
-    <p class="line" style="--i:2">我不是來符合誰的期待。</p>
-    <p class="line" style="--i:3">做自己就是我的樣子。</p>
-    <p class="line" style="--i:4">能接受，</p>
-    <p class="line" style="--i:5">再往下看。</p>
-    <p class="line" style="--i:6">不能接受，</p>
-    <p class="line" style="--i:7">離開也很好。</p>
-  </div>
-</section>
+    <section class="page">
+        <div class="section-title">認識・蘇九</div>
+        <div class="content-wrapper">
+            <p>曾經以為，</p>
+            <p>這環境很單純。</p>
+            <p>後來才明白，</p>
+            <p>複雜的從來不是環境。</p>
+            <p>而是人性。</p>
+            <p>不迎合虛偽奉承。</p>
+            <p>更不想互相勉強。</p>
+            <p>感謝曾經的深深。</p>
+            <p>現在，</p>
+            <p>只有蘇九。</p>
+        </div>
+    </section>
 
-<section class="page3">
-  <div class="bg"></div>
-  <div class="content">
-    <h2 class="line" style="--i:0">認識・蘇九</h2>
-    <p class="line" style="--i:1">曾經以為，</p>
-    <p class="line" style="--i:2">這環境很單純。</p>
-    <p class="line" style="--i:3">後來才明白，</p>
-    <p class="line" style="--i:4">複雜的從來不是環境。</p>
-    <p class="line" style="--i:5">而是人性。</p>
-    <p class="line" style="--i:6">不迎合虛偽奉承。</p>
-    <p class="line" style="--i:7">更不想互相勉強。</p>
-    <p class="line" style="--i:8">感謝曾經的深深。</p>
-    <p class="line" style="--i:9">現在，</p>
-    <p class="line" style="--i:10">只有蘇九。</p>
-  </div>
-</section>
+    <section class="page">
+        <div class="section-title">旅程內容</div>
+        
+        <div class="content-wrapper">
+            <p>蘇九（深深）</p>
+            <p>153 / 40 / 32B / 45+</p>
+            <p>骨感偏瘦、敏感型。</p>
+            <p>沒有固定 SOP 流程。</p>
+            <p>不迎合，</p>
+            <p>不虛偽奉承。</p>
+        </div>
 
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">壹・初見</h2>
-    <p class="line plan-time" style="--i:1">100分</p>
-    <p class="line plan-price" style="--i:2">5000 ・ 基本服務</p>
-    <p class="line plan-price" style="--i:3">7000 ・ 職人進階</p>
-    <div class="plan-note">
-      <p class="line" style="--i:4">第一次嘗試的你</p>
-      <p class="line" style="--i:5">很適合。</p>
-    </div>
-  </div>
-</section>
+        <div class="companion-section">
+            <h3 class="companion-subtitle">《相伴》</h3>
+            <p>要的是舒服，</p>
+            <p>享受過程。</p>
+            <p>滿足身體，</p>
+            <p>也滿足心理。</p>
+            <p>這樣的旅程，</p>
+            <p>才有意思。</p>
+            <p>比起說什麼，</p>
+            <p>做什麼、給什麼，</p>
+            <p>才是旅程的重點。</p>
+            <p>適合的人，</p>
+            <p>自然會懂。</p>
+            <div class="companion-tags">共浴 ｜ 放鬆 ｜ 聊天 ｜ 陪伴 ｜ 情慾</div>
+        </div>
+    </section>
 
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">貳・短程</h2>
-    <p class="line plan-time" style="--i:1">180分</p>
-    <p class="line plan-price" style="--i:2">6200 ・ 基本服務</p>
-    <p class="line plan-price" style="--i:3">8200 ・ 職人進階</p>
-    <div class="plan-note">
-      <p class="line" style="--i:4">時間多一點</p>
-      <p class="line" style="--i:5">相處也多一點。</p>
-    </div>
-  </div>
-</section>
+    <section class="page">
+        <div class="section-title">預約前注意事項</div>
+        
+        <div class="rules-container">
+            <div class="rules-block">
+                <span class="rule-num">1</span>
+                <div class="rule-content">
+                    <p>蘇九有抽菸。</p>
+                    <p>對菸味敏感，請務必告知。</p>
+                    <p>這是對您來訪的尊重。</p>
+                </div>
+            </div>
 
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">參・半日遊</h2>
-    <p class="line plan-time" style="--i:1">10H</p>
-    <p class="line plan-price" style="--i:2">15000</p>
-    <div class="plan-note">
-      <p class="line" style="--i:3">給自己的放鬆時間。</p>
-      <p class="line" style="--i:4">隔絕紛擾，</p>
-      <p class="line" style="--i:5">享受當下。</p>
-    </div>
-  </div>
-</section>
+            <div class="rules-block">
+                <span class="rule-num">2</span>
+                <div class="rule-content">
+                    <p>初次預約需先匯款。</p>
+                    <p>壹、貳 定金 1500。</p>
+                    <p>參、肆 定金 3000。</p>
+                    <p>你怕詐騙，我也怕被騙。</p>
+                </div>
+            </div>
 
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">肆・之上</h2>
-    <p class="line plan-time" style="--i:1">16H</p>
-    <p class="line plan-price" style="--i:2">20000</p>
-    <div class="plan-note">
-      <p class="line" style="--i:3">共啟旅程中，</p>
-      <p class="line" style="--i:4">感覺對了。</p>
-      <p class="line" style="--i:5">很多事情，</p>
-      <p class="line" style="--i:6">自然就會發生。</p>
-    </div>
-  </div>
-</section>
+            <div class="rules-block">
+                <span class="rule-num">3</span>
+                <div class="rule-content">
+                    <p>環境很重要。</p>
+                    <p>價格已包含房費。</p>
+                    <p>無需另外負擔費用。</p>
+                </div>
+            </div>
 
-<section class="page8 dark-fix">
-  <div class="bg"></div>
-  <div class="content">
-    <h2 class="line" style="--i:0">旅程內容</h2>
-    <p class="line" style="--i:1">蘇九（深深）</p>
-    <p class="line" style="--i:2">153 / 40 / 32B / 45+</p>
-    <p class="line" style="--i:3">骨感偏瘦、敏感型。</p>
-    <p class="line" style="--i:4">沒有固定 SOP 流程。</p>
-    <p class="line" style="--i:5">不迎合，</p>
-    <p class="line" style="--i:6">不虛假奉承。</p>
-    <p class="line" style="--i:7">《相伴》</p>
-    <p class="line" style="--i:8">要的是舒服，</p>
-    <p class="line" style="--i:9">享受過程。</p>
-    <p class="line" style="--i:10">滿足身體，</p>
-    <p class="line" style="--i:11">也滿足心理。</p>
-    <p class="line" style="--i:12">這樣的旅程，</p>
-    <p class="line" style="--i:13">才有意思。</p>
-    <p class="line" style="--i:14">比起說什麼，</p>
-    <p class="line" style="--i:15">做什麼、給什麼，</p>
-    <p class="line" style="--i:16">才是旅程的重點。</p>
-    <p class="line" style="--i:17">適合的人，</p>
-    <p class="line" style="--i:18">自然會懂。</p>
-    <p class="line" style="--i:19" style="color:var(--gold-accent); font-weight:500;">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
-  </div>
-</section>
+            <div class="rules-block">
+                <span class="rule-num">4</span>
+                <div class="rule-content">
+                    <p>想要的服務、體驗，</p>
+                    <p>請直接列在預約單上。</p>
+                    <p>詳細流程與規則，</p>
+                    <p>請至官方 LINE 了解。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="page9 dark-fix">
-  <div class="bg"></div>
-  <div class="content">
-    <h2 class="line" style="--i:0">預約前注意事項</h2>
-    <p class="line" style="--i:1"><span style="color:var(--gold-accent); font-weight:bold;">1｜</span>蘇九有抽菸。</p>
-    <p class="line" style="--i:2">對菸味敏感，請務必告知。</p>
-    <p class="line" style="--i:3" style="color: rgba(255,255,255,0.7)">這是對您來訪的尊重。</p>
-    <p class="line" style="--i:4"><span style="color:var(--gold-accent); font-weight:bold;">2｜</span>初次預約需先匯款。</p>
-    <p class="line" style="--i:5">壹、貳 定金 1500。</p>
-    <p class="line" style="--i:6">參、肆 定金 3000。</p>
-    <p class="line" style="--i:7" style="color:var(--gold-bright)">你怕詐騙，我也怕被騙。</p>
-    <p class="line" style="--i:8"><span style="color:var(--gold-accent); font-weight:bold;">3｜</span>環境很重要。</p>
-    <p class="line" style="--i:9">價格已包含房費。</p>
-    <p class="line" style="--i:10" style="color: rgba(255,255,255,0.7)">無需另外負擔費用。</p>
-    <p class="line" style="--i:11"><span style="color:var(--gold-accent); font-weight:bold;">4｜</span>想要的服務、體驗，</p>
-    <p class="line" style="--i:12">請直接列在預約單上。</p>
-    <p class="line" style="--i:13">詳細流程與規則，</p>
-    <p class="line" style="--i:14">請至官方 LINE 了解。</p>
-  </div>
-</section>
-
-<section class="page10 dark-fix">
-  <div class="bg"></div>
-  <div class="content center">
-    <h2 class="line" style="--i:0">開始旅程</h2>
-    <p class="line" style="--i:1">如果準備好了。</p>
-    <p class="line" style="--i:2">我們官方 LINE 見。</p>
-    <a class="btn line" style="--i:3" href="https://lin.ee/8PWbHBM" target="_blank">官方 LINE</a>
-  </div>
-</section>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const allSections = document.querySelectorAll("section");
-  const journeyBg = document.getElementById("journeyBg");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-        if (entry.target.classList.contains("page-plan")) {
-          journeyBg.classList.add("show");
-        }
-      } else {
-        entry.target.classList.remove("in-view");
-        if (entry.target.classList.contains("page-plan")) {
-          const anyPlanVisible = Array.from(document.querySelectorAll(".page-plan")).some(el => el.classList.contains("in-view"));
-          if (!anyPlanVisible) {
-            journeyBg.classList.remove("show");
-          }
-        }
-      }
-    });
-  }, {
-    threshold: 0.12, 
-    rootMargin: "0px 0px -8% 0px"
-  });
-
-  allSections.forEach(section => observer.observe(section));
-});
-</script>
+    <section class="page">
+        <div class="content-wrapper">
+            <p style="font-size: 1.25rem; color: #D9CEB2; font-weight: bold; margin-bottom: 16px;">開始旅程</p>
+            <p>如果準備好了。</p>
+            <p>我們官方 LINE 見。</p>
+            <a href="https://lin.ee/M4WpYwQ" class="line-btn">官方 LINE</a>
+        </div>
+    </section>
 
 </body>
 </html>
