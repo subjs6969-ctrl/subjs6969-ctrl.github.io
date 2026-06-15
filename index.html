@@ -4,12 +4,38 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>微光・之上｜蘇九</title>
+/* S5 色彩鎖定修復 */
+h1,
+h2,
+.plan-title,
+.plan-time,
+.plan-tag{
+  color:#E9DAB8 !important;
+  -webkit-text-fill-color:#E9DAB8 !important;
+}
 
+.line,
+p,
+.content,
+.plan-note .line{
+  color:#F3EEE5 !important;
+  -webkit-text-fill-color:#F3EEE5 !important;
+}
+
+.plan-price{
+  color:#E9DAB8 !important;
+  -webkit-text-fill-color:#E9DAB8 !important;
+}
+
+.btn{
+  color:#E9DAB8 !important;
+  border-color:#E9DAB8 !important;
+}
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 /* 🎨 官方圖文選單頂級配色：高對比・奢華清冷月光白金 */
-::root{
+:root{
   --bg:#030303;
   --gold-bright:#E9DAB8;
   --gold-accent:#E9DAB8;
@@ -478,33 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   allSections.forEach(section => observer.observe(section));
 });
-/* S5 色彩鎖定修復 */
-h1,
-h2,
-.plan-title,
-.plan-time,
-.plan-tag{
-  color:#E9DAB8 !important;
-  -webkit-text-fill-color:#E9DAB8 !important;
-}
 
-.line,
-p,
-.content,
-.plan-note .line{
-  color:#F3EEE5 !important;
-  -webkit-text-fill-color:#F3EEE5 !important;
-}
-
-.plan-price{
-  color:#E9DAB8 !important;
-  -webkit-text-fill-color:#E9DAB8 !important;
-}
-
-.btn{
-  color:#E9DAB8 !important;
-  border-color:#E9DAB8 !important;
-}
 </script>
 
 
