@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head><link rel="apple-touch-icon" href="apple-touch-icon.jpg">
@@ -305,6 +303,7 @@ section.page-plan{
   letter-spacing:.25em;
   background:rgba(3,3,3,.75);
   box-shadow:0 4px 20px rgba(0,0,0,.8);
+  cursor: pointer;
 }
 
 .btn:hover{
@@ -346,6 +345,152 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 @media(max-width:480px){
   section{padding:60px 24px}
 }
+
+/* ------------------------------------------ */
+/* 獨立包覆的預約彈窗 CSS 樣式 */
+/* ------------------------------------------ */
+.su9-booking-popup {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 99999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+  font-family: -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+  letter-spacing: 0.05em;
+}
+.su9-booking-panel {
+  background: #111111;
+  border: 1px solid rgba(242, 214, 162, 0.25);
+  width: 100%;
+  max-width: 460px;
+  max-height: 85vh;
+  border-radius: 12px;
+  padding: 24px;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+  box-sizing: border-box;
+  color: #f5f2ec;
+}
+.su9-booking-panel h2 {
+  color: #E8DCC8;
+  -webkit-text-fill-color: #E8DCC8;
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  text-shadow: none;
+}
+.su9-booking-panel .muted {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(245, 242, 236, 0.5);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.su9-form-item {
+  margin-bottom: 18px;
+  text-align: left;
+}
+.su9-form-item .title {
+  display: block;
+  color: #F2D6A2;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.su9-form-item input[type="text"] {
+  width: 100%;
+  background: #181818;
+  border: 1px solid rgba(245, 242, 236, 0.15);
+  border-radius: 6px;
+  padding: 11px 14px;
+  color: #f5f2ec;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+.su9-form-item input[type="text"]:focus {
+  border-color: #F2D6A2;
+}
+.su9-options {
+  background: #181818;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(242, 214, 162, 0.12);
+  box-sizing: border-box;
+}
+.su9-options label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 14px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #f5f2ec;
+}
+.su9-options input[type="checkbox"], .su9-options input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #F2D6A2;
+  width: 15px;
+  height: 15px;
+}
+.su9-text {
+  background: #1c140a;
+  border: 1px solid rgba(242, 214, 162, 0.4);
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #f2d6a2;
+  white-space: pre-wrap;
+  margin-top: 15px;
+  text-align: left;
+}
+.su9-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.su9-actions .button {
+  width: 100%;
+  text-align: center;
+  padding: 13px 0;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  letter-spacing: 0.1em;
+  box-sizing: border-box;
+}
+.su9-actions .button.primary {
+  background: #F2D6A2;
+  color: #030303;
+  border: 1px solid #F2D6A2;
+  font-weight: bold;
+}
+/* 複製成功後，動態亮起的私 LINE 按鈕樣式 */
+.su9-actions .button.line-go {
+  background: #06C755;
+  color: #ffffff;
+  border: 1px solid #06C755;
+  font-weight: bold;
+  animation: pulseLine 1.5s infinite;
+}
+@keyframes pulseLine {
+  0% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(6, 199, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
+}
+.su9-actions .button.secondary {
+  background: transparent;
+  color: rgba(245, 242, 236, 0.5);
+  border: 1px solid rgba(245, 242, 236, 0.15);
+}
 </style>
 </head>
 
@@ -374,7 +519,7 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
    style="--i:3; margin-top:50px;">
    值得，所以不將就
 </p>
-<
+
 <p class="line since-tag"
    style="--i:4; margin-top:70px;">
    SINCE 2019
@@ -517,37 +662,126 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
     <p class="line" style="--i:11"><span>4｜</span>想要的服務、體驗，</p>
     <p class="line" style="--i:12">請直接列在預約單上。</p>
     <p class="line" style="--i:13">詳細流程與規則，</p>
-    <p class="line" style="--i:14">請至官方 LINE 了解。</p>
+    <p class="line" style="--i:14">請填寫預約單以取得私 LINE 了解。</p>
   </div>
 </section>
+
 <section class="page10 dark-fix">
   <div class="bg"></div>
-
   <div class="content center">
-
-    <h2 class="line" style="--i:0">
-      開始旅程
-    </h2>
-
- <p class="line" style="--i:1">
-請先閱讀圖文選單內容。
-</p>
-
-<p class="line" style="--i:2">
-理解彼此方式後，再提交預約。
-</p>
-
-<a class="btn line"
-style="--i:3"
-href="https://lin.ee/Rp071XM"
-target="_blank">
-閱讀圖文選單後提交預約
-</a>
-
+    <h2 class="line" style="--i:0">開始旅程</h2>
+    <p class="line" style="--i:1">請先完整填寫預約選單。</p>
+    <p class="line" style="--i:2">理解彼此方式、確認要預約，再取得私 LINE。</p>
+    <button class="btn line" style="--i:3" onclick="openSu9Booking()">
+      填寫預約單並取得私 LINE
+    </button>
   </div>
 </section>
 
-</section>
+<div class="su9-booking-popup" id="su9BookingPopup">
+  <div class="su9-booking-panel">
+    <h2>預約單填寫</h2>
+    <p class="muted">請認真填寫與勾選項目。不約或考慮中請點最下方返回。</p>
+    
+    <div class="su9-form-item">
+      <label class="title">1｜您的 LINE 稱號 (必填)：</label>
+      <input type="text" id="su9_name" placeholder="請輸入您預計加 LINE 的暱稱">
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">2｜預約日期、時段 (必填)：</label>
+      <input type="text" id="su9_time_1" placeholder="第一期望時段（例如：7/15 14:00）" style="margin-bottom: 8px;">
+      <input type="text" id="su9_time_2" placeholder="第二期望時段（例如：7/16 16:00）">
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">3｜選擇方案 (必填)：</label>
+      <div class="su9-options">
+        <label><input type="checkbox" name="su9_plan" value="壹・初見 (100分)"><span>壹・初見 (100分)</span></label>
+        <label><input type="checkbox" name="su9_plan" value="貳・短程 (180分)"><span>貳・短程 (180分)</span></label>
+        <label><input type="checkbox" name="su9_plan" value="參・半日閒 (10H)"><span>參・半日閒 (10H)</span></label>
+        <label><input type="checkbox" name="su9_plan" value="肆・之上 (16H)"><span>肆・之上 (16H)</span></label>
+      </div>
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">4｜基本服務需求 (可複選)：</label>
+      <p style="color: #e53e3e; font-size: 11px; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.05em;">⚠️ 嚴禁：無套 ❌ 肛交 ❌ 暴力手指挖或扣</p>
+      <div class="su9-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="親吻"><span>親吻</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="全身清潔"><span>全身清潔</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="情慾愛撫"><span>情慾愛撫</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="69"><span>69</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="深喉"><span>深喉</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="漱懶覺"><span>漱懶覺</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="清槍"><span>清槍</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="口爆"><span>口爆</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="素股"><span>素股</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="漱機掰"><span>漱機掰</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="舔蛋"><span>舔蛋</span></label>
+        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="玩具"><span>玩具</span></label>
+        <label style="margin:0; grid-column: span 2;"><input type="checkbox" name="su9_basic" value="變裝可"><span>變裝可</span></label>
+      </div>
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">5｜職人進階需求 (可複選)：</label>
+      <div class="su9-options">
+        <label><input type="checkbox" name="su9_advance" value="深式毒龍"><span>深式毒龍</span></label>
+        <label><input type="checkbox" name="su9_advance" value="喉射"><span>喉射</span></label>
+        <label><input type="checkbox" name="su9_advance" value="吞精"><span>吞精</span></label>
+        <label><input type="checkbox" name="su9_advance" value="SM"><span>SM</span></label>
+        <label><input type="checkbox" name="su9_advance" value="情趣用品"><span>情趣用品</span></label>
+      </div>
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">6｜高階專屬需求 (可複選)：</label>
+      <p style="color: #F2D6A2; font-size: 11px; margin-bottom: 6px; font-weight: bold;">🔒 只對熟悉蘇九個性的你開放，新客勿選</p>
+      <div class="su9-options">
+        <label><input type="checkbox" name="su9_high" value="雙飛 (可攜女伴)"><span>雙飛 (可攜女伴)</span></label>
+        <label><input type="checkbox" name="su9_high" value="2王一后"><span>2王一后</span></label>
+        <label><input type="checkbox" name="su9_high" value="團體活動 (不定時)"><span>團體活動 (不定時)</span></label>
+      </div>
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">7｜特殊/其他需求填寫：</label>
+      <input type="text" id="su9_special" placeholder="有其他特殊偏好請填寫，若無填無">
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">8｜菸味接受度 (必選)：</label>
+      <div class="su9-options">
+        <label><input type="radio" name="su9_smoke" value="有抽菸"> 有抽菸</label>
+        <label><input type="radio" name="su9_smoke" value="不介意"> 不介意</label>
+        <label><input type="radio" name="su9_smoke" value="介意"> 介意</label>
+      </div>
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">9｜初次核對：</label>
+      <p style="color:#F2D6A2; font-size:13px; line-height:1.4;">請附上來源首頁截圖（加入私 LINE 後主動發送）</p>
+    </div>
+
+    <div class="su9-form-item">
+      <label class="title">10｜訂金確認：</label>
+      <p style="color:#F2D6A2; font-size:13px; line-height:1.4;">了解 2 小時內完成匯款方能保留時段</p>
+    </div>
+
+    <div class="su9-text" id="su9BookingText" style="display:none;"></div>
+
+    <div class="su9-actions">
+      <div class="button primary" id="su9CopyBtn" onclick="processSu9Booking()">確認要約，複製預約單</div>
+      
+      <a id="su9LineBtn" href="https://lin.ee/Rp071XM" target="_blank" class="button line-go" style="display:none; text-decoration:none;">
+        ✨ 複製成功！點此前往蘇九私 LINE 貼上
+      </a>
+      
+      <div class="button secondary" onclick="closeSu9Booking()">再考慮看看（返回網頁）</div>
+    </div>
+  </div>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -582,6 +816,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
   allSections.forEach(section => observer.observe(section));
 });
+
+/* 彈窗基本操作 */
+function openSu9Booking(){
+  document.getElementById('su9BookingPopup').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('su9BookingText').style.display = 'none';
+  document.getElementById('su9CopyBtn').style.display = 'block';
+  document.getElementById('su9LineBtn').style.display = 'none';
+}
+
+function closeSu9Booking(){
+  document.getElementById('su9BookingPopup').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+/* 核心邏輯：嚴格欄位檢查 + 延遲給予 LINE 管道 */
+function processSu9Booking(){
+  // 1. 抓取必填欄位值
+  const name = document.getElementById('su9_name').value.trim();
+  const time1 = document.getElementById('su9_time_1').value.trim();
+  const time2 = document.getElementById('su9_time_2').value.trim();
+  
+  const selectedPlans = Array.from(document.querySelectorAll('input[name="su9_plan"]:checked')).map(i => i.value).join('、');
+  const smokeElement = document.querySelector('input[name="su9_smoke"]:checked');
+
+  // 2. 嚴格把關：若必填沒填，直接攔截不給複製、不給 LINE
+  if(!name || !time1 || !selectedPlans || !smokeElement){
+    alert('❌ 【預約失敗】請務必填寫 LINE稱號、第一期望時段、選擇方案，並勾選菸味接受度！\n\n確定想要預約，請將資料填寫完整。');
+    return;
+  }
+
+  // 3. 非必填欄位組合
+  const basicServices = Array.from(document.querySelectorAll('input[name="su9_basic"]:checked')).map(i => i.value).join('、') || '未勾選';
+  const advanceServices = Array.from(document.querySelectorAll('input[name="su9_advance"]:checked')).map(i => i.value).join('、') || '無';
+  const highServices = Array.from(document.querySelectorAll('input[name="su9_high"]:checked')).map(i => i.value).join('、') || '無';
+  const special = document.getElementById('su9_special').value.trim() || '無';
+  const smoke = smokeElement.value;
+
+  // 4. 格式化預約文字
+  const text =
+    '您好，我想預約微光旅程。\n\n' +
+    '1｜LINE 稱號：' + name + '\n\n' +
+    '2｜預約日期、時段：\n第一時段：' + time1 + '\n第二時段：' + (time2 || '未填寫') + '\n\n' +
+    '3｜選擇方案：' + selectedPlans + '\n\n' +
+    '4｜基本服務需求：' + basicServices + '\n\n' +
+    '5｜職人進階需求：' + advanceServices + '\n\n' +
+    '6｜高階專屬需求：' + highServices + '\n\n' +
+    '7｜特殊/其他需求：' + special + '\n\n' +
+    '8｜菸味接受度：' + smoke + '\n\n' +
+    '9｜初次核對：\n請附上來源首頁截圖\n\n' +
+    '10｜訂金確認：\n了解 2 小時內完成匯款方能保留時段';
+
+  // 5. 執行複製
+  navigator.clipboard.writeText(text).then(function(){
+    showSuccessUI(text);
+  }).catch(function(){
+    showSuccessUI(text);
+  });
+}
+
+// 成功複製後，調換按鈕的 function
+function showSuccessUI(text) {
+  const textDiv = document.getElementById('su9BookingText');
+  textDiv.style.display = 'block';
+  textDiv.innerText = text + '\n\n📋 預約資料已成功複製到您的剪貼簿！';
+
+  // 隱藏原本的複製鈕，將綠色的私 LINE 按鈕顯現出來！
+  document.getElementById('su9CopyBtn').style.display = 'none';
+  document.getElementById('su9LineBtn').style.display = 'block';
+}
 </script>
 
 </body>
