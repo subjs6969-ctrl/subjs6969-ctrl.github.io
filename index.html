@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head><link rel="apple-touch-icon" href="apple-touch-icon.jpg">
+<head>
+<link rel="apple-touch-icon" href="apple-touch-icon.jpg">
 <link rel="icon" type="image/png" href="apple-touch-icon.jpg">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -129,7 +129,6 @@ section.in-view .line{
   transform:translateY(0);
 }
 
-/* 第一頁 */
 .page1{
   display:flex;
   flex-direction:column;
@@ -190,7 +189,6 @@ section.in-view .line{
     0 2px 8px rgba(0,0,0,.9);
 }
 
-/* 旅程固定背景 */
 .journey-fixed-bg{
   position:fixed;
   inset:0;
@@ -219,7 +217,6 @@ section.in-view .line{
     rgba(3,3,3,.2);
 }
 
-/* 旅程方案 */
 section.page-plan{
   background:transparent;
 }
@@ -277,20 +274,17 @@ section.page-plan{
   border-top:none;
 }
 
-/* 重點文字 */
 .highlight{
   color:var(--accent) !important;
   -webkit-text-fill-color:var(--accent) !important;
 }
 
-/* 注意事項重點數字 */
 .page9 span{
   color:var(--accent) !important;
   -webkit-text-fill-color:var(--accent) !important;
   font-weight:700;
 }
 
-/* 按鈕 */
 .btn{
   display:inline-block;
   margin-top:40px;
@@ -314,7 +308,6 @@ section.page-plan{
   box-shadow:0 0 10px rgba(242,214,162,.8);
 }
 
-/* 背景圖 */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
@@ -322,7 +315,6 @@ section.page-plan{
 .page9 .bg{background-image:url("bg-page5.jpg")}
 .page10 .bg{background-image:url("room7.jpg")}
 
-/* S5 強制文字層級覆蓋 */
 h1.line,
 h2.line,
 .plan-title.line{
@@ -347,9 +339,6 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   section{padding:60px 24px}
 }
 
-/* ------------------------------------------ */
-/* 獨立包覆的預約彈窗 CSS 樣式，絕對不與前幾頁衝突 */
-/* ------------------------------------------ */
 .su9-booking-popup {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
@@ -373,24 +362,13 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   padding: 24px;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-  box-sizing: border-box;
   color: #f5f2ec;
 }
 .su9-booking-panel h2 {
   color: #E8DCC8;
-  -webkit-text-fill-color: #E8DCC8;
   text-align: center;
-  margin-bottom: 6px;
+  margin-bottom: 20px;
   font-size: 22px;
-  letter-spacing: 0.1em;
-  text-shadow: none;
-}
-.su9-booking-panel .muted {
-  text-align: center;
-  font-size: 12px;
-  color: rgba(245, 242, 236, 0.5);
-  margin-bottom: 24px;
-  line-height: 1.5;
 }
 .su9-form-item {
   margin-bottom: 18px;
@@ -410,67 +388,37 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   border-radius: 6px;
   padding: 11px 14px;
   color: #f5f2ec;
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
-  transition: border 0.3s;
-}
-.su9-form-item input[type="text"]:focus {
-  border-color: #F2D6A2;
+  font-size: 16px;
 }
 .su9-options {
   background: #181818;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid rgba(242, 214, 162, 0.12);
-  box-sizing: border-box;
 }
 .su9-options label {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  margin-right: 14px;
+  display: block;
   margin-bottom: 8px;
   font-size: 13px;
-  color: #f5f2ec;
-}
-.su9-options input[type="checkbox"], .su9-options input[type="radio"] {
-  margin-right: 6px;
-  accent-color: #F2D6A2;
-  width: 15px;
-  height: 15px;
-}
-.su9-text {
-  background: #181818;
-  border: 1px solid rgba(242, 214, 162, 0.2);
-  border-radius: 6px;
-  padding: 14px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #e2dfd9;
-  white-space: pre-wrap;
-  margin-top: 15px;
-  text-align: left;
+  cursor: pointer;
 }
 .su9-actions {
   margin-top: 24px;
   display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 .su9-actions .button {
-  flex: 1;
   text-align: center;
   padding: 13px 0;
   font-size: 14px;
   cursor: pointer;
   border-radius: 6px;
   letter-spacing: 0.1em;
-  box-sizing: border-box;
 }
 .su9-actions .button.primary {
   background: #F2D6A2;
   color: #030303;
-  border: 1px solid #F2D6A2;
   font-weight: bold;
 }
 .su9-actions .button.secondary {
@@ -487,31 +435,14 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 
 <section class="page1">
   <div class="bg"></div>
-
   <div class="content brand-header">
     <h1 class="line" style="--i:0">微光・之上</h1>
   </div>
-
   <div class="content brand-footer">
-<p class="line hero-name"
-   style="--i:1; margin-top:25px; margin-bottom:12px;">
-   蘇九
-</p>
-
-<p class="line sub-title"
-   style="--i:2; margin-bottom:35px;">
-   無限旅程
-</p>
-<p class="line brand-concept"
-   style="--i:3; margin-top:50px;">
-   值得，所以不將就
-</p>
-
-<p class="line since-tag"
-   style="--i:4; margin-top:70px;">
-   SINCE 2019
-</p>
-    
+    <p class="line hero-name" style="--i:1; margin-top:25px; margin-bottom:12px;">蘇九</p>
+    <p class="line sub-title" style="--i:2; margin-bottom:35px;">無限旅程</p>
+    <p class="line brand-concept" style="--i:3; margin-top:50px;">值得，所以不將就</p>
+    <p class="line since-tag" style="--i:4; margin-top:70px;">SINCE 2019</p>
   </div>
 </section>
 
@@ -522,110 +453,32 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
     <p class="line highlight" style="--i:1">舒服・自然・真實</p>
     <p class="line" style="--i:2">我不是來符合誰的期待。</p>
     <p class="line" style="--i:3">做自己就是我的樣子。</p>
-    <p class="line" style="--i:4">能接受，</p>
-    <p class="line" style="--i:5">再往下看。</p>
-    <p class="line" style="--i:6">不能接受，</p>
-    <p class="line" style="--i:7">離開也很好。</p>
+    <p class="line" style="--i:4">能接受，再往下看。不能接受，離開也很好。</p>
   </div>
 </section>
 
 <section class="page3">
   <div class="bg"></div>
   <div class="content">
- 
-    <p class="line" style="--i:1">曾經以為，</p>
-    <p class="line" style="--i:2">這環境很單純。</p>
-    <p class="line" style="--i:3">後來才明白，</p>
-    <p class="line" style="--i:4">複雜的不是環境。</p>
-    <p class="line highlight" style="--i:5">實人性。</p>
-    <p class="line" style="--i:6">不迎合虛偽奉承。</p>
-    <p class="line" style="--i:7">更不想互相勉強。</p>
-    <p class="line" style="--i:8">感謝曾經的深深。</p>
-    <p class="line" style="--i:9">現在，</p>
-    <p class="line highlight" style="--i:10">只有蘇九。</p>
+    <p class="line" style="--i:1">曾經以為，這環境很單純。</p>
+    <p class="line" style="--i:2">後來才明白，複雜的不是環境。</p>
+    <p class="line highlight" style="--i:3">實人性。不迎合虛偽奉承。</p>
+    <p class="line" style="--i:4">只有蘇九。</p>
   </div>
 </section>
 
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">壹・初見</h2>
-    <p class="line plan-time" style="--i:1">100分</p>
-    <p class="line plan-price" style="--i:2">5000 ・ 基本服務</p>
-    <p class="line plan-price" style="--i:3">7000 ・ 職人進階</p>
-    <div class="plan-note">
-      <p class="line" style="--i:4">第一次嘗試的你</p>
-      <p class="line" style="--i:5">很適合。</p>
-    </div>
-  </div>
-</section>
-
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">貳・短程</h2>
-    <p class="line plan-time" style="--i:1">180分</p>
-    <p class="line plan-price" style="--i:2">6200 ・ 基本服務</p>
-    <p class="line plan-price" style="--i:3">8200 ・ 職人進階</p>
-    <div class="plan-note">
-      <p class="line" style="--i:4">時間多一點</p>
-      <p class="line" style="--i:5">相處也多一點。</p>
-    </div>
-  </div>
-</section>
-
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">參・半日閒</h2>
-    <p class="line plan-time" style="--i:1">10H</p>
-    <p class="line plan-price" style="--i:2">15000</p>
-    <div class="plan-note">
-      <p class="line" style="--i:3">給自己的放鬆時間。</p>
-      <p class="line" style="--i:4">隔絕紛擾，</p>
-      <p class="line" style="--i:5">享受當下。</p>
-    </div>
-  </div>
-</section>
-
-<section class="page-plan">
-  <div class="plan-tag">微光・旅程</div>
-  <div class="content plan">
-    <h2 class="line plan-title" style="--i:0">肆・之上</h2>
-    <p class="line plan-time" style="--i:1">16H</p>
-    <p class="line plan-price" style="--i:2">20000</p>
-    <div class="plan-note">
-      <p class="line" style="--i:3">共啟旅程中，</p>
-      <p class="line" style="--i:4">感覺對了。</p>
-      <p class="line" style="--i:5">很多事情，</p>
-      <p class="line" style="--i:6">自然就會發生。</p>
-    </div>
-  </div>
-</section>
+<section class="page-plan"><div class="plan-tag">微光・旅程</div><div class="content plan"><h2 class="line plan-title" style="--i:0">壹・初見</h2><p class="line plan-time" style="--i:1">100分</p><p class="line plan-price" style="--i:2">5000 ・ 基本服務</p><p class="line plan-price" style="--i:3">7000 ・ 職人進階</p></div></section>
+<section class="page-plan"><div class="plan-tag">微光・旅程</div><div class="content plan"><h2 class="line plan-title" style="--i:0">貳・短程</h2><p class="line plan-time" style="--i:1">180分</p><p class="line plan-price" style="--i:2">6200 ・ 基本服務</p><p class="line plan-price" style="--i:3">8200 ・ 職人進階</p></div></section>
+<section class="page-plan"><div class="plan-tag">微光・旅程</div><div class="content plan"><h2 class="line plan-title" style="--i:0">參・半日閒</h2><p class="line plan-time" style="--i:1">10H</p><p class="line plan-price" style="--i:2">15000</p></div></section>
+<section class="page-plan"><div class="plan-tag">微光・旅程</div><div class="content plan"><h2 class="line plan-title" style="--i:0">肆・之上</h2><p class="line plan-time" style="--i:1">16H</p><p class="line plan-price" style="--i:2">20000</p></div></section>
 
 <section class="page8 dark-fix">
   <div class="bg"></div>
   <div class="content">
-    
-    <p class="line highlight"style="--i:1">蘇九（深深）</p>
-    <p class="line" style="--i:2">153 / 40 / 32B / 45+</p>
-    <p class="line" style="--i:3">骨感偏瘦、敏感型。</p>
-    <p class="line" style="--i:4">沒有固定 SOP 流程。</p>
-    <p class="line" style="--i:5">不迎合，</p>
-    <p class="line" style="--i:6">個性直爽。</p>
-    <p class="line highlight" style="--i:7">《相幹》</p>
-    <p class="line" style="--i:8">要的是舒服享受過程，</p>
-    <p class="line" style="--i:9">滿足身體，</p>
-    <p class="line" style="--i:10">也滿足心理。</p>
-    <p class="line" style="--i:11">這樣的旅程，</p>
-    <p class="line" style="--i:12">才有意思。</p>
-    <p class="line" style="--i:13">不是選妃 介意顏值 請饒過</p>
-    <p class="line" style="--i:14">比起說什麼，</p>
-    <p class="line highlight" style="--i:15">做什麼、給什麼，</p>
-    <p class="line" style="--i:16">才是旅程的重點。</p>
-    <p class="line" style="--i:17">適合的人，</p>
-    <p class="line" style="--i:18">自然會懂。</p>
-    <p class="line highlight" style="--i:19">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
+    <p class="line highlight" style="--i:1">蘇九（深深）</p>
+    <p class="line" style="--i:2">骨感偏瘦、敏感型。沒有固定 SOP 流程。</p>
+    <p class="line highlight" style="--i:3">《相幹》：滿足身體，也滿足心理。</p>
+    <p class="line" style="--i:4">不是選妃 介意顏值 請饒過。</p>
   </div>
 </section>
 
@@ -633,23 +486,9 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   <div class="bg"></div>
   <div class="content">
     <h2 class="line" style="--i:0">預約前注意事項</h2>
-    <p class="line" style="--i:1"><span>1｜</span>蘇九有抽菸。</p>
-    <p class="line" style="--i:2">對菸味敏感，請務必告知。</p>
-    <p class="line" style="--i:3">這是對您來訪的尊重。</p>
-    <br><br>
-    <p class="line" style="--i:4"><span>2｜</span>初次預約需先匯款。</p>
-    <p class="line" style="--i:5">壹、貳 定金 1500。</p>
-    <p class="line" style="--i:6">參、肆 定金 3000。</p>
-    <p class="line highlight" style="--i:7">你怕詐騙，我也怕被騙。</p>
-    <br><br>
-    <p class="line" style="--i:8"><span>3｜</span>環境很重要。</p>
-    <p class="line" style="--i:9">價格已包含房費。</p>
-    <p class="line" style="--i:10">無需另外負擔費用。</p>
-    <br><br>
-    <p class="line" style="--i:11"><span>4｜</span>想要的服務、體驗，</p>
-    <p class="line" style="--i:12">請直接列在預約單上。</p>
-    <p class="line" style="--i:13">詳細流程與規則，</p>
-    <p class="line" style="--i:14">請點選初步預約單了解。</p>
+    <p class="line" style="--i:1">1｜蘇九有抽菸。對菸味敏感，請務必告知。</p>
+    <p class="line" style="--i:2">2｜初次預約需先匯款（定金 1500-3000）。</p>
+    <p class="line" style="--i:3">3｜詳細規定，請點開預約單細閱。</p>
   </div>
 </section>
 
@@ -657,199 +496,97 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   <div class="bg"></div>
   <div class="content center">
     <h2 class="line" style="--i:0">開始旅程</h2>
-    <p class="line" style="--i:1">請先閱讀圖文選單內容。</p>
-    <p class="line" style="--i:2">理解彼此方式後，再提交預約。</p>
-    <button class="btn line" style="--i:3" onclick="openSu9Booking()">
-      閱讀圖文選單後提交預約
-    </button>
+    <button class="btn line" style="--i:1" onclick="openSu9Booking()">閱讀規定並填寫預約單</button>
   </div>
 </section>
 
 <div class="su9-booking-popup" id="su9BookingPopup">
   <div class="su9-booking-panel">
-    <h2>預約單</h2>
-    <p class="muted">請在下方填寫與勾選項目，完成後點擊「複製預約單」並傳送至 LINE。</p>
+    <h2>預約單與規則確認</h2>
+    <div style="margin-bottom:20px; padding:10px; border:1px solid #333; font-size:13px; line-height:1.6; color:#ccc;">
+      <strong>⚠️ 合作須知：</strong><br>
+      請務必閱讀本網頁所有規則。若無法配合或不認同，請勿進行預約。確認理解後勾選下方，方能顯示預約資訊。
+      <label style="display:block; margin-top:10px; color:#F2D6A2; cursor:pointer;">
+        <input type="checkbox" id="readConfirm" onchange="toggleForm()"> 我已閱讀並理解所有內容，願遵守規定。
+      </label>
+    </div>
     
-    <div class="su9-form-item">
-      <label class="title">1｜LINE 稱號：</label>
-      <input type="text" id="su9_name" placeholder="請輸入您的 LINE 暱稱">
-    </div>
-
-    <div class="su9-form-item">
-      <label class="title">2｜預約日期、時段：</label>
-      <input type="text" id="su9_time_1" placeholder="第一期望時段（例如：7/15 14:00）" style="margin-bottom: 8px;">
-      <input type="text" id="su9_time_2" placeholder="第二期望時段（例如：7/16 16:00）">
-    </div>
-
-    <div class="su9-form-item">
-      <label class="title">3｜選擇方案：</label>
-      <div class="su9-options">
-        <label><input type="checkbox" name="su9_plan" value="壹・初見 (100分)"><span>壹・初見 (100分)</span></label>
-        <label><input type="checkbox" name="su9_plan" value="貳・短程 (180分)"><span>貳・短程 (180分)</span></label>
-        <label><input type="checkbox" name="su9_plan" value="參・半日閒 (10H)"><span>參・半日閒 (10H)</span></label>
-        <label><input type="checkbox" name="su9_plan" value="肆・之上 (16H)"><span>肆・之上 (16H)</span></label>
+    <div id="formContent" style="display:none;">
+      <div class="su9-form-item">
+        <label class="title">LINE 稱號：</label>
+        <input type="text" id="su9_name">
       </div>
-    </div>
-
-    <div class="su9-form-item">
-      <label class="title">4｜基本服務需求 (可複選)：</label>
-      <p style="color: #e53e3e; font-size: 11px; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.05em;">⚠️ 嚴禁：暴力 手指挖或扣</p>
-      <div class="su9-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="親吻"><span>親吻</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="全身清潔"><span>全身清潔</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="情慾愛撫"><span>情慾愛撫</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="69"><span>69</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="深喉"><span>深喉</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="漱懶覺"><span>漱懶覺</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="清槍"><span>清槍</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="口爆"><span>口爆</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="素股"><span>素股</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="漱機掰"><span>漱機掰（必選）</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="舔蛋"><span>舔蛋</span></label>
-        <label style="margin:0;"><input type="checkbox" name="su9_basic" value="玩具"><span>玩具</span></label>
-        <label style="margin:0; grid-column: span 2;"><input type="checkbox" name="su9_basic" value="變裝可"><span>變裝可</span></label>
+      
+      <div class="su9-form-item">
+        <label class="title">基本服務需求 (需現場評估)：</label>
+        <div class="su9-options">
+          <label>親吻：<input type="radio" name="kiss" value="需要">需要 <input type="radio" name="kiss" value="不需要">不需要</label>
+          <label>全身清潔：<input type="radio" name="clean" value="需要">需要 <input type="radio" name="clean" value="不需要">不需要</label>
+        </div>
       </div>
-    </div>
 
-    <div class="su9-form-item">
-      <label class="title">5｜職人進階需求 (可複選)：</label>
-      <div class="su9-options">
-        <label><input type="checkbox" name="su9_advance" value="深式毒龍"><span>深式毒龍</span></label>
-        <label><input type="checkbox" name="su9_advance" value="喉射"><span>喉射</span></label>
-        <label><input type="checkbox" name="su9_advance" value="吞精"><span>吞精</span></label>
-        <label><input type="checkbox" name="su9_advance" value="SM"><span>SM</span></label>
-        <label><input type="checkbox" name="su9_advance" value="情趣用品"><span>情趣用品</span></label>
+      <div class="su9-form-item">
+        <label class="title">職人進階需求 (需現場評估)：</label>
+        <div class="su9-options">
+          <label>深式毒龍：<input type="radio" name="dragon" value="需要">需要 <input type="radio" name="dragon" value="不需要">不需要</label>
+        </div>
       </div>
-    </div>
 
-    <div class="su9-form-item">
-      <label class="title">6｜高階專屬需求 (可複選)：</label>
-      <p style="color: #F2D6A2; font-size: 11px; margin-bottom: 6px; font-weight: bold;">🔒 只對熟悉蘇九個性的你開放，新客勿選</p>
-      <div class="su9-options">
-        <label><input type="checkbox" name="su9_high" value="雙飛 (可攜女伴)"><span>雙飛 (可攜女伴)</span></label>
-        <label><input type="checkbox" name="su9_high" value="2王一后"><span>2王一后</span></label>
-        <label><input type="checkbox" name="su9_high" value="團體活動 (不定時)"><span>團體活動 (不定時)</span></label>
+      <div class="su9-form-item">
+        <label class="title">高階專屬需求：</label>
+        <p style="font-size:12px; color:#F2D6A2; margin-bottom:10px;">🔒 此項目需長期往來後經確認才開放，新客勿詢。</p>
       </div>
-    </div>
 
-    <div class="su9-form-item">
-      <label class="title">7｜特殊/其他需求填寫：</label>
-      <input type="text" id="su9_special" placeholder="有其他特殊偏好請填寫，若無填無">
-    </div>
-
-    <div class="su9-form-item">
-      <label class="title">8｜菸味接受度：</label>
-      <div class="su9-options">
-        <label><input type="radio" name="su9_smoke" value="有抽菸"> 有抽菸</label>
-        <label><input type="radio" name="su9_smoke" value="不介意"> 不介意</label>
-        <label><input type="radio" name="su9_smoke" value="介意"> 介意</label>
+      <div class="su9-actions">
+        <div class="button primary" onclick="copySu9Booking()">複製預約內容</div>
+        <div class="button secondary" onclick="closeSu9Booking()">返回頁面</div>
       </div>
-    </div>
-
-    <div class="su9-form-item">
-      <label class="title">9｜初次核對：</label>
-      <p style="color:#F2D6A2; font-size:13px; line-height:1.4;">請附上來源首頁截圖（加入 LINE 後主動發送）</p>
-    </div>
-
-    <div class="su9-form-item">
-      <label class="title">10｜訂金確認：</label>
-      <p style="color:#F2D6A2; font-size:13px; line-height:1.4;">了解 2 小時內完成匯款方能保留時段</p>
-    </div>
-
-    <div class="su9-text" id="su9BookingText" style="display:none;"></div>
-
-    <div class="su9-actions">
-      <div class="button primary" onclick="copySu9Booking()">複製預約單</div>
-      <div class="button secondary" onclick="closeSu9Booking()">返回網頁</div>
+      
+      <div id="lineLink" style="display:none; margin-top:20px; text-align:center; padding:15px; background:#181818; border-radius:8px;">
+        <p style="font-size:13px; margin-bottom:10px; color:#F2D6A2;">內容已複製！現在您可以加入我的私密 LINE：</p>
+        <a href="https://line.me/你的ID" style="color:#fff; font-weight:bold; text-decoration:none; border-bottom:1px solid #fff;">點此加入蘇九 LINE</a>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const allSections = document.querySelectorAll("section");
-  const journeyBg = document.getElementById("journeyBg");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("in-view");
-
-        if(entry.target.classList.contains("page-plan")){
-          journeyBg.classList.add("show");
-        }
-      }else{
-        entry.target.classList.remove("in-view");
-
-        if(entry.target.classList.contains("page-plan")){
-          const anyPlanVisible = Array.from(document.querySelectorAll(".page-plan"))
-            .some(el => el.classList.contains("in-view"));
-
-          if(!anyPlanVisible){
-            journeyBg.classList.remove("show");
-          }
-        }
-      }
-    });
-  },{
-    threshold:.12,
-    rootMargin:"0px 0px -8% 0px"
-  });
-
-  allSections.forEach(section => observer.observe(section));
-});
-
-/* 彈窗開關與自動格式化複製控制腳本 */
+function toggleForm(){
+  document.getElementById('formContent').style.display = document.getElementById('readConfirm').checked ? 'block' : 'none';
+}
 function openSu9Booking(){
   document.getElementById('su9BookingPopup').style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  document.getElementById('su9BookingText').style.display = 'none';
 }
-
 function closeSu9Booking(){
   document.getElementById('su9BookingPopup').style.display = 'none';
   document.body.style.overflow = '';
 }
-
 function copySu9Booking(){
-  const name = document.getElementById('su9_name').value.trim() || '未填寫';
-  const time1 = document.getElementById('su9_time_1').value.trim() || '未填寫';
-  const time2 = document.getElementById('su9_time_2').value.trim() || '未填寫';
-  
-  const selectedPlans = Array.from(document.querySelectorAll('input[name="su9_plan"]:checked')).map(i => i.value).join('、') || '未填寫';
-  const basicServices = Array.from(document.querySelectorAll('input[name="su9_basic"]:checked')).map(i => i.value).join('、') || '未勾選';
-  const advanceServices = Array.from(document.querySelectorAll('input[name="su9_advance"]:checked')).map(i => i.value).join('、') || '無';
-  const highServices = Array.from(document.querySelectorAll('input[name="su9_high"]:checked')).map(i => i.value).join('、') || '無';
-  const special = document.getElementById('su9_special').value.trim() || '無';
-  const smokeElement = document.querySelector('input[name="su9_smoke"]:checked');
-  const smoke = smokeElement ? smokeElement.value : '未選擇';
-
-  const text =
-    '您好，我想預約微光旅程。\n\n' +
-    '1｜LINE 稱號：' + name + '\n\n' +
-    '2｜預約日期、時段：\n第一時段：' + time1 + '\n第二時段：' + time2 + '\n\n' +
-    '3｜選擇方案：' + selectedPlans + '\n\n' +
-    '4｜基本服務需求：' + basicServices + '\n\n' +
-    '5｜職人進階需求：' + advanceServices + '\n\n' +
-    '6｜高階專屬需求：' + highServices + '\n\n' +
-    '7｜特殊/其他需求：' + special + '\n\n' +
-    '8｜菸味接受度：' + smoke + '\n\n' +
-    '9｜初次核對：\n請附上來源首頁截圖\n\n' +
-    '10｜訂金確認：\n了解 2 小時內完成匯款方能保留時段';
-
-  navigator.clipboard.writeText(text).then(function(){
-    const textDiv = document.getElementById('su9BookingText');
-    textDiv.style.display = 'block';
-    textDiv.innerText = text + '\n\n✨ 複製成功！請直接至 LINE 貼上傳送給蘇九。';
-  }).catch(function(){
-    const textDiv = document.getElementById('su9BookingText');
-    textDiv.style.display = 'block';
-    textDiv.innerText = text;
-  });
+  const name = document.getElementById('su9_name').value || '未填寫';
+  const text = `您好，我想預約微光旅程。\n稱號：${name}\n(已閱讀所有規則並同意配合)`;
+  navigator.clipboard.writeText(text);
+  document.getElementById('lineLink').style.display = 'block';
+  alert('複製成功！請加入 LINE 並貼上內容。');
 }
-</script>
 
+// 滾動效果監聽
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("in-view");
+        if(entry.target.classList.contains("page-plan")) document.getElementById("journeyBg").classList.add("show");
+      } else {
+        entry.target.classList.remove("in-view");
+        if(entry.target.classList.contains("page-plan")) {
+          if(!document.querySelector(".page-plan.in-view")) document.getElementById("journeyBg").classList.remove("show");
+        }
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll("section").forEach(s => observer.observe(s));
+});
+</script>
 </body>
 </html>
-
-```
