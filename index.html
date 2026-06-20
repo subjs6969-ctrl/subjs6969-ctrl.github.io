@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head><link rel="apple-touch-icon" href="apple-touch-icon.jpg">
+<head>
+<link rel="apple-touch-icon" href="apple-touch-icon.jpg">
 <link rel="icon" type="image/png" href="apple-touch-icon.jpg">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -128,7 +129,6 @@ section.in-view .line{
   transform:translateY(0);
 }
 
-/* 第一頁 */
 .page1{
   display:flex;
   flex-direction:column;
@@ -155,6 +155,14 @@ section.in-view .line{
 
 .page1 .brand-footer{
   margin-top:auto;
+}
+
+.hero-name{
+  color:var(--accent);
+  -webkit-text-fill-color:var(--accent);
+  font-size:clamp(28px,7vw,38px);
+  letter-spacing:.25em;
+  font-weight:500;
 }
 
 .page1 .sub-title{
@@ -189,7 +197,6 @@ section.in-view .line{
     0 2px 8px rgba(0,0,0,.9);
 }
 
-/* 旅程固定背景 */
 .journey-fixed-bg{
   position:fixed;
   inset:0;
@@ -218,7 +225,6 @@ section.in-view .line{
     rgba(3,3,3,.2);
 }
 
-/* 旅程方案 */
 section.page-plan{
   background:transparent;
 }
@@ -276,20 +282,17 @@ section.page-plan{
   border-top:none;
 }
 
-/* 重點文字 */
 .highlight{
   color:var(--accent) !important;
   -webkit-text-fill-color:var(--accent) !important;
 }
 
-/* 注意事項重點數字 */
 .page9 span{
   color:var(--accent) !important;
   -webkit-text-fill-color:var(--accent) !important;
   font-weight:700;
 }
 
-/* 按鈕 */
 .btn{
   display:inline-block;
   margin-top:40px;
@@ -303,7 +306,7 @@ section.page-plan{
   letter-spacing:.25em;
   background:rgba(3,3,3,.75);
   box-shadow:0 4px 20px rgba(0,0,0,.8);
-  cursor: pointer;
+  cursor:pointer;
 }
 
 .btn:hover{
@@ -313,7 +316,6 @@ section.page-plan{
   box-shadow:0 0 10px rgba(242,214,162,.8);
 }
 
-/* 背景圖 */
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
@@ -321,7 +323,6 @@ section.page-plan{
 .page9 .bg{background-image:url("bg-page5.jpg")}
 .page10 .bg{background-image:url("room7.jpg")}
 
-/* S5 強制文字層級覆蓋 */
 h1.line,
 h2.line,
 .plan-title.line{
@@ -337,7 +338,7 @@ h2.line,
   -webkit-text-fill-color:var(--accent) !important;
 }
 
-p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.since-tag):not(.brand-concept){
+p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.since-tag):not(.brand-concept):not(.hero-name){
   color:var(--text) !important;
   -webkit-text-fill-color:var(--text) !important;
 }
@@ -346,267 +347,252 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   section{padding:60px 24px}
 }
 
-/* ------------------------------------------ */
-/* 獨立包覆的預約彈窗 CSS 樣式，絕對不與前幾頁衝突 */
-/* ------------------------------------------ */
-.su9-booking-popup {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 99999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  box-sizing: border-box;
-  font-family: -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
-  letter-spacing: 0.05em;
-}
-
-.su9-booking-panel {
-  background: #111111;
-  border: 1px solid rgba(242, 214, 162, 0.25);
-  width: 100%;
-  max-width: 460px;
-  max-height: 85vh;
-  border-radius: 12px;
-  padding: 24px;
-  overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.9);
-  box-sizing: border-box;
-  color: #f5f2ec;
-}
-
-.su9-booking-panel h2 {
-  color: #E8DCC8;
-  -webkit-text-fill-color: #E8DCC8;
-  text-align: center;
-  margin-bottom: 6px;
-  font-size: 22px;
-  letter-spacing: 0.1em;
-  text-shadow: none;
-}
-
-.su9-booking-panel h3 {
-  color: #F2D6A2;
-  -webkit-text-fill-color: #F2D6A2;
-  font-size: 15px;
-  margin: 22px 0 10px;
-  letter-spacing: 0.08em;
-}
-
-.su9-booking-panel .muted {
-  text-align: center;
-  font-size: 12px;
-  color: rgba(245, 242, 236, 0.5);
-  margin-bottom: 24px;
-  line-height: 1.5;
-}
-
-.su9-service-text {
-  background: #181818;
-  border: 1px solid rgba(242, 214, 162, 0.18);
-  border-radius: 8px;
-  padding: 16px;
-  font-size: 13px;
-  line-height: 1.8;
-  color: #e2dfd9;
-  margin-bottom: 16px;
-}
-
-.su9-service-text p {
-  margin-bottom: 8px;
-}
-
-.su9-service-text .service-title {
-  color: #F2D6A2;
-  font-weight: bold;
-}
-
-.su9-service-text .service-warn {
-  color: #d8d2c8;
-  font-weight: bold;
-}
-
-.su9-step-box {
-  background: rgba(242, 214, 162, 0.08);
-  border: 1px solid rgba(242, 214, 162, 0.22);
-  border-radius: 8px;
-  padding: 14px;
-  font-size: 13px;
-  line-height: 1.8;
-  color: #f5f2ec;
-  margin-bottom: 18px;
-}
-
-.su9-form-item {
-  margin-bottom: 18px;
-  text-align: left;
-}
-
-.su9-form-item .title {
-  display: block;
-  color: #F2D6A2;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.su9-form-item input[type="text"] {
-  width: 100%;
-  background: #181818;
-  border: 1px solid rgba(245, 242, 236, 0.15);
-  border-radius: 6px;
-  padding: 11px 14px;
-  color: #f5f2ec;
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
-  transition: border 0.3s;
-}
-
-.su9-form-item input[type="text"]:focus {
-  border-color: #F2D6A2;
-}
-
-.su9-options {
-  background: #181818;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(242, 214, 162, 0.12);
-  box-sizing: border-box;
-}
-
-.su9-options label {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  margin-right: 14px;
-  margin-bottom: 8px;
-  font-size: 13px;
-  color: #f5f2ec;
-}
-
-.su9-options input[type="checkbox"], .su9-options input[type="radio"] {
-  margin-right: 6px;
-  accent-color: #F2D6A2;
-  width: 15px;
-  height: 15px;
-}
-
-.su9-options.disabled-area {
-  background: #151515;
-  border: 1px solid rgba(245, 242, 236, 0.1);
-  color: rgba(245, 242, 236, 0.45);
-}
-
-.su9-options.disabled-area label {
-  color: rgba(245, 242, 236, 0.45);
-  cursor: not-allowed;
-}
-
-.su9-options.disabled-area input {
-  accent-color: #777;
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.su9-disabled-note {
-  color: rgba(245, 242, 236, 0.58);
-  font-size: 12px;
-  line-height: 1.6;
-  margin-bottom: 10px;
-  background: rgba(245, 242, 236, 0.06);
-  border: 1px solid rgba(245, 242, 236, 0.1);
-  border-radius: 6px;
-  padding: 10px;
-}
-
-.su9-text {
-  background: #181818;
-  border: 1px solid rgba(242, 214, 162, 0.2);
-  border-radius: 6px;
-  padding: 14px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #e2dfd9;
-  white-space: pre-wrap;
-  margin-top: 15px;
-  text-align: left;
-}
-
-.su9-line-box {
+.su9-booking-popup{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,.9);
+  z-index:99999;
   display:none;
-  margin-top: 16px;
+  justify-content:center;
+  align-items:center;
+  padding:16px;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+  letter-spacing:.05em;
+}
+
+.su9-booking-panel{
+  background:#111;
+  border:1px solid rgba(242,214,162,.25);
+  width:100%;
+  max-width:460px;
+  max-height:85vh;
+  border-radius:12px;
+  padding:24px;
+  overflow-y:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.9);
+  color:#f5f2ec;
+}
+
+.su9-booking-panel h2{
+  color:#E8DCC8;
+  -webkit-text-fill-color:#E8DCC8;
   text-align:center;
-  background: rgba(242, 214, 162, 0.08);
-  border: 1px solid rgba(242, 214, 162, 0.22);
-  border-radius: 8px;
-  padding: 14px;
+  margin-bottom:6px;
+  font-size:22px;
+  letter-spacing:.1em;
+  text-shadow:none;
 }
 
-.su9-line-box p {
-  font-size: 13px;
-  line-height: 1.7;
-  color: #f5f2ec;
-  margin-bottom: 12px;
+.su9-booking-panel h3{
+  color:#F2D6A2;
+  -webkit-text-fill-color:#F2D6A2;
+  font-size:15px;
+  margin:22px 0 10px;
+  letter-spacing:.08em;
 }
 
-.su9-line-link {
+.su9-booking-panel .muted{
+  text-align:center;
+  font-size:12px;
+  color:rgba(245,242,236,.5);
+  margin-bottom:24px;
+  line-height:1.5;
+}
+
+.su9-service-text{
+  background:#181818;
+  border:1px solid rgba(242,214,162,.18);
+  border-radius:8px;
+  padding:16px;
+  font-size:13px;
+  line-height:1.8;
+  color:#e2dfd9;
+  margin-bottom:16px;
+}
+
+.su9-service-text p{
+  margin-bottom:8px;
+}
+
+.su9-service-text .service-title{
+  color:#F2D6A2;
+  font-weight:bold;
+}
+
+.su9-service-text .service-warn{
+  color:#d8d2c8;
+  font-weight:bold;
+}
+
+.su9-step-box{
+  background:rgba(242,214,162,.08);
+  border:1px solid rgba(242,214,162,.22);
+  border-radius:8px;
+  padding:14px;
+  font-size:13px;
+  line-height:1.8;
+  color:#f5f2ec;
+  margin-bottom:18px;
+}
+
+.su9-form-item{
+  margin-bottom:18px;
+  text-align:left;
+}
+
+.su9-form-item .title{
+  display:block;
+  color:#F2D6A2;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.su9-form-item input[type="text"]{
+  width:100%;
+  background:#181818;
+  border:1px solid rgba(245,242,236,.15);
+  border-radius:6px;
+  padding:11px 14px;
+  color:#f5f2ec;
+  font-size:14px;
+  outline:none;
+}
+
+.su9-form-item input[type="text"]:focus{
+  border-color:#F2D6A2;
+}
+
+.su9-options{
+  background:#181818;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid rgba(242,214,162,.12);
+}
+
+.su9-options label{
+  display:inline-flex;
+  align-items:center;
+  cursor:pointer;
+  margin-right:14px;
+  margin-bottom:8px;
+  font-size:13px;
+  color:#f5f2ec;
+}
+
+.su9-options input[type="checkbox"],
+.su9-options input[type="radio"]{
+  margin-right:6px;
+  accent-color:#F2D6A2;
+  width:15px;
+  height:15px;
+}
+
+.su9-options.disabled-area{
+  background:#151515;
+  border:1px solid rgba(245,242,236,.1);
+  color:rgba(245,242,236,.45);
+}
+
+.su9-options.disabled-area label{
+  color:rgba(245,242,236,.45);
+  cursor:not-allowed;
+}
+
+.su9-options.disabled-area input{
+  accent-color:#777;
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.su9-disabled-note{
+  color:rgba(245,242,236,.58);
+  font-size:12px;
+  line-height:1.6;
+  margin-bottom:10px;
+  background:rgba(245,242,236,.06);
+  border:1px solid rgba(245,242,236,.1);
+  border-radius:6px;
+  padding:10px;
+}
+
+.su9-text{
+  background:#181818;
+  border:1px solid rgba(242,214,162,.2);
+  border-radius:6px;
+  padding:14px;
+  font-size:13px;
+  line-height:1.6;
+  color:#e2dfd9;
+  white-space:pre-wrap;
+  margin-top:15px;
+  text-align:left;
+}
+
+.su9-line-box{
+  display:none;
+  margin-top:16px;
+  text-align:center;
+  background:rgba(242,214,162,.08);
+  border:1px solid rgba(242,214,162,.22);
+  border-radius:8px;
+  padding:14px;
+}
+
+.su9-line-box p{
+  font-size:13px;
+  line-height:1.7;
+  color:#f5f2ec;
+  margin-bottom:12px;
+}
+
+.su9-line-link{
   display:inline-block;
   width:100%;
   text-align:center;
   padding:13px 0;
   background:#06C755;
-  color:#ffffff;
+  color:#fff;
   text-decoration:none;
   border-radius:6px;
   font-size:14px;
   font-weight:bold;
-  letter-spacing:0.08em;
+  letter-spacing:.08em;
 }
 
-.su9-qr {
-  width: 170px;
-  max-width: 80%;
-  margin: 12px auto 0;
-  display: block;
-  border-radius: 8px;
-  background: #fff;
+.su9-actions{
+  margin-top:24px;
+  display:flex;
+  gap:12px;
 }
 
-.su9-actions {
-  margin-top: 24px;
-  display: flex;
-  gap: 12px;
+.su9-actions .button{
+  flex:1;
+  text-align:center;
+  padding:13px 0;
+  font-size:14px;
+  cursor:pointer;
+  border-radius:6px;
+  letter-spacing:.1em;
 }
 
-.su9-actions .button {
-  flex: 1;
-  text-align: center;
-  padding: 13px 0;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 6px;
-  letter-spacing: 0.1em;
-  box-sizing: border-box;
+.su9-actions .button.primary{
+  background:#F2D6A2;
+  color:#030303;
+  border:1px solid #F2D6A2;
+  font-weight:bold;
 }
 
-.su9-actions .button.primary {
-  background: #F2D6A2;
-  color: #030303;
-  border: 1px solid #F2D6A2;
-  font-weight: bold;
+.su9-actions .button.secondary{
+  background:transparent;
+  color:rgba(245,242,236,.6);
+  border:1px solid rgba(245,242,236,.25);
 }
 
-.su9-actions .button.secondary {
-  background: transparent;
-  color: rgba(245, 242, 236, 0.6);
-  border: 1px solid rgba(245, 242, 236, 0.25);
-}
-
-#su9BookingForm {
-  display: none;
+#su9BookingForm{
+  display:none;
 }
 </style>
 </head>
@@ -623,32 +609,17 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   </div>
 
   <div class="content brand-footer">
-<p class="line hero-name"
-   style="--i:1; margin-top:25px; margin-bottom:12px;">
-   蘇九
-</p>
-
-<p class="line sub-title"
-   style="--i:2; margin-bottom:35px;">
-   無限旅程
-</p>
-<p class="line brand-concept"
-   style="--i:3; margin-top:50px;">
-   值得，所以不將就
-</p>
-
-<p class="line since-tag"
-   style="--i:4; margin-top:70px;">
-   SINCE 2019
-</p>
-    
+    <p class="line hero-name" style="--i:1; margin-top:25px; margin-bottom:12px;">蘇九</p>
+    <p class="line sub-title" style="--i:2; margin-bottom:35px;">無限旅程</p>
+    <p class="line brand-concept" style="--i:3; margin-top:50px;">值得，所以不將就</p>
+    <p class="line since-tag" style="--i:4; margin-top:70px;">SINCE 2019</p>
   </div>
 </section>
 
 <section class="page2">
   <div class="bg"></div>
   <div class="content">
-       <h2 class="line" style="--i:0">認識・蘇九</h2>
+    <h2 class="line" style="--i:0">認識・蘇九</h2>
     <p class="line highlight" style="--i:1">舒服・自然・真實</p>
     <p class="line" style="--i:2">我不是來符合誰的期待。</p>
     <p class="line" style="--i:3">做自己就是我的樣子。</p>
@@ -662,7 +633,6 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 <section class="page3">
   <div class="bg"></div>
   <div class="content">
- 
     <p class="line" style="--i:1">曾經以為，</p>
     <p class="line" style="--i:2">這環境很單純。</p>
     <p class="line" style="--i:3">後來才明白，</p>
@@ -736,8 +706,7 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 <section class="page8 dark-fix">
   <div class="bg"></div>
   <div class="content">
-    
-    <p class="line highlight"style="--i:1">蘇九（深深）</p>
+    <p class="line highlight" style="--i:1">蘇九（深深）</p>
     <p class="line" style="--i:2">153 / 40 / 32B / 45+</p>
     <p class="line" style="--i:3">骨感偏瘦、敏感型。</p>
     <p class="line" style="--i:4">沒有固定 SOP 流程。</p>
@@ -789,9 +758,7 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
     <h2 class="line" style="--i:0">開始旅程</h2>
     <p class="line" style="--i:1">請先閱讀圖文選單內容。</p>
     <p class="line" style="--i:2">理解彼此方式後，再提交預約。</p>
-    <button class="btn line" style="--i:3" onclick="openSu9Booking()">
-      了解服務內容與預約流程
-    </button>
+    <button class="btn line" style="--i:3" onclick="openSu9Booking()">了解服務內容與預約流程</button>
   </div>
 </section>
 
@@ -826,7 +793,7 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
         <p>預約流程：</p>
         <p>1｜閱讀服務內容與預約流程。</p>
         <p>2｜填寫預約單並複製。</p>
-        <p>3｜前往官方帳號提交預約單。</p>
+        <p>3｜前往審核帳號提交預約單。</p>
         <p>4｜由蘇九確認與審核。</p>
         <p>5｜審核通過後，提供匯款方式。</p>
         <p>6｜完成匯款後，才正式保留並安排時段。</p>
@@ -840,8 +807,8 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 
     <div id="su9BookingForm">
       <h2>預約單</h2>
-      <p class="muted">請在下方填寫與勾選項目，完成後點擊「複製預約單」，再前往官方帳號提交。</p>
-      
+      <p class="muted">請在下方填寫與勾選項目，完成後點擊「複製預約單」，再前往審核帳號提交。</p>
+
       <div class="su9-form-item">
         <label class="title">1｜LINE 稱號：</label>
         <input type="text" id="su9_name" placeholder="請輸入您的 LINE 暱稱">
@@ -849,7 +816,7 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 
       <div class="su9-form-item">
         <label class="title">2｜預約日期、時段：</label>
-        <input type="text" id="su9_time_1" placeholder="第一期望時段（例如：7/15 14:00）" style="margin-bottom: 8px;">
+        <input type="text" id="su9_time_1" placeholder="第一期望時段（例如：7/15 14:00）" style="margin-bottom:8px;">
         <input type="text" id="su9_time_2" placeholder="第二期望時段（例如：7/16 16:00）">
       </div>
 
@@ -864,9 +831,9 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
       </div>
 
       <div class="su9-form-item">
-        <label class="title">4｜基本服務需求 (可複選)：</label>
-        <p style="color: #e53e3e; font-size: 11px; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.05em;">⚠️ 嚴禁：暴力 手指挖或扣</p>
-        <div class="su9-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+        <label class="title">4｜基本服務需求（可複選）：</label>
+        <p style="color:#e53e3e;font-size:11px;margin-bottom:8px;font-weight:bold;letter-spacing:.05em;">嚴禁：暴力、手指挖或扣</p>
+        <div class="su9-options" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
           <label style="margin:0;"><input type="checkbox" name="su9_basic" value="親吻"><span>親吻</span></label>
           <label style="margin:0;"><input type="checkbox" name="su9_basic" value="全身清潔"><span>全身清潔</span></label>
           <label style="margin:0;"><input type="checkbox" name="su9_basic" value="情慾愛撫"><span>情慾愛撫</span></label>
@@ -879,12 +846,12 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
           <label style="margin:0;"><input type="checkbox" name="su9_basic" value="漱機掰"><span>漱機掰（必選）</span></label>
           <label style="margin:0;"><input type="checkbox" name="su9_basic" value="舔蛋"><span>舔蛋</span></label>
           <label style="margin:0;"><input type="checkbox" name="su9_basic" value="玩具"><span>玩具</span></label>
-          <label style="margin:0; grid-column: span 2;"><input type="checkbox" name="su9_basic" value="變裝可"><span>變裝可</span></label>
+          <label style="margin:0;grid-column:span 2;"><input type="checkbox" name="su9_basic" value="變裝可"><span>變裝可</span></label>
         </div>
       </div>
 
       <div class="su9-form-item">
-        <label class="title">5｜職人進階需求 (可複選)：</label>
+        <label class="title">5｜職人進階需求（可複選）：</label>
         <div class="su9-options">
           <label><input type="checkbox" name="su9_advance" value="深式毒龍"><span>深式毒龍</span></label>
           <label><input type="checkbox" name="su9_advance" value="喉射"><span>喉射</span></label>
@@ -898,14 +865,14 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
         <label class="title">6｜高階專屬需求：</label>
         <div class="su9-disabled-note">此區目前不開放，請隨時留意動態消息。</div>
         <div class="su9-options disabled-area">
-          <label><input type="checkbox" disabled><span>雙飛 (可攜女伴)</span></label>
+          <label><input type="checkbox" disabled><span>雙飛（可攜女伴）</span></label>
           <label><input type="checkbox" disabled><span>2王一后</span></label>
-          <label><input type="checkbox" disabled><span>團體活動 (不定時)</span></label>
+          <label><input type="checkbox" disabled><span>團體活動（不定時）</span></label>
         </div>
       </div>
 
       <div class="su9-form-item">
-        <label class="title">7｜特殊/其他需求填寫：</label>
+        <label class="title">7｜特殊／其他需求填寫：</label>
         <input type="text" id="su9_special" placeholder="有其他特殊偏好請填寫，若無填無">
       </div>
 
@@ -920,20 +887,19 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 
       <div class="su9-form-item">
         <label class="title">9｜初次核對：</label>
-        <p style="color:#F2D6A2; font-size:13px; line-height:1.4;">請附上來源首頁截圖（加入 LINE 後主動發送）</p>
+        <p style="color:#F2D6A2;font-size:13px;line-height:1.4;">請附上來源首頁截圖（加入 LINE 後主動發送）</p>
       </div>
 
       <div class="su9-form-item">
         <label class="title">10｜訂金與時段確認：</label>
-        <p style="color:#F2D6A2; font-size:13px; line-height:1.6;">提交預約單後，由蘇九確認審核。審核通過後提供匯款方式，完成匯款後才正式保留並安排時段。</p>
+        <p style="color:#F2D6A2;font-size:13px;line-height:1.6;">提交預約單後，由蘇九確認審核。審核通過後提供匯款方式，完成匯款後才正式保留並安排時段。</p>
       </div>
 
       <div class="su9-text" id="su9BookingText" style="display:none;"></div>
 
       <div class="su9-line-box" id="su9LineBox">
-        <p>請前往官方帳號提交預約單。<br>由蘇九確認審核，審核通過後提供匯款方式。<br>完成匯款後，才正式保留並安排時段。</p>
-        <a class="su9-line-link" href="https://lin.ee/8k9m96f" target="_blank" rel="noopener">前往官方帳號提交預約</a>
-        <img class="su9-qr" src="line-qr.png" alt="LINE 官方帳號 QR Code">
+        <p>請前往審核帳號提交預約單。<br>由蘇九確認審核，審核通過後提供匯款方式。<br>完成匯款後，才正式保留並安排時段。</p>
+        <a class="su9-line-link" href="https://line.me/ti/p/~sex69LV" target="_blank" rel="noopener">前往審核帳號提交預約</a>
       </div>
 
       <div class="su9-actions">
@@ -941,16 +907,17 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
         <div class="button secondary" onclick="backToSu9Intro()">返回說明</div>
       </div>
     </div>
+
   </div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function(){
   const allSections = document.querySelectorAll("section");
   const journeyBg = document.getElementById("journeyBg");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
       if(entry.isIntersecting){
         entry.target.classList.add("in-view");
 
@@ -962,7 +929,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(entry.target.classList.contains("page-plan")){
           const anyPlanVisible = Array.from(document.querySelectorAll(".page-plan"))
-            .some(el => el.classList.contains("in-view"));
+            .some(function(el){
+              return el.classList.contains("in-view");
+            });
 
           if(!anyPlanVisible){
             journeyBg.classList.remove("show");
@@ -975,77 +944,90 @@ document.addEventListener("DOMContentLoaded", () => {
     rootMargin:"0px 0px -8% 0px"
   });
 
-  allSections.forEach(section => observer.observe(section));
+  allSections.forEach(function(section){
+    observer.observe(section);
+  });
 });
 
-/* 彈窗開關與自動格式化複製控制腳本 */
 function openSu9Booking(){
-  document.getElementById('su9BookingPopup').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  document.getElementById('su9ServiceIntro').style.display = 'block';
-  document.getElementById('su9BookingForm').style.display = 'none';
-  document.getElementById('su9BookingText').style.display = 'none';
-  document.getElementById('su9LineBox').style.display = 'none';
+  document.getElementById("su9BookingPopup").style.display = "flex";
+  document.body.style.overflow = "hidden";
+  document.getElementById("su9ServiceIntro").style.display = "block";
+  document.getElementById("su9BookingForm").style.display = "none";
+  document.getElementById("su9BookingText").style.display = "none";
+  document.getElementById("su9LineBox").style.display = "none";
 }
 
 function closeSu9Booking(){
-  document.getElementById('su9BookingPopup').style.display = 'none';
-  document.body.style.overflow = '';
+  document.getElementById("su9BookingPopup").style.display = "none";
+  document.body.style.overflow = "";
 }
 
 function showSu9BookingForm(){
-  document.getElementById('su9ServiceIntro').style.display = 'none';
-  document.getElementById('su9BookingForm').style.display = 'block';
-  document.getElementById('su9BookingText').style.display = 'none';
-  document.getElementById('su9LineBox').style.display = 'none';
+  document.getElementById("su9ServiceIntro").style.display = "none";
+  document.getElementById("su9BookingForm").style.display = "block";
+  document.getElementById("su9BookingText").style.display = "none";
+  document.getElementById("su9LineBox").style.display = "none";
 }
 
 function backToSu9Intro(){
-  document.getElementById('su9ServiceIntro').style.display = 'block';
-  document.getElementById('su9BookingForm').style.display = 'none';
-  document.getElementById('su9BookingText').style.display = 'none';
-  document.getElementById('su9LineBox').style.display = 'none';
+  document.getElementById("su9ServiceIntro").style.display = "block";
+  document.getElementById("su9BookingForm").style.display = "none";
+  document.getElementById("su9BookingText").style.display = "none";
+  document.getElementById("su9LineBox").style.display = "none";
+}
+
+function getCheckedValues(name){
+  return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked'))
+    .map(function(i){ return i.value; })
+    .join("、");
 }
 
 function copySu9Booking(){
-  const name = document.getElementById('su9_name').value.trim() || '未填寫';
-  const time1 = document.getElementById('su9_time_1').value.trim() || '未填寫';
-  const time2 = document.getElementById('su9_time_2').value.trim() || '未填寫';
-  
-  const selectedPlans = Array.from(document.querySelectorAll('input[name="su9_plan"]:checked')).map(i => i.value).join('、') || '未填寫';
-  const basicServices = Array.from(document.querySelectorAll('input[name="su9_basic"]:checked')).map(i => i.value).join('、') || '未勾選';
-  const advanceServices = Array.from(document.querySelectorAll('input[name="su9_advance"]:checked')).map(i => i.value).join('、') || '無';
-  const highServices = '此區目前不開放';
-  const special = document.getElementById('su9_special').value.trim() || '無';
+  const name = document.getElementById("su9_name").value.trim() || "未填寫";
+  const time1 = document.getElementById("su9_time_1").value.trim() || "未填寫";
+  const time2 = document.getElementById("su9_time_2").value.trim() || "未填寫";
+
+  const selectedPlans = getCheckedValues("su9_plan") || "未填寫";
+  const basicServices = getCheckedValues("su9_basic") || "未勾選";
+  const advanceServices = getCheckedValues("su9_advance") || "無";
+  const highServices = "此區目前不開放";
+  const special = document.getElementById("su9_special").value.trim() || "無";
+
   const smokeElement = document.querySelector('input[name="su9_smoke"]:checked');
-  const smoke = smokeElement ? smokeElement.value : '未選擇';
+  const smoke = smokeElement ? smokeElement.value : "未選擇";
 
   const text =
-    '您好，我想預約微光旅程。\n\n' +
-    '1｜LINE 稱號：' + name + '\n\n' +
-    '2｜預約日期、時段：\n第一時段：' + time1 + '\n第二時段：' + time2 + '\n\n' +
-    '3｜選擇方案：' + selectedPlans + '\n\n' +
-    '4｜基本服務需求：' + basicServices + '\n\n' +
-    '5｜職人進階需求：' + advanceServices + '\n\n' +
-    '6｜高階專屬需求：' + highServices + '\n\n' +
-    '7｜特殊/其他需求：' + special + '\n\n' +
-    '8｜菸味接受度：' + smoke + '\n\n' +
-    '9｜初次核對：\n請附上來源首頁截圖\n\n' +
-    '10｜訂金與時段確認：\n了解提交預約單後，需由蘇九確認審核。審核通過後提供匯款方式，完成匯款後才正式保留並安排時段。';
+    "您好，我想預約微光旅程。\n\n" +
+    "1｜LINE 稱號：" + name + "\n\n" +
+    "2｜預約日期、時段：\n第一時段：" + time1 + "\n第二時段：" + time2 + "\n\n" +
+    "3｜選擇方案：" + selectedPlans + "\n\n" +
+    "4｜基本服務需求：" + basicServices + "\n\n" +
+    "5｜職人進階需求：" + advanceServices + "\n\n" +
+    "6｜高階專屬需求：" + highServices + "\n\n" +
+    "7｜特殊／其他需求：" + special + "\n\n" +
+    "8｜菸味接受度：" + smoke + "\n\n" +
+    "9｜初次核對：\n請附上來源首頁截圖\n\n" +
+    "10｜訂金與時段確認：\n了解提交預約單後，需由蘇九確認審核。審核通過後提供匯款方式，完成匯款後才正式保留並安排時段。";
 
-  navigator.clipboard.writeText(text).then(function(){
-    const textDiv = document.getElementById('su9BookingText');
-    const lineBox = document.getElementById('su9LineBox');
-    textDiv.style.display = 'block';
-    lineBox.style.display = 'block';
-    textDiv.innerText = text + '\n\n複製成功。請點選下方官方帳號，貼上預約單提交審核。';
-  }).catch(function(){
-    const textDiv = document.getElementById('su9BookingText');
-    const lineBox = document.getElementById('su9LineBox');
-    textDiv.style.display = 'block';
-    lineBox.style.display = 'block';
-    textDiv.innerText = text + '\n\n若未自動複製，請手動長按選取以上內容複製，再前往官方帳號提交。';
-  });
+  const textDiv = document.getElementById("su9BookingText");
+  const lineBox = document.getElementById("su9LineBox");
+
+  function showResult(message){
+    textDiv.style.display = "block";
+    lineBox.style.display = "block";
+    textDiv.innerText = text + "\n\n" + message;
+  }
+
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).then(function(){
+      showResult("複製成功。請點選下方審核帳號，貼上預約單提交審核。");
+    }).catch(function(){
+      showResult("若未自動複製，請手動長按選取以上內容複製，再前往審核帳號提交。");
+    });
+  }else{
+    showResult("若未自動複製，請手動長按選取以上內容複製，再前往審核帳號提交。");
+  }
 }
 </script>
 
