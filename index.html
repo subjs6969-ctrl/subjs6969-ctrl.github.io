@@ -1,4 +1,3 @@
-6/21
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -104,22 +103,22 @@ h2,
 }
 
 h2{
-  font-size:clamp(42px,9vw,58px);
-  margin-bottom:36px;
+  font-size:clamp(38px,8vw,54px);
+  margin-bottom:34px;
 }
 
 .line{
   color:var(--text);
   -webkit-text-fill-color:var(--text);
-  font-size:clamp(16px,4.3vw,21px);
-  line-height:2.1;
+  font-size:clamp(15px,4.1vw,20px);
+  line-height:2.05;
   margin:6px 0;
   opacity:0;
   transform:translateY(15px);
   transition:
     opacity 1.5s cubic-bezier(.16,1,.3,1),
     transform 1.5s cubic-bezier(.16,1,.3,1);
-  transition-delay:calc(var(--i) * .26s);
+  transition-delay:calc(var(--i) * .22s);
   text-shadow:
     0 2px 6px var(--shadow),
     0 4px 14px var(--shadow);
@@ -288,7 +287,7 @@ section.page-plan{
   -webkit-text-fill-color:var(--accent) !important;
 }
 
-.page9 span{
+.page-rule span{
   color:var(--accent) !important;
   -webkit-text-fill-color:var(--accent) !important;
   font-weight:700;
@@ -320,8 +319,11 @@ section.page-plan{
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
-.page8 .bg{background-image:url("bg-page8.jpg")}
-.page9 .bg{background-image:url("bg-page5.jpg")}
+.page-chat .bg{background-image:url("bg-page8.jpg")}
+.page-about .bg{background-image:url("bg-page5.jpg")}
+.page-natural .bg{background-image:url("room7.jpg")}
+.page-respect .bg{background-image:url("bg-page8.jpg")}
+.page-rule .bg{background-image:url("bg-page5.jpg")}
 .page10 .bg{background-image:url("room7.jpg")}
 
 h1.line,
@@ -345,7 +347,9 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
 }
 
 @media(max-width:480px){
-  section{padding:60px 24px}
+  section{padding:58px 24px}
+  h2{font-size:clamp(34px,9vw,48px);margin-bottom:28px}
+  .line{font-size:clamp(15px,4vw,18px);line-height:1.95}
 }
 
 .su9-booking-popup{
@@ -647,6 +651,79 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
   </div>
 </section>
 
+<section class="page-chat dark-fix">
+  <div class="bg"></div>
+  <div class="content">
+    <h2 class="line" style="--i:0">關於聊天</h2>
+    <p class="line" style="--i:1">我不喜歡一直聊天。</p>
+    <p class="line" style="--i:2">也不喜歡沒意義的試探。</p>
+    <p class="line" style="--i:3">LINE 對我來說，</p>
+    <p class="line" style="--i:4">只是聯絡工具。</p>
+    <p class="line" style="--i:5">不是感情培養器。</p>
+    <p class="line" style="--i:6">有事說事。</p>
+    <p class="line highlight" style="--i:7">清楚，比曖昧重要。</p>
+  </div>
+</section>
+
+<section class="page-about dark-fix">
+  <div class="bg"></div>
+  <div class="content">
+    <h2 class="line" style="--i:0">關於蘇九</h2>
+    <p class="line highlight" style="--i:1">蘇九（深深）</p>
+    <p class="line" style="--i:2">153 / 40 / 32B / 45+</p>
+    <p class="line" style="--i:3">骨感偏瘦、敏感型。</p>
+    <p class="line" style="--i:4">沒有固定 SOP。</p>
+    <p class="line" style="--i:5">沒有標準答案。</p>
+    <p class="line" style="--i:6">也沒有刻意設計的人設。</p>
+    <p class="line" style="--i:7">我不太會演。</p>
+    <p class="line" style="--i:8">也不太喜歡勉強。</p>
+  </div>
+</section>
+
+<section class="page-natural dark-fix">
+  <div class="bg"></div>
+  <div class="content">
+    <h2 class="line" style="--i:0">舒服・自然・真誠</h2>
+    <p class="line" style="--i:1">感覺是雙向的。</p>
+    <p class="line" style="--i:2">相處也是。</p>
+    <p class="line" style="--i:3">我喜歡自然舒服的互動。</p>
+    <p class="line" style="--i:4">不喜歡命令式要求。</p>
+    <p class="line" style="--i:5">不喜歡高高在上的態度。</p>
+    <p class="line" style="--i:6">適合的人，</p>
+    <p class="line" style="--i:7">自然會懂。</p>
+    <p class="line highlight" style="--i:8">不適合的人，其實不用勉強。</p>
+  </div>
+</section>
+
+<section class="page-respect dark-fix">
+  <div class="bg"></div>
+  <div class="content">
+    <h2 class="line" style="--i:0">互相尊重</h2>
+    <p class="line" style="--i:1">比起說什麼，</p>
+    <p class="line highlight" style="--i:2">做什麼、給什麼，</p>
+    <p class="line" style="--i:3">才是旅程的重點。</p>
+    <p class="line" style="--i:4">我尊重你的選擇。</p>
+    <p class="line" style="--i:5">也希望你尊重我的方式。</p>
+    <p class="line" style="--i:6">舒服、放鬆、聊天、陪伴。</p>
+    <p class="line" style="--i:7">情慾不是表演。</p>
+    <p class="line highlight" style="--i:8">是一起進入狀態。</p>
+  </div>
+</section>
+
+<section class="page-rule dark-fix">
+  <div class="bg"></div>
+  <div class="content">
+    <h2 class="line" style="--i:0">旅程規則</h2>
+    <p class="line" style="--i:1">確定預約後，</p>
+    <p class="line" style="--i:2">會提供詳細匯款資訊。</p>
+    <p class="line" style="--i:3">不喜歡臨時亂改、放鳥。</p>
+    <p class="line" style="--i:4">也不太喜歡試探性問題。</p>
+    <p class="line" style="--i:5">有特殊需求、個人偏好，</p>
+    <p class="line" style="--i:6">都可以提前提出。</p>
+    <p class="line highlight" style="--i:7">講清楚，比亂猜好。</p>
+  </div>
+</section>
+
 <section class="page-plan">
   <div class="plan-tag">微光・旅程</div>
   <div class="content plan">
@@ -701,55 +778,6 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.sub-title):not(.sin
       <p class="line" style="--i:5">很多事情，</p>
       <p class="line" style="--i:6">自然就會發生。</p>
     </div>
-  </div>
-</section>
-
-<section class="page8 dark-fix">
-  <div class="bg"></div>
-  <div class="content">
-    <p class="line highlight" style="--i:1">蘇九（深深）</p>
-    <p class="line" style="--i:2">153 / 40 / 32B / 45+</p>
-    <p class="line" style="--i:3">骨感偏瘦、敏感型。</p>
-    <p class="line" style="--i:4">沒有固定 SOP 流程。</p>
-    <p class="line" style="--i:5">不迎合，</p>
-    <p class="line" style="--i:6">個性直爽。</p>
-    <p class="line highlight" style="--i:7">《相幹》</p>
-    <p class="line" style="--i:8">要的是舒服享受過程，</p>
-    <p class="line" style="--i:9">滿足身體，</p>
-    <p class="line" style="--i:10">也滿足心理。</p>
-    <p class="line" style="--i:11">這樣的旅程，</p>
-    <p class="line" style="--i:12">才有意思。</p>
-    <p class="line" style="--i:13">不是選妃 介意顏值 請饒過</p>
-    <p class="line" style="--i:14">比起說什麼，</p>
-    <p class="line highlight" style="--i:15">做什麼、給什麼，</p>
-    <p class="line" style="--i:16">才是旅程的重點。</p>
-    <p class="line" style="--i:17">適合的人，</p>
-    <p class="line" style="--i:18">自然會懂。</p>
-    <p class="line highlight" style="--i:19">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
-  </div>
-</section>
-
-<section class="page9 dark-fix">
-  <div class="bg"></div>
-  <div class="content">
-    <h2 class="line" style="--i:0">預約前注意事項</h2>
-    <p class="line" style="--i:1"><span>1｜</span>蘇九有抽菸。</p>
-    <p class="line" style="--i:2">對菸味敏感，請務必告知。</p>
-    <p class="line" style="--i:3">這是對您來訪的尊重。</p>
-    <br><br>
-    <p class="line" style="--i:4"><span>2｜</span>初次預約需先匯款。</p>
-    <p class="line" style="--i:5">壹、貳 定金 1500。</p>
-    <p class="line" style="--i:6">參、肆 定金 3000。</p>
-    <p class="line highlight" style="--i:7">你怕詐騙，我也怕被騙。</p>
-    <br><br>
-    <p class="line" style="--i:8"><span>3｜</span>環境很重要。</p>
-    <p class="line" style="--i:9">價格已包含房費。</p>
-    <p class="line" style="--i:10">無需另外負擔費用。</p>
-    <br><br>
-    <p class="line" style="--i:11"><span>4｜</span>想要的服務、體驗，</p>
-    <p class="line" style="--i:12">請直接列在預約單上。</p>
-    <p class="line" style="--i:13">詳細流程與規則，</p>
-    <p class="line" style="--i:14">請點選初步預約單了解。</p>
   </div>
 </section>
 
