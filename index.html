@@ -1,5 +1,4 @@
-。
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
@@ -133,7 +132,7 @@ section.in-view .line{
 .page1{
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
   padding:12vh 24px 8vh;
 }
@@ -153,22 +152,11 @@ section.in-view .line{
 .page1 .hero-big{
   color:var(--title);
   -webkit-text-fill-color:var(--title);
-  font-size:clamp(44px,13vw,70px);
-  letter-spacing:.28em;
+  font-size:clamp(38px,11vw,64px);
+  letter-spacing:.16em;
   line-height:1.45;
   font-weight:300;
-}
-
-.page1 .since-tag{
-  color:rgba(232,220,200,.68);
-  -webkit-text-fill-color:rgba(232,220,200,.68);
-  font-size:13px;
-  letter-spacing:.6em;
-  padding-left:.6em;
-  margin-top:55px;
-  text-shadow:
-    0 0 4px rgba(232,220,200,.22),
-    0 2px 8px rgba(0,0,0,.9);
+  white-space:nowrap;
 }
 
 .journey-fixed-bg{
@@ -257,6 +245,7 @@ section.page-plan{
 .highlight{
   color:var(--accent) !important;
   -webkit-text-fill-color:var(--accent) !important;
+  font-weight:700;
 }
 
 .btn{
@@ -285,12 +274,11 @@ section.page-plan{
 .page1 .bg{background-image:url("bg-page1.jpg")}
 .page2 .bg{background-image:url("bg-page2.jpg")}
 .page3 .bg{background-image:url("bg-page3.jpg")}
-.page-chat .bg{background-image:url("bg-page8.jpg")}
-.page-about .bg{background-image:url("bg-page5.jpg")}
-.page-about2 .bg{background-image:url("bg-page8.jpg")}
-.page-rule .bg{background-image:url("room7.jpg")}
-.page-natural .bg{background-image:url("bg-page5.jpg")}
-.page-respect .bg{background-image:url("room7.jpg")}
+.page4 .bg{background-image:url("bg-page8.jpg")}
+.page5 .bg{background-image:url("bg-page5.jpg")}
+.page6 .bg{background-image:url("room7.jpg")}
+.page7 .bg{background-image:url("bg-page8.jpg")}
+.page8 .bg{background-image:url("bg-page5.jpg")}
 .page10 .bg{background-image:url("room7.jpg")}
 
 h1.line,
@@ -308,7 +296,7 @@ h2.line,
   -webkit-text-fill-color:var(--accent) !important;
 }
 
-p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.since-tag){
+p.line:not(.highlight):not(.plan-time):not(.plan-price){
   color:var(--text) !important;
   -webkit-text-fill-color:var(--text) !important;
 }
@@ -317,6 +305,10 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.since-tag){
   section{padding:58px 24px}
   h2{font-size:clamp(34px,9vw,48px);margin-bottom:28px}
   .line{font-size:clamp(15px,4vw,18px);line-height:1.95}
+  .page1 .hero-big{
+    font-size:clamp(34px,10vw,48px);
+    letter-spacing:.12em;
+  }
 }
 
 .su9-booking-popup{
@@ -548,150 +540,120 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.since-tag){
 
 <div class="journey-fixed-bg" id="journeyBg"></div>
 
-<section class="page1">
+<section class="page1 dark-fix">
   <div class="bg"></div>
   <div class="content">
     <h1 class="line" style="--i:0">微光・之上</h1>
-    <p class="line hero-big" style="--i:1;margin-top:60px;">無　限　旅  程</p>
-    
-    <p class="line" style="--i:3;margin-top:45px;">值得，所以不將就。</p>
-    <p class="line" style="--i:4;margin-top:28px;">我不是來符合誰的期待。</p>
-    <p class="line" style="--i:5">也沒有打算把自己包裝成什麼樣子。</p>
-    <p class="line" style="--i:6">這裡只是讓你先知道，我是什麼樣的人。</p>
-    <p class="line" style="--i:7;margin-top:20px;">能接受，再往下看。</p>
-    <p class="line" style="--i:8">不能接受，離開也很好。</p>
-    <p class="line since-tag" style="--i:9">WEIGUANG SU JIU</p>
-    <p class="line since-tag" style="--i:10;margin-top:18px;">Since 2019</p>
+    <p class="line hero-big" style="--i:1;margin-top:60px;">無限旅程</p>
+    <p class="line highlight" style="--i:2;margin-top:45px;">值得，所以不將就。</p>
   </div>
 </section>
 
-<section class="page2">
+<section class="page2 dark-fix">
   <div class="bg"></div>
   <div class="content">
-    <h2 class="line" style="--i:0">認識・蘇九</h2>
-    <p class="line highlight" style="--i:1">舒服・自然・真實</p>
-    <p class="line" style="--i:2">我不是來符合誰的期待。</p>
-    <p class="line" style="--i:3">做自己就是我的樣子。</p>
-    <p class="line" style="--i:4">能接受，</p>
-    <p class="line" style="--i:5">再往下看。</p>
-    <p class="line" style="--i:6">不能接受，</p>
-    <p class="line" style="--i:7">離開也很好。</p>
+    <p class="line" style="--i:1">我不是來符合誰的期待。</p>
+    <p class="line" style="--i:2">做自己就是我的樣子。</p>
+    <p class="line" style="--i:3">能接受，</p>
+    <p class="line" style="--i:4">再往下看。</p>
+    <p class="line" style="--i:5">不能接受，</p>
+    <p class="line" style="--i:6">離開也很好。</p>
+    <br>
+    <p class="line" style="--i:7">LINE 對我來說，</p>
+    <p class="line" style="--i:8">只是聯絡工具。</p>
+    <p class="line" style="--i:9">不是感情培養器。</p>
+    <p class="line" style="--i:10">有事說事。</p>
+    <p class="line" style="--i:11">清楚，</p>
+    <p class="line highlight" style="--i:12">不要背後543。</p>
   </div>
 </section>
 
-<section class="page3">
+<section class="page3 dark-fix">
   <div class="bg"></div>
   <div class="content">
     <p class="line" style="--i:1">曾經以為，</p>
-    <p class="line" style="--i:2">這環境很單純。</p>
+    <p class="line" style="--i:2">這環境很簡單。</p>
     <p class="line" style="--i:3">後來才明白，</p>
-    <p class="line" style="--i:4">複雜的不是環境。</p>
-    <p class="line highlight" style="--i:5">是人性。</p>
-    <p class="line" style="--i:6">不迎合虛偽奉承。</p>
-    <p class="line" style="--i:7">更不想互相勉強。</p>
-    <p class="line" style="--i:8">感謝深深。</p>
-    <p class="line" style="--i:9">現在，</p>
-    <p class="line highlight" style="--i:10">只有蘇九。</p>
+    <p class="line" style="--i:4">深的不是環境。</p>
+    <p class="line" style="--i:5">而是</p>
+    <p class="line highlight" style="--i:6">人性。</p>
+    <p class="line" style="--i:7">不迎合虛偽奉承。</p>
+    <p class="line" style="--i:8">更不想互相勉強。</p>
+    <p class="line" style="--i:9">感謝深深。</p>
+    <p class="line" style="--i:10">現在，</p>
+    <p class="line highlight" style="--i:11">只有蘇九。</p>
   </div>
 </section>
 
-<section class="page-chat dark-fix">
-  <div class="bg"></div>
-  <div class="content">
-    <h2 class="line" style="--i:0">關於聊天</h2>
-    <p class="line" style="--i:1">我不喜歡一直聊天。</p>
-    <p class="line" style="--i:2">也不喜歡沒意義的試探。</p>
-    <p class="line" style="--i:3">Line 對我來說，只是聯絡工具。</p>
-    <p class="line" style="--i:4">不是感情培養器。</p>
-    <p class="line" style="--i:5">如果你期待的是：</p>
-    <p class="line" style="--i:6">・每天聊天</p>
-    <p class="line" style="--i:7">・秒回訊息</p>
-    <p class="line" style="--i:8">・早安午安晚安</p>
-    <p class="line" style="--i:9">・一直問在幹嘛</p>
-    <p class="line" style="--i:10">那我可能會讓你失望。</p>
-    <p class="line" style="--i:11">但如果你重視的是見面時的舒服，那我們比較有機會聊得來。</p>
-  </div>
-</section>
-
-<section class="page-about dark-fix">
-  <div class="bg"></div>
-  <div class="content">
-    <h2 class="line" style="--i:0">關於蘇九</h2>
-    <p class="line highlight" style="--i:1">蘇九（深深）</p>
-    <p class="line" style="--i:2">153 / 40 / 32B / 45+</p>
-    <p class="line" style="--i:3">沒有固定 SOP。</p>
-    <p class="line" style="--i:4">沒有標準答案。</p>
-    <p class="line" style="--i:5">互相尊重。</p>
-    <p class="line" style="--i:6">我不太會演。</p>
-    <p class="line" style="--i:7">也不太喜歡勉強。</p>
-    <p class="line" style="--i:8">感覺是雙向的。</p>
-    <p class="line" style="--i:9">相處也是。</p>
-    <p class="line" style="--i:10">適合的人自然會懂。</p>
-    <p class="line" style="--i:11">不適合的人其實不用勉強。</p>
-  </div>
-</section>
-
-<section class="page-about2 dark-fix">
+<section class="page4 dark-fix">
   <div class="bg"></div>
   <div class="content">
     <p class="line highlight" style="--i:1">蘇九（深深）</p>
     <p class="line" style="--i:2">153 / 40 / 32B / 45+</p>
     <p class="line" style="--i:3">骨感偏瘦、敏感型。</p>
-    <p class="line" style="--i:4">沒有固定 SOP 流程。</p>
-    <p class="line" style="--i:5">不迎合，</p>
-    <p class="line" style="--i:6">個性直爽。</p>
-    <p class="line highlight" style="--i:7">《相幹》</p>
-    <p class="line" style="--i:8">要的是舒服享受過程，</p>
-    <p class="line" style="--i:9">滿足身體，</p>
-    <p class="line" style="--i:10">也滿足心理。</p>
-    <p class="line" style="--i:11">這樣的旅程，</p>
-    <p class="line" style="--i:12">才有意思。</p>
-    <p class="line" style="--i:13">不是選妃 介意顏值 請饒過</p>
-    <p class="line" style="--i:14">比起說什麼，</p>
-    <p class="line highlight" style="--i:15">做什麼、給什麼，</p>
-    <p class="line" style="--i:16">才是旅程的重點。</p>
-    <p class="line" style="--i:17">適合的人，</p>
-    <p class="line" style="--i:18">自然會懂。</p>
-    <p class="line highlight" style="--i:19">共浴｜放鬆｜聊天｜陪伴｜情慾</p>
+    <p class="line" style="--i:4">沒有固定 SOP。</p>
+    <p class="line" style="--i:5">沒有標準答案。</p>
+    <br>
+    <p class="line highlight" style="--i:6">《相幹》</p>
+    <p class="line" style="--i:7">要的是舒服享受過程。</p>
+    <p class="line" style="--i:8">滿足身體，</p>
+    <p class="line" style="--i:9">也滿足心理。</p>
+    <p class="line" style="--i:10">這樣的旅程，</p>
+    <p class="line" style="--i:11">才有意思。</p>
   </div>
 </section>
 
-<section class="page-rule dark-fix">
+<section class="page5 dark-fix">
   <div class="bg"></div>
   <div class="content">
-    <h2 class="line" style="--i:0">旅程規則</h2>
-    <p class="line" style="--i:1">確定預約後，會提供詳細匯款資訊。</p>
-    <p class="line" style="--i:2">不喜歡臨時亂改、放鳥。</p>
-    <p class="line" style="--i:3">也不太喜歡試探性問題。</p>
-    <p class="line" style="--i:4">有特殊需求、個人偏好，都可以提前提出。</p>
-    <p class="line" style="--i:5">講清楚，比亂猜好。</p>
+    <p class="line" style="--i:1">比起說什麼，</p>
+    <p class="line highlight" style="--i:2">做什麼、給什麼，</p>
+    <p class="line" style="--i:3">才是旅程的重點。</p>
+    <p class="line" style="--i:4">適合的人，</p>
+    <p class="line highlight" style="--i:5">自然會懂。</p>
+    <br>
+    <p class="line" style="--i:6">不是選妃。</p>
+    <p class="line" style="--i:7">介意顏值，</p>
+    <p class="line" style="--i:8">介意身材</p>
+    <p class="line highlight" style="--i:9">請路過 饒過加錯過。</p>
   </div>
 </section>
 
-<section class="page-natural dark-fix">
+<section class="page6 dark-fix">
   <div class="bg"></div>
   <div class="content">
-    <h2 class="line" style="--i:0">舒服・自然・真誠</h2>
-    <p class="line" style="--i:1">不用刻意找話題。</p>
-    <p class="line" style="--i:2">不用刻意表現什麼。</p>
-    <p class="line" style="--i:3">也不用硬把氣氛弄得很熟絡。</p>
-    <p class="line" style="--i:4">舒服比較重要。</p>
-    <p class="line" style="--i:5">我不喜歡消耗別人。</p>
-    <p class="line" style="--i:6">也不喜歡被消耗。</p>
-    <p class="line" style="--i:7">自然一點，反而比較容易相處。</p>
+    <p class="line" style="--i:1">環境很重要。</p>
+    <p class="line" style="--i:2">空間也一樣。</p>
+    <p class="line" style="--i:3">價格已包含房費。</p>
+    <p class="line" style="--i:4">無需另外負擔費用。</p>
+    <br>
+    <p class="line" style="--i:5">蘇九是老菸槍。</p>
+    <p class="line" style="--i:6">對菸味敏感，</p>
+    <p class="line" style="--i:7">請提早告知。</p>
+    <p class="line highlight" style="--i:8">這是尊重。</p>
+    <br>
+    <p class="line highlight" style="--i:9">共浴｜放鬆｜聊天｜情慾｜洩壓</p>
   </div>
 </section>
 
-<section class="page-respect dark-fix">
+<section class="page7 dark-fix">
   <div class="bg"></div>
   <div class="content">
-    <h2 class="line" style="--i:0">互相尊重</h2>
-    <p class="line" style="--i:1">蘇九是老煙槍。</p>
-    <p class="line" style="--i:2">若介意菸味，請提前告知。</p>
-    <p class="line" style="--i:3">Line 文字沒有溫度。</p>
-    <p class="line" style="--i:4">所以我只針對重要內容回覆。</p>
-    <p class="line" style="--i:5">感覺跟尊重是互相的。</p>
-    <p class="line" style="--i:6">自然相處，旅程才會舒服。</p>
+    <p class="line" style="--i:1">目前場域：</p>
+    <p class="line highlight" style="--i:2">高雄。</p>
+    <p class="line" style="--i:3">到年底前，</p>
+    <p class="line" style="--i:4">沒有跑外縣市的計畫。</p>
+    <br>
+    <p class="line" style="--i:5">無固定班表時間。</p>
+    <p class="line" style="--i:6">平日</p>
+    <p class="line" style="--i:7">09:00－16:00</p>
+    <p class="line" style="--i:8">凌晨過後時段</p>
+    <p class="line" style="--i:9">單周</p>
+    <p class="line" style="--i:10">週五、六、日</p>
+    <p class="line" style="--i:11">全時段可約。</p>
+    <br>
+    <p class="line" style="--i:12">請詳細閱讀所有內容。</p>
+    <p class="line highlight" style="--i:13">先看清楚再約。</p>
   </div>
 </section>
 
@@ -703,7 +665,7 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.since-tag){
     <p class="line plan-price" style="--i:2">5000 ・ 基本服務</p>
     <p class="line plan-price" style="--i:3">7000 ・ 職人進階</p>
     <div class="plan-note">
-      <p class="line" style="--i:4">第一次嘗試的你</p>
+      <p class="line" style="--i:4">第一次嘗試的你，</p>
       <p class="line" style="--i:5">很適合。</p>
     </div>
   </div>
@@ -717,7 +679,7 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.since-tag){
     <p class="line plan-price" style="--i:2">6200 ・ 基本服務</p>
     <p class="line plan-price" style="--i:3">8200 ・ 職人進階</p>
     <div class="plan-note">
-      <p class="line" style="--i:4">時間多一點</p>
+      <p class="line" style="--i:4">時間多一點，</p>
       <p class="line" style="--i:5">相處也多一點。</p>
     </div>
   </div>
@@ -752,13 +714,28 @@ p.line:not(.highlight):not(.plan-time):not(.plan-price):not(.since-tag){
   </div>
 </section>
 
+<section class="page8 dark-fix">
+  <div class="bg"></div>
+  <div class="content">
+    <p class="line" style="--i:1">初次預約需先匯款。</p>
+    <p class="line" style="--i:2">壹、貳 定金 1500。</p>
+    <p class="line" style="--i:3">參、肆 定金 3000。</p>
+    <br>
+    <p class="line" style="--i:4">你怕詐騙，</p>
+    <p class="line highlight" style="--i:5">我也怕被騙。</p>
+    <br>
+    <p class="line" style="--i:6">如果這樣的方式和內容，</p>
+    <p class="line" style="--i:7">是你可接受且理解的。</p>
+    <p class="line" style="--i:8">再填寫預約單。</p>
+    <br>
+    <p class="line highlight" style="--i:9">準備好了，就開始囉。</p>
+  </div>
+</section>
+
 <section class="page10 dark-fix">
   <div class="bg"></div>
   <div class="content center">
-    <h2 class="line" style="--i:0">開始旅程</h2>
-    <p class="line" style="--i:1">請先閱讀圖文選單內容。</p>
-    <p class="line" style="--i:2">理解彼此方式後，再提交預約。</p>
-    <button class="btn line" style="--i:3" onclick="openSu9Booking()">了解服務內容與預約流程</button>
+    <button class="btn line" style="--i:1" onclick="openSu9Booking()">了解服務內容與預約流程</button>
   </div>
 </section>
 
